@@ -7,7 +7,7 @@
  * Catalog URLs are restricted to http(s) before they become src/href.
  */
 
-const API = { chat: '/api/chat', reset: '/api/reset', health: '/api/health' };
+const API = { chat: '/api/chat', reset: '/api/reset', health: '/api/health', fork: '/api/fork' };
 const SESSION_KEY = 'scent-sommelier.sessionId';
 /** The server refuses longer messages (src/server/app.ts); the textarea's maxlength in index.html matches. */
 const MAX_MESSAGE_CHARS = 1000;
@@ -87,6 +87,58 @@ function setSessionId(id) {
   state.sessionId = id || null;
   writeSessionId(state.sessionId);
 }
+
+// ---------------------------------------------------------------------------
+// Duplicated tabs - "Duplicate tab" copies sessionStorage, so the copy would drive the
+// same server session as the original. On load, a tab that already has a session id asks
+// the other tabs whether one of them is using it; if one answers, this tab is the copy and
+// takes its own fork of the session (same history, separate from then on).
+// ---------------------------------------------------------------------------
+
+const TAB_CHANNEL = 'scent-sommelier.tabs';
+const DUPLICATE_WAIT_MS = 250;
+let tabChannel = null;
+try {
+  tabChannel = typeof BroadcastChannel === 'function' ? new BroadcastChannel(TAB_CHANNEL) : null;
+} catch {
+  tabChannel = null;
+}
+
+// Every tab answers for the session it holds.
+tabChannel?.addEventListener('message', (e) => {
+  const m = e.data;
+  if (isObj(m) && m.type === 'who-has' && typeof m.id === 'string' && m.id === state.sessionId) {
+    tabChannel.postMessage({ type: 'mine', id: m.id, nonce: m.nonce });
+  }
+});
+
+/** Resolves once this tab knows its session is its own; sends wait for it. */
+const sessionReady = (async () => {
+  const id = state.sessionId;
+  if (!id || !tabChannel) return;
+  const nonce = Math.random().toString(36).slice(2);
+  const duplicate = await new Promise((resolve) => {
+    const timer = setTimeout(() => { tabChannel.removeEventListener('message', onMsg); resolve(false); }, DUPLICATE_WAIT_MS);
+    function onMsg(e) {
+      const m = e.data;
+      if (isObj(m) && m.type === 'mine' && m.id === id && m.nonce === nonce) {
+        clearTimeout(timer);
+        tabChannel.removeEventListener('message', onMsg);
+        resolve(true);
+      }
+    }
+    tabChannel.addEventListener('message', onMsg);
+    tabChannel.postMessage({ type: 'who-has', id, nonce });
+  });
+  if (!duplicate) return;
+  try {
+    const data = await postJson(API.fork, { sessionId: id });
+    setSessionId(isObj(data) && typeof data.sessionId === 'string' ? data.sessionId : null);
+  } catch {
+    // The server could not fork it: start fresh rather than share the other tab's conversation.
+    setSessionId(null);
+  }
+})();
 
 // ---------------------------------------------------------------------------
 // Small DOM + formatting helpers
@@ -485,13 +537,21 @@ function section(title, ...content) {
   return el('section', { class: 'jev-section' }, el('h4', { text: title }), ...content);
 }
 
+/** "safety:pregnancy" -> "safety · pregnancy"; the plain intent adds nothing next to the intent chip. */
+function routeLabel(route, intent) {
+  if (!route || route === intent) return '';
+  return route.split(':').map(humanize).join(' \u00b7 ');
+}
+
 function understandingSection(u) {
   const intent = str(u.intent);
+  const route = routeLabel(str(u.route), intent);
   const conf = num(u.intentConfidence);
   const summary = str(u.summary); // optional extra from the server; shown when present
   return section('Understood intent',
     el('div', { class: 'intent-row' },
       el('span', { class: 'intent-chip', text: intent ? humanize(intent) : 'unknown' }),
+      route ? el('span', { class: 'intent-chip route-chip', text: route, title: 'The reply this turn took' }) : null,
       Number.isFinite(conf)
         ? el('span', { class: 'confidence' },
           el('span', { class: 'meter-track', 'aria-hidden': 'true' }, (() => {
@@ -786,6 +846,7 @@ async function send(rawText, userNode = null, { typed = false } = {}) {
   const timer = setTimeout(() => { timedOut = true; controller.abort(); }, REQUEST_TIMEOUT_MS);
 
   try {
+    await sessionReady;
     const body = state.sessionId ? { sessionId: state.sessionId, message: text } : { message: text };
     const data = await postJson(API.chat, body, controller.signal);
     if (generation !== state.generation) return;

@@ -7,7 +7,7 @@
  */
 import type { Answer, ChoiceAnswer, Decider, NoulAnswer, QuestionSet } from '../jev/types.js';
 import { choice, noul } from '../jev/types.js';
-import type { Facets, Recommendation } from '../types.js';
+import type { Facets, Family, Recommendation } from '../types.js';
 import { describeFacets } from './describe.js';
 import { FOLLOW_UPS as F } from './followups.js';
 
@@ -27,6 +27,7 @@ export const TONES = {
   enthusiastic: 'Enthusiastic - the request is fun or exciting',
   reassuring: 'Reassuring - the user seems unsure, overwhelmed or is buying a gift',
   crisp: 'Crisp and efficient - the user was brief and to the point',
+  apologetic: 'Owning the miss - the user is unhappy, frustrated or sarcastic about the previous suggestions',
 };
 export type Tone = keyof typeof TONES;
 
@@ -106,8 +107,10 @@ export async function compose(inp: ComposeInput): Promise<Composition> {
   const topic = a.clarify_topic as ChoiceAnswer<ClarifyTopic> | undefined;
   const ask = (a.ask as NoulAnswer).noul >= ASK_THRESHOLD && topic && topic.choice !== 'none' && topic.confidence >= TOPIC_CERTAINTY;
   const next = a.next as ChoiceAnswer | undefined;
+  // Ties keep the pool's own order (f0, f1, ...), never the order Jev happened to list its keys in.
   const ranked = next
-    ? Object.entries(next.probabilities).sort((x, y) => y[1] - x[1]).map(([k]) => pool[Number(k.slice(1))]!)
+    ? Object.entries(next.probabilities).sort((x, y) => y[1] - x[1] || Number(x[0].slice(1)) - Number(y[0].slice(1)))
+      .map(([k]) => pool[Number(k.slice(1))]!)
     : pool;
 
   return {
@@ -125,7 +128,7 @@ function validLead(lead: Lead, f: Facets): Lead {
     occasion: f.occasion !== 'any',
     climate: f.climate !== 'any' || f.season !== 'any',
     persona: !!f.persona || f.ageStyle !== 'any',
-    taste: Object.keys(f.likes).length > 0 || f.likedNotes.length > 0,
+    taste: statedLikes(f).length > 0 || f.likedNotes.length > 0,
     reference: f.referencePids.length > 0,
     value: f.budget === 'budget' || f.budget === 'mid',
     general: true,
@@ -133,6 +136,11 @@ function validLead(lead: Lead, f: Facets): Lead {
   if (ok[lead]) return lead;
   const fallback = (['reference', 'persona', 'climate', 'occasion', 'taste', 'value'] as Lead[]).find((l) => ok[l]);
   return fallback ?? 'general';
+}
+
+/** The families the user asked for themselves - not ones a refinement ("warmer") added. */
+export function statedLikes(f: Facets): Family[] {
+  return (Object.keys(f.likes) as Family[]).filter((k) => !f.refinedLikes.includes(k));
 }
 
 function alreadyKnown(t: ClarifyTopic, f: Facets): boolean {

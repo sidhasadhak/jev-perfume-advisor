@@ -56,7 +56,7 @@ describe('How Jev decided: the trace', () => {
       occasion: 'evening_party', region: 'mediterranean', budget: 'budget', time_of_day: 'night', tone: 'enthusiastic', lead: 'occasion',
     });
     const levers = t.trace.levers.map((g) => g.lever);
-    for (const l of ['Conversation', 'Occasion', 'Location & climate', 'Season & time', 'Wearer', 'Preferences', 'Budget', 'Reply shape']) {
+    for (const l of ['Conversation', 'Safety & requirements', 'Occasion', 'Location & climate', 'Season & time', 'Wearer', 'Preferences', 'Budget & brand', 'Reply shape']) {
       assert.ok(levers.includes(l), `missing lever ${l}`);
     }
     const occ = t.find('occasion')!;

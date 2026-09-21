@@ -12,7 +12,7 @@ import type { DecisionLog } from './recorder.js';
 import { ASK_THRESHOLD, TIP_THRESHOLD, TOPIC_CERTAINTY } from './compose.js';
 import type { AppliedShape } from './render.js';
 import type { UnderstandResult } from './understand.js';
-import { AVOID_THRESHOLD, LIKE_THRESHOLD, LONGEVITY_LEVEL, MIN_CONFIDENCE, PROJECTION_LEVEL } from './understand.js';
+import { AVOID_THRESHOLD, CHECK_SURE, LIKE_THRESHOLD, LONGEVITY_LEVEL, MIN_CONFIDENCE, PROJECTION_LEVEL } from './understand.js';
 
 export type TraceStatus = 'used' | 'not mentioned' | 'low confidence' | 'from earlier' | 'overridden' | 'not used';
 
@@ -60,6 +60,11 @@ const DISPLAY: Record<string, string> = {
   middle_east: 'the Middle East / Gulf', south_asia: 'South Asia', east_asia: 'East Asia', southeast_asia: 'Southeast Asia',
   north_america: 'North America', latin_america: 'Latin America', africa: 'Africa', oceania: 'Oceania',
   not_a_note: 'not about a note', incidental: 'just mentioned',
+  knowledge: 'a general question', longevity_tips: 'making it last', storage_expiry: 'storage & expiry', nose_fatigue: 'nose fatigue',
+  notes_pyramid: 'top, heart & base notes', note_description: 'what a note smells like', creator_year: 'who made it / when',
+  price_where: 'price & where to buy', new_releases: 'new releases', skin_type: 'skin type', other_question: 'another question',
+  alcohol_free: 'alcohol-free / halal', vegan_cruelty_free: 'vegan / cruelty-free', natural: 'all-natural',
+  sensitive: 'a sensitivity (wants picks)',
 };
 const human = (k: string) => DISPLAY[k] ?? k.replace(/_/g, ' ');
 const REPLY_SHAPE = new Set(['lead', 'tone', 'ask', 'clarify_topic', 'tip', 'next']);
@@ -84,6 +89,11 @@ const FACET_OF: Record<string, { facet: keyof Facets; value?: (choice: string) =
 const LABELS: Record<string, string> = {
   intent: 'What you want', refine: 'Change requested', focus: 'Perfume referred to', same_wearer: 'Same wearer as before',
   unknown_perfume: 'Names a perfume not in my list',
+  topic: 'General question about', safety: 'Health & safety', requirement: 'Product requirement I can\'t check',
+  compare_on: 'Compare on', two_wearers: 'Two people at once', conflicting: 'Contradicting requests', non_english: 'Not in English',
+  other_brand: 'Names a brand', wants_brand: 'Wants that brand only', brand_name: 'Brand you named', perfume_name: 'Perfume you named',
+  drop_season: 'Drops the season', drop_occasion: 'Drops the occasion', drop_time: 'Drops the time of day', drop_gender: 'Drops the style',
+  drop_budget: 'Drops the budget', drop_strength: 'Drops the strength', drop_brand: 'Drops the brand',
   occasion: 'Occasion', time_of_day: 'Time of day',
   region: 'Location', setting: 'Indoors / outdoors', climate: 'Climate',
   season: 'Season',
@@ -95,13 +105,15 @@ const LABELS: Record<string, string> = {
 };
 
 const GROUPS: Array<[string, (k: string) => boolean]> = [
-  ['Conversation', (k) => ['intent', 'refine', 'focus', 'same_wearer', 'unknown_perfume'].includes(k)],
+  ['Conversation', (k) => ['intent', 'topic', 'refine', 'focus', 'compare_on', 'same_wearer', 'unknown_perfume', 'two_wearers', 'conflicting',
+    'non_english', 'perfume_name'].includes(k) || /^(variant|drop)_/.test(k)],
+  ['Safety & requirements', (k) => k === 'safety' || k === 'requirement'],
   ['Occasion', (k) => k === 'occasion'],
   ['Location & climate', (k) => ['region', 'setting', 'climate'].includes(k)],
   ['Season & time', (k) => ['season', 'time_of_day'].includes(k)],
   ['Wearer', (k) => ['gender', 'age_style', 'persona', 'favourite_colour', 'gift'].includes(k)],
   ['Preferences', (k) => ['vibe', 'projection', 'longevity'].includes(k) || /^(like|avoid|ref|note)_/.test(k)],
-  ['Budget', (k) => k === 'budget'],
+  ['Budget & brand', (k) => ['budget', 'other_brand', 'wants_brand', 'brand_name'].includes(k)],
   ['Reply shape', (k) => ['lead', 'tone', 'ask', 'clarify_topic', 'tip', 'next'].includes(k)],
 ];
 
@@ -137,6 +149,31 @@ function facetStatus(key: string, a: ChoiceAnswer, facets: Facets): TraceStatus 
   return a.confidence < MIN_CONFIDENCE ? 'low confidence' : 'overridden';
 }
 
+/** Choices that pick a route; their status is whether the reply actually took it. */
+const ROUTE_CHOICES = new Set(['topic', 'safety', 'requirement', 'compare_on', 'brand_name', 'perfume_name']);
+
+function routeStatus(key: string, a: ChoiceAnswer, u: UnderstandResult): TraceStatus {
+  const none = key === 'compare_on' ? 'any' : 'none';
+  const taken = key === 'topic' ? u.knowledge?.topic
+    : key === 'safety' ? u.safety
+    : key === 'requirement' ? u.requirement
+    : key === 'compare_on' ? (u.intent === 'compare' ? u.compareOn : undefined)
+    : a.choice;
+  if (key === 'safety' && a.choice === 'sensitive') return u.requirement === 'sensitivity' ? 'used' : 'not used';
+  if (a.choice === none) return taken && taken !== none ? 'overridden' : 'not mentioned';
+  if (taken === a.choice) return 'used';
+  return taken ? 'overridden' : a.confidence < MIN_CONFIDENCE ? 'low confidence' : 'not used';
+}
+
+/** Yes/no checks whose "yes" only matters once it clears its own bar. */
+const NOUL_ROUTE: Record<string, (a: NoulAnswer, u: UnderstandResult) => TraceStatus> = {
+  two_wearers: (a, u) => (u.twoWearers ? 'used' : a.noul >= 0.5 ? 'not used' : 'not mentioned'),
+  conflicting: (a, u) => (u.conflicting ? 'used' : a.noul >= 0.5 ? 'not used' : 'not mentioned'),
+  non_english: (a, u) => (u.nonEnglish ? 'used' : a.noul >= 0.5 ? 'not used' : 'not mentioned'),
+  other_brand: (a, u) => (u.brandNotCarried ? 'used' : a.noul >= 0.5 ? 'not used' : 'not mentioned'),
+  wants_brand: (a, u) => (u.facets.brands.length ? 'used' : a.noul >= 0.5 ? 'not used' : 'not mentioned'),
+};
+
 /**
  * Reply-shape answers are Jev's suggestions; the app then applies its own gates (a question needs a
  * confident topic, a tip needs one that fits, a lead needs data behind it). Label against what was shown.
@@ -169,7 +206,7 @@ export function buildTrace(log: DecisionLog[], u: UnderstandResult, catalog: Cat
   };
 
   for (const call of log) {
-    if (!call.answers || !(call.label === 'understand' || call.label === 'compose' || call.label === 'compare')) continue;
+    if (!call.answers || !['understand', 'compose', 'compare', 'name'].includes(call.label)) continue;
     const likes: TraceItem[] = [];
     for (const [key, q] of Object.entries(call.questions)) {
       const a = call.answers[key];
@@ -185,6 +222,8 @@ export function buildTrace(log: DecisionLog[], u: UnderstandResult, catalog: Cat
           push(key, choiceItem(key, `You mentioned "${note}"`, q, a as ChoiceAnswer, used ? 'used' : 'not used'));
         } else if (key === 'next') {
           push(key, choiceItem(key, label!, q, a as ChoiceAnswer, 'used', 2));
+        } else if (ROUTE_CHOICES.has(key)) {
+          push(key, choiceItem(key, label ?? human(key), q, a as ChoiceAnswer, routeStatus(key, a as ChoiceAnswer, u)));
         } else {
           const shaped = call.label === 'compose' ? replyShapeStatus(key, a, applied) : undefined;
           const status = shaped?.status ?? (call.label === 'understand' ? facetStatus(key, a as ChoiceAnswer, u.facets) : 'used');
@@ -201,13 +240,21 @@ export function buildTrace(log: DecisionLog[], u: UnderstandResult, catalog: Cat
           if ((a as NoulAnswer).noul < 0.2 && !kept) continue; // keep the panel to families Jev gave real weight
           likes.push(noulItem(key, `${liked ? 'Likes' : 'Avoids'}: ${FAMILY_DEFS[fam].label}`, a as NoulAnswer,
             kept ? 'used' : (a as NoulAnswer).noul >= threshold ? 'overridden' : 'not used'));
+        } else if (/^variant_\d+$/.test(key)) {
+          const name = u.proposed.perfumes[Number(key.slice(8))] ?? 'a perfume';
+          const yes = (a as NoulAnswer).noul >= 0.5;
+          const taken = u.variants.length > 0 && yes;
+          push(key, noulItem(key, `A different version of ${name}`, a as NoulAnswer, taken ? 'used' : yes ? 'not used' : 'not mentioned'));
         } else {
           const yes = (a as NoulAnswer).noul >= 0.5;
           const shaped = call.label === 'compose' ? replyShapeStatus(key, a, applied) : undefined;
           // Reply-shape decisions take effect either way ("no tip" is applied); a "no" elsewhere changes nothing.
           const status: TraceStatus = shaped?.status ?? (REPLY_SHAPE.has(key) ? 'used'
             : key === 'persona' ? (u.facets.persona ? 'used' : yes ? 'not used' : 'not mentioned')
-            : key === 'unknown_perfume' ? (u.unresolved?.kind === 'perfume' ? 'used' : yes ? 'not used' : 'not mentioned')
+            : key === 'unknown_perfume' ? (u.unresolved?.kind === 'perfume' || u.perfumeNotCarried || u.compareMissing ? 'used' : yes ? 'not used' : 'not mentioned')
+            : NOUL_ROUTE[key] ? NOUL_ROUTE[key]!(a as NoulAnswer, u)
+            // A dropped constraint is cleared only at CHECK_SURE: between 50% and that it is a "yes" that changed nothing.
+            : /^drop_/.test(key) ? ((a as NoulAnswer).noul >= CHECK_SURE ? 'used' : yes ? 'not used' : 'not mentioned')
             : yes ? 'used' : 'not mentioned');
           const item = noulItem(key, label ?? human(key), a as NoulAnswer, status);
           if (shaped?.answer) item.answer = shaped.answer;

@@ -7,7 +7,7 @@
  * named. Code then merges the answers into typed Facets, gating on confidence.
  */
 import type { Catalog } from '../catalog/catalog.js';
-import { normalize } from '../catalog/catalog.js';
+import { normalize as normalizeName } from '../catalog/catalog.js';
 import { FAMILY_DEFS } from '../catalog/families.js';
 import type { Answer, ChoiceAnswer, Decider, NoulAnswer, QuestionSet } from '../jev/types.js';
 import { choice, noul } from '../jev/types.js';
@@ -19,7 +19,7 @@ import { EMPTY_FACETS, FAMILIES } from '../types.js';
 import { describeFacets } from './describe.js';
 import { applyFollowUpFacets, matchFollowUp } from './followups.js';
 import type { NoteLexicon } from './lexicon.js';
-import { hasNegationCue, mentionsColour, ordinalRefs } from './lexicon.js';
+import { candidateSpans, concentrationTerms, mayExpressDislike, mentionsColour, ordinalRefs } from './lexicon.js';
 
 // ---------------------------------------------------------------------------
 // Question vocabularies. Descriptions are what Jev reads - keep them concrete.
@@ -30,7 +30,8 @@ const INTENT = {
   refine: 'Reacts to the perfumes just suggested and wants them adjusted: cheaper, stronger, lighter, sweeter, other options, for a man instead, etc.',
   more_like: 'Wants perfumes similar to one specific perfume they name or point to',
   explain: 'Asks for more detail about one particular perfume, or why it was suggested',
-  compare: 'Asks which of two or more specific perfumes is better, or how they differ',
+  compare: 'Asks which of two or more specific perfumes is better, how they differ, or to rank them',
+  knowledge: 'Asks a general question about perfume rather than for suggestions: how to apply, store or layer it, what a term or note means, EDP vs EDT, safety, fakes, prices, who made or wears something',
   greeting: 'Only says hello or asks what the assistant can do',
   thanks: 'Thanks the assistant or says goodbye, with no new request',
   out_of_scope: 'Is clearly unrelated to perfume or fragrance (e.g. asks for directions, news or maths). Asking what to "wear" for an occasion, place or season IS about perfume here',
@@ -101,11 +102,12 @@ const GENDER = {
 } satisfies Record<GenderPref, string>;
 
 const AGE = {
+  child: 'A baby, toddler or child under about 12',
   youthful: 'A teen, student or twenty-something, or a playful, fun, young vibe',
   contemporary: 'An adult with a modern, current style (roughly 25-50), e.g. a working professional',
   mature_elegant: 'An older wearer (roughly 50+), a grandparent, or a classic, refined, timeless taste',
   any: 'Age or personal style is not indicated',
-} satisfies Record<AgeStyle, string>;
+} satisfies Record<AgeStyle | 'child', string>;
 
 const FAVOURITE_COLOUR = {
   pink: 'Pink, rose-pink, blush or fuchsia',
@@ -158,7 +160,7 @@ const LONGEVITY = {
 export const LONGEVITY_LEVEL: Record<keyof typeof LONGEVITY, Level> = { unspecified: 0, short: 1, moderate: 2, long: 3, very_long: 4 };
 
 export const REFINE = {
-  none: 'Not reacting to the previous suggestions, or no change requested',
+  none: 'Not reacting to the previous suggestions, no change requested, or only removes a requirement (e.g. "any season is fine")',
   cheaper: 'Wants cheaper or more affordable options',
   pricier: 'Wants more luxurious or high-end options',
   lighter: 'Wants something lighter, softer, less intense',
@@ -167,12 +169,93 @@ export const REFINE = {
   less_sweet: 'Wants something less sweet',
   fresher: 'Wants something fresher, cleaner or more airy',
   warmer: 'Wants something warmer, cosier or richer',
-  more_unique: 'Wants something more unusual or less mainstream',
+  more_unique: 'Wants something more unusual or less mainstream - e.g. complains the picks are too common, generic, basic or what everyone wears',
   more_classic: 'Wants something more classic or timeless',
   more_modern: 'Wants something more modern or trendy',
   different_options: 'Wants different options than the ones already shown',
 };
 export type RefineDirection = keyof typeof REFINE;
+
+/**
+ * General perfume questions the app answers from vetted fixed text (render/knowledge.ts)
+ * instead of recommending. Asked every turn: a question about a named perfume ("is my
+ * Sauvage fake?") is otherwise read as "tell me about Sauvage".
+ */
+export const TOPIC = {
+  none: 'Not a general question: the user wants perfume suggestions (including a dupe or cheaper alternative to a perfume), reacts to suggestions, asks what a specific perfume smells like, how it performs or why it was suggested, or asks whether the assistant has or knows a particular perfume',
+  concentration: 'What EDP, EDT, parfum, extrait or cologne mean, or how the versions or concentrations of one perfume differ',
+  longevity_tips: 'How to make the perfume they already have last longer or project more (application tips, not a request for long-lasting perfumes)',
+  application: 'Where or how to apply or spray perfume, or how many sprays to use',
+  storage_expiry: 'How to store perfume, or whether it expires or goes off',
+  nose_fatigue: 'Why they cannot smell their own perfume, or stop noticing it after a while',
+  notes_pyramid: 'What top, middle (heart) and base notes are',
+  note_description: 'What a particular note or ingredient smells like, e.g. "what does oud smell like?"',
+  layering: 'Whether or how to layer or combine perfumes',
+  authenticity: 'How to tell whether a perfume is fake or genuine',
+  dupe: 'Whether a perfume is a dupe or clone of another, or what a perfume is a clone of',
+  creator_year: 'Who made or created a perfume (the perfumer or house) or when it was released',
+  reformulation: 'Whether a perfume has been reformulated or discontinued',
+  celebrity: 'What perfume a celebrity or other famous person wears',
+  price_where: 'What a perfume costs, bottle sizes, where to buy it or where to find the best price',
+  new_releases: 'The newest or latest perfume releases, or what came out this year',
+  skin_type: 'How skin type or body chemistry affects perfume, or which perfume suits their skin type',
+  other_question: 'Some other general question about perfume that is not a request for suggestions',
+};
+export type Topic = Exclude<keyof typeof TOPIC, 'none'>;
+
+/** Messages that need a careful non-answer, never a list of products. */
+export const SAFETY = {
+  none: 'No health or safety question, and the wearer is a person aged about 12 or older',
+  pregnancy: 'Asks about wearing perfume while pregnant or breastfeeding, or which perfumes are safe then',
+  child: 'The perfume is for, or would be put on, a baby or young child (under about 12), or asks whether perfume is safe for one',
+  pet: 'The perfume is for, or would be sprayed on, a pet or other animal',
+  medical: 'Asks whether perfume, or a specific perfume, is safe or harmful for a health condition: allergies, asthma, eczema, migraines, sensitive skin',
+  sensitive: 'Wants suggestions they can wear despite a sensitivity (migraines, allergies, asthma, sensitive or rash-prone skin), rather than asking whether something is safe',
+};
+/** The safety answers that replace the reply. "sensitive" instead becomes a caveat on light picks (a requirement). */
+export type SafetyKind = Exclude<keyof typeof SAFETY, 'none' | 'sensitive'>;
+
+/** Product requirements the catalog has no data on, so it can never claim to meet them. */
+export const REQUIREMENT = {
+  none: 'No such requirement is stated. A health sensitivity on its own (migraines, allergies) is not a product requirement',
+  alcohol_free: 'It must be alcohol-free or halal, or an attar, perfume oil or other oil-based perfume',
+  format: 'A product other than a perfume spray: a body mist or body spray, deodorant, roll-on, solid perfume, hair mist, candle or lotion',
+  vegan_cruelty_free: 'It must be vegan or cruelty-free (not tested on animals)',
+  natural: 'It must be all-natural or organic, made only from essential oils, or free of synthetic ingredients',
+  hypoallergenic: 'It must be hypoallergenic, allergen-free or suitable for sensitive, allergy-prone skin',
+};
+/** `sensitivity` is not asked for directly: it comes from the safety question's "sensitive" answer. */
+export type RequirementKind = Exclude<keyof typeof REQUIREMENT, 'none'> | 'sensitivity';
+
+/** What a comparison is about. Everything but `any` is answered from catalog data, not a Jev verdict. */
+export const COMPARE_ON = {
+  any: 'Nothing specific: which is better overall, which suits the user best, or how they differ in general',
+  longevity: 'Which lasts longest on the skin',
+  projection: 'Which is strongest, loudest or projects the most',
+  price: 'Which is cheaper or more expensive',
+  season: 'Which suits a particular season or weather best (summer, winter, heat, cold)',
+  daytime: 'Which is best for daytime or the office',
+  evening: 'Which is best for evenings or nights out',
+  similarity: 'Whether they smell alike, or whether one is a dupe or clone of the other',
+};
+export type CompareAxis = keyof typeof COMPARE_ON;
+
+/**
+ * Constraints a later message can take back ("actually, one I can wear all year
+ * round"). Asked only for facets that are set; each resets its facets to "any".
+ */
+const DROPPABLE: Array<{ key: string; what: string; set: (f: Facets) => boolean; reset: (f: Facets) => void }> = [
+  { key: 'drop_season', what: 'the season or weather requirement (e.g. "all year round", "any season", "not just for summer")',
+    set: (f) => f.season !== 'any' || f.climate !== 'any', reset: (f) => { f.season = 'any'; f.climate = 'any'; } },
+  { key: 'drop_occasion', what: 'the occasion (e.g. "for any occasion", "not just for work", "something versatile")',
+    set: (f) => f.occasion !== 'any', reset: (f) => { f.occasion = 'any'; f.setting = 'any'; } },
+  { key: 'drop_time', what: 'the time of day (e.g. "day or night", "any time")', set: (f) => f.timeOfDay !== 'any', reset: (f) => { f.timeOfDay = 'any'; } },
+  { key: 'drop_gender', what: 'the feminine / masculine style (e.g. "any gender is fine")', set: (f) => f.gender !== 'any', reset: (f) => { f.gender = 'any'; } },
+  { key: 'drop_budget', what: 'the budget (e.g. "price doesn\'t matter", "any budget")', set: (f) => f.budget !== 'any', reset: (f) => { f.budget = 'any'; } },
+  { key: 'drop_strength', what: 'the strength or longevity requirement (e.g. "strength doesn\'t matter")',
+    set: (f) => f.projection > 0 || f.longevity > 0, reset: (f) => { f.projection = 0; f.longevity = 0; } },
+  { key: 'drop_brand', what: 'the brand requirement (e.g. "any brand is fine", "not only Chanel")', set: (f) => f.brands.length > 0, reset: (f) => { f.brands = []; } },
+];
 
 const REF_POLARITY = {
   similar: 'Loves it or wants perfumes similar to it',
@@ -207,15 +290,40 @@ export interface UnderstandResult extends Understanding {
   proposed: { perfumes: string[]; notes: string[]; ordinals: number[] };
   /**
    * Set when an explain/compare points at something we cannot resolve - a position
-   * beyond what was shown, or a perfume that is not in the catalog. The reply must
-   * say so rather than quietly describing a different perfume.
+   * beyond what was shown, a perfume that is not in the catalog, or a flanker of one
+   * that is. The reply must say so rather than quietly describing a different perfume.
    */
   unresolved?: Unresolved;
+  /** A health or safety question, or a wearer who is a child or an animal: answered without picks. */
+  safety?: SafetyKind;
+  /** A product requirement the catalog cannot check (alcohol-free, vegan, body mist...): never implied as met. */
+  requirement?: RequirementKind;
+  /** A general perfume question, answered from vetted text rather than with picks. */
+  knowledge?: { topic: Topic; pids: string[]; notes: string[] };
+  /** What a compare is about; `any` asks Jev which suits the user better. */
+  compareOn: CompareAxis;
+  /** Named perfumes the catalog only has another version of ("Coco Noir" when we have Coco). */
+  variants: Array<{ pid: string; name: string }>;
+  /** The user named a brand the catalog does not carry. */
+  brandNotCarried: boolean;
+  /** Jev says the user named a perfume the catalog does not carry (whatever the route). */
+  unknownPerfume: boolean;
+  /** ... in a request, where no catalog perfume the user named stands in for it. */
+  perfumeNotCarried: boolean;
+  /** A compare where one of the named perfumes is missing from the catalog and was left out. */
+  compareMissing: boolean;
+  /** Set when the message asks for two people at once; holds the phrase for each, when found. */
+  twoWearers?: string[];
+  /** The request contradicts itself ("fresh and light" but "beast-mode gourmand"). */
+  conflicting: boolean;
+  /** The message is not in English (replies are). */
+  nonEnglish: boolean;
 }
 
 export type Unresolved =
   | { kind: 'position'; /** 1-based, as the user said it */ position: number; shown: number }
-  | { kind: 'perfume' };
+  | { kind: 'perfume'; /** How the user named it, when Jev could point at the words. */ name?: string }
+  | { kind: 'variant'; /** The catalog perfume it is a version of. */ pid: string; name: string };
 
 /** Minimum Jev confidence before a facet choice is trusted. */
 export const MIN_CONFIDENCE = 0.45;
@@ -235,6 +343,24 @@ const MAX_AVOIDS = 4;
 export const DIFFERENT_WEARER_BELOW = 0.5;
 /** How sure Jev must be that the user named a perfume we do not have before we say so. */
 const UNKNOWN_PERFUME_SURE = 0.6;
+/**
+ * Probability, against "none", above which a safety or requirement answer takes over the
+ * reply. Deliberately at even odds: wrongly adding a caveat costs little, wrongly
+ * recommending products for a baby or as "halal" does not.
+ */
+export const SAFETY_SURE = 0.5;
+export const REQUIREMENT_SURE = 0.5;
+/** A general-question topic routes to the knowledge answer at this probability, or TOPIC_SURE_WITH_INTENT when the intent agrees. */
+export const TOPIC_SURE = 0.6;
+export const TOPIC_SURE_WITH_INTENT = 0.45;
+/** How sure Jev must be that a name the user carried on ("Coco Noir") is a different perfume. */
+export const VARIANT_SURE = 0.5;
+/** For the yes/no checks on brands, two wearers, contradictions, language and dropped constraints. */
+export const CHECK_SURE = 0.6;
+/** Most perfumes in one comparison or ranking. */
+export const MAX_COMPARE = 5;
+/** Topics a compare of two named perfumes answers better than a general answer can. */
+const COMPARE_TOPICS: ReadonlySet<string> = new Set(['dupe', 'price_where', 'creator_year']);
 
 export async function understand(inp: UnderstandInput): Promise<UnderstandResult> {
   const { message, session, catalog, lexicon, decider, signal } = inp;
@@ -244,13 +370,17 @@ export async function understand(inp: UnderstandInput): Promise<UnderstandResult
   // --- Deterministic pre-pass: deal the cards --------------------------------
   // One of our own follow-up chips: we wrote it, so we know what it means.
   const known = matchFollowUp(message, catalog);
-  const refs = catalog.mentionedIn(message, 3).map((m) => m.fragrance);
-  const notes = lexicon.find(message, 6);
+  const matches = catalog.mentionedIn(message, MAX_COMPARE);
+  const refs = matches.map((m) => m.fragrance);
+  // A perfume's name is not a note request: "layer with Tobacco Vanille" does not ask for tobacco.
+  const notes = lexicon.find(catalog.maskNames(message, matches.filter((m) => m.score >= 0.8).map((m) => m.fragrance.pid)), 6);
   // A chip that names its perfume ("Tell me more about First by Van Cleef & Arpels") is not a list position.
   const positions = known?.pid ? [] : ordinalRefs(message).map((i) => (i < 0 ? lastShown.length - 1 : i));
   const ordinals = positions.filter((i) => i >= 0 && i < lastShown.length);
   const outOfRange = lastShown.length ? positions.filter((i) => i >= lastShown.length) : [];
-  const negation = hasNegationCue(message);
+  const negation = mayExpressDislike(message);
+  const brandsNamed = catalog.brandsIn(message);
+  const concentrations = concentrationTerms(message);
 
   // --- One Jev request ------------------------------------------------------
   const qs: QuestionSet = {
@@ -300,6 +430,40 @@ export async function understand(inp: UnderstandInput): Promise<UnderstandResult
     }
   }
 
+  if (!known) {
+    // Our own chips never raise these; for everything the user types, they decide whether the
+    // reply may recommend at all.
+    qs.topic = choice('Is the LATEST message a general question about perfume rather than a request for suggestions? If so, what is it about?', TOPIC);
+    qs.safety = choice('Does the LATEST message involve health or safety, or a wearer who is not a teenager or adult?', SAFETY);
+    qs.requirement = choice('Does the user explicitly say the product itself must have one of these properties?', REQUIREMENT);
+    qs.other_brand = noul(
+      brandsNamed.length
+        ? `Does the LATEST message name a perfume brand or house other than ${brandsNamed.join(', ')}?`
+        : 'Does the LATEST message name a perfume brand or house (e.g. Chanel, Kayali, Bath & Body Works)?',
+      {
+        true: 'It names a company that makes perfume, body mists or other fragrance products',
+        false: 'It names no brand - perfume names, notes, places and people are not brands',
+      },
+    );
+    if (brandsNamed.length) {
+      qs.wants_brand = noul(`Does the user want perfumes made BY ${brandsNamed.join(' or ')} specifically?`, {
+        true: 'They ask for that house\'s perfumes, e.g. "the best Chanel perfume", "something by Tom Ford"',
+        false: 'Any brand will do. Naming a perfume as a reference or asking about one ("like Sauvage by Dior", "tell me about Dior Sauvage") does not count',
+      });
+    }
+    qs.two_wearers = noul('Does the LATEST message ask for perfumes for two or more different people at once?', {
+      true: 'It asks for separate scents for different people in one go, e.g. one for me and one for my husband',
+      false: 'It is about one wearer, even if it asks for more than one perfume',
+    });
+    qs.conflicting = noul('Does the LATEST message ask for things that clearly contradict each other?', {
+      true: 'Two requirements pull in opposite directions, e.g. "fresh and light" but also "a heavy, sweet, beast-mode scent"',
+      false: 'The requirements fit together',
+    });
+    qs.non_english = noul('Is the LATEST message written mainly in a language other than English?');
+    // Asked every turn: short names ("Eros or Coco - which lasts longer?") are only found after the call.
+    qs.compare_on = choice('If the user is comparing or ranking perfumes, what are they comparing them on?', COMPARE_ON);
+  }
+
   if (lastShown.length) {
     qs.refine = choice('If the user is reacting to the perfumes just suggested, how should the next suggestions change?', REFINE);
     // Jev's budget/projection answers cannot tell "more affordable" (relative) from "under $40" (absolute).
@@ -311,8 +475,23 @@ export async function understand(inp: UnderstandInput): Promise<UnderstandResult
     }
   }
   if (hasHistory) qs.same_wearer = noul('Is the user still shopping for the same wearer as earlier in the conversation?');
+  if (hasHistory && !known) {
+    for (const d of DROPPABLE) {
+      if (d.set(session.facets)) qs[d.key] = noul(`Does the LATEST message remove or relax ${d.what}?`);
+    }
+  }
   refs.forEach((fr, i) => {
     qs[`ref_${i}`] = choice(`How does the user feel about the perfume "${fr.name}" by ${fr.brand}?`, REF_POLARITY);
+    const cont = matches[i]!.continuation;
+    if (cont) {
+      qs[`variant_${i}`] = noul(
+        `The user wrote "${cont.display}". Is that a different perfume from "${fr.name}" by ${fr.brand}${fr.year ? `, launched ${fr.year}` : ''}?`,
+        {
+          true: 'A different perfume: a flanker, edition or other concentration of it (e.g. Coco Noir is not Coco; Sauvage Elixir is not Sauvage)',
+          false: 'The same perfume, just named more fully, or the extra words are not part of the name',
+        },
+      );
+    }
   });
   if (!known) {
     // The catalog lookup can only find perfumes we have. This asks about the rest, so "tell me about
@@ -363,6 +542,7 @@ export async function understand(inp: UnderstandInput): Promise<UnderstandResult
     return ans.choice;
   };
   const p = (key: string) => (a[key] as NoulAnswer | undefined)?.noul ?? 0;
+  const ageAnswer = pick<AgeStyle | 'child'>('age_style', 'ageStyle', 'any');
 
   const fresh: Facets = {
     ...EMPTY_FACETS,
@@ -373,7 +553,8 @@ export async function understand(inp: UnderstandInput): Promise<UnderstandResult
     season: pick<Season | 'any'>('season', 'season', 'any'),
     timeOfDay: pick<DayTime | 'any'>('time_of_day', 'timeOfDay', 'any'),
     gender: pick<GenderPref>('gender', 'gender', 'any'),
-    ageStyle: pick<AgeStyle>('age_style', 'ageStyle', 'any'),
+    // A child is not a style to shop for: that turn is answered by the safety reply instead.
+    ageStyle: ageAnswer === 'child' ? 'any' : ageAnswer,
     budget: pick<Budget>('budget', 'budget', 'any'),
     vibe: pick<Vibe>('vibe', 'vibe', 'any'),
     projection: PROJECTION_LEVEL[pick<keyof typeof PROJECTION>('projection', 'projection', 'unspecified')],
@@ -386,6 +567,8 @@ export async function understand(inp: UnderstandInput): Promise<UnderstandResult
     // Our chips never describe the wearer, whatever Jev reads into them.
     persona: !known && p('persona') > 0.5 ? message.trim().slice(0, 400) : '',
     favouriteColour: pick<FavouriteColour>('favourite_colour', 'favouriteColour', 'none'),
+    brands: brandsNamed.length && p('wants_brand') >= CHECK_SURE ? brandsNamed : [],
+    refinedLikes: [],
   };
 
   for (const f of FAMILIES) {
@@ -408,11 +591,21 @@ export async function understand(inp: UnderstandInput): Promise<UnderstandResult
     else if (ans.choice === 'avoids') fresh.avoidedNotes.push(n.note);
   });
 
+  // A name the user carried on past ("Coco Noir", "Angel Nova") that Jev says is another perfume
+  // is not the catalog record: it must never be described, compared or used as a reference.
+  const variants: Array<{ pid: string; name: string }> = [];
+  refs.forEach((fr, i) => {
+    const cont = matches[i]!.continuation;
+    if (cont && p(`variant_${i}`) >= VARIANT_SURE) variants.push({ pid: fr.pid, name: cont.display });
+  });
+  const isVariant = (pid: string) => variants.some((v) => v.pid === pid);
+
   const exclude: string[] = [];
   const asked: string[] = [];
   /** Named perfumes Jev confirmed the user means (asking about or liking) - never merely "incidental" ones. */
   const pointed: string[] = [];
   refs.forEach((fr, i) => {
+    if (isVariant(fr.pid)) return;
     const ans = a[`ref_${i}`] as ChoiceAnswer | undefined;
     if (!ans || ans.confidence < MIN_CONFIDENCE) return;
     if (ans.choice === 'similar') fresh.referencePids.push(fr.pid);
@@ -423,12 +616,25 @@ export async function understand(inp: UnderstandInput): Promise<UnderstandResult
 
   // "Tell me about Eros": short common-word names are too risky for the pre-pass without their brand,
   // so they were never proposed. Once Jev says the user names a perfume we have not listed, an exact
-  // catalog name in the message is safe to use - rather than wrongly saying we do not carry it.
-  let namedExact: Fragrance | undefined;
+  // catalog name in the message is safe to use - rather than wrongly saying we do not carry it - with
+  // three exceptions: a name inside a longer one ("Coco" in "Coco Mademoiselle") is part of that name;
+  // a name the text carries on past with a flanker word ("Coco Noir", "Eros Flame") is another perfume
+  // we lack; and an everyday name written as ordinary words ("for her birthday") is not For Her.
+  // Only a comparison, where the user lists perfumes, takes more than one.
+  const namedExact: Fragrance[] = [];
   if (p('unknown_perfume') >= UNKNOWN_PERFUME_SURE) {
     const listed = new Set([...lastShown, ...refs].map((f) => f.pid));
-    namedExact = namedExactly(catalog, message).find((f) => !listed.has(f.pid));
-    if (namedExact) { asked.unshift(namedExact.pid); pointed.unshift(namedExact.pid); }
+    const listing = (a.intent as ChoiceAnswer | undefined)?.choice === 'compare';
+    for (const x of catalog.namedExactly(message)) {
+      if (listed.has(x.fragrance.pid)) continue;
+      if (x.continuation && !x.continuation.concentration) {
+        if (!variants.some((v) => v.pid === x.fragrance.pid)) variants.push({ pid: x.fragrance.pid, name: x.continuation.display });
+        continue;
+      }
+      if (x.everyday && !x.capitalised) continue;
+      if (namedExact.length === 0 || (listing && !x.everyday)) namedExact.push(x.fragrance);
+    }
+    namedExact.slice(0, MAX_COMPARE).reverse().forEach((f) => { asked.unshift(f.pid); pointed.unshift(f.pid); });
   }
 
   // Seasons and climates imply each other when only one is given.
@@ -448,15 +654,15 @@ export async function understand(inp: UnderstandInput): Promise<UnderstandResult
   }
 
   const focusChoice = (a.focus as ChoiceAnswer | undefined);
-  const focusFromJev = focusChoice && focusChoice.choice !== 'none' && focusChoice.confidence >= MIN_CONFIDENCE
-    ? [focusChoice.choice.slice(2)] : [];
+  const focusConfident = !!focusChoice && focusChoice.confidence >= MIN_CONFIDENCE;
+  const focusFromJev = focusConfident && focusChoice!.choice !== 'none' ? [focusChoice!.choice.slice(2)] : [];
   const focusPids = unique([
     ...ordinals.map((i) => lastShown[i]!.pid),
     ...asked,
     ...(ordinals.length ? [] : focusFromJev),
   ]);
 
-  if (intent === 'refine' && lastShown.length === 0) intent = 'recommend';
+  if (intent === 'refine' && lastShown.length === 0 && !known?.keep) intent = 'recommend';
   // Safety net: a not-very-sure "out of scope" that still yielded several perfume facets is a request.
   if (intent === 'out_of_scope' && !known && intentAns.confidence < OUT_OF_SCOPE_SURE && specifiedFacets(fresh) >= 2) intent = 'recommend';
   // A name the pre-pass found but Jev did not confirm ("a trip to Paris", "the first two") is never
@@ -467,26 +673,107 @@ export async function understand(inp: UnderstandInput): Promise<UnderstandResult
   }
   if (intent === 'recommend' && fresh.referencePids.length) intent = 'more_like';
 
+  // --- Routes that answer instead of recommending ----------------------------
+  // A child, a pet or a pregnancy outranks "a sensitivity": "my 6-year-old has eczema" is a child first.
+  // (Not "medical": an adult asking what they can wear despite migraines still wants picks.)
+  const safetyAnswer = gated<SafetyKind | 'sensitive'>(a.safety, SAFETY_SURE, ['child', 'pet', 'pregnancy']);
+  // "Perfume gives me migraines - is there anything I can wear?" asks for picks, with care: light ones, with a caveat.
+  const safety: SafetyKind | undefined = ageAnswer === 'child' ? 'child' : safetyAnswer === 'sensitive' ? undefined : safetyAnswer;
+  let requirement = gated<RequirementKind>(a.requirement, REQUIREMENT_SURE);
+  // Jev can infer "alcohol-free" from a sensitivity ("alcohol triggers migraines"): then, unless the user
+  // said so themselves, it is a sensitivity, not a reason to refuse every spray.
+  if (safetyAnswer === 'sensitive' && (!requirement || (requirement === 'alcohol_free' && !ALCOHOL_WORDS.test(message)))) requirement = 'sensitivity';
+  const topicAns = a.topic as ChoiceAnswer | undefined;
+  const topicP = topicAns && topicAns.choice !== 'none' ? (topicAns.probabilities?.[topicAns.choice] ?? topicAns.confidence) : 0;
+  let topic: Topic | undefined = topicP >= (intent === 'knowledge' ? TOPIC_SURE_WITH_INTENT : TOPIC_SURE) ? topicAns!.choice as Topic : undefined;
+  const namedPids = unique([...focusPids, ...pointed]);
+  // "Sauvage EDT vs EDP": two concentrations of ONE catalog perfume is a concentration question, whatever
+  // else it looks like - comparing Sauvage with Eau Sauvage instead is how the old reply misled. Two
+  // records ("Sauvage EDT or Sauvage Elixir") are a comparison the catalog can answer.
+  const distinct = new Set([...focusPids, ...variants.map((v) => v.pid)]);
+  if (concentrations.length >= 2 && distinct.size <= 1 && (intent === 'compare' || intent === 'explain' || intent === 'knowledge')) topic = 'concentration';
+  // "Le Male EDT vs Le Male Le Parfum", "Is Sauvage Elixir stronger than the EDT?": one version named, and we
+  // carry the other one asked about - compare the two records rather than explain concentrations.
+  if (topic === 'concentration' && distinct.size === 1) {
+    const kin = otherVersions(catalog, [...distinct][0]!, concentrations);
+    if (kin.length) {
+      for (const k of kin) { if (!focusPids.includes(k)) focusPids.push(k); if (!namedPids.includes(k)) namedPids.push(k); }
+      topic = undefined;
+      intent = 'compare';
+    }
+  }
+  // Two named perfumes compared - or asked about on one attribute ("which lasts longer, X or Y?") - stay a
+  // comparison, whatever general topic Jev also saw (a concentration, a dupe, a price). Layering is not a comparison.
+  const onAttribute = (() => {
+    const c = a.compare_on as ChoiceAnswer<CompareAxis> | undefined;
+    return !!c && c.choice !== 'any' && c.confidence >= MIN_CONFIDENCE;
+  })();
+  if (namedPids.length >= 2 && topic !== 'layering' && (intent === 'compare' || (onAttribute && (intent === 'knowledge' || intent === 'explain')))) {
+    topic = undefined;
+    intent = 'compare';
+  }
+  // A compare with one perfume we lack is the compare route's to answer ("I don't have X"), not a refusal.
+  if (intent === 'compare' && topic === 'other_question') topic = undefined;
+  // "How many hours does Sauvage Elixir last?", "What does Oud Wood smell like?": no general topic but a
+  // perfume we have - its card answers that. "Do you have Kayali Vanilla 28?": a perfume we lack - say so.
+  const unknownNamed = p('unknown_perfume') >= UNKNOWN_PERFUME_SURE && namedExact.length === 0;
+  const aboutOnePerfume = namedPids.length > 0 || unknownNamed || variants.length > 0;
+  if (intent !== 'compare' && aboutOnePerfume && (
+    ((intent === 'knowledge' || topic === 'other_question') && (!topic || topic === 'other_question'))
+    || (topic === 'note_description' && namedPids.length > 0))) {
+    topic = undefined;
+    intent = 'explain';
+  }
+  // "Are there any vegan woody perfumes?": a requirement we can caveat, on a request for picks - not a question.
+  if (requirement && requirement !== 'alcohol_free' && namedPids.length === 0 && (intent === 'knowledge' || intent === 'explain')
+    && (!topic || topic === 'other_question')) {
+    topic = undefined;
+    intent = 'recommend';
+  }
+  if (intent === 'knowledge' && !topic) topic = 'other_question';
+  const compareOn: CompareAxis = (() => {
+    const c = a.compare_on as ChoiceAnswer<CompareAxis> | undefined;
+    if (c && c.choice !== 'any' && c.confidence >= MIN_CONFIDENCE) return c.choice;
+    if (topic === 'dupe') return 'similarity';
+    if (topic === 'price_where') return 'price';
+    return 'any';
+  })();
+  const knowledge = topic ? { topic, pids: namedPids, notes: notes.map((n) => n.note) } : undefined;
+  if (knowledge) intent = 'knowledge';
+
   // Something the user pointed at that we cannot resolve: say so, never swap in another perfume.
-  const unknownPerfume = p('unknown_perfume') >= UNKNOWN_PERFUME_SURE && !namedExact;
+  const unknownPerfume = p('unknown_perfume') >= UNKNOWN_PERFUME_SURE && namedExact.length === 0;
   // A named perfume wins over a position: in "tell me about Chanel No 5", "No 5" is part of the name.
-  const cannotResolve = (): Unresolved | undefined => (unknownPerfume ? { kind: 'perfume' }
+  const cannotResolve = (): Unresolved | undefined => (variants.length ? { kind: 'variant', pid: variants[0]!.pid, name: variants[0]!.name }
+    : unknownPerfume ? { kind: 'perfume' }
     : outOfRange.length ? { kind: 'position', position: outOfRange[0]! + 1, shown: lastShown.length }
     : undefined);
   let unresolved: Unresolved | undefined;
+  let compareMissing = false;
   if (intent === 'explain' && focusPids.length === 0) {
     unresolved = cannotResolve();
     if (!unresolved) {
-      const fallback = pointed[0] ?? lastShown[0]?.pid;
+      // Only a perfume the user named, or one Jev says they mean. "What's the difference between EDP and
+      // EDT anyway?" after a list is not about #1, and repeating #1's card answers nothing.
+      const fallback = pointed[0] ?? (focusConfident ? undefined : lastShown.length === 1 ? lastShown[0]!.pid : undefined);
       if (fallback) focusPids.push(fallback);
+      else if (lastShown.length) unresolved = { kind: 'position', position: 0, shown: lastShown.length };
       else intent = 'recommend';
     }
   }
-  if (intent === 'compare' && focusPids.length < 2) {
-    unresolved = cannotResolve();
-    if (!unresolved) {
-      for (const pid of [...pointed, ...lastShown.map((f) => f.pid)]) if (focusPids.length < 2 && !focusPids.includes(pid)) focusPids.push(pid);
-      if (focusPids.length < 2) intent = focusPids.length === 1 ? 'explain' : 'recommend';
+  if (intent === 'compare') {
+    const named = unique([...focusPids, ...pointed]);
+    if (named.length >= 2) {
+      focusPids.splice(0, focusPids.length, ...named.slice(0, MAX_COMPARE));
+      // "Rank Sauvage, Aventus and Kayali Vanilla 28": compare what we have and say what is missing.
+      compareMissing = unknownPerfume || variants.length > 0;
+    } else {
+      unresolved = cannotResolve();
+      if (!unresolved) {
+        // "Which of these lasts longest?", "compare all four": every perfume just shown, not just #1 and #2.
+        for (const pid of [...named, ...lastShown.map((f) => f.pid)]) if (focusPids.length < MAX_COMPARE && !focusPids.includes(pid)) focusPids.push(pid);
+        if (focusPids.length < 2) intent = focusPids.length === 1 ? 'explain' : 'recommend';
+      }
     }
   }
 
@@ -497,12 +784,17 @@ export async function understand(inp: UnderstandInput): Promise<UnderstandResult
   const sameWearer = !!known || (intent === 'refine' ? pSame >= DIFFERENT_WEARER_BELOW : pSame >= 0.5);
   // "Cheaper alternatives to X" steps down from X's own price, not from an earlier budget or list.
   const anchor = known?.pid && known.refine ? catalog.get(known.pid) : undefined;
-  const prev = anchor ? { ...session.facets, budget: 'any' as const } : session.facets;
+  const prev = clone(anchor ? { ...session.facets, budget: 'any' as const } : session.facets);
+  // "Actually, one I can wear all year round": a constraint the user takes back is cleared, not kept.
+  for (const d of DROPPABLE) if (p(d.key) >= CHECK_SURE) d.reset(prev);
   const tiers = (anchor ? [anchor] : lastShown).map((f) => f.priceTier);
   const explicitLevel = !known && p('explicit_level') >= EXPLICIT_LEVEL_SURE;
   let facets = mergeFacets(prev, fresh, intent, sameWearer, refine, tiers, explicitLevel);
   if (known) facets = applyFollowUpFacets(facets, known);
   if (refine === 'different_options') exclude.push(...session.seen);
+
+  const request = intent === 'recommend' || intent === 'more_like' || intent === 'refine';
+  const twoWearers = request && p('two_wearers') >= CHECK_SURE ? wearerPhrases(message) : undefined;
 
   return {
     intent,
@@ -511,11 +803,104 @@ export async function understand(inp: UnderstandInput): Promise<UnderstandResult
     uncertain: unique(uncertain),
     focusPids,
     refine,
-    exclude: unique(exclude),
+    // "I love Angel Nova": we said Angel is a different scent, so it is not offered as a pick either.
+    exclude: unique([...exclude, ...(request ? variants.map((v) => v.pid) : [])]),
     gift: p('gift') >= 0.5,
     proposed: { perfumes: refs.map((f) => `${f.name} (${f.brand})`), notes: notes.map((n) => n.note), ordinals },
     ...(unresolved ? { unresolved } : {}),
+    ...(safety ? { safety } : {}),
+    ...(requirement ? { requirement } : {}),
+    ...(knowledge ? { knowledge } : {}),
+    compareOn,
+    variants,
+    brandNotCarried: p('other_brand') >= CHECK_SURE && !catalog.mayNameOtherBrand(message, brandsNamed),
+    unknownPerfume,
+    perfumeNotCarried: request && unknownPerfume && pointed.length === 0,
+    compareMissing,
+    ...(twoWearers ? { twoWearers } : {}),
+    conflicting: request && p('conflicting') >= CHECK_SURE,
+    nonEnglish: p('non_english') >= CHECK_SURE,
   };
+}
+
+/**
+ * Other catalog records of `pid`'s line that plausibly are another concentration the user asked about:
+ * a record whose name states one of those concentrations ("Le Male Le Parfum"), or a plain-named one
+ * ("Le Male", "Sauvage") when the named record itself states one of them. Never a version they did not ask about.
+ */
+function otherVersions(catalog: Catalog, pid: string, asked: string[]): string[] {
+  const own = concentrationTerms(catalog.get(pid)?.name ?? '');
+  return catalog.versionsOf(pid).filter((k) => {
+    const theirs = concentrationTerms(k.name);
+    return theirs.length ? theirs.some((c) => asked.includes(c) && !own.includes(c)) : own.some((c) => asked.includes(c));
+  }).map((k) => k.pid);
+}
+
+/** The user's own words for an alcohol-free need, in the languages people commonly ask in. */
+const ALCOHOL_WORDS = /alcoh|alcool|alkohol|alkol|ethanol|spirits?\b|halal|helal|haram|attar|ittar|\boils?\b|oil-based|non-?alcoholic|sin alcohol|sans alcool|ohne alkohol|كحول|حلال|الکل|الكحول|спирт|алкогол/i;
+
+/** How sure Jev must be about which words name the brand or perfume before a reply quotes them. */
+const NAME_SURE = 0.4;
+
+/**
+ * Which words of the message name a brand or perfume we do not carry, so the reply can
+ * say "I don't carry Kayali" rather than "that brand". Jev points at one of the word
+ * runs the pre-pass offers - it never spells a name - and "none" leaves the reply generic.
+ */
+export async function nameTheUnknown(
+  message: string, decider: Decider, want: { brand: boolean; perfume: boolean }, signal?: AbortSignal, budgetMs?: number,
+  /** Names the catalog does have: a span containing one is not the missing perfume. */
+  known: string[] = [],
+): Promise<{ brand?: string; perfume?: string }> {
+  const knownNames = known.map((k) => ` ${normalizeName(k)} `);
+  const spans = candidateSpans(message).filter((x) => !knownNames.some((k) => ` ${normalizeName(x)} `.includes(k)));
+  if (!spans.length || (!want.brand && !want.perfume)) return {};
+  const opts: Record<string, string> = Object.fromEntries(spans.map((x, i) => [`s${i}`, x]));
+  opts.none = 'None of these';
+  const qs: QuestionSet = {};
+  if (want.brand) qs.brand_name = choice('Which words in the message are the name of the perfume brand or house the user mentions?', opts);
+  if (want.perfume) qs.perfume_name = choice('Which words in the message are the name of the specific perfume the user mentions, including its brand if they gave one?', opts);
+  const { answers } = await decider.decide({ latest_message: message }, qs, { signal, label: 'name', budgetMs });
+  const span = (key: string): string | undefined => {
+    const ans = (answers as Record<string, Answer>)[key] as ChoiceAnswer | undefined;
+    if (!ans || ans.choice === 'none' || ans.confidence < NAME_SURE) return undefined;
+    return spans[Number(ans.choice.slice(1))];
+  };
+  return { brand: span('brand_name'), perfume: span('perfume_name') };
+}
+
+/**
+ * The strongest non-"none" option of a choice whose probability of "none" is below
+ * 1 - `sure` - i.e. Jev leans at least `sure` towards SOME option other than none.
+ */
+function gated<K extends string>(ans: Answer | undefined, sure: number, prefer: string[] = []): K | undefined {
+  if (!ans || ans.type !== 'choice') return undefined;
+  const probs = ans.probabilities ?? { [ans.choice]: ans.confidence };
+  const pNone = probs.none ?? (ans.choice === 'none' ? ans.confidence : 0);
+  if (1 - pNone <= sure) return undefined;
+  // Mass spread thinly over every option is doubt, not a finding: one option must stand out.
+  const standing = Object.entries(probs).filter(([k, v]) => k !== 'none' && v >= GATED_OPTION_FLOOR).sort((x, y) => y[1] - x[1]);
+  if (!standing.length) return undefined;
+  // Among options that clear the floor, the more serious one wins (a child before a sensitivity).
+  const preferred = prefer.find((k) => standing.some(([o]) => o === k));
+  return (preferred ?? standing[0]![0]) as K;
+}
+
+/** The least probability the leading option of a gated choice needs on its own. */
+const GATED_OPTION_FLOOR = 0.3;
+
+/**
+ * The phrase for each person in "a floral one for me and something woody for my
+ * husband" -> ["a floral one for me", "something woody for my husband"], for chips
+ * that let the user pick who to start with. Empty when the split is not clear.
+ */
+export function wearerPhrases(message: string): string[] {
+  const parts = message
+    .replace(/^[^:]*\b(?:two|2|both|couple of)\b[^:]*:\s*/i, '')
+    .split(/\s*(?:[,;.!?]|\band\b|\bbut\b|\bplus\b|\balso\b)\s*/i)
+    .map((x) => x.trim())
+    .filter((x) => /\bfor\s+(?:me|myself|my|him|her|them|us|our|the)\b/i.test(x) && x.split(/\s+/).length <= 10);
+  return parts.length >= 2 ? parts.slice(0, 3).map((x) => x.charAt(0).toLowerCase() + x.slice(1)) : [];
 }
 
 // ---------------------------------------------------------------------------
@@ -543,7 +928,7 @@ export function mergeFacets(
     // Same situation, different person ("now one for my son"): the previous wearer's
     // age, style, persona and tastes must not follow the request over.
     base = overlay(withoutWearer(prev), withoutStepped(fresh, refine));
-  } else if (intent === 'refine' || intent === 'explain' || intent === 'compare' || (intent === 'more_like' && sameWearer)) {
+  } else if (intent === 'refine' || intent === 'explain' || intent === 'compare' || intent === 'knowledge' || (intent === 'more_like' && sameWearer)) {
     base = overlay(prev, withoutStepped(fresh, refine));
   } else if (intent === 'recommend' && sameWearer) {
     // Same person, new situation: keep who they are, reset where they are going.
@@ -551,7 +936,7 @@ export function mergeFacets(
       ...EMPTY_FACETS,
       gender: prev.gender, ageStyle: prev.ageStyle, budget: prev.budget, vibe: prev.vibe, persona: prev.persona,
       likes: prev.likes, avoids: prev.avoids, likedNotes: prev.likedNotes, avoidedNotes: prev.avoidedNotes,
-      favouriteColour: prev.favouriteColour,
+      favouriteColour: prev.favouriteColour, refinedLikes: prev.refinedLikes,
     };
     base = overlay(wearer, fresh);
   } else {
@@ -588,6 +973,7 @@ function withoutWearer(f: Facets): Facets {
   return {
     ...clone(f),
     gender: 'any', ageStyle: 'any', persona: '', favouriteColour: 'none', likes: {}, avoids: {}, likedNotes: [], avoidedNotes: [],
+    refinedLikes: [],
   };
 }
 
@@ -615,6 +1001,9 @@ function overlay(prev: Facets, fresh: Facets): Facets {
   if (fresh.longevity) out.longevity = fresh.longevity;
   for (const [f, v] of Object.entries(fresh.likes) as [Family, number][]) { out.likes[f] = v; delete out.avoids[f]; }
   for (const [f, v] of Object.entries(fresh.avoids) as [Family, number][]) { out.avoids[f] = v; delete out.likes[f]; }
+  // A family the user now asks for themselves is their taste, not a refinement's; one they now avoid is gone.
+  out.refinedLikes = out.refinedLikes.filter((f) => f in out.likes && !(f in fresh.likes));
+  if (fresh.brands.length) out.brands = [...fresh.brands];
   out.likedNotes = unique([...out.likedNotes.filter((n) => !fresh.avoidedNotes.includes(n)), ...fresh.likedNotes]);
   out.avoidedNotes = unique([...out.avoidedNotes.filter((n) => !fresh.likedNotes.includes(n)), ...fresh.avoidedNotes]);
   if (fresh.referencePids.length) out.referencePids = fresh.referencePids;
@@ -628,6 +1017,8 @@ function overlay(prev: Facets, fresh: Facets): Facets {
 
 function applyRefinement(f: Facets, dir: RefineDirection, lastTiers: string[]): Facets {
   const out = clone(f);
+  /** Marks a family the refinement adds, unless the user already asked for it themselves. */
+  const refined = (fam: Family) => { if (!(fam in out.likes) && !out.refinedLikes.includes(fam)) out.refinedLikes.push(fam); };
   const step = (delta: number) => {
     let i = BUDGET_STEPS.indexOf(out.budget);
     if (i < 0) {
@@ -645,14 +1036,16 @@ function applyRefinement(f: Facets, dir: RefineDirection, lastTiers: string[]): 
       out.projection = Math.min(4, (out.projection || 2) + 1) as Level;
       out.longevity = Math.min(4, (out.longevity || 2) + 1) as Level;
       break;
-    case 'sweeter': out.likes.gourmand_sweet = 0.8; delete out.avoids.gourmand_sweet; break;
+    case 'sweeter': refined('gourmand_sweet'); out.likes.gourmand_sweet = 0.8; delete out.avoids.gourmand_sweet; break;
     case 'less_sweet': out.avoids.gourmand_sweet = 0.8; delete out.likes.gourmand_sweet; break;
     case 'fresher':
+      refined('fresh_aquatic'); refined('citrus');
       out.likes.fresh_aquatic = Math.max(out.likes.fresh_aquatic ?? 0, 0.7);
       out.likes.citrus = Math.max(out.likes.citrus ?? 0, 0.7);
       delete out.avoids.fresh_aquatic; delete out.avoids.citrus;
       break;
     case 'warmer':
+      refined('amber_oriental'); refined('spicy');
       out.likes.amber_oriental = Math.max(out.likes.amber_oriental ?? 0, 0.7);
       out.likes.spicy = Math.max(out.likes.spicy ?? 0, 0.6);
       delete out.avoids.amber_oriental; delete out.avoids.spicy;
@@ -673,27 +1066,15 @@ function clone(f: Facets): Facets {
     likedNotes: [...f.likedNotes],
     avoidedNotes: [...f.avoidedNotes],
     referencePids: [...f.referencePids],
+    brands: [...f.brands],
+    refinedLikes: [...f.refinedLikes],
   };
-}
-
-/**
- * Catalog perfumes whose full name is spelled out in the text, however short
- * ("Eros", "Coco"): longest name first, then the most voted.
- */
-function namedExactly(catalog: Catalog, text: string): Fragrance[] {
-  const hay = ` ${normalize(text)} `;
-  return catalog.fragrances
-    .filter((f) => {
-      const n = normalize(f.name);
-      return n.length >= 2 && hay.includes(` ${n} `);
-    })
-    .sort((x, y) => normalize(y.name).length - normalize(x.name).length || (y.rating?.votes ?? 0) - (x.rating?.votes ?? 0));
 }
 
 function specifiedFacets(f: Facets): number {
   const choices = [f.occasion, f.region, f.setting, f.climate, f.season, f.timeOfDay, f.gender, f.ageStyle, f.budget, f.vibe]
     .filter((v) => v !== 'any').length;
-  return choices + (f.projection ? 1 : 0) + (f.longevity ? 1 : 0) + Object.keys(f.likes).length + f.likedNotes.length;
+  return choices + (f.projection ? 1 : 0) + (f.longevity ? 1 : 0) + Object.keys(f.likes).length + f.likedNotes.length + f.brands.length;
 }
 
 function strongest(m: Partial<Record<Family, number>>, n: number): Partial<Record<Family, number>> {

@@ -27,6 +27,10 @@ regenerate; do not hand-edit the CSVs.
   consensus, not real FragDB counts**. Their proportions are what drive recommendations, and they
   are plausible, but they are not measurements. `pid`s start at 900001 so they can never be
   confused with real FragDB/Fragrantica ids.
+- `reminds_of` holds a short curated list of widely cited alternatives only (a budget clone of a
+  niche original, e.g. Club de Nuit Intense Man → Aventus, Khamrah → Angels' Share). Its vote
+  counts are a fixed placeholder (`1000:100`), not real votes. Edit them in `data/seed-src/*.json`
+  (`"reminds_of": [{ "brand": ..., "name": ... }]`) and run `npm run seed`.
 - `url` and `main_photo` are intentionally empty (the UI shows a monogram tile instead).
 
 To use real data, set `CATALOG_SOURCE=csv` with a licensed FragDB CSV export - see the main README.

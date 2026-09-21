@@ -98,6 +98,7 @@ export function genderPerception(fr: Fragrance): string {
 }
 
 export function valueWord(fr: Fragrance): string | undefined {
+  if (!fr.priceValue) return undefined;
   const t = sum(fr.priceValue);
   if (t === 0) return undefined;
   const good = share(fr.priceValue, 'good_value') + share(fr.priceValue, 'great_value');
@@ -114,6 +115,26 @@ const TIER_WORDS: Record<Fragrance['priceTier'], string> = {
 
 export function tierWord(fr: Fragrance): string {
   return TIER_WORDS[fr.priceTier];
+}
+
+/** The tier as a predicate: "X is budget-friendly", "X is a mid-priced designer scent". */
+const TIER_PHRASES: Record<Fragrance['priceTier'], string> = {
+  budget: 'budget-friendly',
+  mid: 'a mid-priced designer scent',
+  luxury: 'a luxury / prestige scent',
+  niche: 'a niche, premium-priced scent',
+};
+
+export function tierPhrase(fr: Fragrance): string {
+  return TIER_PHRASES[fr.priceTier];
+}
+
+/** "has strong projection and is long-lasting" - performance as a predicate; '' with no votes. */
+export function performancePredicate(fr: Fragrance): string {
+  const s = sillageWord(fr);
+  const l = longevityWord(fr);
+  const lasts = l === 'fleeting' ? 'fades quickly' : l === 'moderate' ? 'lasts a moderate time' : l ? `is ${l}` : '';
+  return [s ? `has ${s} projection` : '', lasts].filter(Boolean).join(' and ');
 }
 
 export function pct(x: number): string {
@@ -170,6 +191,7 @@ export function describeFacets(f: Facets, audience: 'jev' | 'user' = 'jev'): str
   if (f.gender !== 'any') parts.push(`style: ${f.gender}`);
   if (f.ageStyle !== 'any') parts.push(AGE_PHRASE[f.ageStyle]);
   if (f.budget !== 'any') parts.push(`budget: ${f.budget}`);
+  if (f.brands.length) parts.push(`only from: ${f.brands.join(', ')}`);
   if (f.projection) parts.push(`projection: ${LEVEL_WORDS[f.projection]}`);
   if (f.longevity) parts.push(`longevity: ${LONGEVITY_WORDS[f.longevity]}`);
   const likes = topKeys(f.likes);

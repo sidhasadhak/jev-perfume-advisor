@@ -42,6 +42,20 @@ export class SessionStore {
     this.sessions.delete(id);
   }
 
+  /**
+   * A copy of a session under a new id, for a duplicated browser tab: both tabs keep
+   * the conversation so far, then go their own ways. Undefined for an unknown id.
+   */
+  fork(id: string): Session | undefined {
+    this.sweep();
+    const src = ID_RE.test(id) ? this.sessions.get(id) : undefined;
+    if (!src) return undefined;
+    const copy: Session = { ...structuredClone(src), id: randomUUID(), updatedAt: Date.now() };
+    this.sessions.set(copy.id, copy);
+    if (this.sessions.size > this.max) this.evictOldest();
+    return copy;
+  }
+
   get size(): number {
     return this.sessions.size;
   }

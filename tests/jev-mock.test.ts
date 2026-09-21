@@ -4,7 +4,7 @@
  */
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { JevError } from '../src/jev/client.js';
+import { JevBudgetError, JevError } from '../src/jev/client.js';
 import { MockJev } from '../src/jev/mock.js';
 import type { Answer, Question, QuestionSet } from '../src/jev/types.js';
 import { choice, noul, score } from '../src/jev/types.js';
@@ -183,11 +183,19 @@ describe('MockJev', () => {
     assert.equal(m.telemetry.calls.length, 0);
   });
 
-  it('accepts a time budget without changing its answers, however small', async () => {
+  it('answers the same within a time budget that fits its latency', async () => {
     const m = new MockJev({ latencyMs: 20 });
     const plain = await m.decide('a cold snowy winter night', QS);
-    const budgeted = await m.decide('a cold snowy winter night', QS, { budgetMs: 1, label: 'judge:x' });
+    const budgeted = await m.decide('a cold snowy winter night', QS, { budgetMs: 1_000, label: 'judge:x' });
     assert.deepEqual(budgeted.answers, plain.answers);
     assert.deepEqual(m.telemetry.calls.map((c) => [c.label, c.ok]), [['decide', true], ['judge:x', true]]);
+  });
+
+  it('fails like live Jev when its latency does not fit the budget, so a too-small stage budget shows up in tests', async () => {
+    const m = new MockJev({ latencyMs: 200 });
+    const started = performance.now();
+    await assert.rejects(m.decide('x', QS, { budgetMs: 30, label: 'judge:x' }), (e: unknown) => e instanceof JevBudgetError && /30ms budget/.test((e as Error).message));
+    assert.ok(performance.now() - started < 150, 'gives up when the budget runs out, not after the full latency');
+    assert.deepEqual(m.telemetry.calls.map((c) => [c.label, c.ok]), [['judge:x', false]]);
   });
 });

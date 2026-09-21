@@ -35,6 +35,8 @@ export interface JevClientOptions {
   /** Max in-flight requests from this client. */
   concurrency?: number;
   fetchImpl?: typeof fetch;
+  /** Longest Retry-After a call WITHOUT a budget waits for (default MAX_RETRY_AFTER_MS); budgeted calls wait as long as their budget allows. */
+  maxRetryAfterMs?: number;
 }
 
 /** One entry per request, kept for the debug panel and cost accounting. */
@@ -137,7 +139,11 @@ export class Semaphore {
 /** No attempt starts with less than this left of a call's budget: it could not get an answer back in time. */
 export const MIN_ATTEMPT_MS = 1_000;
 
-/** The longest server-requested wait (Retry-After) worth sleeping through; beyond it the call gives up. */
+/**
+ * The longest server-requested wait (Retry-After) a call with no budget sleeps
+ * through; beyond it the call gives up and says how long Jev asked for. A call with
+ * a budget waits whatever the server asks, as long as the budget can cover it.
+ */
 export const MAX_RETRY_AFTER_MS = 30_000;
 
 /**
@@ -149,6 +155,11 @@ class Budget {
 
   constructor(private readonly ms: number | undefined) {
     this.deadline = ms === undefined ? Infinity : performance.now() + ms;
+  }
+
+  /** Whether the caller set a budget at all. */
+  get bounded(): boolean {
+    return this.deadline !== Infinity;
   }
 
   /** Milliseconds left; Infinity without a budget. */
@@ -396,8 +407,15 @@ export class JevClient implements Decider {
     const { error, retryAfterMs } = failure;
     const room = budget.remaining() - MIN_ATTEMPT_MS; // time we can sleep and still make one more attempt
     if (retryAfterMs === undefined) return Math.max(0, Math.min(backoff(attempt), room));
-    if (retryAfterMs > MAX_RETRY_AFTER_MS) throw error;
-    if (retryAfterMs > room) throw budget.exceeded(error);
+    if (budget.bounded) {
+      if (retryAfterMs > room) throw budget.exceeded(error);
+      return retryAfterMs;
+    }
+    const cap = this.opts.maxRetryAfterMs ?? MAX_RETRY_AFTER_MS;
+    if (retryAfterMs > cap) {
+      throw new JevError(`${error.message} - Jev asked to retry after ${Math.ceil(retryAfterMs / 1000)}s, longer than the ${Math.round(cap / 1000)}s an unbudgeted call waits`,
+        error.status, false, error.body);
+    }
     return retryAfterMs;
   }
 }
