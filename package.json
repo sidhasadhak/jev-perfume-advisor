@@ -1,0 +1,51 @@
+{
+  "name": "jev-perfume-advisor",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A perfume recommendation chatbot powered by TypeSafe Jev typed decisions over FragDB-format fragrance data.",
+  "license": "MIT",
+  "author": "sidhasadhak",
+  "homepage": "https://github.com/sidhasadhak/jev-perfume-advisor#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sidhasadhak/jev-perfume-advisor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sidhasadhak/jev-perfume-advisor/issues"
+  },
+  "keywords": [
+    "perfume",
+    "fragrance",
+    "recommendation",
+    "chatbot",
+    "typesafe",
+    "jev",
+    "fragdb",
+    "openrouter"
+  ],
+  "engines": {
+    "node": ">=20.12"
+  },
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "start": "tsx src/server/main.ts",
+    "dev": "tsx watch src/server/main.ts",
+    "chat": "tsx src/cli.ts",
+    "smoke": "tsx scripts/smoke.ts",
+    "test": "node scripts/test.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "build": "tsc -p tsconfig.json",
+    "start:prod": "node dist/src/server/main.js",
+    "seed": "tsx src/catalog/seedConvert.ts"
+  },
+  "dependencies": {
+    "@fastify/static": "^10.1.4",
+    "fastify": "^5.2.1",
+    "tsx": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "typescript": "^5.7.3"
+  }
+}

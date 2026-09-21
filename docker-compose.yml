@@ -1,0 +1,19 @@
+# docker compose up --build   ->   http://localhost:8787
+#
+# Port 8787 taken? Put HOST_PORT=8788 in .env (or run HOST_PORT=8788 docker compose up) and open
+# http://localhost:8788. Only reachable from this computer by default; set HOST_BIND=0.0.0.0 to
+# open it to your network.
+services:
+  app:
+    build: .
+    ports:
+      - "${HOST_BIND:-127.0.0.1}:${HOST_PORT:-8787}:8787"
+    # Your OPENROUTER_API_KEY (or TYPESAFE_API_KEY) is read from .env if present; without it the app runs in mock mode.
+    env_file:
+      - path: .env
+        required: false
+    # The container always listens on 8787 - a PORT line in .env (meant for `npm start`) must not move it.
+    environment:
+      PORT: "8787"
+      HOST: "0.0.0.0"
+    restart: unless-stopped

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f8f4ee" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#141013" media="(prefers-color-scheme: dark)">
+  <meta name="description" content="Scent Sommelier - a perfume advisor that matches you with fragrances from FragDB using typed TypeSafe Jev decisions.">
+  <title>Scent Sommelier</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%237b2d52'/%3E%3Crect x='13' y='5' width='6' height='5' rx='1.2' fill='%23f5e7ee'/%3E%3Crect x='9' y='11' width='14' height='16' rx='4' fill='none' stroke='%23f5e7ee' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#message">Skip to message box</a>
+
+  <header class="site-header">
+    <div class="shell header-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round">
+            <rect x="12.5" y="3.5" width="7" height="5" rx="1.4"/>
+            <path d="M14 8.5v3M18 8.5v3"/>
+            <rect x="7.5" y="11.5" width="17" height="17" rx="5"/>
+            <path d="M12 18.5c1.6-1.4 3.4-1.4 5 0s3.2 1.4 4 .6" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <div class="brand-text">
+          <h1 class="brand-name">Scent Sommelier</h1>
+          <p class="brand-sub">Perfume recommendations powered by TypeSafe Jev + FragDB</p>
+        </div>
+      </div>
+
+      <div class="status" id="status" aria-live="polite">
+        <span class="badge badge-pending" id="mode-badge"><span class="dot" aria-hidden="true"></span><span class="badge-text">Checking service…</span></span>
+        <span class="badge badge-neutral" id="catalog-badge" hidden></span>
+      </div>
+
+      <button class="btn btn-outline new-chat" id="new-chat" type="button">
+        <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg>
+        <span class="btn-label">New chat</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" class="shell chat">
+    <section class="welcome" id="welcome" aria-labelledby="welcome-title">
+      <p class="eyebrow">Your personal fragrance advisor</p>
+      <h2 class="welcome-title" id="welcome-title">Find a scent that suits the moment.</h2>
+      <p class="welcome-lede">
+        Tell me where you are going, the weather you will be in, or who the perfume is for.
+        I will match you with fragrances from the catalogue and show exactly how Jev weighed each one.
+      </p>
+      <p class="resume-note" id="resume-note" hidden>
+        Continuing your previous session - earlier preferences may still apply. Choose <strong>New chat</strong> to start fresh.
+      </p>
+      <h3 class="examples-title" id="examples-title">Try asking</h3>
+      <ul class="examples" id="examples" aria-labelledby="examples-title"></ul>
+    </section>
+
+    <section class="conversation" aria-labelledby="log-title">
+      <h2 class="sr-only" id="log-title">Conversation</h2>
+      <div class="log" id="log" role="log" aria-live="polite" aria-relevant="additions"></div>
+    </section>
+
+    <noscript>
+      <p class="error-note">Scent Sommelier needs JavaScript to chat. Please enable it and reload the page.</p>
+    </noscript>
+  </main>
+
+  <section class="composer-bar" aria-label="Message composer">
+    <form class="shell composer" id="composer" novalidate>
+      <label class="sr-only" for="message">Message to Scent Sommelier</label>
+      <div class="composer-box">
+        <!-- maxlength must match the server's limit (src/server/app.ts) and MAX_MESSAGE_CHARS in app.js -->
+        <textarea id="message" name="message" rows="1" maxlength="1000" autocomplete="off" enterkeyhint="send"
+          placeholder="Describe the moment…" aria-describedby="composer-hint composer-count"></textarea>
+        <button class="send-btn" id="send" type="submit" aria-label="Send message" disabled>
+          <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 16V4M4.5 9.5 10 4l5.5 5.5"/></svg>
+        </button>
+      </div>
+      <div class="composer-foot">
+        <p class="composer-hint" id="composer-hint">Enter to send · Shift + Enter for a new line</p>
+        <p class="composer-count" id="composer-count" hidden></p>
+      </div>
+    </form>
+  </section>
+</body>
+</html>

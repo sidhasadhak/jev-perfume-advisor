@@ -1,0 +1,3422 @@
+{
+  "segment": "niche_signature",
+  "fragrances": [
+    {
+      "name": "Santal 33",
+      "brand": "Le Labo",
+      "brand_country": "United States",
+      "year": 2011,
+      "gender": "unisex",
+      "perfumers": [
+        "Frank Voelkl"
+      ],
+      "accords": [
+        {
+          "name": "woody",
+          "strength": 100
+        },
+        {
+          "name": "leather",
+          "strength": 68
+        },
+        {
+          "name": "aromatic",
+          "strength": 55
+        },
+        {
+          "name": "warm spicy",
+          "strength": 48
+        },
+        {
+          "name": "iris",
+          "strength": 40
+        },
+        {
+          "name": "violet",
+          "strength": 36
+        },
+        {
+          "name": "powdery",
+          "strength": 32
+        }
+      ],
+      "notes": {
+        "top": [
+          "Violet",
+          "Cardamom"
+        ],
+        "middle": [
+          "Iris",
+          "Ambroxan"
+        ],
+        "base": [
+          "Sandalwood",
+          "Papyrus",
+          "Cedarwood",
+          "Leather"
+        ]
+      },
+      "description": "Dry, creamy sandalwood wrapped in soft leather, cardamom and a violet-iris powder. Cool, dry and easy to recognize, it has become a kind of uniform for creative city dwellers.",
+      "rating": 3.95,
+      "rating_votes": 13500,
+      "season_votes": {
+        "winter": 5200,
+        "spring": 6300,
+        "summer": 4200,
+        "fall": 8800
+      },
+      "time_votes": {
+        "day": 9800,
+        "night": 5600
+      },
+      "gender_votes": {
+        "female": 800,
+        "more_female": 900,
+        "unisex": 7800,
+        "more_male": 2600,
+        "male": 1100
+      },
+      "longevity_votes": {
+        "very_weak": 350,
+        "weak": 700,
+        "moderate": 2400,
+        "long_lasting": 3500,
+        "eternal": 1100
+      },
+      "sillage_votes": {
+        "intimate": 700,
+        "moderate": 2900,
+        "strong": 3200,
+        "enormous": 900
+      },
+      "price_value_votes": {
+        "way_overpriced": 2200,
+        "overpriced": 2500,
+        "ok": 1700,
+        "good_value": 450,
+        "great_value": 250
+      },
+      "appreciation_votes": {
+        "love": 7200,
+        "like": 3600,
+        "ok": 1700,
+        "dislike": 700,
+        "hate": 500
+      },
+      "pros": [
+        "Distinctive woody-leather character",
+        "Wearable year-round",
+        "Strong longevity",
+        "Truly unisex"
+      ],
+      "cons": [
+        "Extremely common in big cities",
+        "Some noses pick up a pickle-like note",
+        "Expensive for its simplicity"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "signature",
+        "modern",
+        "versatile",
+        "polarizing",
+        "office-safe"
+      ]
+    },
+    {
+      "name": "Another 13",
+      "brand": "Le Labo",
+      "brand_country": "United States",
+      "year": 2010,
+      "gender": "unisex",
+      "perfumers": [
+        "Nathalie Lorson"
+      ],
+      "accords": [
+        {
+          "name": "musky",
+          "strength": 100
+        },
+        {
+          "name": "amber",
+          "strength": 68
+        },
+        {
+          "name": "woody",
+          "strength": 62
+        },
+        {
+          "name": "mossy",
+          "strength": 30
+        },
+        {
+          "name": "fresh",
+          "strength": 28
+        },
+        {
+          "name": "fruity",
+          "strength": 22
+        }
+      ],
+      "notes": {
+        "top": [
+          "Pear",
+          "Apple"
+        ],
+        "middle": [
+          "Jasmine",
+          "Ambrette",
+          "Moss"
+        ],
+        "base": [
+          "Ambroxan",
+          "Iso E Super",
+          "Musk"
+        ]
+      },
+      "description": "A near-abstract haze of ambroxan and musk with a faint pear and moss shading. Up close it smells like warm, clean skin, but it carries further than you would expect.",
+      "rating": 3.9,
+      "rating_votes": 5800,
+      "season_votes": {
+        "winter": 2400,
+        "spring": 3600,
+        "summer": 2600,
+        "fall": 3500
+      },
+      "time_votes": {
+        "day": 4200,
+        "night": 2300
+      },
+      "gender_votes": {
+        "female": 300,
+        "more_female": 450,
+        "unisex": 3500,
+        "more_male": 600,
+        "male": 250
+      },
+      "longevity_votes": {
+        "very_weak": 250,
+        "weak": 450,
+        "moderate": 1200,
+        "long_lasting": 1500,
+        "eternal": 550
+      },
+      "sillage_votes": {
+        "intimate": 500,
+        "moderate": 1400,
+        "strong": 1300,
+        "enormous": 400
+      },
+      "price_value_votes": {
+        "way_overpriced": 1200,
+        "overpriced": 1100,
+        "ok": 700,
+        "good_value": 200,
+        "great_value": 100
+      },
+      "appreciation_votes": {
+        "love": 2800,
+        "like": 1500,
+        "ok": 800,
+        "dislike": 350,
+        "hate": 200
+      },
+      "pros": [
+        "Clean, modern skin-like aura",
+        "Long-lasting for a musk",
+        "Fits almost any setting"
+      ],
+      "cons": [
+        "Some people cannot smell its key molecules",
+        "Very pricey for a minimalist scent",
+        "Can read synthetic up close"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "clean",
+        "office-safe",
+        "modern",
+        "understated",
+        "signature"
+      ]
+    },
+    {
+      "name": "Gypsy Water",
+      "brand": "Byredo",
+      "brand_country": "Sweden",
+      "year": 2008,
+      "gender": "unisex",
+      "perfumers": [
+        "Jérôme Épinette"
+      ],
+      "accords": [
+        {
+          "name": "woody",
+          "strength": 100
+        },
+        {
+          "name": "citrus",
+          "strength": 65
+        },
+        {
+          "name": "fresh spicy",
+          "strength": 52
+        },
+        {
+          "name": "aromatic",
+          "strength": 48
+        },
+        {
+          "name": "conifer",
+          "strength": 42
+        },
+        {
+          "name": "vanilla",
+          "strength": 38
+        },
+        {
+          "name": "powdery",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Lemon",
+          "Pepper",
+          "Juniper Berries"
+        ],
+        "middle": [
+          "Incense",
+          "Pine Needles",
+          "Orris"
+        ],
+        "base": [
+          "Amber",
+          "Vanilla",
+          "Sandalwood"
+        ]
+      },
+      "description": "Crisp lemon, bergamot and juniper drift over pine needles and a wisp of incense, then soften into powdery vanilla and sandalwood. Free-spirited and airy, it smells like a sunlit walk through the woods.",
+      "rating": 3.8,
+      "rating_votes": 8500,
+      "season_votes": {
+        "winter": 1900,
+        "spring": 5600,
+        "summer": 4300,
+        "fall": 3900
+      },
+      "time_votes": {
+        "day": 6800,
+        "night": 2000
+      },
+      "gender_votes": {
+        "female": 900,
+        "more_female": 1100,
+        "unisex": 4200,
+        "more_male": 700,
+        "male": 350
+      },
+      "longevity_votes": {
+        "very_weak": 900,
+        "weak": 1900,
+        "moderate": 2300,
+        "long_lasting": 800,
+        "eternal": 200
+      },
+      "sillage_votes": {
+        "intimate": 1900,
+        "moderate": 2900,
+        "strong": 800,
+        "enormous": 200
+      },
+      "price_value_votes": {
+        "way_overpriced": 1600,
+        "overpriced": 1500,
+        "ok": 1000,
+        "good_value": 250,
+        "great_value": 120
+      },
+      "appreciation_votes": {
+        "love": 3700,
+        "like": 2600,
+        "ok": 1300,
+        "dislike": 500,
+        "hate": 280
+      },
+      "pros": [
+        "Fresh yet cosy balance",
+        "Easy to wear anywhere",
+        "Genuinely unisex"
+      ],
+      "cons": [
+        "Modest longevity",
+        "Projection softens after the first hour",
+        "High price for its performance"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "casual",
+        "office-safe",
+        "versatile",
+        "understated",
+        "travel-friendly",
+        "clean"
+      ]
+    },
+    {
+      "name": "Mojave Ghost",
+      "brand": "Byredo",
+      "brand_country": "Sweden",
+      "year": 2014,
+      "gender": "unisex",
+      "perfumers": [
+        "Jérôme Épinette"
+      ],
+      "accords": [
+        {
+          "name": "woody",
+          "strength": 100
+        },
+        {
+          "name": "powdery",
+          "strength": 68
+        },
+        {
+          "name": "musky",
+          "strength": 60
+        },
+        {
+          "name": "floral",
+          "strength": 55
+        },
+        {
+          "name": "fruity",
+          "strength": 38
+        },
+        {
+          "name": "violet",
+          "strength": 35
+        },
+        {
+          "name": "amber",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Ambrette",
+          "Sapodilla"
+        ],
+        "middle": [
+          "Magnolia",
+          "Violet",
+          "Sandalwood"
+        ],
+        "base": [
+          "Musk",
+          "Amber",
+          "Cedarwood"
+        ]
+      },
+      "description": "A soft, powdery woody floral: magnolia and a hint of exotic fruit over cedar and musk. It drifts close to the body, like warm skin in dry desert air.",
+      "rating": 3.9,
+      "rating_votes": 6800,
+      "season_votes": {
+        "winter": 1500,
+        "spring": 4600,
+        "summer": 3200,
+        "fall": 3000
+      },
+      "time_votes": {
+        "day": 5600,
+        "night": 1400
+      },
+      "gender_votes": {
+        "female": 1100,
+        "more_female": 1300,
+        "unisex": 2900,
+        "more_male": 300,
+        "male": 150
+      },
+      "longevity_votes": {
+        "very_weak": 500,
+        "weak": 1200,
+        "moderate": 2000,
+        "long_lasting": 900,
+        "eternal": 250
+      },
+      "sillage_votes": {
+        "intimate": 1500,
+        "moderate": 2400,
+        "strong": 700,
+        "enormous": 150
+      },
+      "price_value_votes": {
+        "way_overpriced": 1200,
+        "overpriced": 1300,
+        "ok": 900,
+        "good_value": 250,
+        "great_value": 110
+      },
+      "appreciation_votes": {
+        "love": 3000,
+        "like": 2100,
+        "ok": 1100,
+        "dislike": 350,
+        "hate": 180
+      },
+      "pros": [
+        "Quiet elegance",
+        "Very office-appropriate",
+        "Unusual fruity-woody powder"
+      ],
+      "cons": [
+        "Stays close to skin",
+        "Can fade sooner than expected",
+        "Pricey"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "office-safe",
+        "skin-scent",
+        "understated",
+        "clean",
+        "modern",
+        "versatile"
+      ]
+    },
+    {
+      "name": "Baccarat Rouge 540",
+      "brand": "Maison Francis Kurkdjian",
+      "brand_country": "France",
+      "year": 2015,
+      "gender": "unisex",
+      "perfumers": [
+        "Francis Kurkdjian"
+      ],
+      "accords": [
+        {
+          "name": "amber",
+          "strength": 100
+        },
+        {
+          "name": "woody",
+          "strength": 70
+        },
+        {
+          "name": "warm spicy",
+          "strength": 55
+        },
+        {
+          "name": "sweet",
+          "strength": 48
+        },
+        {
+          "name": "balsamic",
+          "strength": 30
+        },
+        {
+          "name": "floral",
+          "strength": 28
+        }
+      ],
+      "notes": {
+        "top": [
+          "Saffron",
+          "Jasmine"
+        ],
+        "middle": [
+          "Amberwood",
+          "Ambergris"
+        ],
+        "base": [
+          "Fir Resin",
+          "Cedarwood"
+        ]
+      },
+      "description": "A glowing, airy amber of saffron, jasmine and ambergris over resinous woods, with a burnt-sugar sheen. Its bright, almost mineral trail gets noticed from across a room.",
+      "rating": 4.05,
+      "rating_votes": 32000,
+      "season_votes": {
+        "winter": 15000,
+        "spring": 13000,
+        "summer": 7500,
+        "fall": 18000
+      },
+      "time_votes": {
+        "day": 14000,
+        "night": 22000
+      },
+      "gender_votes": {
+        "female": 5500,
+        "more_female": 5200,
+        "unisex": 15000,
+        "more_male": 2000,
+        "male": 900
+      },
+      "longevity_votes": {
+        "very_weak": 900,
+        "weak": 1500,
+        "moderate": 4800,
+        "long_lasting": 11000,
+        "eternal": 7800
+      },
+      "sillage_votes": {
+        "intimate": 1200,
+        "moderate": 4800,
+        "strong": 10000,
+        "enormous": 8500
+      },
+      "price_value_votes": {
+        "way_overpriced": 11000,
+        "overpriced": 7500,
+        "ok": 3800,
+        "good_value": 1200,
+        "great_value": 900
+      },
+      "appreciation_votes": {
+        "love": 17000,
+        "like": 7200,
+        "ok": 3500,
+        "dislike": 1900,
+        "hate": 1800
+      },
+      "pros": [
+        "Enormous sillage and longevity",
+        "Unmistakable signature trail",
+        "Compliment magnet"
+      ],
+      "cons": [
+        "Heavily overexposed",
+        "Harsh or metallic to some noses",
+        "Very expensive"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "compliment-getter",
+        "beast-mode",
+        "statement",
+        "signature",
+        "evening",
+        "date-night",
+        "party"
+      ]
+    },
+    {
+      "name": "Grand Soir",
+      "brand": "Maison Francis Kurkdjian",
+      "brand_country": "France",
+      "year": 2016,
+      "gender": "unisex",
+      "perfumers": [
+        "Francis Kurkdjian"
+      ],
+      "accords": [
+        {
+          "name": "amber",
+          "strength": 100
+        },
+        {
+          "name": "balsamic",
+          "strength": 70
+        },
+        {
+          "name": "vanilla",
+          "strength": 55
+        },
+        {
+          "name": "sweet",
+          "strength": 50
+        },
+        {
+          "name": "warm spicy",
+          "strength": 38
+        },
+        {
+          "name": "powdery",
+          "strength": 30
+        },
+        {
+          "name": "smoky",
+          "strength": 25
+        }
+      ],
+      "notes": {
+        "top": [
+          "Labdanum"
+        ],
+        "middle": [
+          "Benzoin",
+          "Amber"
+        ],
+        "base": [
+          "Tonka Bean",
+          "Vanilla"
+        ]
+      },
+      "description": "A rich, resinous amber of labdanum and benzoin, smoothed with tonka and vanilla. Golden and enveloping, it suits cognac and candlelight on a winter night.",
+      "rating": 4.2,
+      "rating_votes": 7500,
+      "season_votes": {
+        "winter": 6200,
+        "spring": 1100,
+        "summer": 400,
+        "fall": 5200
+      },
+      "time_votes": {
+        "day": 1600,
+        "night": 6600
+      },
+      "gender_votes": {
+        "female": 500,
+        "more_female": 800,
+        "unisex": 4200,
+        "more_male": 1200,
+        "male": 500
+      },
+      "longevity_votes": {
+        "very_weak": 100,
+        "weak": 250,
+        "moderate": 900,
+        "long_lasting": 2800,
+        "eternal": 1800
+      },
+      "sillage_votes": {
+        "intimate": 300,
+        "moderate": 1400,
+        "strong": 2600,
+        "enormous": 1300
+      },
+      "price_value_votes": {
+        "way_overpriced": 1500,
+        "overpriced": 1700,
+        "ok": 1200,
+        "good_value": 450,
+        "great_value": 250
+      },
+      "appreciation_votes": {
+        "love": 4400,
+        "like": 1900,
+        "ok": 700,
+        "dislike": 200,
+        "hate": 120
+      },
+      "pros": [
+        "Luxurious, smooth amber",
+        "Excellent longevity",
+        "Ideal for cold evenings"
+      ],
+      "cons": [
+        "Too dense for warm weather",
+        "Heavy in small spaces",
+        "Premium price"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "evening",
+        "cold-weather",
+        "cosy",
+        "sensual",
+        "date-night",
+        "formal"
+      ]
+    },
+    {
+      "name": "Aventus",
+      "brand": "Creed",
+      "brand_country": "France",
+      "year": 2010,
+      "gender": "men",
+      "perfumers": [
+        "Jean-Christophe Hérault",
+        "Olivier Creed",
+        "Erwin Creed"
+      ],
+      "accords": [
+        {
+          "name": "fruity",
+          "strength": 100
+        },
+        {
+          "name": "woody",
+          "strength": 70
+        },
+        {
+          "name": "smoky",
+          "strength": 55
+        },
+        {
+          "name": "sweet",
+          "strength": 45
+        },
+        {
+          "name": "citrus",
+          "strength": 40
+        },
+        {
+          "name": "leather",
+          "strength": 35
+        },
+        {
+          "name": "mossy",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Pineapple",
+          "Bergamot",
+          "Black Currant",
+          "Apple"
+        ],
+        "middle": [
+          "Birch",
+          "Patchouli",
+          "Jasmine",
+          "Rose"
+        ],
+        "base": [
+          "Musk",
+          "Oakmoss",
+          "Ambergris",
+          "Vanilla"
+        ]
+      },
+      "description": "A smoky, fruity chypre where bright pineapple and blackcurrant meet birch smoke and musky oakmoss. Confident and polished, it is built to leave an impression.",
+      "rating": 4.3,
+      "rating_votes": 30000,
+      "season_votes": {
+        "winter": 7500,
+        "spring": 20000,
+        "summer": 16000,
+        "fall": 14000
+      },
+      "time_votes": {
+        "day": 23000,
+        "night": 13000
+      },
+      "gender_votes": {
+        "female": 250,
+        "more_female": 350,
+        "unisex": 2300,
+        "more_male": 8000,
+        "male": 16000
+      },
+      "longevity_votes": {
+        "very_weak": 1200,
+        "weak": 2500,
+        "moderate": 8500,
+        "long_lasting": 10500,
+        "eternal": 3200
+      },
+      "sillage_votes": {
+        "intimate": 1500,
+        "moderate": 8500,
+        "strong": 11000,
+        "enormous": 4000
+      },
+      "price_value_votes": {
+        "way_overpriced": 9500,
+        "overpriced": 7000,
+        "ok": 4200,
+        "good_value": 1500,
+        "great_value": 1000
+      },
+      "appreciation_votes": {
+        "love": 19000,
+        "like": 6500,
+        "ok": 2300,
+        "dislike": 800,
+        "hate": 700
+      },
+      "pros": [
+        "Widely complimented",
+        "Works day to night",
+        "Iconic, confident character"
+      ],
+      "cons": [
+        "Batch variation in smokiness and strength",
+        "Very expensive",
+        "Overexposed through countless clones"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "compliment-getter",
+        "signature",
+        "crowd-pleaser",
+        "versatile",
+        "office-safe",
+        "statement"
+      ]
+    },
+    {
+      "name": "Silver Mountain Water",
+      "brand": "Creed",
+      "brand_country": "France",
+      "year": 1995,
+      "gender": "unisex",
+      "perfumers": [
+        "Olivier Creed"
+      ],
+      "accords": [
+        {
+          "name": "citrus",
+          "strength": 100
+        },
+        {
+          "name": "fresh",
+          "strength": 80
+        },
+        {
+          "name": "green",
+          "strength": 65
+        },
+        {
+          "name": "fruity",
+          "strength": 45
+        },
+        {
+          "name": "musky",
+          "strength": 40
+        },
+        {
+          "name": "metallic",
+          "strength": 35
+        },
+        {
+          "name": "woody",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Mandarin Orange"
+        ],
+        "middle": [
+          "Green Tea",
+          "Black Currant"
+        ],
+        "base": [
+          "Musk",
+          "Sandalwood",
+          "Petitgrain",
+          "Galbanum"
+        ]
+      },
+      "description": "Cool bergamot and mandarin brighten a green-tea heart with a tart blackcurrant edge, resting on clean musk and soft sandalwood. Its crisp, almost icy clarity makes it a refined choice for warm days.",
+      "rating": 4.1,
+      "rating_votes": 8500,
+      "season_votes": {
+        "winter": 900,
+        "spring": 6800,
+        "summer": 7200,
+        "fall": 2200
+      },
+      "time_votes": {
+        "day": 8000,
+        "night": 1300
+      },
+      "gender_votes": {
+        "female": 250,
+        "more_female": 400,
+        "unisex": 3300,
+        "more_male": 2500,
+        "male": 1700
+      },
+      "longevity_votes": {
+        "very_weak": 400,
+        "weak": 1000,
+        "moderate": 2700,
+        "long_lasting": 1500,
+        "eternal": 350
+      },
+      "sillage_votes": {
+        "intimate": 700,
+        "moderate": 3000,
+        "strong": 1500,
+        "enormous": 300
+      },
+      "price_value_votes": {
+        "way_overpriced": 1700,
+        "overpriced": 1900,
+        "ok": 1400,
+        "good_value": 300,
+        "great_value": 150
+      },
+      "appreciation_votes": {
+        "love": 4100,
+        "like": 2300,
+        "ok": 900,
+        "dislike": 300,
+        "hate": 180
+      },
+      "pros": [
+        "Crisp, clean and refined",
+        "Great in heat and at the office",
+        "Unusual icy-metallic freshness"
+      ],
+      "cons": [
+        "Moderate longevity for the price",
+        "Musky base can read soapy",
+        "Not a statement scent"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "clean",
+        "office-safe",
+        "hot-weather",
+        "classic",
+        "versatile",
+        "understated"
+      ]
+    },
+    {
+      "name": "Layton",
+      "brand": "Parfums de Marly",
+      "brand_country": "France",
+      "year": 2016,
+      "gender": "men",
+      "perfumers": [
+        "Hamid Merati-Kashani"
+      ],
+      "accords": [
+        {
+          "name": "vanilla",
+          "strength": 100
+        },
+        {
+          "name": "warm spicy",
+          "strength": 80
+        },
+        {
+          "name": "aromatic",
+          "strength": 65
+        },
+        {
+          "name": "lavender",
+          "strength": 55
+        },
+        {
+          "name": "fresh spicy",
+          "strength": 50
+        },
+        {
+          "name": "fruity",
+          "strength": 42
+        },
+        {
+          "name": "woody",
+          "strength": 40
+        }
+      ],
+      "notes": {
+        "top": [
+          "Apple",
+          "Lavender",
+          "Bergamot",
+          "Mandarin Orange"
+        ],
+        "middle": [
+          "Geranium",
+          "Violet",
+          "Jasmine"
+        ],
+        "base": [
+          "Vanilla",
+          "Cardamom",
+          "Sandalwood",
+          "Pepper",
+          "Guaiac Wood",
+          "Patchouli"
+        ]
+      },
+      "description": "Sweet, spiced apple and lavender melt into cardamom, vanilla and woods. It is an inviting crowd-pleaser that feels warm and self-assured on cool nights.",
+      "rating": 4.3,
+      "rating_votes": 18000,
+      "season_votes": {
+        "winter": 12000,
+        "spring": 7000,
+        "summer": 2500,
+        "fall": 13000
+      },
+      "time_votes": {
+        "day": 8000,
+        "night": 13000
+      },
+      "gender_votes": {
+        "female": 150,
+        "more_female": 300,
+        "unisex": 2000,
+        "more_male": 5500,
+        "male": 9000
+      },
+      "longevity_votes": {
+        "very_weak": 300,
+        "weak": 700,
+        "moderate": 3200,
+        "long_lasting": 7500,
+        "eternal": 3500
+      },
+      "sillage_votes": {
+        "intimate": 500,
+        "moderate": 3200,
+        "strong": 7000,
+        "enormous": 3800
+      },
+      "price_value_votes": {
+        "way_overpriced": 2500,
+        "overpriced": 3500,
+        "ok": 4000,
+        "good_value": 2000,
+        "great_value": 1000
+      },
+      "appreciation_votes": {
+        "love": 11000,
+        "like": 4000,
+        "ok": 1300,
+        "dislike": 400,
+        "hate": 250
+      },
+      "pros": [
+        "Strong performance",
+        "Crowd-pleasing and complimented",
+        "Great for cold-weather evenings"
+      ],
+      "cons": [
+        "Cloying in heat",
+        "Familiar sweet-spicy style",
+        "Pricey"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "compliment-getter",
+        "crowd-pleaser",
+        "cold-weather",
+        "date-night",
+        "evening",
+        "blind-buy-safe"
+      ]
+    },
+    {
+      "name": "Delina",
+      "brand": "Parfums de Marly",
+      "brand_country": "France",
+      "year": 2017,
+      "gender": "women",
+      "perfumers": [
+        "Quentin Bisch"
+      ],
+      "accords": [
+        {
+          "name": "rose",
+          "strength": 100
+        },
+        {
+          "name": "fruity",
+          "strength": 75
+        },
+        {
+          "name": "sweet",
+          "strength": 60
+        },
+        {
+          "name": "floral",
+          "strength": 58
+        },
+        {
+          "name": "musky",
+          "strength": 45
+        },
+        {
+          "name": "powdery",
+          "strength": 38
+        },
+        {
+          "name": "fresh",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Lychee",
+          "Rhubarb",
+          "Bergamot",
+          "Nutmeg"
+        ],
+        "middle": [
+          "Turkish Rose",
+          "Peony",
+          "Musk",
+          "Vanilla"
+        ],
+        "base": [
+          "Cashmeran",
+          "Incense",
+          "Vetiver"
+        ]
+      },
+      "description": "A luminous pink rose sweetened with lychee and tart rhubarb over soft musk and cashmeran. It is feminine and polished, a match for its pink bottle.",
+      "rating": 4.2,
+      "rating_votes": 13000,
+      "season_votes": {
+        "winter": 4500,
+        "spring": 10500,
+        "summer": 4000,
+        "fall": 6500
+      },
+      "time_votes": {
+        "day": 9500,
+        "night": 6000
+      },
+      "gender_votes": {
+        "female": 9000,
+        "more_female": 1500,
+        "unisex": 600,
+        "more_male": 60,
+        "male": 40
+      },
+      "longevity_votes": {
+        "very_weak": 250,
+        "weak": 600,
+        "moderate": 2600,
+        "long_lasting": 4800,
+        "eternal": 2000
+      },
+      "sillage_votes": {
+        "intimate": 500,
+        "moderate": 3000,
+        "strong": 4800,
+        "enormous": 1900
+      },
+      "price_value_votes": {
+        "way_overpriced": 2600,
+        "overpriced": 3200,
+        "ok": 2800,
+        "good_value": 900,
+        "great_value": 500
+      },
+      "appreciation_votes": {
+        "love": 7500,
+        "like": 3000,
+        "ok": 1300,
+        "dislike": 500,
+        "hate": 350
+      },
+      "pros": [
+        "Beautiful modern rose",
+        "Excellent longevity",
+        "Elegant and feminine",
+        "Iconic pink presentation"
+      ],
+      "cons": [
+        "Can be too sweet for some",
+        "High price",
+        "Very common among fragrance fans"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "pink-coded",
+        "romantic",
+        "compliment-getter",
+        "wedding",
+        "signature",
+        "date-night"
+      ]
+    },
+    {
+      "name": "Philosykos Eau de Toilette",
+      "brand": "Diptyque",
+      "brand_country": "France",
+      "year": 1996,
+      "gender": "unisex",
+      "perfumers": [
+        "Olivia Giacobetti"
+      ],
+      "accords": [
+        {
+          "name": "green",
+          "strength": 100
+        },
+        {
+          "name": "fruity",
+          "strength": 70
+        },
+        {
+          "name": "woody",
+          "strength": 60
+        },
+        {
+          "name": "lactonic",
+          "strength": 45
+        },
+        {
+          "name": "coconut",
+          "strength": 38
+        },
+        {
+          "name": "fresh",
+          "strength": 35
+        },
+        {
+          "name": "earthy",
+          "strength": 25
+        }
+      ],
+      "notes": {
+        "top": [
+          "Fig Leaf",
+          "Fig"
+        ],
+        "middle": [
+          "Coconut",
+          "Green Notes"
+        ],
+        "base": [
+          "Fig Tree",
+          "Cedarwood"
+        ]
+      },
+      "description": "A photorealistic fig portrait: bruised green leaves, milky sap and creamy fruit resting on dry, sun-warmed wood. It evokes a lazy afternoon in the shade of a Mediterranean fig tree.",
+      "rating": 4,
+      "rating_votes": 7000,
+      "season_votes": {
+        "winter": 700,
+        "spring": 5200,
+        "summer": 5800,
+        "fall": 1800
+      },
+      "time_votes": {
+        "day": 6200,
+        "night": 900
+      },
+      "gender_votes": {
+        "female": 800,
+        "more_female": 900,
+        "unisex": 3800,
+        "more_male": 400,
+        "male": 200
+      },
+      "longevity_votes": {
+        "very_weak": 700,
+        "weak": 1500,
+        "moderate": 2000,
+        "long_lasting": 700,
+        "eternal": 150
+      },
+      "sillage_votes": {
+        "intimate": 1500,
+        "moderate": 2300,
+        "strong": 600,
+        "enormous": 120
+      },
+      "price_value_votes": {
+        "way_overpriced": 700,
+        "overpriced": 1100,
+        "ok": 1600,
+        "good_value": 700,
+        "great_value": 300
+      },
+      "appreciation_votes": {
+        "love": 3100,
+        "like": 2200,
+        "ok": 1000,
+        "dislike": 350,
+        "hate": 200
+      },
+      "pros": [
+        "Vivid, natural fig accord",
+        "Perfect Mediterranean summer mood",
+        "Truly unisex"
+      ],
+      "cons": [
+        "Short longevity as an EDT",
+        "Green-milky style is not for everyone",
+        "Stays fairly close"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "hot-weather",
+        "casual",
+        "travel-friendly",
+        "classic",
+        "understated",
+        "humid-safe"
+      ]
+    },
+    {
+      "name": "Do Son Eau de Toilette",
+      "brand": "Diptyque",
+      "brand_country": "France",
+      "year": 2005,
+      "gender": "women",
+      "perfumers": [
+        "Fabrice Pellegrin"
+      ],
+      "accords": [
+        {
+          "name": "tuberose",
+          "strength": 100
+        },
+        {
+          "name": "white floral",
+          "strength": 85
+        },
+        {
+          "name": "floral",
+          "strength": 45
+        },
+        {
+          "name": "aquatic",
+          "strength": 35
+        },
+        {
+          "name": "fresh",
+          "strength": 32
+        },
+        {
+          "name": "musky",
+          "strength": 25
+        }
+      ],
+      "notes": {
+        "top": [
+          "Orange Blossom",
+          "Rose",
+          "Pink Pepper"
+        ],
+        "middle": [
+          "Tuberose",
+          "Jasmine"
+        ],
+        "base": [
+          "Benzoin",
+          "Musk",
+          "Sea Notes"
+        ]
+      },
+      "description": "A gentle, breezy tuberose softened by sea air and orange blossom, inspired by a seaside childhood in Vietnam. It gives you tuberose without the heaviness.",
+      "rating": 4,
+      "rating_votes": 4800,
+      "season_votes": {
+        "winter": 800,
+        "spring": 3800,
+        "summer": 3500,
+        "fall": 1300
+      },
+      "time_votes": {
+        "day": 4100,
+        "night": 1300
+      },
+      "gender_votes": {
+        "female": 2400,
+        "more_female": 900,
+        "unisex": 650,
+        "more_male": 60,
+        "male": 40
+      },
+      "longevity_votes": {
+        "very_weak": 300,
+        "weak": 700,
+        "moderate": 1500,
+        "long_lasting": 800,
+        "eternal": 200
+      },
+      "sillage_votes": {
+        "intimate": 600,
+        "moderate": 1600,
+        "strong": 800,
+        "enormous": 200
+      },
+      "price_value_votes": {
+        "way_overpriced": 500,
+        "overpriced": 800,
+        "ok": 1100,
+        "good_value": 450,
+        "great_value": 200
+      },
+      "appreciation_votes": {
+        "love": 2200,
+        "like": 1400,
+        "ok": 700,
+        "dislike": 250,
+        "hate": 150
+      },
+      "pros": [
+        "Airy, approachable tuberose",
+        "Lovely in warm weather",
+        "Elegant and office-friendly"
+      ],
+      "cons": [
+        "Moderate longevity",
+        "May be too light for tuberose lovers",
+        "Can read slightly soapy"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "hot-weather",
+        "office-safe",
+        "romantic",
+        "understated",
+        "wedding",
+        "mature-elegant"
+      ]
+    },
+    {
+      "name": "Replica By the Fireplace",
+      "brand": "Maison Margiela",
+      "brand_country": "France",
+      "year": 2015,
+      "gender": "unisex",
+      "perfumers": [
+        "Marie Salamagne"
+      ],
+      "accords": [
+        {
+          "name": "smoky",
+          "strength": 100
+        },
+        {
+          "name": "warm spicy",
+          "strength": 75
+        },
+        {
+          "name": "woody",
+          "strength": 70
+        },
+        {
+          "name": "vanilla",
+          "strength": 65
+        },
+        {
+          "name": "sweet",
+          "strength": 55
+        },
+        {
+          "name": "balsamic",
+          "strength": 40
+        },
+        {
+          "name": "nutty",
+          "strength": 38
+        }
+      ],
+      "notes": {
+        "top": [
+          "Clove",
+          "Pink Pepper",
+          "Orange Blossom"
+        ],
+        "middle": [
+          "Chestnut",
+          "Guaiac Wood",
+          "Juniper"
+        ],
+        "base": [
+          "Vanilla",
+          "Peru Balsam",
+          "Cashmeran"
+        ]
+      },
+      "description": "Toasted chestnut and smoky guaiac wood warmed by clove and pink pepper, then sweetened with vanilla and Peru balsam. It captures the drowsy comfort of a log fire in a snowed-in cabin.",
+      "rating": 4,
+      "rating_votes": 14000,
+      "season_votes": {
+        "winter": 12000,
+        "spring": 1500,
+        "summer": 500,
+        "fall": 9500
+      },
+      "time_votes": {
+        "day": 5500,
+        "night": 9000
+      },
+      "gender_votes": {
+        "female": 700,
+        "more_female": 1100,
+        "unisex": 6500,
+        "more_male": 2500,
+        "male": 1200
+      },
+      "longevity_votes": {
+        "very_weak": 400,
+        "weak": 1200,
+        "moderate": 4200,
+        "long_lasting": 4200,
+        "eternal": 1000
+      },
+      "sillage_votes": {
+        "intimate": 900,
+        "moderate": 5000,
+        "strong": 3800,
+        "enormous": 900
+      },
+      "price_value_votes": {
+        "way_overpriced": 900,
+        "overpriced": 2100,
+        "ok": 4500,
+        "good_value": 2200,
+        "great_value": 800
+      },
+      "appreciation_votes": {
+        "love": 7600,
+        "like": 3700,
+        "ok": 1500,
+        "dislike": 600,
+        "hate": 450
+      },
+      "pros": [
+        "Perfect cold-weather comfort scent",
+        "Distinctive smoky-sweet profile",
+        "Widely available to sample"
+      ],
+      "cons": [
+        "Smoke can be too much for some",
+        "Too heavy for summer",
+        "Longevity varies by skin"
+      ],
+      "price_tier": "luxury",
+      "tags": [
+        "cosy",
+        "cold-weather",
+        "casual",
+        "evening",
+        "modern",
+        "date-night"
+      ]
+    },
+    {
+      "name": "Replica Lazy Sunday Morning",
+      "brand": "Maison Margiela",
+      "brand_country": "France",
+      "year": 2013,
+      "gender": "unisex",
+      "perfumers": [
+        "Louise Turner"
+      ],
+      "accords": [
+        {
+          "name": "musky",
+          "strength": 100
+        },
+        {
+          "name": "powdery",
+          "strength": 70
+        },
+        {
+          "name": "aldehydic",
+          "strength": 55
+        },
+        {
+          "name": "soapy",
+          "strength": 50
+        },
+        {
+          "name": "floral",
+          "strength": 45
+        },
+        {
+          "name": "fruity",
+          "strength": 35
+        },
+        {
+          "name": "iris",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Pear",
+          "Aldehydes",
+          "Lily of the Valley"
+        ],
+        "middle": [
+          "Iris",
+          "Rose",
+          "Orange Blossom"
+        ],
+        "base": [
+          "White Musk",
+          "Ambrette",
+          "Patchouli"
+        ]
+      },
+      "description": "A soft cloud of white musk brightened by aldehydes, pear and a touch of lily of the valley, with powdery iris underneath. It reads calm, clean and close to the skin, like a slow start to a day off.",
+      "rating": 3.9,
+      "rating_votes": 6500,
+      "season_votes": {
+        "winter": 900,
+        "spring": 5500,
+        "summer": 4000,
+        "fall": 1700
+      },
+      "time_votes": {
+        "day": 5800,
+        "night": 900
+      },
+      "gender_votes": {
+        "female": 2200,
+        "more_female": 1500,
+        "unisex": 1700,
+        "more_male": 150,
+        "male": 80
+      },
+      "longevity_votes": {
+        "very_weak": 500,
+        "weak": 1400,
+        "moderate": 2000,
+        "long_lasting": 600,
+        "eternal": 150
+      },
+      "sillage_votes": {
+        "intimate": 1500,
+        "moderate": 2100,
+        "strong": 500,
+        "enormous": 100
+      },
+      "price_value_votes": {
+        "way_overpriced": 600,
+        "overpriced": 1300,
+        "ok": 1800,
+        "good_value": 700,
+        "great_value": 250
+      },
+      "appreciation_votes": {
+        "love": 2800,
+        "like": 2200,
+        "ok": 1000,
+        "dislike": 300,
+        "hate": 150
+      },
+      "pros": [
+        "Comforting clean-laundry feel",
+        "Very office-safe",
+        "Easy pick for musk lovers"
+      ],
+      "cons": [
+        "Weak projection",
+        "Fades within a few hours",
+        "Can smell like detergent"
+      ],
+      "price_tier": "luxury",
+      "tags": [
+        "clean",
+        "office-safe",
+        "skin-scent",
+        "understated",
+        "blind-buy-safe",
+        "casual"
+      ]
+    },
+    {
+      "name": "Love, Don't Be Shy",
+      "brand": "Kilian Paris",
+      "brand_country": "France",
+      "year": 2007,
+      "gender": "women",
+      "perfumers": [
+        "Calice Becker"
+      ],
+      "accords": [
+        {
+          "name": "sweet",
+          "strength": 100
+        },
+        {
+          "name": "vanilla",
+          "strength": 85
+        },
+        {
+          "name": "white floral",
+          "strength": 65
+        },
+        {
+          "name": "caramel",
+          "strength": 45
+        },
+        {
+          "name": "powdery",
+          "strength": 45
+        },
+        {
+          "name": "musky",
+          "strength": 35
+        },
+        {
+          "name": "citrus",
+          "strength": 25
+        }
+      ],
+      "notes": {
+        "top": [
+          "Neroli",
+          "Bergamot",
+          "Pink Pepper",
+          "Coriander"
+        ],
+        "middle": [
+          "Orange Blossom",
+          "Iris",
+          "Jasmine",
+          "Honeysuckle",
+          "Rose"
+        ],
+        "base": [
+          "Marshmallow",
+          "Vanilla",
+          "Sugar",
+          "Musk",
+          "Labdanum",
+          "Civet"
+        ]
+      },
+      "description": "Orange blossom and neroli drenched in fluffy marshmallow, sugar and vanilla, with a faint animalic warmth underneath. An unapologetically indulgent floral gourmand.",
+      "rating": 4.1,
+      "rating_votes": 9000,
+      "season_votes": {
+        "winter": 6500,
+        "spring": 3800,
+        "summer": 1200,
+        "fall": 5800
+      },
+      "time_votes": {
+        "day": 3300,
+        "night": 6200
+      },
+      "gender_votes": {
+        "female": 4800,
+        "more_female": 1700,
+        "unisex": 1100,
+        "more_male": 150,
+        "male": 100
+      },
+      "longevity_votes": {
+        "very_weak": 250,
+        "weak": 500,
+        "moderate": 1600,
+        "long_lasting": 3200,
+        "eternal": 1700
+      },
+      "sillage_votes": {
+        "intimate": 400,
+        "moderate": 1900,
+        "strong": 3100,
+        "enormous": 1500
+      },
+      "price_value_votes": {
+        "way_overpriced": 2400,
+        "overpriced": 2000,
+        "ok": 1300,
+        "good_value": 350,
+        "great_value": 200
+      },
+      "appreciation_votes": {
+        "love": 5000,
+        "like": 2100,
+        "ok": 900,
+        "dislike": 450,
+        "hate": 350
+      },
+      "pros": [
+        "Addictive marshmallow and orange blossom",
+        "Excellent sillage and longevity",
+        "Very sensual"
+      ],
+      "cons": [
+        "Too sweet for many",
+        "Cloying in hot weather",
+        "Expensive"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "sensual",
+        "date-night",
+        "evening",
+        "cold-weather",
+        "compliment-getter",
+        "romantic"
+      ]
+    },
+    {
+      "name": "Angels' Share",
+      "brand": "Kilian Paris",
+      "brand_country": "France",
+      "year": 2020,
+      "gender": "unisex",
+      "perfumers": [
+        "Benoist Lapouza"
+      ],
+      "accords": [
+        {
+          "name": "sweet",
+          "strength": 100
+        },
+        {
+          "name": "warm spicy",
+          "strength": 75
+        },
+        {
+          "name": "cinnamon",
+          "strength": 70
+        },
+        {
+          "name": "vanilla",
+          "strength": 60
+        },
+        {
+          "name": "whiskey",
+          "strength": 55
+        },
+        {
+          "name": "woody",
+          "strength": 45
+        },
+        {
+          "name": "caramel",
+          "strength": 40
+        },
+        {
+          "name": "nutty",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Cognac"
+        ],
+        "middle": [
+          "Cinnamon",
+          "Tonka Bean",
+          "Oak"
+        ],
+        "base": [
+          "Praline",
+          "Vanilla",
+          "Sandalwood"
+        ]
+      },
+      "description": "A cinnamon-dusted cognac gourmand with praline, tonka and toasted oak. Like a warm spiced liqueur by the fire, it is rich and made for winter nights.",
+      "rating": 4.2,
+      "rating_votes": 12000,
+      "season_votes": {
+        "winter": 9500,
+        "spring": 1300,
+        "summer": 400,
+        "fall": 8500
+      },
+      "time_votes": {
+        "day": 3200,
+        "night": 9200
+      },
+      "gender_votes": {
+        "female": 900,
+        "more_female": 1400,
+        "unisex": 5800,
+        "more_male": 1800,
+        "male": 700
+      },
+      "longevity_votes": {
+        "very_weak": 150,
+        "weak": 350,
+        "moderate": 2000,
+        "long_lasting": 5000,
+        "eternal": 2500
+      },
+      "sillage_votes": {
+        "intimate": 300,
+        "moderate": 2300,
+        "strong": 5000,
+        "enormous": 2300
+      },
+      "price_value_votes": {
+        "way_overpriced": 3000,
+        "overpriced": 3000,
+        "ok": 2000,
+        "good_value": 600,
+        "great_value": 300
+      },
+      "appreciation_votes": {
+        "love": 7500,
+        "like": 2600,
+        "ok": 1000,
+        "dislike": 350,
+        "hate": 200
+      },
+      "pros": [
+        "Delicious boozy gourmand",
+        "Strong performance",
+        "Crowd-pleaser in cold weather"
+      ],
+      "cons": [
+        "Very sweet",
+        "Unwearable in heat",
+        "Premium price"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "cold-weather",
+        "evening",
+        "cosy",
+        "date-night",
+        "compliment-getter",
+        "party"
+      ]
+    },
+    {
+      "name": "Naxos",
+      "brand": "Xerjoff",
+      "brand_country": "Italy",
+      "year": 2015,
+      "gender": "unisex",
+      "perfumers": [],
+      "accords": [
+        {
+          "name": "honey",
+          "strength": 100
+        },
+        {
+          "name": "tobacco",
+          "strength": 80
+        },
+        {
+          "name": "sweet",
+          "strength": 70
+        },
+        {
+          "name": "lavender",
+          "strength": 60
+        },
+        {
+          "name": "warm spicy",
+          "strength": 50
+        },
+        {
+          "name": "citrus",
+          "strength": 38
+        },
+        {
+          "name": "aromatic",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Lavender",
+          "Bergamot",
+          "Lemon"
+        ],
+        "middle": [
+          "Honey",
+          "Cinnamon",
+          "Cashmeran",
+          "Jasmine"
+        ],
+        "base": [
+          "Tobacco Leaf",
+          "Tonka Bean",
+          "Vanilla"
+        ]
+      },
+      "description": "Honey-glazed tobacco leaf wrapped in lavender and Sicilian citrus, finishing in tonka and vanilla. It is a rich, golden homage to Sicily with a gentlemanly polish.",
+      "rating": 4.4,
+      "rating_votes": 9500,
+      "season_votes": {
+        "winter": 7500,
+        "spring": 3000,
+        "summer": 800,
+        "fall": 7000
+      },
+      "time_votes": {
+        "day": 3500,
+        "night": 6500
+      },
+      "gender_votes": {
+        "female": 200,
+        "more_female": 450,
+        "unisex": 3000,
+        "more_male": 2800,
+        "male": 2400
+      },
+      "longevity_votes": {
+        "very_weak": 150,
+        "weak": 350,
+        "moderate": 1700,
+        "long_lasting": 4000,
+        "eternal": 1800
+      },
+      "sillage_votes": {
+        "intimate": 250,
+        "moderate": 2000,
+        "strong": 3700,
+        "enormous": 1300
+      },
+      "price_value_votes": {
+        "way_overpriced": 1300,
+        "overpriced": 2000,
+        "ok": 2300,
+        "good_value": 900,
+        "great_value": 450
+      },
+      "appreciation_votes": {
+        "love": 6200,
+        "like": 2000,
+        "ok": 700,
+        "dislike": 250,
+        "hate": 150
+      },
+      "pros": [
+        "Gorgeous honey-tobacco blend",
+        "Very long-lasting",
+        "Refined yet cosy"
+      ],
+      "cons": [
+        "Honey feels heavy in heat",
+        "Expensive",
+        "Sweetness may overwhelm some"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "cold-weather",
+        "evening",
+        "cosy",
+        "signature",
+        "formal",
+        "mature-elegant"
+      ]
+    },
+    {
+      "name": "Hacivat",
+      "brand": "Nishane",
+      "brand_country": "Turkey",
+      "year": 2017,
+      "gender": "unisex",
+      "perfumers": [
+        "Jorge Lee"
+      ],
+      "accords": [
+        {
+          "name": "fruity",
+          "strength": 100
+        },
+        {
+          "name": "woody",
+          "strength": 75
+        },
+        {
+          "name": "citrus",
+          "strength": 65
+        },
+        {
+          "name": "mossy",
+          "strength": 55
+        },
+        {
+          "name": "tropical",
+          "strength": 45
+        },
+        {
+          "name": "fresh",
+          "strength": 40
+        },
+        {
+          "name": "patchouli",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Pineapple",
+          "Grapefruit",
+          "Bergamot"
+        ],
+        "middle": [
+          "Cedarwood",
+          "Patchouli",
+          "Jasmine"
+        ],
+        "base": [
+          "Oakmoss",
+          "Clearwood",
+          "Woody Notes"
+        ]
+      },
+      "description": "A sharp, zesty pineapple and grapefruit chypre over oakmoss and dry woods. It is often compared to Aventus, but brighter, greener and more intense.",
+      "rating": 4.2,
+      "rating_votes": 7000,
+      "season_votes": {
+        "winter": 1200,
+        "spring": 5500,
+        "summer": 5200,
+        "fall": 2600
+      },
+      "time_votes": {
+        "day": 6000,
+        "night": 2200
+      },
+      "gender_votes": {
+        "female": 100,
+        "more_female": 200,
+        "unisex": 2000,
+        "more_male": 2200,
+        "male": 2000
+      },
+      "longevity_votes": {
+        "very_weak": 100,
+        "weak": 250,
+        "moderate": 1100,
+        "long_lasting": 2800,
+        "eternal": 1600
+      },
+      "sillage_votes": {
+        "intimate": 200,
+        "moderate": 1300,
+        "strong": 2700,
+        "enormous": 1400
+      },
+      "price_value_votes": {
+        "way_overpriced": 700,
+        "overpriced": 1300,
+        "ok": 1800,
+        "good_value": 900,
+        "great_value": 400
+      },
+      "appreciation_votes": {
+        "love": 4200,
+        "like": 1600,
+        "ok": 600,
+        "dislike": 200,
+        "hate": 120
+      },
+      "pros": [
+        "Beast-mode performance for a fresh scent",
+        "Bright, uplifting summer energy",
+        "Distinctive mossy dryness"
+      ],
+      "cons": [
+        "Opening can be sharp",
+        "Loud in close quarters",
+        "Niche pricing"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "hot-weather",
+        "beast-mode",
+        "compliment-getter",
+        "versatile",
+        "statement",
+        "casual"
+      ]
+    },
+    {
+      "name": "Ani",
+      "brand": "Nishane",
+      "brand_country": "Turkey",
+      "year": 2019,
+      "gender": "unisex",
+      "perfumers": [
+        "Cécile Zarokian"
+      ],
+      "accords": [
+        {
+          "name": "vanilla",
+          "strength": 100
+        },
+        {
+          "name": "warm spicy",
+          "strength": 70
+        },
+        {
+          "name": "sweet",
+          "strength": 60
+        },
+        {
+          "name": "fresh spicy",
+          "strength": 50
+        },
+        {
+          "name": "amber",
+          "strength": 45
+        },
+        {
+          "name": "balsamic",
+          "strength": 38
+        },
+        {
+          "name": "powdery",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Ginger",
+          "Pink Pepper",
+          "Green Notes"
+        ],
+        "middle": [
+          "Cardamom",
+          "Turkish Rose",
+          "Black Currant"
+        ],
+        "base": [
+          "Vanilla",
+          "Benzoin",
+          "Sandalwood",
+          "Musk"
+        ]
+      },
+      "description": "A spicy-fresh vanilla: ginger and pepper cut into a creamy, resinous vanilla-benzoin base. It is a gourmand that feels grown-up rather than sugary.",
+      "rating": 4.2,
+      "rating_votes": 5500,
+      "season_votes": {
+        "winter": 4500,
+        "spring": 1500,
+        "summer": 500,
+        "fall": 4000
+      },
+      "time_votes": {
+        "day": 1800,
+        "night": 4200
+      },
+      "gender_votes": {
+        "female": 500,
+        "more_female": 700,
+        "unisex": 2800,
+        "more_male": 500,
+        "male": 250
+      },
+      "longevity_votes": {
+        "very_weak": 80,
+        "weak": 200,
+        "moderate": 900,
+        "long_lasting": 2300,
+        "eternal": 1500
+      },
+      "sillage_votes": {
+        "intimate": 150,
+        "moderate": 1000,
+        "strong": 2200,
+        "enormous": 1300
+      },
+      "price_value_votes": {
+        "way_overpriced": 700,
+        "overpriced": 1000,
+        "ok": 1300,
+        "good_value": 600,
+        "great_value": 300
+      },
+      "appreciation_votes": {
+        "love": 3300,
+        "like": 1300,
+        "ok": 500,
+        "dislike": 200,
+        "hate": 150
+      },
+      "pros": [
+        "Unique ginger-vanilla contrast",
+        "Huge longevity",
+        "Cosy and sophisticated"
+      ],
+      "cons": [
+        "Heavy in warm weather",
+        "Opening can feel sharp",
+        "Pricey"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "cold-weather",
+        "cosy",
+        "evening",
+        "sensual",
+        "signature",
+        "beast-mode"
+      ]
+    },
+    {
+      "name": "Not a Perfume",
+      "brand": "Juliette Has a Gun",
+      "brand_country": "France",
+      "year": 2010,
+      "gender": "women",
+      "perfumers": [
+        "Romano Ricci"
+      ],
+      "accords": [
+        {
+          "name": "amber",
+          "strength": 100
+        },
+        {
+          "name": "woody",
+          "strength": 60
+        },
+        {
+          "name": "musky",
+          "strength": 55
+        },
+        {
+          "name": "fresh",
+          "strength": 40
+        },
+        {
+          "name": "salty",
+          "strength": 30
+        },
+        {
+          "name": "mineral",
+          "strength": 25
+        }
+      ],
+      "notes": {
+        "top": [
+          "Ambroxan"
+        ],
+        "middle": [
+          "Ambroxan"
+        ],
+        "base": [
+          "Ambroxan"
+        ]
+      },
+      "description": "A single-molecule scent built on ambroxan: clean, faintly salty woody-amber warmth that melts into skin. Some wearers can barely smell it on themselves, while people around them notice it.",
+      "rating": 3.6,
+      "rating_votes": 6500,
+      "season_votes": {
+        "winter": 2000,
+        "spring": 3800,
+        "summer": 3000,
+        "fall": 2800
+      },
+      "time_votes": {
+        "day": 4800,
+        "night": 1600
+      },
+      "gender_votes": {
+        "female": 1300,
+        "more_female": 1100,
+        "unisex": 2800,
+        "more_male": 250,
+        "male": 150
+      },
+      "longevity_votes": {
+        "very_weak": 800,
+        "weak": 1000,
+        "moderate": 1500,
+        "long_lasting": 1200,
+        "eternal": 500
+      },
+      "sillage_votes": {
+        "intimate": 1500,
+        "moderate": 1900,
+        "strong": 900,
+        "enormous": 300
+      },
+      "price_value_votes": {
+        "way_overpriced": 400,
+        "overpriced": 800,
+        "ok": 1700,
+        "good_value": 1100,
+        "great_value": 500
+      },
+      "appreciation_votes": {
+        "love": 2400,
+        "like": 1700,
+        "ok": 1200,
+        "dislike": 500,
+        "hate": 350
+      },
+      "pros": [
+        "Minimal, allergen-light formula",
+        "Clean 'your skin but better' effect",
+        "Great for layering"
+      ],
+      "cons": [
+        "Some people cannot smell it",
+        "Very simple",
+        "Performance feels inconsistent"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "skin-scent",
+        "clean",
+        "office-safe",
+        "understated",
+        "casual",
+        "modern"
+      ]
+    },
+    {
+      "name": "Molecule 01",
+      "brand": "Escentric Molecules",
+      "brand_country": "United Kingdom",
+      "year": 2006,
+      "gender": "unisex",
+      "perfumers": [
+        "Geza Schoen"
+      ],
+      "accords": [
+        {
+          "name": "woody",
+          "strength": 100
+        },
+        {
+          "name": "musky",
+          "strength": 50
+        },
+        {
+          "name": "amber",
+          "strength": 42
+        },
+        {
+          "name": "powdery",
+          "strength": 30
+        },
+        {
+          "name": "fresh",
+          "strength": 28
+        }
+      ],
+      "notes": {
+        "top": [
+          "Iso E Super"
+        ],
+        "middle": [
+          "Iso E Super"
+        ],
+        "base": [
+          "Iso E Super"
+        ]
+      },
+      "description": "Nothing but Iso E Super: a soft, cedar-tinged woody warmth that flickers in and out of perception. It behaves less like a perfume and more like a faint personal aura.",
+      "rating": 3.6,
+      "rating_votes": 7000,
+      "season_votes": {
+        "winter": 2500,
+        "spring": 3600,
+        "summer": 2800,
+        "fall": 3400
+      },
+      "time_votes": {
+        "day": 4800,
+        "night": 2300
+      },
+      "gender_votes": {
+        "female": 500,
+        "more_female": 600,
+        "unisex": 4200,
+        "more_male": 700,
+        "male": 350
+      },
+      "longevity_votes": {
+        "very_weak": 1100,
+        "weak": 1200,
+        "moderate": 1600,
+        "long_lasting": 1100,
+        "eternal": 500
+      },
+      "sillage_votes": {
+        "intimate": 1900,
+        "moderate": 1900,
+        "strong": 800,
+        "enormous": 300
+      },
+      "price_value_votes": {
+        "way_overpriced": 300,
+        "overpriced": 700,
+        "ok": 1700,
+        "good_value": 1500,
+        "great_value": 800
+      },
+      "appreciation_votes": {
+        "love": 2600,
+        "like": 1800,
+        "ok": 1400,
+        "dislike": 500,
+        "hate": 400
+      },
+      "pros": [
+        "Unique 'invisible' aura",
+        "Inoffensive and office-safe",
+        "Excellent for layering",
+        "Fair price for niche"
+      ],
+      "cons": [
+        "Nose fatigue makes it seem to vanish",
+        "Many people cannot smell it",
+        "Very linear"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "skin-scent",
+        "office-safe",
+        "understated",
+        "modern",
+        "clean",
+        "versatile"
+      ]
+    },
+    {
+      "name": "Portrait of a Lady",
+      "brand": "Frederic Malle",
+      "brand_country": "France",
+      "year": 2010,
+      "gender": "women",
+      "perfumers": [
+        "Dominique Ropion"
+      ],
+      "accords": [
+        {
+          "name": "rose",
+          "strength": 100
+        },
+        {
+          "name": "patchouli",
+          "strength": 75
+        },
+        {
+          "name": "warm spicy",
+          "strength": 55
+        },
+        {
+          "name": "woody",
+          "strength": 50
+        },
+        {
+          "name": "fruity",
+          "strength": 40
+        },
+        {
+          "name": "balsamic",
+          "strength": 38
+        },
+        {
+          "name": "smoky",
+          "strength": 32
+        }
+      ],
+      "notes": {
+        "top": [
+          "Turkish Rose",
+          "Raspberry",
+          "Black Currant",
+          "Clove",
+          "Cinnamon"
+        ],
+        "middle": [
+          "Patchouli",
+          "Incense",
+          "Sandalwood"
+        ],
+        "base": [
+          "Musk",
+          "Amber",
+          "Benzoin"
+        ]
+      },
+      "description": "A grand, dark Turkish rose laced with spice and raspberry over deep patchouli and incense. It is opulent, regal and commanding.",
+      "rating": 4.3,
+      "rating_votes": 12000,
+      "season_votes": {
+        "winter": 8500,
+        "spring": 3000,
+        "summer": 800,
+        "fall": 8500
+      },
+      "time_votes": {
+        "day": 3500,
+        "night": 8500
+      },
+      "gender_votes": {
+        "female": 4500,
+        "more_female": 2200,
+        "unisex": 2800,
+        "more_male": 400,
+        "male": 200
+      },
+      "longevity_votes": {
+        "very_weak": 100,
+        "weak": 250,
+        "moderate": 1400,
+        "long_lasting": 4200,
+        "eternal": 3500
+      },
+      "sillage_votes": {
+        "intimate": 200,
+        "moderate": 1600,
+        "strong": 4000,
+        "enormous": 3300
+      },
+      "price_value_votes": {
+        "way_overpriced": 1500,
+        "overpriced": 2000,
+        "ok": 2400,
+        "good_value": 900,
+        "great_value": 500
+      },
+      "appreciation_votes": {
+        "love": 7500,
+        "like": 2600,
+        "ok": 900,
+        "dislike": 400,
+        "hate": 250
+      },
+      "pros": [
+        "Masterful rose-patchouli",
+        "Legendary longevity",
+        "Elegant statement for formal occasions"
+      ],
+      "cons": [
+        "Overpowering if oversprayed",
+        "Too heavy for summer",
+        "Very expensive"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "statement",
+        "evening",
+        "formal",
+        "mature-elegant",
+        "cold-weather",
+        "classic",
+        "beast-mode"
+      ]
+    },
+    {
+      "name": "Interlude Man",
+      "brand": "Amouage",
+      "brand_country": "Oman",
+      "year": 2012,
+      "gender": "men",
+      "perfumers": [
+        "Pierre Negrin"
+      ],
+      "accords": [
+        {
+          "name": "smoky",
+          "strength": 100
+        },
+        {
+          "name": "amber",
+          "strength": 75
+        },
+        {
+          "name": "warm spicy",
+          "strength": 60
+        },
+        {
+          "name": "balsamic",
+          "strength": 55
+        },
+        {
+          "name": "herbal",
+          "strength": 45
+        },
+        {
+          "name": "leather",
+          "strength": 40
+        },
+        {
+          "name": "woody",
+          "strength": 38
+        },
+        {
+          "name": "oud",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Oregano",
+          "Allspice",
+          "Bergamot"
+        ],
+        "middle": [
+          "Frankincense",
+          "Opoponax",
+          "Amber",
+          "Labdanum"
+        ],
+        "base": [
+          "Leather",
+          "Oud",
+          "Patchouli",
+          "Sandalwood"
+        ]
+      },
+      "description": "A billowing cloud of smoky frankincense, oregano and amber over leather and oud. Dense and dramatic, it is made for cold nights and confident wearers.",
+      "rating": 4.2,
+      "rating_votes": 7500,
+      "season_votes": {
+        "winter": 6800,
+        "spring": 900,
+        "summer": 300,
+        "fall": 5500
+      },
+      "time_votes": {
+        "day": 1600,
+        "night": 6400
+      },
+      "gender_votes": {
+        "female": 100,
+        "more_female": 200,
+        "unisex": 1600,
+        "more_male": 2200,
+        "male": 3000
+      },
+      "longevity_votes": {
+        "very_weak": 80,
+        "weak": 150,
+        "moderate": 700,
+        "long_lasting": 2600,
+        "eternal": 2900
+      },
+      "sillage_votes": {
+        "intimate": 150,
+        "moderate": 800,
+        "strong": 2400,
+        "enormous": 3100
+      },
+      "price_value_votes": {
+        "way_overpriced": 700,
+        "overpriced": 1100,
+        "ok": 1700,
+        "good_value": 900,
+        "great_value": 500
+      },
+      "appreciation_votes": {
+        "love": 4500,
+        "like": 1500,
+        "ok": 700,
+        "dislike": 350,
+        "hate": 250
+      },
+      "pros": [
+        "Monstrous projection and longevity",
+        "Deep, complex smoky character",
+        "Unforgettable in cold weather"
+      ],
+      "cons": [
+        "Overwhelming if overapplied",
+        "Polarizing smoky-herbal opening",
+        "Not office-friendly"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "beast-mode",
+        "cold-weather",
+        "evening",
+        "statement",
+        "polarizing",
+        "formal"
+      ]
+    },
+    {
+      "name": "African Leather",
+      "brand": "Memo Paris",
+      "brand_country": "France",
+      "year": 2015,
+      "gender": "unisex",
+      "perfumers": [
+        "Aliénor Massenet"
+      ],
+      "accords": [
+        {
+          "name": "leather",
+          "strength": 100
+        },
+        {
+          "name": "warm spicy",
+          "strength": 75
+        },
+        {
+          "name": "earthy",
+          "strength": 50
+        },
+        {
+          "name": "patchouli",
+          "strength": 45
+        },
+        {
+          "name": "woody",
+          "strength": 45
+        },
+        {
+          "name": "animalic",
+          "strength": 35
+        },
+        {
+          "name": "smoky",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Cardamom",
+          "Saffron",
+          "Cumin",
+          "Bergamot"
+        ],
+        "middle": [
+          "Geranium",
+          "Vetiver",
+          "Patchouli"
+        ],
+        "base": [
+          "Leather",
+          "Oud",
+          "Musk"
+        ]
+      },
+      "description": "A warm, spicy leather: saffron, cardamom and cumin over earthy vetiver and suede-like leather. It evokes dusty heat and golden savanna grass.",
+      "rating": 4.1,
+      "rating_votes": 3500,
+      "season_votes": {
+        "winter": 2600,
+        "spring": 900,
+        "summer": 400,
+        "fall": 2500
+      },
+      "time_votes": {
+        "day": 1300,
+        "night": 2400
+      },
+      "gender_votes": {
+        "female": 100,
+        "more_female": 200,
+        "unisex": 1500,
+        "more_male": 900,
+        "male": 600
+      },
+      "longevity_votes": {
+        "very_weak": 60,
+        "weak": 150,
+        "moderate": 600,
+        "long_lasting": 1300,
+        "eternal": 700
+      },
+      "sillage_votes": {
+        "intimate": 150,
+        "moderate": 800,
+        "strong": 1200,
+        "enormous": 500
+      },
+      "price_value_votes": {
+        "way_overpriced": 600,
+        "overpriced": 800,
+        "ok": 700,
+        "good_value": 250,
+        "great_value": 120
+      },
+      "appreciation_votes": {
+        "love": 1900,
+        "like": 800,
+        "ok": 400,
+        "dislike": 200,
+        "hate": 150
+      },
+      "pros": [
+        "Distinctive spiced leather",
+        "Strong performance",
+        "Handsome unisex character"
+      ],
+      "cons": [
+        "Cumin can read sweaty to some",
+        "Expensive",
+        "Hard to find for sampling"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "evening",
+        "cold-weather",
+        "statement",
+        "polarizing",
+        "sensual"
+      ]
+    },
+    {
+      "name": "Halfeti",
+      "brand": "Penhaligon's",
+      "brand_country": "United Kingdom",
+      "year": 2015,
+      "gender": "unisex",
+      "perfumers": [
+        "Christian Provenzano"
+      ],
+      "accords": [
+        {
+          "name": "warm spicy",
+          "strength": 100
+        },
+        {
+          "name": "rose",
+          "strength": 80
+        },
+        {
+          "name": "oud",
+          "strength": 65
+        },
+        {
+          "name": "amber",
+          "strength": 60
+        },
+        {
+          "name": "leather",
+          "strength": 50
+        },
+        {
+          "name": "woody",
+          "strength": 45
+        }
+      ],
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Grapefruit",
+          "Cardamom",
+          "Saffron"
+        ],
+        "middle": [
+          "Rose",
+          "Jasmine",
+          "Nutmeg",
+          "Lavender"
+        ],
+        "base": [
+          "Oud",
+          "Leather",
+          "Amber",
+          "Sandalwood",
+          "Tonka Bean",
+          "Vanilla"
+        ]
+      },
+      "description": "A plush rose woven with saffron, cardamom and smooth oud on a leathery amber base. It takes its name and inspiration from a Turkish village known for its dark roses.",
+      "rating": 4.2,
+      "rating_votes": 4500,
+      "season_votes": {
+        "winter": 3500,
+        "spring": 1300,
+        "summer": 500,
+        "fall": 3300
+      },
+      "time_votes": {
+        "day": 1500,
+        "night": 3200
+      },
+      "gender_votes": {
+        "female": 250,
+        "more_female": 450,
+        "unisex": 2300,
+        "more_male": 700,
+        "male": 400
+      },
+      "longevity_votes": {
+        "very_weak": 60,
+        "weak": 150,
+        "moderate": 800,
+        "long_lasting": 1800,
+        "eternal": 900
+      },
+      "sillage_votes": {
+        "intimate": 150,
+        "moderate": 1000,
+        "strong": 1700,
+        "enormous": 700
+      },
+      "price_value_votes": {
+        "way_overpriced": 700,
+        "overpriced": 1000,
+        "ok": 900,
+        "good_value": 300,
+        "great_value": 150
+      },
+      "appreciation_votes": {
+        "love": 2500,
+        "like": 1100,
+        "ok": 400,
+        "dislike": 150,
+        "hate": 100
+      },
+      "pros": [
+        "Luxurious rose-oud blend",
+        "Excellent longevity",
+        "Unisex and elegant"
+      ],
+      "cons": [
+        "Heavy for warm days",
+        "Expensive",
+        "Oud may be too much for some"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "evening",
+        "formal",
+        "mature-elegant",
+        "cold-weather",
+        "statement",
+        "sensual"
+      ]
+    },
+    {
+      "name": "Orange Sanguine",
+      "brand": "Atelier Cologne",
+      "brand_country": "France",
+      "year": 2010,
+      "gender": "unisex",
+      "perfumers": [
+        "Ralf Schwieger"
+      ],
+      "accords": [
+        {
+          "name": "citrus",
+          "strength": 100
+        },
+        {
+          "name": "fruity",
+          "strength": 55
+        },
+        {
+          "name": "fresh spicy",
+          "strength": 40
+        },
+        {
+          "name": "sweet",
+          "strength": 35
+        },
+        {
+          "name": "woody",
+          "strength": 30
+        },
+        {
+          "name": "floral",
+          "strength": 25
+        }
+      ],
+      "notes": {
+        "top": [
+          "Blood Orange",
+          "Bitter Orange"
+        ],
+        "middle": [
+          "Geranium",
+          "Jasmine",
+          "Black Pepper"
+        ],
+        "base": [
+          "Tonka Bean",
+          "Amber",
+          "Sandalwood"
+        ]
+      },
+      "description": "Juicy blood orange with a bitter-peel edge, lifted by black pepper and geranium and resting on soft amber and sandalwood. It carries the easy, sunny mood of a Mediterranean summer.",
+      "rating": 4,
+      "rating_votes": 5000,
+      "season_votes": {
+        "winter": 400,
+        "spring": 3800,
+        "summer": 4700,
+        "fall": 900
+      },
+      "time_votes": {
+        "day": 4800,
+        "night": 500
+      },
+      "gender_votes": {
+        "female": 600,
+        "more_female": 700,
+        "unisex": 2600,
+        "more_male": 350,
+        "male": 200
+      },
+      "longevity_votes": {
+        "very_weak": 600,
+        "weak": 1200,
+        "moderate": 1400,
+        "long_lasting": 400,
+        "eternal": 100
+      },
+      "sillage_votes": {
+        "intimate": 900,
+        "moderate": 1700,
+        "strong": 500,
+        "enormous": 100
+      },
+      "price_value_votes": {
+        "way_overpriced": 400,
+        "overpriced": 800,
+        "ok": 1200,
+        "good_value": 500,
+        "great_value": 250
+      },
+      "appreciation_votes": {
+        "love": 2200,
+        "like": 1600,
+        "ok": 700,
+        "dislike": 200,
+        "hate": 100
+      },
+      "pros": [
+        "Remarkably realistic orange",
+        "Joyful summer energy",
+        "Easy to wear anywhere"
+      ],
+      "cons": [
+        "Fades quickly",
+        "Simple structure",
+        "Pricey for a cologne"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "hot-weather",
+        "casual",
+        "office-safe",
+        "travel-friendly",
+        "crowd-pleaser",
+        "humid-safe"
+      ]
+    },
+    {
+      "name": "Wood Sage & Sea Salt",
+      "brand": "Jo Malone London",
+      "brand_country": "United Kingdom",
+      "year": 2014,
+      "gender": "unisex",
+      "perfumers": [
+        "Christine Nagel"
+      ],
+      "accords": [
+        {
+          "name": "salty",
+          "strength": 100
+        },
+        {
+          "name": "aromatic",
+          "strength": 75
+        },
+        {
+          "name": "marine",
+          "strength": 60
+        },
+        {
+          "name": "herbal",
+          "strength": 55
+        },
+        {
+          "name": "woody",
+          "strength": 45
+        },
+        {
+          "name": "musky",
+          "strength": 35
+        },
+        {
+          "name": "mineral",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Ambrette",
+          "Grapefruit"
+        ],
+        "middle": [
+          "Sea Salt",
+          "Seaweed"
+        ],
+        "base": [
+          "Sage"
+        ]
+      },
+      "description": "Mineral sea-salt spray and soft ambrette musk meet dry, herbal sage with a hint of grapefruit. Relaxed and airy, it recalls a cool afternoon stroll along the shoreline.",
+      "rating": 3.8,
+      "rating_votes": 6500,
+      "season_votes": {
+        "winter": 700,
+        "spring": 4800,
+        "summer": 5200,
+        "fall": 1600
+      },
+      "time_votes": {
+        "day": 5800,
+        "night": 700
+      },
+      "gender_votes": {
+        "female": 1000,
+        "more_female": 1000,
+        "unisex": 3500,
+        "more_male": 300,
+        "male": 150
+      },
+      "longevity_votes": {
+        "very_weak": 1200,
+        "weak": 1900,
+        "moderate": 1700,
+        "long_lasting": 400,
+        "eternal": 100
+      },
+      "sillage_votes": {
+        "intimate": 1900,
+        "moderate": 2100,
+        "strong": 500,
+        "enormous": 100
+      },
+      "price_value_votes": {
+        "way_overpriced": 900,
+        "overpriced": 1600,
+        "ok": 1500,
+        "good_value": 400,
+        "great_value": 200
+      },
+      "appreciation_votes": {
+        "love": 2400,
+        "like": 2300,
+        "ok": 1000,
+        "dislike": 350,
+        "hate": 200
+      },
+      "pros": [
+        "Realistic salty sea air",
+        "Effortless and unisex",
+        "Great for layering"
+      ],
+      "cons": [
+        "Weak longevity",
+        "Soft projection",
+        "Pricey for cologne strength"
+      ],
+      "price_tier": "luxury",
+      "tags": [
+        "casual",
+        "hot-weather",
+        "clean",
+        "understated",
+        "travel-friendly",
+        "office-safe"
+      ]
+    },
+    {
+      "name": "Fleur Narcotique",
+      "brand": "Ex Nihilo",
+      "brand_country": "France",
+      "year": 2014,
+      "gender": "unisex",
+      "perfumers": [
+        "Quentin Bisch"
+      ],
+      "accords": [
+        {
+          "name": "white floral",
+          "strength": 100
+        },
+        {
+          "name": "fruity",
+          "strength": 75
+        },
+        {
+          "name": "floral",
+          "strength": 60
+        },
+        {
+          "name": "musky",
+          "strength": 45
+        },
+        {
+          "name": "fresh",
+          "strength": 38
+        },
+        {
+          "name": "citrus",
+          "strength": 30
+        },
+        {
+          "name": "mossy",
+          "strength": 25
+        }
+      ],
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Lychee",
+          "Peach"
+        ],
+        "middle": [
+          "Jasmine",
+          "Peony",
+          "Orange Blossom"
+        ],
+        "base": [
+          "Musk",
+          "Oakmoss",
+          "Woody Notes"
+        ]
+      },
+      "description": "A bright, juicy white floral: jasmine and peony lifted by lychee and peach over soft musk. It is cheerful yet polished enough for a wedding or the office.",
+      "rating": 4.1,
+      "rating_votes": 5000,
+      "season_votes": {
+        "winter": 900,
+        "spring": 4200,
+        "summer": 3300,
+        "fall": 1500
+      },
+      "time_votes": {
+        "day": 4200,
+        "night": 1300
+      },
+      "gender_votes": {
+        "female": 1800,
+        "more_female": 1100,
+        "unisex": 1500,
+        "more_male": 150,
+        "male": 80
+      },
+      "longevity_votes": {
+        "very_weak": 150,
+        "weak": 350,
+        "moderate": 1300,
+        "long_lasting": 1800,
+        "eternal": 700
+      },
+      "sillage_votes": {
+        "intimate": 250,
+        "moderate": 1500,
+        "strong": 1800,
+        "enormous": 600
+      },
+      "price_value_votes": {
+        "way_overpriced": 900,
+        "overpriced": 1100,
+        "ok": 900,
+        "good_value": 300,
+        "great_value": 150
+      },
+      "appreciation_votes": {
+        "love": 2800,
+        "like": 1300,
+        "ok": 500,
+        "dislike": 200,
+        "hate": 120
+      },
+      "pros": [
+        "Bright, happy floral",
+        "Good longevity",
+        "Versatile and elegant"
+      ],
+      "cons": [
+        "Fruity sweetness can feel generic",
+        "High price",
+        "Common among niche fans"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "wedding",
+        "office-safe",
+        "romantic",
+        "versatile",
+        "youthful",
+        "compliment-getter"
+      ]
+    }
+  ]
+}

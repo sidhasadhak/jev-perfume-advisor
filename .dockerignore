@@ -1,0 +1,13 @@
+# Never bake keys into the image - pass them at run time (--env-file .env).
+.env
+.env.*
+!.env.example
+node_modules
+dist
+tests
+data/seed-src
+data/fragdb
+.git
+.github
+.claude
+*.log

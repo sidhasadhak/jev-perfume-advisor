@@ -1,0 +1,3560 @@
+{
+  "segment": "evening_night",
+  "fragrances": [
+    {
+      "name": "Black Opium",
+      "brand": "Yves Saint Laurent",
+      "brand_country": "France",
+      "year": 2014,
+      "gender": "women",
+      "perfumers": [
+        "Nathalie Lorson",
+        "Marie Salamagne",
+        "Olivier Cresp",
+        "Honorine Blanc"
+      ],
+      "accords": [
+        {
+          "name": "vanilla",
+          "strength": 100
+        },
+        {
+          "name": "coffee",
+          "strength": 85
+        },
+        {
+          "name": "sweet",
+          "strength": 75
+        },
+        {
+          "name": "white floral",
+          "strength": 55
+        },
+        {
+          "name": "warm spicy",
+          "strength": 45
+        },
+        {
+          "name": "woody",
+          "strength": 35
+        },
+        {
+          "name": "fruity",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Pear",
+          "Pink Pepper",
+          "Orange Blossom"
+        ],
+        "middle": [
+          "Coffee",
+          "Jasmine",
+          "Bitter Almond",
+          "Licorice"
+        ],
+        "base": [
+          "Vanilla",
+          "Patchouli",
+          "Cedar",
+          "Cashmere Wood"
+        ]
+      },
+      "description": "A dark, sugared coffee and vanilla gourmand with a lift of white flowers. Playful and sexy, it suits nights out.",
+      "rating": 3.95,
+      "rating_votes": 28000,
+      "season_votes": {
+        "winter": 14000,
+        "spring": 5000,
+        "summer": 1500,
+        "fall": 15000
+      },
+      "time_votes": {
+        "day": 7000,
+        "night": 17000
+      },
+      "gender_votes": {
+        "female": 16000,
+        "more_female": 5000,
+        "unisex": 1500,
+        "more_male": 200,
+        "male": 150
+      },
+      "longevity_votes": {
+        "very_weak": 400,
+        "weak": 1200,
+        "moderate": 5000,
+        "long_lasting": 8000,
+        "eternal": 3000
+      },
+      "sillage_votes": {
+        "intimate": 900,
+        "moderate": 5500,
+        "strong": 7500,
+        "enormous": 2500
+      },
+      "price_value_votes": {
+        "way_overpriced": 800,
+        "overpriced": 2500,
+        "ok": 6000,
+        "good_value": 3500,
+        "great_value": 1500
+      },
+      "appreciation_votes": {
+        "love": 12000,
+        "like": 9000,
+        "ok": 4000,
+        "dislike": 2000,
+        "hate": 900
+      },
+      "pros": [
+        "Addictive coffee-vanilla sweetness",
+        "Strong longevity",
+        "Reliable compliment-getter"
+      ],
+      "cons": [
+        "Very common and easily recognized",
+        "Can feel too sweet in heat"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "date-night",
+        "party",
+        "evening",
+        "compliment-getter",
+        "youthful",
+        "cold-weather",
+        "sensual"
+      ]
+    },
+    {
+      "name": "Alien",
+      "brand": "Mugler",
+      "brand_country": "France",
+      "year": 2005,
+      "gender": "women",
+      "perfumers": [
+        "Dominique Ropion",
+        "Laurent Bruyère"
+      ],
+      "accords": [
+        {
+          "name": "white floral",
+          "strength": 100
+        },
+        {
+          "name": "amber",
+          "strength": 85
+        },
+        {
+          "name": "woody",
+          "strength": 60
+        },
+        {
+          "name": "powdery",
+          "strength": 40
+        },
+        {
+          "name": "musky",
+          "strength": 35
+        },
+        {
+          "name": "sweet",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Jasmine Sambac"
+        ],
+        "middle": [
+          "Cashmere Wood"
+        ],
+        "base": [
+          "White Amber"
+        ]
+      },
+      "description": "An intense jasmine sambac wrapped in soft cashmere woods and a warm, resinous white amber. Bold and unmistakable, it fills a room with very little effort.",
+      "rating": 3.95,
+      "rating_votes": 18600,
+      "season_votes": {
+        "winter": 8000,
+        "spring": 4500,
+        "summer": 1500,
+        "fall": 8500
+      },
+      "time_votes": {
+        "day": 4500,
+        "night": 11000
+      },
+      "gender_votes": {
+        "female": 11000,
+        "more_female": 2500,
+        "unisex": 700,
+        "more_male": 100,
+        "male": 100
+      },
+      "longevity_votes": {
+        "very_weak": 200,
+        "weak": 400,
+        "moderate": 1800,
+        "long_lasting": 5000,
+        "eternal": 5500
+      },
+      "sillage_votes": {
+        "intimate": 300,
+        "moderate": 1800,
+        "strong": 5000,
+        "enormous": 5000
+      },
+      "price_value_votes": {
+        "way_overpriced": 400,
+        "overpriced": 1200,
+        "ok": 3500,
+        "good_value": 2500,
+        "great_value": 1300
+      },
+      "appreciation_votes": {
+        "love": 8500,
+        "like": 5000,
+        "ok": 2500,
+        "dislike": 1600,
+        "hate": 1000
+      },
+      "pros": [
+        "Monster longevity",
+        "Distinctive, recognizable jasmine",
+        "A little goes a long way"
+      ],
+      "cons": [
+        "Can overwhelm in close quarters",
+        "Polarizing, synthetic-leaning to some"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "evening",
+        "statement",
+        "beast-mode",
+        "signature",
+        "polarizing",
+        "cold-weather",
+        "sensual"
+      ]
+    },
+    {
+      "name": "Black Orchid",
+      "brand": "Tom Ford",
+      "brand_country": "USA",
+      "year": 2006,
+      "gender": "women",
+      "perfumers": [
+        "David Apel",
+        "Pierre Negrin"
+      ],
+      "accords": [
+        {
+          "name": "earthy",
+          "strength": 100
+        },
+        {
+          "name": "patchouli",
+          "strength": 85
+        },
+        {
+          "name": "warm spicy",
+          "strength": 70
+        },
+        {
+          "name": "sweet",
+          "strength": 60
+        },
+        {
+          "name": "chocolate",
+          "strength": 50
+        },
+        {
+          "name": "fruity",
+          "strength": 45
+        },
+        {
+          "name": "woody",
+          "strength": 40
+        },
+        {
+          "name": "vanilla",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Black Truffle",
+          "Ylang-Ylang",
+          "Bergamot",
+          "Black Currant",
+          "Gardenia"
+        ],
+        "middle": [
+          "Orchid",
+          "Spices",
+          "Fruity Notes",
+          "Lotus"
+        ],
+        "base": [
+          "Mexican Chocolate",
+          "Patchouli",
+          "Incense",
+          "Vanilla",
+          "Sandalwood",
+          "Vetiver"
+        ]
+      },
+      "description": "Velvety and slightly earthy, with truffle, dark orchid and chocolate-laced patchouli. It has an opulent, gothic kind of glamour that belongs to the night.",
+      "rating": 3.9,
+      "rating_votes": 12900,
+      "season_votes": {
+        "winter": 7500,
+        "spring": 1500,
+        "summer": 500,
+        "fall": 6500
+      },
+      "time_votes": {
+        "day": 2000,
+        "night": 8500
+      },
+      "gender_votes": {
+        "female": 3000,
+        "more_female": 2500,
+        "unisex": 3500,
+        "more_male": 900,
+        "male": 500
+      },
+      "longevity_votes": {
+        "very_weak": 150,
+        "weak": 400,
+        "moderate": 1500,
+        "long_lasting": 4000,
+        "eternal": 2500
+      },
+      "sillage_votes": {
+        "intimate": 200,
+        "moderate": 1500,
+        "strong": 3500,
+        "enormous": 2500
+      },
+      "price_value_votes": {
+        "way_overpriced": 700,
+        "overpriced": 1800,
+        "ok": 2500,
+        "good_value": 1300,
+        "great_value": 500
+      },
+      "appreciation_votes": {
+        "love": 5500,
+        "like": 3500,
+        "ok": 1800,
+        "dislike": 1200,
+        "hate": 900
+      },
+      "pros": [
+        "Rich, unmistakable signature",
+        "Excellent performance",
+        "Wears well on any gender"
+      ],
+      "cons": [
+        "Heavy and polarizing",
+        "Too dense for daytime or heat"
+      ],
+      "price_tier": "luxury",
+      "tags": [
+        "evening",
+        "statement",
+        "polarizing",
+        "sensual",
+        "cold-weather",
+        "formal",
+        "mature-elegant"
+      ]
+    },
+    {
+      "name": "Good Girl",
+      "brand": "Carolina Herrera",
+      "brand_country": "USA",
+      "year": 2016,
+      "gender": "women",
+      "perfumers": [
+        "Louise Turner"
+      ],
+      "accords": [
+        {
+          "name": "sweet",
+          "strength": 100
+        },
+        {
+          "name": "white floral",
+          "strength": 80
+        },
+        {
+          "name": "tuberose",
+          "strength": 65
+        },
+        {
+          "name": "vanilla",
+          "strength": 55
+        },
+        {
+          "name": "cacao",
+          "strength": 50
+        },
+        {
+          "name": "almond",
+          "strength": 45
+        },
+        {
+          "name": "coffee",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Almond",
+          "Coffee",
+          "Bergamot",
+          "Lemon"
+        ],
+        "middle": [
+          "Tuberose",
+          "Jasmine Sambac",
+          "Orange Blossom",
+          "Bulgarian Rose",
+          "Orris"
+        ],
+        "base": [
+          "Tonka Bean",
+          "Cacao",
+          "Vanilla",
+          "Praline",
+          "Sandalwood",
+          "Patchouli"
+        ]
+      },
+      "description": "Tuberose and jasmine shaded with cocoa, roasted tonka and almond. It feels confident and a little two-faced in a good way, made for going out.",
+      "rating": 3.9,
+      "rating_votes": 22100,
+      "season_votes": {
+        "winter": 11000,
+        "spring": 4500,
+        "summer": 1300,
+        "fall": 11500
+      },
+      "time_votes": {
+        "day": 6000,
+        "night": 13500
+      },
+      "gender_votes": {
+        "female": 13500,
+        "more_female": 3500,
+        "unisex": 700,
+        "more_male": 100,
+        "male": 100
+      },
+      "longevity_votes": {
+        "very_weak": 300,
+        "weak": 900,
+        "moderate": 3800,
+        "long_lasting": 6500,
+        "eternal": 2300
+      },
+      "sillage_votes": {
+        "intimate": 600,
+        "moderate": 4200,
+        "strong": 6000,
+        "enormous": 2000
+      },
+      "price_value_votes": {
+        "way_overpriced": 600,
+        "overpriced": 2000,
+        "ok": 5000,
+        "good_value": 3000,
+        "great_value": 1200
+      },
+      "appreciation_votes": {
+        "love": 9000,
+        "like": 7000,
+        "ok": 3500,
+        "dislike": 1800,
+        "hate": 800
+      },
+      "pros": [
+        "Seductive tuberose-cocoa blend",
+        "Long-lasting",
+        "Eye-catching stiletto bottle"
+      ],
+      "cons": [
+        "Extremely popular",
+        "Can turn cloying if overapplied"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "date-night",
+        "party",
+        "evening",
+        "compliment-getter",
+        "sensual",
+        "cold-weather",
+        "youthful"
+      ]
+    },
+    {
+      "name": "Hypnotic Poison",
+      "brand": "Dior",
+      "brand_country": "France",
+      "year": 1998,
+      "gender": "women",
+      "perfumers": [
+        "Annick Menardo"
+      ],
+      "accords": [
+        {
+          "name": "vanilla",
+          "strength": 100
+        },
+        {
+          "name": "almond",
+          "strength": 85
+        },
+        {
+          "name": "sweet",
+          "strength": 70
+        },
+        {
+          "name": "powdery",
+          "strength": 50
+        },
+        {
+          "name": "white floral",
+          "strength": 40
+        },
+        {
+          "name": "coconut",
+          "strength": 30
+        },
+        {
+          "name": "nutty",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Coconut",
+          "Plum",
+          "Apricot"
+        ],
+        "middle": [
+          "Brazilian Rosewood",
+          "Jasmine",
+          "Caraway",
+          "Tuberose",
+          "Rose",
+          "Lily of the Valley"
+        ],
+        "base": [
+          "Almond",
+          "Vanilla",
+          "Sandalwood",
+          "Musk"
+        ]
+      },
+      "description": "A trance-like cloud of bitter almond and dark vanilla with a thread of jasmine. Soft but seductive, it is a timeless after-dark gourmand.",
+      "rating": 4.2,
+      "rating_votes": 16200,
+      "season_votes": {
+        "winter": 9000,
+        "spring": 3500,
+        "summer": 1000,
+        "fall": 8500
+      },
+      "time_votes": {
+        "day": 3500,
+        "night": 10000
+      },
+      "gender_votes": {
+        "female": 9500,
+        "more_female": 2500,
+        "unisex": 900,
+        "more_male": 150,
+        "male": 100
+      },
+      "longevity_votes": {
+        "very_weak": 200,
+        "weak": 600,
+        "moderate": 2800,
+        "long_lasting": 5000,
+        "eternal": 2000
+      },
+      "sillage_votes": {
+        "intimate": 400,
+        "moderate": 2800,
+        "strong": 4500,
+        "enormous": 1500
+      },
+      "price_value_votes": {
+        "way_overpriced": 300,
+        "overpriced": 900,
+        "ok": 3000,
+        "good_value": 2500,
+        "great_value": 1300
+      },
+      "appreciation_votes": {
+        "love": 8500,
+        "like": 4500,
+        "ok": 1800,
+        "dislike": 900,
+        "hate": 500
+      },
+      "pros": [
+        "Iconic almond-vanilla accord",
+        "Cosy yet seductive",
+        "Great longevity"
+      ],
+      "cons": [
+        "Reformulations divide fans",
+        "Too sweet for warm days"
+      ],
+      "price_tier": "luxury",
+      "tags": [
+        "date-night",
+        "evening",
+        "classic",
+        "sensual",
+        "cosy",
+        "cold-weather",
+        "romantic"
+      ]
+    },
+    {
+      "name": "Flowerbomb",
+      "brand": "Viktor&Rolf",
+      "brand_country": "Netherlands",
+      "year": 2005,
+      "gender": "women",
+      "perfumers": [
+        "Olivier Polge",
+        "Carlos Benaim",
+        "Domitille Michalon-Bertier",
+        "Dominique Ropion"
+      ],
+      "accords": [
+        {
+          "name": "sweet",
+          "strength": 100
+        },
+        {
+          "name": "floral",
+          "strength": 80
+        },
+        {
+          "name": "patchouli",
+          "strength": 60
+        },
+        {
+          "name": "powdery",
+          "strength": 50
+        },
+        {
+          "name": "fruity",
+          "strength": 40
+        },
+        {
+          "name": "rose",
+          "strength": 35
+        },
+        {
+          "name": "musky",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Tea",
+          "Bergamot",
+          "Osmanthus"
+        ],
+        "middle": [
+          "Jasmine Sambac",
+          "Orchid",
+          "Freesia",
+          "Rose"
+        ],
+        "base": [
+          "Patchouli",
+          "Musk"
+        ]
+      },
+      "description": "A sugary burst of orchid, jasmine and rose around a patchouli core. Lush, glamorous and openly feminine.",
+      "rating": 3.85,
+      "rating_votes": 17900,
+      "season_votes": {
+        "winter": 8500,
+        "spring": 7000,
+        "summer": 2000,
+        "fall": 8000
+      },
+      "time_votes": {
+        "day": 7000,
+        "night": 10500
+      },
+      "gender_votes": {
+        "female": 13000,
+        "more_female": 2000,
+        "unisex": 400,
+        "more_male": 80,
+        "male": 80
+      },
+      "longevity_votes": {
+        "very_weak": 300,
+        "weak": 900,
+        "moderate": 3500,
+        "long_lasting": 5000,
+        "eternal": 1800
+      },
+      "sillage_votes": {
+        "intimate": 600,
+        "moderate": 3500,
+        "strong": 4800,
+        "enormous": 1600
+      },
+      "price_value_votes": {
+        "way_overpriced": 500,
+        "overpriced": 1600,
+        "ok": 4000,
+        "good_value": 2400,
+        "great_value": 900
+      },
+      "appreciation_votes": {
+        "love": 7000,
+        "like": 5500,
+        "ok": 3000,
+        "dislike": 1600,
+        "hate": 800
+      },
+      "pros": [
+        "Big, glamorous sweetness",
+        "Strong projection",
+        "Unmistakably feminine"
+      ],
+      "cons": [
+        "Can be cloying",
+        "Very widely worn"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "party",
+        "evening",
+        "compliment-getter",
+        "pink-coded",
+        "romantic",
+        "statement"
+      ]
+    },
+    {
+      "name": "L'Interdit Eau de Parfum",
+      "brand": "Givenchy",
+      "brand_country": "France",
+      "year": 2018,
+      "gender": "women",
+      "perfumers": [
+        "Dominique Ropion",
+        "Anne Flipo",
+        "Fanny Bal"
+      ],
+      "accords": [
+        {
+          "name": "white floral",
+          "strength": 100
+        },
+        {
+          "name": "tuberose",
+          "strength": 80
+        },
+        {
+          "name": "patchouli",
+          "strength": 55
+        },
+        {
+          "name": "sweet",
+          "strength": 50
+        },
+        {
+          "name": "earthy",
+          "strength": 45
+        },
+        {
+          "name": "vanilla",
+          "strength": 40
+        },
+        {
+          "name": "woody",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Pear",
+          "Bergamot"
+        ],
+        "middle": [
+          "Tuberose",
+          "Orange Blossom",
+          "Jasmine Sambac"
+        ],
+        "base": [
+          "Patchouli",
+          "Vetiver",
+          "Ambroxan",
+          "Vanilla"
+        ]
+      },
+      "description": "Tuberose, orange blossom and jasmine darkened by earthy patchouli and vetiver over a soft vanilla base. A moody, sensual floral that comes alive on nights out.",
+      "rating": 3.85,
+      "rating_votes": 10200,
+      "season_votes": {
+        "winter": 4500,
+        "spring": 4500,
+        "summer": 1300,
+        "fall": 5500
+      },
+      "time_votes": {
+        "day": 3500,
+        "night": 6500
+      },
+      "gender_votes": {
+        "female": 6500,
+        "more_female": 1500,
+        "unisex": 300,
+        "more_male": 50,
+        "male": 50
+      },
+      "longevity_votes": {
+        "very_weak": 150,
+        "weak": 500,
+        "moderate": 2200,
+        "long_lasting": 3200,
+        "eternal": 900
+      },
+      "sillage_votes": {
+        "intimate": 300,
+        "moderate": 2300,
+        "strong": 3000,
+        "enormous": 800
+      },
+      "price_value_votes": {
+        "way_overpriced": 300,
+        "overpriced": 900,
+        "ok": 2400,
+        "good_value": 1400,
+        "great_value": 500
+      },
+      "appreciation_votes": {
+        "love": 3800,
+        "like": 3500,
+        "ok": 1800,
+        "dislike": 800,
+        "hate": 300
+      },
+      "pros": [
+        "Modern dark-floral twist",
+        "Elegant yet sexy",
+        "Good performance"
+      ],
+      "cons": [
+        "Tuberose opening can feel sharp",
+        "Resembles many modern florals"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "evening",
+        "date-night",
+        "sensual",
+        "modern",
+        "versatile"
+      ]
+    },
+    {
+      "name": "Portrait of a Lady",
+      "brand": "Frederic Malle",
+      "brand_country": "France",
+      "year": 2010,
+      "gender": "women",
+      "perfumers": [
+        "Dominique Ropion"
+      ],
+      "accords": [
+        {
+          "name": "rose",
+          "strength": 100
+        },
+        {
+          "name": "patchouli",
+          "strength": 85
+        },
+        {
+          "name": "warm spicy",
+          "strength": 60
+        },
+        {
+          "name": "woody",
+          "strength": 55
+        },
+        {
+          "name": "amber",
+          "strength": 50
+        },
+        {
+          "name": "smoky",
+          "strength": 45
+        },
+        {
+          "name": "fruity",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Turkish Rose",
+          "Raspberry",
+          "Black Currant",
+          "Clove",
+          "Cinnamon"
+        ],
+        "middle": [
+          "Patchouli",
+          "Incense",
+          "Sandalwood"
+        ],
+        "base": [
+          "Musk",
+          "Benzoin",
+          "Amber"
+        ]
+      },
+      "description": "A huge, dark rose steeped in patchouli, spice and incense smoke. Regal and dramatic, it suits candlelit evenings.",
+      "rating": 4.3,
+      "rating_votes": 8850,
+      "season_votes": {
+        "winter": 5500,
+        "spring": 2000,
+        "summer": 500,
+        "fall": 5200
+      },
+      "time_votes": {
+        "day": 2000,
+        "night": 6000
+      },
+      "gender_votes": {
+        "female": 2200,
+        "more_female": 1700,
+        "unisex": 3000,
+        "more_male": 500,
+        "male": 300
+      },
+      "longevity_votes": {
+        "very_weak": 50,
+        "weak": 150,
+        "moderate": 800,
+        "long_lasting": 2600,
+        "eternal": 2200
+      },
+      "sillage_votes": {
+        "intimate": 80,
+        "moderate": 700,
+        "strong": 2400,
+        "enormous": 2000
+      },
+      "price_value_votes": {
+        "way_overpriced": 800,
+        "overpriced": 1500,
+        "ok": 1600,
+        "good_value": 700,
+        "great_value": 350
+      },
+      "appreciation_votes": {
+        "love": 5000,
+        "like": 2400,
+        "ok": 800,
+        "dislike": 400,
+        "hate": 250
+      },
+      "pros": [
+        "Masterful, opulent rose",
+        "Extraordinary longevity",
+        "Works on any gender"
+      ],
+      "cons": [
+        "Very expensive",
+        "Can dominate a room"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "evening",
+        "formal",
+        "statement",
+        "mature-elegant",
+        "signature",
+        "cold-weather",
+        "beast-mode"
+      ]
+    },
+    {
+      "name": "Shalimar",
+      "brand": "Guerlain",
+      "brand_country": "France",
+      "year": 1925,
+      "gender": "women",
+      "perfumers": [
+        "Jacques Guerlain"
+      ],
+      "accords": [
+        {
+          "name": "vanilla",
+          "strength": 100
+        },
+        {
+          "name": "powdery",
+          "strength": 80
+        },
+        {
+          "name": "amber",
+          "strength": 75
+        },
+        {
+          "name": "citrus",
+          "strength": 55
+        },
+        {
+          "name": "balsamic",
+          "strength": 50
+        },
+        {
+          "name": "smoky",
+          "strength": 40
+        },
+        {
+          "name": "animalic",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Lemon",
+          "Mandarin Orange"
+        ],
+        "middle": [
+          "Iris",
+          "Jasmine",
+          "Rose"
+        ],
+        "base": [
+          "Vanilla",
+          "Opoponax",
+          "Incense",
+          "Tonka Bean",
+          "Leather",
+          "Civet"
+        ]
+      },
+      "description": "The archetypal oriental, where sparkling bergamot melts into smoky, powdery vanilla and resins. Sophisticated and sensual, with a quiet sense of drama.",
+      "rating": 4.05,
+      "rating_votes": 11000,
+      "season_votes": {
+        "winter": 6000,
+        "spring": 2500,
+        "summer": 700,
+        "fall": 5500
+      },
+      "time_votes": {
+        "day": 2800,
+        "night": 6500
+      },
+      "gender_votes": {
+        "female": 6000,
+        "more_female": 2000,
+        "unisex": 900,
+        "more_male": 150,
+        "male": 100
+      },
+      "longevity_votes": {
+        "very_weak": 100,
+        "weak": 350,
+        "moderate": 1800,
+        "long_lasting": 3300,
+        "eternal": 1500
+      },
+      "sillage_votes": {
+        "intimate": 300,
+        "moderate": 2000,
+        "strong": 3000,
+        "enormous": 1100
+      },
+      "price_value_votes": {
+        "way_overpriced": 250,
+        "overpriced": 700,
+        "ok": 2200,
+        "good_value": 1800,
+        "great_value": 900
+      },
+      "appreciation_votes": {
+        "love": 5000,
+        "like": 3000,
+        "ok": 1600,
+        "dislike": 900,
+        "hate": 500
+      },
+      "pros": [
+        "Legendary, timeless composition",
+        "Luxurious vanilla-resin depth",
+        "Long-lasting"
+      ],
+      "cons": [
+        "Can read old-fashioned",
+        "Smoky-animalic drydown not for everyone"
+      ],
+      "price_tier": "luxury",
+      "tags": [
+        "classic",
+        "mature-elegant",
+        "evening",
+        "formal",
+        "sensual",
+        "cold-weather"
+      ]
+    },
+    {
+      "name": "La Nuit de L'Homme",
+      "brand": "Yves Saint Laurent",
+      "brand_country": "France",
+      "year": 2009,
+      "gender": "men",
+      "perfumers": [
+        "Anne Flipo",
+        "Pierre Wargnye",
+        "Dominique Ropion"
+      ],
+      "accords": [
+        {
+          "name": "fresh spicy",
+          "strength": 100
+        },
+        {
+          "name": "aromatic",
+          "strength": 80
+        },
+        {
+          "name": "warm spicy",
+          "strength": 70
+        },
+        {
+          "name": "lavender",
+          "strength": 60
+        },
+        {
+          "name": "woody",
+          "strength": 55
+        },
+        {
+          "name": "citrus",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Cardamom"
+        ],
+        "middle": [
+          "Lavender",
+          "Virginia Cedar",
+          "Bergamot"
+        ],
+        "base": [
+          "Vetiver",
+          "Caraway"
+        ]
+      },
+      "description": "Smooth, seductive cardamom and lavender over soft cedar. It stays intimate and suave, which makes it a classic close-quarters date scent.",
+      "rating": 4.2,
+      "rating_votes": 19000,
+      "season_votes": {
+        "winter": 7000,
+        "spring": 9500,
+        "summer": 1500,
+        "fall": 12000
+      },
+      "time_votes": {
+        "day": 5000,
+        "night": 15000
+      },
+      "gender_votes": {
+        "female": 100,
+        "more_female": 150,
+        "unisex": 900,
+        "more_male": 4000,
+        "male": 13000
+      },
+      "longevity_votes": {
+        "very_weak": 1500,
+        "weak": 4500,
+        "moderate": 6500,
+        "long_lasting": 2500,
+        "eternal": 500
+      },
+      "sillage_votes": {
+        "intimate": 5500,
+        "moderate": 7000,
+        "strong": 2000,
+        "enormous": 400
+      },
+      "price_value_votes": {
+        "way_overpriced": 700,
+        "overpriced": 2200,
+        "ok": 4500,
+        "good_value": 3000,
+        "great_value": 1200
+      },
+      "appreciation_votes": {
+        "love": 10000,
+        "like": 6000,
+        "ok": 2000,
+        "dislike": 700,
+        "hate": 300
+      },
+      "pros": [
+        "Irresistibly smooth cardamom",
+        "Ideal for dates",
+        "Refined and inoffensive"
+      ],
+      "cons": [
+        "Weak longevity",
+        "Stays close to the skin"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "date-night",
+        "romantic",
+        "evening",
+        "compliment-getter",
+        "sensual",
+        "classic"
+      ]
+    },
+    {
+      "name": "Sauvage Elixir",
+      "brand": "Dior",
+      "brand_country": "France",
+      "year": 2021,
+      "gender": "men",
+      "perfumers": [
+        "François Demachy"
+      ],
+      "accords": [
+        {
+          "name": "warm spicy",
+          "strength": 100
+        },
+        {
+          "name": "fresh spicy",
+          "strength": 75
+        },
+        {
+          "name": "aromatic",
+          "strength": 65
+        },
+        {
+          "name": "lavender",
+          "strength": 60
+        },
+        {
+          "name": "amber",
+          "strength": 55
+        },
+        {
+          "name": "woody",
+          "strength": 45
+        },
+        {
+          "name": "anis",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Cinnamon",
+          "Nutmeg",
+          "Cardamom",
+          "Grapefruit"
+        ],
+        "middle": [
+          "Lavender"
+        ],
+        "base": [
+          "Licorice",
+          "Sandalwood",
+          "Amber",
+          "Patchouli",
+          "Vetiver"
+        ]
+      },
+      "description": "A dense, spice-heavy take on Sauvage, with cinnamon, lavender and licorice over ambery woods. Magnetic and built for cold nights.",
+      "rating": 4.2,
+      "rating_votes": 14450,
+      "season_votes": {
+        "winter": 10000,
+        "spring": 2500,
+        "summer": 700,
+        "fall": 8500
+      },
+      "time_votes": {
+        "day": 4000,
+        "night": 11000
+      },
+      "gender_votes": {
+        "female": 50,
+        "more_female": 80,
+        "unisex": 500,
+        "more_male": 2500,
+        "male": 11000
+      },
+      "longevity_votes": {
+        "very_weak": 150,
+        "weak": 300,
+        "moderate": 1500,
+        "long_lasting": 4800,
+        "eternal": 3500
+      },
+      "sillage_votes": {
+        "intimate": 300,
+        "moderate": 1800,
+        "strong": 5000,
+        "enormous": 2800
+      },
+      "price_value_votes": {
+        "way_overpriced": 800,
+        "overpriced": 2200,
+        "ok": 3500,
+        "good_value": 1800,
+        "great_value": 700
+      },
+      "appreciation_votes": {
+        "love": 7500,
+        "like": 4500,
+        "ok": 1500,
+        "dislike": 600,
+        "hate": 350
+      },
+      "pros": [
+        "Beast-mode performance",
+        "Rich, spicy depth",
+        "One spray is enough"
+      ],
+      "cons": [
+        "Pricey for a small bottle",
+        "Too heavy for hot weather"
+      ],
+      "price_tier": "luxury",
+      "tags": [
+        "evening",
+        "beast-mode",
+        "cold-weather",
+        "compliment-getter",
+        "statement",
+        "sensual"
+      ]
+    },
+    {
+      "name": "Ultra Male",
+      "brand": "Jean Paul Gaultier",
+      "brand_country": "France",
+      "year": 2015,
+      "gender": "men",
+      "perfumers": [
+        "Francis Kurkdjian"
+      ],
+      "accords": [
+        {
+          "name": "sweet",
+          "strength": 100
+        },
+        {
+          "name": "vanilla",
+          "strength": 80
+        },
+        {
+          "name": "fruity",
+          "strength": 65
+        },
+        {
+          "name": "aromatic",
+          "strength": 55
+        },
+        {
+          "name": "lavender",
+          "strength": 50
+        },
+        {
+          "name": "warm spicy",
+          "strength": 40
+        },
+        {
+          "name": "amber",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Pear",
+          "Lavender",
+          "Mint",
+          "Bergamot",
+          "Lemon"
+        ],
+        "middle": [
+          "Cinnamon",
+          "Clary Sage",
+          "Caraway"
+        ],
+        "base": [
+          "Black Vanilla",
+          "Amber",
+          "Patchouli",
+          "Cedar"
+        ]
+      },
+      "description": "A louder, sweeter Le Male built around juicy pear and black vanilla. Playful and flirty, it is made for clubs and cold-weather parties.",
+      "rating": 4.1,
+      "rating_votes": 16000,
+      "season_votes": {
+        "winter": 9500,
+        "spring": 3500,
+        "summer": 900,
+        "fall": 8500
+      },
+      "time_votes": {
+        "day": 3500,
+        "night": 12500
+      },
+      "gender_votes": {
+        "female": 200,
+        "more_female": 350,
+        "unisex": 1300,
+        "more_male": 3500,
+        "male": 9500
+      },
+      "longevity_votes": {
+        "very_weak": 150,
+        "weak": 500,
+        "moderate": 2500,
+        "long_lasting": 5000,
+        "eternal": 2000
+      },
+      "sillage_votes": {
+        "intimate": 300,
+        "moderate": 2200,
+        "strong": 5000,
+        "enormous": 2200
+      },
+      "price_value_votes": {
+        "way_overpriced": 200,
+        "overpriced": 600,
+        "ok": 2500,
+        "good_value": 3500,
+        "great_value": 2500
+      },
+      "appreciation_votes": {
+        "love": 8000,
+        "like": 5000,
+        "ok": 1800,
+        "dislike": 800,
+        "hate": 400
+      },
+      "pros": [
+        "Huge compliment-getter",
+        "Strong projection",
+        "Great value when discounted"
+      ],
+      "cons": [
+        "Very sweet, can feel juvenile",
+        "Cloying in hot weather"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "party",
+        "date-night",
+        "compliment-getter",
+        "youthful",
+        "cold-weather",
+        "beast-mode"
+      ]
+    },
+    {
+      "name": "1 Million",
+      "brand": "Paco Rabanne",
+      "brand_country": "Spain",
+      "year": 2008,
+      "gender": "men",
+      "perfumers": [
+        "Christophe Raynaud",
+        "Olivier Pescheux",
+        "Michel Girard"
+      ],
+      "accords": [
+        {
+          "name": "warm spicy",
+          "strength": 100
+        },
+        {
+          "name": "sweet",
+          "strength": 80
+        },
+        {
+          "name": "cinnamon",
+          "strength": 65
+        },
+        {
+          "name": "leather",
+          "strength": 55
+        },
+        {
+          "name": "amber",
+          "strength": 50
+        },
+        {
+          "name": "woody",
+          "strength": 40
+        },
+        {
+          "name": "citrus",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Blood Mandarin",
+          "Grapefruit",
+          "Mint"
+        ],
+        "middle": [
+          "Cinnamon",
+          "Spicy Notes",
+          "Rose"
+        ],
+        "base": [
+          "Amber",
+          "Leather",
+          "Woody Notes",
+          "Patchouli"
+        ]
+      },
+      "description": "Sweet cinnamon spice and leather in a gold-ingot bottle. Loud and flashy, it is unmistakably a nightclub scent.",
+      "rating": 3.75,
+      "rating_votes": 25500,
+      "season_votes": {
+        "winter": 13000,
+        "spring": 5000,
+        "summer": 1500,
+        "fall": 12000
+      },
+      "time_votes": {
+        "day": 5000,
+        "night": 17000
+      },
+      "gender_votes": {
+        "female": 250,
+        "more_female": 400,
+        "unisex": 1500,
+        "more_male": 4500,
+        "male": 15000
+      },
+      "longevity_votes": {
+        "very_weak": 500,
+        "weak": 1500,
+        "moderate": 5500,
+        "long_lasting": 7000,
+        "eternal": 2500
+      },
+      "sillage_votes": {
+        "intimate": 800,
+        "moderate": 5000,
+        "strong": 7500,
+        "enormous": 3000
+      },
+      "price_value_votes": {
+        "way_overpriced": 700,
+        "overpriced": 2200,
+        "ok": 6000,
+        "good_value": 4500,
+        "great_value": 2500
+      },
+      "appreciation_votes": {
+        "love": 9000,
+        "like": 8000,
+        "ok": 4500,
+        "dislike": 2500,
+        "hate": 1500
+      },
+      "pros": [
+        "Crowd-pleasing sweet-spicy hit",
+        "Strong projection",
+        "Affordable when discounted"
+      ],
+      "cons": [
+        "Extremely common",
+        "Can feel dated and cloying"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "party",
+        "crowd-pleaser",
+        "youthful",
+        "cold-weather",
+        "compliment-getter",
+        "evening"
+      ]
+    },
+    {
+      "name": "Dior Homme Intense",
+      "brand": "Dior",
+      "brand_country": "France",
+      "year": 2011,
+      "gender": "men",
+      "perfumers": [
+        "François Demachy"
+      ],
+      "accords": [
+        {
+          "name": "iris",
+          "strength": 100
+        },
+        {
+          "name": "powdery",
+          "strength": 85
+        },
+        {
+          "name": "woody",
+          "strength": 60
+        },
+        {
+          "name": "lavender",
+          "strength": 45
+        },
+        {
+          "name": "sweet",
+          "strength": 40
+        },
+        {
+          "name": "earthy",
+          "strength": 35
+        },
+        {
+          "name": "fruity",
+          "strength": 25
+        }
+      ],
+      "notes": {
+        "top": [
+          "Lavender"
+        ],
+        "middle": [
+          "Iris",
+          "Ambrette",
+          "Pear"
+        ],
+        "base": [
+          "Virginia Cedar",
+          "Vetiver"
+        ]
+      },
+      "description": "A velvety, lipstick-like iris softened with pear and ambrette over cedar. Refined and romantic, it is quietly seductive at formal events.",
+      "rating": 4.35,
+      "rating_votes": 14000,
+      "season_votes": {
+        "winter": 8500,
+        "spring": 4500,
+        "summer": 700,
+        "fall": 8500
+      },
+      "time_votes": {
+        "day": 4500,
+        "night": 9500
+      },
+      "gender_votes": {
+        "female": 150,
+        "more_female": 350,
+        "unisex": 1500,
+        "more_male": 3500,
+        "male": 7500
+      },
+      "longevity_votes": {
+        "very_weak": 150,
+        "weak": 500,
+        "moderate": 2200,
+        "long_lasting": 4500,
+        "eternal": 1800
+      },
+      "sillage_votes": {
+        "intimate": 800,
+        "moderate": 3500,
+        "strong": 3500,
+        "enormous": 900
+      },
+      "price_value_votes": {
+        "way_overpriced": 300,
+        "overpriced": 1000,
+        "ok": 3000,
+        "good_value": 2200,
+        "great_value": 900
+      },
+      "appreciation_votes": {
+        "love": 8000,
+        "like": 3800,
+        "ok": 1300,
+        "dislike": 600,
+        "hate": 300
+      },
+      "pros": [
+        "Unique, elegant iris",
+        "Superb for formal evenings",
+        "Long-lasting"
+      ],
+      "cons": [
+        "Powdery lipstick vibe polarizes",
+        "Not suited to hot weather"
+      ],
+      "price_tier": "luxury",
+      "tags": [
+        "formal",
+        "evening",
+        "date-night",
+        "mature-elegant",
+        "classic",
+        "cold-weather",
+        "wedding"
+      ]
+    },
+    {
+      "name": "Luna Rossa Black",
+      "brand": "Prada",
+      "brand_country": "Italy",
+      "year": 2018,
+      "gender": "men",
+      "perfumers": [
+        "Daniela Andrier"
+      ],
+      "accords": [
+        {
+          "name": "amber",
+          "strength": 100
+        },
+        {
+          "name": "powdery",
+          "strength": 70
+        },
+        {
+          "name": "patchouli",
+          "strength": 60
+        },
+        {
+          "name": "woody",
+          "strength": 55
+        },
+        {
+          "name": "musky",
+          "strength": 50
+        },
+        {
+          "name": "citrus",
+          "strength": 40
+        },
+        {
+          "name": "sweet",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Bergamot"
+        ],
+        "middle": [
+          "Patchouli",
+          "Angelica"
+        ],
+        "base": [
+          "Amber",
+          "Coumarin",
+          "Musk"
+        ]
+      },
+      "description": "Smooth coumarin and amber with a flash of bergamot and soft patchouli. Dark and polished, it is quietly sexy rather than loud.",
+      "rating": 4,
+      "rating_votes": 6600,
+      "season_votes": {
+        "winter": 3500,
+        "spring": 2000,
+        "summer": 500,
+        "fall": 3800
+      },
+      "time_votes": {
+        "day": 1800,
+        "night": 4800
+      },
+      "gender_votes": {
+        "female": 80,
+        "more_female": 150,
+        "unisex": 700,
+        "more_male": 1500,
+        "male": 3800
+      },
+      "longevity_votes": {
+        "very_weak": 150,
+        "weak": 500,
+        "moderate": 1800,
+        "long_lasting": 2000,
+        "eternal": 500
+      },
+      "sillage_votes": {
+        "intimate": 600,
+        "moderate": 2500,
+        "strong": 1500,
+        "enormous": 300
+      },
+      "price_value_votes": {
+        "way_overpriced": 150,
+        "overpriced": 500,
+        "ok": 1500,
+        "good_value": 1300,
+        "great_value": 700
+      },
+      "appreciation_votes": {
+        "love": 2800,
+        "like": 2400,
+        "ok": 900,
+        "dislike": 350,
+        "hate": 150
+      },
+      "pros": [
+        "Sleek, sophisticated amber",
+        "Easy to wear at night",
+        "Often well priced"
+      ],
+      "cons": [
+        "Moderate projection",
+        "Somewhat generic to enthusiasts"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "date-night",
+        "evening",
+        "sensual",
+        "understated",
+        "modern",
+        "cosy"
+      ]
+    },
+    {
+      "name": "Eros",
+      "brand": "Versace",
+      "brand_country": "Italy",
+      "year": 2012,
+      "gender": "men",
+      "perfumers": [
+        "Aurélien Guichard"
+      ],
+      "accords": [
+        {
+          "name": "sweet",
+          "strength": 100
+        },
+        {
+          "name": "vanilla",
+          "strength": 80
+        },
+        {
+          "name": "aromatic",
+          "strength": 70
+        },
+        {
+          "name": "fresh",
+          "strength": 60
+        },
+        {
+          "name": "green",
+          "strength": 50
+        },
+        {
+          "name": "woody",
+          "strength": 40
+        },
+        {
+          "name": "citrus",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Mint",
+          "Green Apple",
+          "Lemon"
+        ],
+        "middle": [
+          "Tonka Bean",
+          "Ambroxan",
+          "Geranium"
+        ],
+        "base": [
+          "Madagascar Vanilla",
+          "Vetiver",
+          "Oakmoss",
+          "Virginia Cedar",
+          "Atlas Cedar"
+        ]
+      },
+      "description": "Minty green apple over a sweet vanilla and tonka base. Brash and youthful, it comes into its own at clubs and parties.",
+      "rating": 3.95,
+      "rating_votes": 24200,
+      "season_votes": {
+        "winter": 10000,
+        "spring": 9000,
+        "summer": 3500,
+        "fall": 12000
+      },
+      "time_votes": {
+        "day": 7000,
+        "night": 16000
+      },
+      "gender_votes": {
+        "female": 150,
+        "more_female": 250,
+        "unisex": 1200,
+        "more_male": 4500,
+        "male": 15000
+      },
+      "longevity_votes": {
+        "very_weak": 400,
+        "weak": 1200,
+        "moderate": 5000,
+        "long_lasting": 7000,
+        "eternal": 3000
+      },
+      "sillage_votes": {
+        "intimate": 700,
+        "moderate": 4500,
+        "strong": 7500,
+        "enormous": 3500
+      },
+      "price_value_votes": {
+        "way_overpriced": 300,
+        "overpriced": 900,
+        "ok": 4000,
+        "good_value": 6000,
+        "great_value": 4500
+      },
+      "appreciation_votes": {
+        "love": 10000,
+        "like": 8000,
+        "ok": 3500,
+        "dislike": 1800,
+        "hate": 900
+      },
+      "pros": [
+        "Big projection",
+        "Crowd-pleasing sweetness",
+        "Excellent value"
+      ],
+      "cons": [
+        "Can be overbearing",
+        "Very common among younger wearers"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "party",
+        "youthful",
+        "compliment-getter",
+        "beast-mode",
+        "crowd-pleaser",
+        "evening"
+      ]
+    },
+    {
+      "name": "Layton",
+      "brand": "Parfums de Marly",
+      "brand_country": "France",
+      "year": 2016,
+      "gender": "men",
+      "perfumers": [
+        "Hamid Merati-Kashani"
+      ],
+      "accords": [
+        {
+          "name": "warm spicy",
+          "strength": 100
+        },
+        {
+          "name": "vanilla",
+          "strength": 75
+        },
+        {
+          "name": "aromatic",
+          "strength": 65
+        },
+        {
+          "name": "fruity",
+          "strength": 55
+        },
+        {
+          "name": "lavender",
+          "strength": 50
+        },
+        {
+          "name": "woody",
+          "strength": 45
+        },
+        {
+          "name": "fresh spicy",
+          "strength": 40
+        }
+      ],
+      "notes": {
+        "top": [
+          "Apple",
+          "Lavender",
+          "Bergamot",
+          "Mandarin Orange"
+        ],
+        "middle": [
+          "Geranium",
+          "Violet",
+          "Jasmine"
+        ],
+        "base": [
+          "Vanilla",
+          "Cardamom",
+          "Sandalwood",
+          "Pepper",
+          "Patchouli",
+          "Guaiac Wood"
+        ]
+      },
+      "description": "Crisp apple and lavender melt into creamy vanilla and cardamom. A polished, crowd-pleasing niche scent for cool evenings and dinners.",
+      "rating": 4.25,
+      "rating_votes": 13500,
+      "season_votes": {
+        "winter": 7500,
+        "spring": 4000,
+        "summer": 800,
+        "fall": 8000
+      },
+      "time_votes": {
+        "day": 4500,
+        "night": 9000
+      },
+      "gender_votes": {
+        "female": 150,
+        "more_female": 250,
+        "unisex": 1600,
+        "more_male": 3500,
+        "male": 7500
+      },
+      "longevity_votes": {
+        "very_weak": 100,
+        "weak": 350,
+        "moderate": 2000,
+        "long_lasting": 5000,
+        "eternal": 2200
+      },
+      "sillage_votes": {
+        "intimate": 250,
+        "moderate": 2000,
+        "strong": 5000,
+        "enormous": 2000
+      },
+      "price_value_votes": {
+        "way_overpriced": 900,
+        "overpriced": 2200,
+        "ok": 3000,
+        "good_value": 1300,
+        "great_value": 500
+      },
+      "appreciation_votes": {
+        "love": 7500,
+        "like": 4000,
+        "ok": 1300,
+        "dislike": 450,
+        "hate": 250
+      },
+      "pros": [
+        "Excellent performance",
+        "Niche quality with mass appeal",
+        "Versatile through the cold months"
+      ],
+      "cons": [
+        "Expensive",
+        "Very common in fragrance circles"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "date-night",
+        "evening",
+        "compliment-getter",
+        "crowd-pleaser",
+        "cold-weather",
+        "signature",
+        "blind-buy-safe"
+      ]
+    },
+    {
+      "name": "Interlude Man",
+      "brand": "Amouage",
+      "brand_country": "Oman",
+      "year": 2012,
+      "gender": "men",
+      "perfumers": [
+        "Pierre Negrin"
+      ],
+      "accords": [
+        {
+          "name": "smoky",
+          "strength": 100
+        },
+        {
+          "name": "amber",
+          "strength": 80
+        },
+        {
+          "name": "warm spicy",
+          "strength": 60
+        },
+        {
+          "name": "balsamic",
+          "strength": 55
+        },
+        {
+          "name": "herbal",
+          "strength": 45
+        },
+        {
+          "name": "leather",
+          "strength": 40
+        },
+        {
+          "name": "oud",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Oregano",
+          "Pimento",
+          "Bergamot"
+        ],
+        "middle": [
+          "Amber",
+          "Incense",
+          "Cistus",
+          "Opoponax"
+        ],
+        "base": [
+          "Leather",
+          "Agarwood",
+          "Patchouli",
+          "Sandalwood"
+        ]
+      },
+      "description": "A swirling storm of incense smoke, oregano and resinous amber. Chaotic, powerful and deeply dramatic, it suits confident wearers.",
+      "rating": 4.15,
+      "rating_votes": 4950,
+      "season_votes": {
+        "winter": 3500,
+        "spring": 600,
+        "summer": 200,
+        "fall": 2800
+      },
+      "time_votes": {
+        "day": 900,
+        "night": 3500
+      },
+      "gender_votes": {
+        "female": 50,
+        "more_female": 80,
+        "unisex": 700,
+        "more_male": 1300,
+        "male": 2200
+      },
+      "longevity_votes": {
+        "very_weak": 30,
+        "weak": 80,
+        "moderate": 400,
+        "long_lasting": 1500,
+        "eternal": 1800
+      },
+      "sillage_votes": {
+        "intimate": 60,
+        "moderate": 350,
+        "strong": 1400,
+        "enormous": 1900
+      },
+      "price_value_votes": {
+        "way_overpriced": 400,
+        "overpriced": 800,
+        "ok": 1100,
+        "good_value": 600,
+        "great_value": 300
+      },
+      "appreciation_votes": {
+        "love": 2700,
+        "like": 1200,
+        "ok": 500,
+        "dislike": 300,
+        "hate": 250
+      },
+      "pros": [
+        "Monumental performance",
+        "Rich incense-amber depth",
+        "Truly distinctive"
+      ],
+      "cons": [
+        "Polarizing oregano-smoke opening",
+        "Too much for offices or heat"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "statement",
+        "beast-mode",
+        "polarizing",
+        "cold-weather",
+        "evening",
+        "formal"
+      ]
+    },
+    {
+      "name": "Replica Jazz Club",
+      "brand": "Maison Margiela",
+      "brand_country": "France",
+      "year": 2013,
+      "gender": "men",
+      "perfumers": [
+        "Alienor Massenet"
+      ],
+      "accords": [
+        {
+          "name": "tobacco",
+          "strength": 100
+        },
+        {
+          "name": "rum",
+          "strength": 80
+        },
+        {
+          "name": "sweet",
+          "strength": 70
+        },
+        {
+          "name": "vanilla",
+          "strength": 60
+        },
+        {
+          "name": "warm spicy",
+          "strength": 50
+        },
+        {
+          "name": "leather",
+          "strength": 40
+        },
+        {
+          "name": "citrus",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Pink Pepper",
+          "Neroli",
+          "Lemon"
+        ],
+        "middle": [
+          "Rum",
+          "Clary Sage",
+          "Java Vetiver"
+        ],
+        "base": [
+          "Tobacco Leaf",
+          "Vanilla Bean",
+          "Styrax"
+        ]
+      },
+      "description": "Rum, tobacco leaf and vanilla that call up a smoky late-night bar. Warm, relaxed and cosy rather than showy.",
+      "rating": 4,
+      "rating_votes": 8850,
+      "season_votes": {
+        "winter": 5500,
+        "spring": 1500,
+        "summer": 400,
+        "fall": 5000
+      },
+      "time_votes": {
+        "day": 2000,
+        "night": 6000
+      },
+      "gender_votes": {
+        "female": 150,
+        "more_female": 300,
+        "unisex": 1800,
+        "more_male": 2200,
+        "male": 4000
+      },
+      "longevity_votes": {
+        "very_weak": 400,
+        "weak": 1400,
+        "moderate": 3000,
+        "long_lasting": 1600,
+        "eternal": 400
+      },
+      "sillage_votes": {
+        "intimate": 1300,
+        "moderate": 3500,
+        "strong": 1300,
+        "enormous": 300
+      },
+      "price_value_votes": {
+        "way_overpriced": 500,
+        "overpriced": 1500,
+        "ok": 2300,
+        "good_value": 900,
+        "great_value": 300
+      },
+      "appreciation_votes": {
+        "love": 3500,
+        "like": 3200,
+        "ok": 1400,
+        "dislike": 500,
+        "hate": 250
+      },
+      "pros": [
+        "Cosy boozy-tobacco mood",
+        "Very easy to like",
+        "Evocative theme"
+      ],
+      "cons": [
+        "Mediocre longevity",
+        "Pricey for its performance"
+      ],
+      "price_tier": "luxury",
+      "tags": [
+        "evening",
+        "cosy",
+        "date-night",
+        "cold-weather",
+        "understated",
+        "casual"
+      ]
+    },
+    {
+      "name": "Club de Nuit Intense Man",
+      "brand": "Armaf",
+      "brand_country": "United Arab Emirates",
+      "year": 2015,
+      "gender": "men",
+      "perfumers": [],
+      "accords": [
+        {
+          "name": "fruity",
+          "strength": 100
+        },
+        {
+          "name": "smoky",
+          "strength": 80
+        },
+        {
+          "name": "citrus",
+          "strength": 65
+        },
+        {
+          "name": "woody",
+          "strength": 60
+        },
+        {
+          "name": "musky",
+          "strength": 45
+        },
+        {
+          "name": "sweet",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Lemon",
+          "Pineapple",
+          "Bergamot",
+          "Black Currant",
+          "Apple"
+        ],
+        "middle": [
+          "Birch",
+          "Jasmine",
+          "Rose"
+        ],
+        "base": [
+          "Musk",
+          "Ambergris",
+          "Patchouli",
+          "Vanilla"
+        ]
+      },
+      "description": "Smoky birch and pineapple over musk, opening with a sharp burst of lemon. Bold and punchy, it performs far above its low price.",
+      "rating": 3.95,
+      "rating_votes": 15300,
+      "season_votes": {
+        "winter": 4500,
+        "spring": 8500,
+        "summer": 6000,
+        "fall": 7000
+      },
+      "time_votes": {
+        "day": 9000,
+        "night": 7500
+      },
+      "gender_votes": {
+        "female": 80,
+        "more_female": 120,
+        "unisex": 700,
+        "more_male": 3000,
+        "male": 11000
+      },
+      "longevity_votes": {
+        "very_weak": 300,
+        "weak": 800,
+        "moderate": 2800,
+        "long_lasting": 5500,
+        "eternal": 3500
+      },
+      "sillage_votes": {
+        "intimate": 400,
+        "moderate": 2200,
+        "strong": 5000,
+        "enormous": 3800
+      },
+      "price_value_votes": {
+        "way_overpriced": 150,
+        "overpriced": 300,
+        "ok": 1300,
+        "good_value": 3500,
+        "great_value": 8000
+      },
+      "appreciation_votes": {
+        "love": 6500,
+        "like": 5000,
+        "ok": 2200,
+        "dislike": 1000,
+        "hate": 600
+      },
+      "pros": [
+        "Outstanding value",
+        "Monster performance",
+        "Versatile smoky-fruity profile"
+      ],
+      "cons": [
+        "Harsh lemony opening",
+        "Noticeable batch variation"
+      ],
+      "price_tier": "budget",
+      "tags": [
+        "beast-mode",
+        "party",
+        "compliment-getter",
+        "versatile",
+        "statement"
+      ]
+    },
+    {
+      "name": "Baccarat Rouge 540",
+      "brand": "Maison Francis Kurkdjian",
+      "brand_country": "France",
+      "year": 2015,
+      "gender": "unisex",
+      "perfumers": [
+        "Francis Kurkdjian"
+      ],
+      "accords": [
+        {
+          "name": "amber",
+          "strength": 100
+        },
+        {
+          "name": "woody",
+          "strength": 80
+        },
+        {
+          "name": "warm spicy",
+          "strength": 55
+        },
+        {
+          "name": "sweet",
+          "strength": 50
+        },
+        {
+          "name": "balsamic",
+          "strength": 35
+        },
+        {
+          "name": "white floral",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Saffron",
+          "Jasmine"
+        ],
+        "middle": [
+          "Amberwood",
+          "Ambergris"
+        ],
+        "base": [
+          "Fir Resin",
+          "Cedar"
+        ]
+      },
+      "description": "A bright, airy mix of saffron, jasmine and ambery woods with a burnt-sugar sheen. Instantly recognizable, it radiates from across the room.",
+      "rating": 4,
+      "rating_votes": 26000,
+      "season_votes": {
+        "winter": 13000,
+        "spring": 8000,
+        "summer": 3000,
+        "fall": 13500
+      },
+      "time_votes": {
+        "day": 9000,
+        "night": 15000
+      },
+      "gender_votes": {
+        "female": 5000,
+        "more_female": 5500,
+        "unisex": 9000,
+        "more_male": 1500,
+        "male": 900
+      },
+      "longevity_votes": {
+        "very_weak": 400,
+        "weak": 1000,
+        "moderate": 3000,
+        "long_lasting": 7000,
+        "eternal": 5500
+      },
+      "sillage_votes": {
+        "intimate": 600,
+        "moderate": 2800,
+        "strong": 7000,
+        "enormous": 5500
+      },
+      "price_value_votes": {
+        "way_overpriced": 5000,
+        "overpriced": 5500,
+        "ok": 3500,
+        "good_value": 1300,
+        "great_value": 700
+      },
+      "appreciation_votes": {
+        "love": 12000,
+        "like": 6000,
+        "ok": 3500,
+        "dislike": 2500,
+        "hate": 2000
+      },
+      "pros": [
+        "Huge sillage and longevity",
+        "Unique, radiant signature",
+        "Draws endless compliments"
+      ],
+      "cons": [
+        "Very expensive",
+        "Ubiquitous and polarizing"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "statement",
+        "compliment-getter",
+        "evening",
+        "beast-mode",
+        "signature",
+        "polarizing",
+        "modern"
+      ]
+    },
+    {
+      "name": "Grand Soir",
+      "brand": "Maison Francis Kurkdjian",
+      "brand_country": "France",
+      "year": 2016,
+      "gender": "unisex",
+      "perfumers": [
+        "Francis Kurkdjian"
+      ],
+      "accords": [
+        {
+          "name": "amber",
+          "strength": 100
+        },
+        {
+          "name": "balsamic",
+          "strength": 85
+        },
+        {
+          "name": "vanilla",
+          "strength": 70
+        },
+        {
+          "name": "sweet",
+          "strength": 60
+        },
+        {
+          "name": "warm spicy",
+          "strength": 45
+        },
+        {
+          "name": "powdery",
+          "strength": 40
+        }
+      ],
+      "notes": {
+        "top": [
+          "Labdanum",
+          "Orange"
+        ],
+        "middle": [
+          "Lavender",
+          "Benzoin"
+        ],
+        "base": [
+          "Amber",
+          "Vanilla",
+          "Tonka Bean",
+          "Musk",
+          "Cedar"
+        ]
+      },
+      "description": "A plush, resin-rich amber built on labdanum, benzoin, tonka and vanilla. Smooth and enveloping rather than loud, it suits dressed-up winter evenings.",
+      "rating": 4.2,
+      "rating_votes": 5100,
+      "season_votes": {
+        "winter": 3500,
+        "spring": 700,
+        "summer": 200,
+        "fall": 3000
+      },
+      "time_votes": {
+        "day": 1000,
+        "night": 3800
+      },
+      "gender_votes": {
+        "female": 400,
+        "more_female": 700,
+        "unisex": 2800,
+        "more_male": 600,
+        "male": 400
+      },
+      "longevity_votes": {
+        "very_weak": 50,
+        "weak": 150,
+        "moderate": 700,
+        "long_lasting": 2000,
+        "eternal": 1100
+      },
+      "sillage_votes": {
+        "intimate": 100,
+        "moderate": 800,
+        "strong": 2000,
+        "enormous": 800
+      },
+      "price_value_votes": {
+        "way_overpriced": 700,
+        "overpriced": 1000,
+        "ok": 1100,
+        "good_value": 400,
+        "great_value": 200
+      },
+      "appreciation_votes": {
+        "love": 2600,
+        "like": 1500,
+        "ok": 600,
+        "dislike": 250,
+        "hate": 150
+      },
+      "pros": [
+        "Luxurious ambery warmth",
+        "Long-lasting",
+        "Refined rather than loud"
+      ],
+      "cons": [
+        "Expensive",
+        "Linear and heavy"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "evening",
+        "formal",
+        "cold-weather",
+        "cosy",
+        "mature-elegant",
+        "sensual"
+      ]
+    },
+    {
+      "name": "Tobacco Vanille",
+      "brand": "Tom Ford",
+      "brand_country": "USA",
+      "year": 2007,
+      "gender": "unisex",
+      "perfumers": [
+        "Olivier Gillotin"
+      ],
+      "accords": [
+        {
+          "name": "tobacco",
+          "strength": 100
+        },
+        {
+          "name": "vanilla",
+          "strength": 90
+        },
+        {
+          "name": "sweet",
+          "strength": 70
+        },
+        {
+          "name": "warm spicy",
+          "strength": 60
+        },
+        {
+          "name": "cacao",
+          "strength": 45
+        },
+        {
+          "name": "fruity",
+          "strength": 40
+        },
+        {
+          "name": "woody",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Tobacco Leaf",
+          "Spicy Notes"
+        ],
+        "middle": [
+          "Vanilla",
+          "Cacao",
+          "Tonka Bean",
+          "Tobacco Blossom"
+        ],
+        "base": [
+          "Dried Fruits",
+          "Woody Notes"
+        ]
+      },
+      "description": "Honeyed tobacco leaf folded into vanilla, cocoa, tonka and dried fruit. Dense and enveloping, it feels like a slow winter evening beside a fireplace.",
+      "rating": 4.15,
+      "rating_votes": 17600,
+      "season_votes": {
+        "winter": 13000,
+        "spring": 1500,
+        "summer": 400,
+        "fall": 9500
+      },
+      "time_votes": {
+        "day": 3500,
+        "night": 11000
+      },
+      "gender_votes": {
+        "female": 900,
+        "more_female": 1400,
+        "unisex": 7500,
+        "more_male": 3500,
+        "male": 2500
+      },
+      "longevity_votes": {
+        "very_weak": 150,
+        "weak": 400,
+        "moderate": 1800,
+        "long_lasting": 6000,
+        "eternal": 4500
+      },
+      "sillage_votes": {
+        "intimate": 300,
+        "moderate": 2000,
+        "strong": 6000,
+        "enormous": 3500
+      },
+      "price_value_votes": {
+        "way_overpriced": 2500,
+        "overpriced": 3500,
+        "ok": 3000,
+        "good_value": 1000,
+        "great_value": 400
+      },
+      "appreciation_votes": {
+        "love": 8500,
+        "like": 5000,
+        "ok": 2200,
+        "dislike": 1200,
+        "hate": 700
+      },
+      "pros": [
+        "Luxurious and rich",
+        "Excellent longevity",
+        "Comforting in cold weather"
+      ],
+      "cons": [
+        "Very heavy",
+        "Expensive, with many cheaper alternatives"
+      ],
+      "price_tier": "luxury",
+      "tags": [
+        "cold-weather",
+        "cosy",
+        "evening",
+        "statement",
+        "beast-mode",
+        "sensual"
+      ]
+    },
+    {
+      "name": "Lost Cherry",
+      "brand": "Tom Ford",
+      "brand_country": "USA",
+      "year": 2018,
+      "gender": "unisex",
+      "perfumers": [
+        "Louise Turner"
+      ],
+      "accords": [
+        {
+          "name": "cherry",
+          "strength": 100
+        },
+        {
+          "name": "almond",
+          "strength": 85
+        },
+        {
+          "name": "sweet",
+          "strength": 75
+        },
+        {
+          "name": "fruity",
+          "strength": 60
+        },
+        {
+          "name": "balsamic",
+          "strength": 40
+        },
+        {
+          "name": "warm spicy",
+          "strength": 30
+        },
+        {
+          "name": "rose",
+          "strength": 25
+        }
+      ],
+      "notes": {
+        "top": [
+          "Black Cherry",
+          "Cherry Liqueur",
+          "Bitter Almond"
+        ],
+        "middle": [
+          "Turkish Rose",
+          "Jasmine Sambac",
+          "Sour Cherry"
+        ],
+        "base": [
+          "Peru Balsam",
+          "Tonka Bean",
+          "Sandalwood",
+          "Vetiver",
+          "Cedar"
+        ]
+      },
+      "description": "A boozy, juicy black cherry laced with bitter almond and liqueur over balsamic tonka. Flirtatious, indulgent and a little decadent.",
+      "rating": 3.9,
+      "rating_votes": 12300,
+      "season_votes": {
+        "winter": 5500,
+        "spring": 3500,
+        "summer": 1000,
+        "fall": 6500
+      },
+      "time_votes": {
+        "day": 3000,
+        "night": 7500
+      },
+      "gender_votes": {
+        "female": 3500,
+        "more_female": 3500,
+        "unisex": 3800,
+        "more_male": 500,
+        "male": 300
+      },
+      "longevity_votes": {
+        "very_weak": 300,
+        "weak": 800,
+        "moderate": 2800,
+        "long_lasting": 3300,
+        "eternal": 1300
+      },
+      "sillage_votes": {
+        "intimate": 500,
+        "moderate": 3000,
+        "strong": 3500,
+        "enormous": 1200
+      },
+      "price_value_votes": {
+        "way_overpriced": 4500,
+        "overpriced": 3000,
+        "ok": 1300,
+        "good_value": 350,
+        "great_value": 200
+      },
+      "appreciation_votes": {
+        "love": 5000,
+        "like": 3500,
+        "ok": 1800,
+        "dislike": 1200,
+        "hate": 800
+      },
+      "pros": [
+        "Mouthwatering cherry-almond accord",
+        "Sexy, playful mood",
+        "Great for date nights"
+      ],
+      "cons": [
+        "Widely seen as overpriced",
+        "Can read as cough syrup to some"
+      ],
+      "price_tier": "luxury",
+      "tags": [
+        "date-night",
+        "sensual",
+        "party",
+        "polarizing",
+        "evening",
+        "cold-weather"
+      ]
+    },
+    {
+      "name": "Ombré Leather",
+      "brand": "Tom Ford",
+      "brand_country": "USA",
+      "year": 2018,
+      "gender": "unisex",
+      "perfumers": [
+        "Sonia Constant"
+      ],
+      "accords": [
+        {
+          "name": "leather",
+          "strength": 100
+        },
+        {
+          "name": "woody",
+          "strength": 70
+        },
+        {
+          "name": "warm spicy",
+          "strength": 55
+        },
+        {
+          "name": "patchouli",
+          "strength": 50
+        },
+        {
+          "name": "amber",
+          "strength": 45
+        },
+        {
+          "name": "white floral",
+          "strength": 30
+        },
+        {
+          "name": "mossy",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Cardamom"
+        ],
+        "middle": [
+          "Leather",
+          "Jasmine Sambac"
+        ],
+        "base": [
+          "Amber",
+          "Moss",
+          "Patchouli"
+        ]
+      },
+      "description": "Supple leather dusted with cardamom and softened by jasmine over mossy amber. Rugged and confident, like a well-worn biker jacket.",
+      "rating": 4.1,
+      "rating_votes": 10350,
+      "season_votes": {
+        "winter": 5500,
+        "spring": 3000,
+        "summer": 900,
+        "fall": 6500
+      },
+      "time_votes": {
+        "day": 3500,
+        "night": 6500
+      },
+      "gender_votes": {
+        "female": 300,
+        "more_female": 500,
+        "unisex": 3200,
+        "more_male": 2500,
+        "male": 3500
+      },
+      "longevity_votes": {
+        "very_weak": 100,
+        "weak": 300,
+        "moderate": 1500,
+        "long_lasting": 4200,
+        "eternal": 1900
+      },
+      "sillage_votes": {
+        "intimate": 250,
+        "moderate": 1800,
+        "strong": 3800,
+        "enormous": 1500
+      },
+      "price_value_votes": {
+        "way_overpriced": 400,
+        "overpriced": 1200,
+        "ok": 2500,
+        "good_value": 1800,
+        "great_value": 800
+      },
+      "appreciation_votes": {
+        "love": 4800,
+        "like": 3300,
+        "ok": 1300,
+        "dislike": 600,
+        "hate": 350
+      },
+      "pros": [
+        "Realistic, smooth leather",
+        "Excellent performance",
+        "Wearable by anyone"
+      ],
+      "cons": [
+        "Leather can be intense up close",
+        "Overexposed among enthusiasts"
+      ],
+      "price_tier": "luxury",
+      "tags": [
+        "evening",
+        "statement",
+        "date-night",
+        "sensual",
+        "cold-weather",
+        "modern"
+      ]
+    },
+    {
+      "name": "Love, Don't Be Shy",
+      "brand": "Kilian Paris",
+      "brand_country": "France",
+      "year": 2007,
+      "gender": "unisex",
+      "perfumers": [
+        "Calice Becker"
+      ],
+      "accords": [
+        {
+          "name": "sweet",
+          "strength": 100
+        },
+        {
+          "name": "vanilla",
+          "strength": 80
+        },
+        {
+          "name": "white floral",
+          "strength": 70
+        },
+        {
+          "name": "caramel",
+          "strength": 55
+        },
+        {
+          "name": "powdery",
+          "strength": 45
+        },
+        {
+          "name": "citrus",
+          "strength": 35
+        },
+        {
+          "name": "musky",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Neroli",
+          "Bergamot",
+          "Pink Pepper",
+          "Coriander"
+        ],
+        "middle": [
+          "Orange Blossom",
+          "Honeysuckle",
+          "Jasmine",
+          "Iris",
+          "Rose"
+        ],
+        "base": [
+          "Marshmallow",
+          "Vanilla",
+          "Sugar",
+          "Caramel",
+          "Labdanum",
+          "Musk"
+        ]
+      },
+      "description": "Fluffy toasted marshmallow and orange blossom over creamy vanilla. A sugary, flirtatious gourmand that clings to skin and radiates.",
+      "rating": 4.15,
+      "rating_votes": 8050,
+      "season_votes": {
+        "winter": 4800,
+        "spring": 3000,
+        "summer": 800,
+        "fall": 4500
+      },
+      "time_votes": {
+        "day": 2800,
+        "night": 5200
+      },
+      "gender_votes": {
+        "female": 3800,
+        "more_female": 2200,
+        "unisex": 1400,
+        "more_male": 150,
+        "male": 100
+      },
+      "longevity_votes": {
+        "very_weak": 150,
+        "weak": 400,
+        "moderate": 1500,
+        "long_lasting": 2600,
+        "eternal": 1400
+      },
+      "sillage_votes": {
+        "intimate": 250,
+        "moderate": 1500,
+        "strong": 2800,
+        "enormous": 1100
+      },
+      "price_value_votes": {
+        "way_overpriced": 1300,
+        "overpriced": 1700,
+        "ok": 1500,
+        "good_value": 500,
+        "great_value": 250
+      },
+      "appreciation_votes": {
+        "love": 4200,
+        "like": 2200,
+        "ok": 900,
+        "dislike": 450,
+        "hate": 300
+      },
+      "pros": [
+        "Addictive marshmallow accord",
+        "Long-lasting",
+        "Soft, cuddly and feminine-leaning"
+      ],
+      "cons": [
+        "Expensive",
+        "Too sugary for some"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "date-night",
+        "romantic",
+        "compliment-getter",
+        "pink-coded",
+        "cosy",
+        "sensual"
+      ]
+    },
+    {
+      "name": "Angels' Share",
+      "brand": "Kilian Paris",
+      "brand_country": "France",
+      "year": 2020,
+      "gender": "unisex",
+      "perfumers": [
+        "Benoist Lapouza"
+      ],
+      "accords": [
+        {
+          "name": "cinnamon",
+          "strength": 100
+        },
+        {
+          "name": "sweet",
+          "strength": 85
+        },
+        {
+          "name": "warm spicy",
+          "strength": 80
+        },
+        {
+          "name": "vanilla",
+          "strength": 70
+        },
+        {
+          "name": "whiskey",
+          "strength": 60
+        },
+        {
+          "name": "woody",
+          "strength": 45
+        }
+      ],
+      "notes": {
+        "top": [
+          "Cognac"
+        ],
+        "middle": [
+          "Cinnamon",
+          "Tonka Bean",
+          "Oak"
+        ],
+        "base": [
+          "Praline",
+          "Vanilla",
+          "Sandalwood"
+        ]
+      },
+      "description": "A cognac-soaked pastry of cinnamon, praline and tonka on oak. Festive and warming, it is very hard to resist after dark in cold weather.",
+      "rating": 4.2,
+      "rating_votes": 10600,
+      "season_votes": {
+        "winter": 8500,
+        "spring": 1000,
+        "summer": 300,
+        "fall": 6500
+      },
+      "time_votes": {
+        "day": 2500,
+        "night": 7000
+      },
+      "gender_votes": {
+        "female": 1200,
+        "more_female": 1500,
+        "unisex": 4500,
+        "more_male": 1500,
+        "male": 1000
+      },
+      "longevity_votes": {
+        "very_weak": 100,
+        "weak": 350,
+        "moderate": 1800,
+        "long_lasting": 4000,
+        "eternal": 1800
+      },
+      "sillage_votes": {
+        "intimate": 250,
+        "moderate": 2200,
+        "strong": 3800,
+        "enormous": 1300
+      },
+      "price_value_votes": {
+        "way_overpriced": 2000,
+        "overpriced": 2500,
+        "ok": 1800,
+        "good_value": 500,
+        "great_value": 250
+      },
+      "appreciation_votes": {
+        "love": 5500,
+        "like": 3200,
+        "ok": 1100,
+        "dislike": 500,
+        "hate": 300
+      },
+      "pros": [
+        "Delicious boozy-cinnamon gourmand",
+        "Genuinely unisex appeal",
+        "Wonderful in winter"
+      ],
+      "cons": [
+        "High price",
+        "One-dimensional for some"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "cold-weather",
+        "cosy",
+        "evening",
+        "compliment-getter",
+        "date-night",
+        "crowd-pleaser"
+      ]
+    },
+    {
+      "name": "Khamrah",
+      "brand": "Lattafa",
+      "brand_country": "United Arab Emirates",
+      "year": 2022,
+      "gender": "unisex",
+      "perfumers": [],
+      "accords": [
+        {
+          "name": "warm spicy",
+          "strength": 100
+        },
+        {
+          "name": "sweet",
+          "strength": 90
+        },
+        {
+          "name": "cinnamon",
+          "strength": 70
+        },
+        {
+          "name": "vanilla",
+          "strength": 65
+        },
+        {
+          "name": "amber",
+          "strength": 55
+        },
+        {
+          "name": "fruity",
+          "strength": 45
+        }
+      ],
+      "notes": {
+        "top": [
+          "Cinnamon",
+          "Nutmeg",
+          "Bergamot"
+        ],
+        "middle": [
+          "Dates",
+          "Praline",
+          "Tuberose",
+          "Mahonial"
+        ],
+        "base": [
+          "Vanilla",
+          "Tonka Bean",
+          "Amberwood",
+          "Myrrh",
+          "Benzoin",
+          "Akigalawood"
+        ]
+      },
+      "description": "A sweet, spiced gourmand of cinnamon, dates and praline over vanilla and resins. Warm and dense, it is remarkably rich for the price.",
+      "rating": 4.1,
+      "rating_votes": 8400,
+      "season_votes": {
+        "winter": 6000,
+        "spring": 1100,
+        "summer": 300,
+        "fall": 4500
+      },
+      "time_votes": {
+        "day": 1800,
+        "night": 5500
+      },
+      "gender_votes": {
+        "female": 400,
+        "more_female": 800,
+        "unisex": 3500,
+        "more_male": 1500,
+        "male": 1200
+      },
+      "longevity_votes": {
+        "very_weak": 150,
+        "weak": 400,
+        "moderate": 1500,
+        "long_lasting": 3200,
+        "eternal": 1600
+      },
+      "sillage_votes": {
+        "intimate": 200,
+        "moderate": 1400,
+        "strong": 3200,
+        "enormous": 1500
+      },
+      "price_value_votes": {
+        "way_overpriced": 50,
+        "overpriced": 150,
+        "ok": 800,
+        "good_value": 2000,
+        "great_value": 4500
+      },
+      "appreciation_votes": {
+        "love": 3800,
+        "like": 2800,
+        "ok": 1100,
+        "dislike": 450,
+        "hate": 250
+      },
+      "pros": [
+        "Incredible value",
+        "Rich winter gourmand",
+        "Strong performance"
+      ],
+      "cons": [
+        "Very sweet",
+        "Derivative rather than original"
+      ],
+      "price_tier": "budget",
+      "tags": [
+        "cold-weather",
+        "cosy",
+        "evening",
+        "compliment-getter",
+        "beast-mode"
+      ]
+    },
+    {
+      "name": "Black Afgano",
+      "brand": "Nasomatto",
+      "brand_country": "Netherlands",
+      "year": 2009,
+      "gender": "unisex",
+      "perfumers": [
+        "Alessandro Gualtieri"
+      ],
+      "accords": [
+        {
+          "name": "smoky",
+          "strength": 100
+        },
+        {
+          "name": "woody",
+          "strength": 85
+        },
+        {
+          "name": "oud",
+          "strength": 70
+        },
+        {
+          "name": "green",
+          "strength": 55
+        },
+        {
+          "name": "earthy",
+          "strength": 50
+        },
+        {
+          "name": "balsamic",
+          "strength": 45
+        },
+        {
+          "name": "coffee",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Cannabis",
+          "Green Notes"
+        ],
+        "middle": [
+          "Resins",
+          "Woody Notes",
+          "Tobacco",
+          "Coffee"
+        ],
+        "base": [
+          "Oud",
+          "Incense"
+        ]
+      },
+      "description": "A dark, resinous haze of cannabis-like greenery, incense and agarwood. Mysterious and narcotic, it is not for the timid.",
+      "rating": 4.05,
+      "rating_votes": 6450,
+      "season_votes": {
+        "winter": 4200,
+        "spring": 800,
+        "summer": 250,
+        "fall": 3500
+      },
+      "time_votes": {
+        "day": 800,
+        "night": 4500
+      },
+      "gender_votes": {
+        "female": 150,
+        "more_female": 250,
+        "unisex": 2500,
+        "more_male": 1300,
+        "male": 1000
+      },
+      "longevity_votes": {
+        "very_weak": 30,
+        "weak": 100,
+        "moderate": 500,
+        "long_lasting": 1800,
+        "eternal": 2500
+      },
+      "sillage_votes": {
+        "intimate": 80,
+        "moderate": 500,
+        "strong": 1900,
+        "enormous": 2300
+      },
+      "price_value_votes": {
+        "way_overpriced": 700,
+        "overpriced": 1300,
+        "ok": 1500,
+        "good_value": 500,
+        "great_value": 250
+      },
+      "appreciation_votes": {
+        "love": 3000,
+        "like": 1700,
+        "ok": 800,
+        "dislike": 500,
+        "hate": 450
+      },
+      "pros": [
+        "Extreme longevity at extrait strength",
+        "Dark and unique",
+        "A tiny dose is enough"
+      ],
+      "cons": [
+        "Very polarizing",
+        "Can feel oppressive in warm rooms"
+      ],
+      "price_tier": "niche",
+      "tags": [
+        "statement",
+        "polarizing",
+        "beast-mode",
+        "evening",
+        "cold-weather"
+      ]
+    }
+  ]
+}

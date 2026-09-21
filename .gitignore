@@ -1,0 +1,17 @@
+# dependencies and build output
+node_modules/
+dist/
+
+# secrets - never commit your API keys
+.env
+.env.*
+!.env.example
+
+# FragDB downloads and caches
+data/fragdb/
+
+# local tooling and OS files
+.claude/
+.DS_Store
+*.log
+coverage/
