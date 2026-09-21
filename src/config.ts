@@ -86,7 +86,7 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): Config {
     typesafeApiBase: apiBase,
     typesafeModel: env.TYPESAFE_MODEL?.trim() || 'jev-latest',
     jevConcurrency: intOr(env, 'JEV_CONCURRENCY', 8, warnings),
-    jevScreenLimit: intOr(env, 'JEV_SCREEN_LIMIT', 400, warnings),
+    jevScreenLimit: intOr(env, 'JEV_SCREEN_LIMIT', 1000, warnings),
     catalogSource: source,
     seedDir: env.SEED_DIR?.trim() || './data/catalog',
     fragdbCsvDir: env.FRAGDB_CSV_DIR?.trim() || './data/fragdb',

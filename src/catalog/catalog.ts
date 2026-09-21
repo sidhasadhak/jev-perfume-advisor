@@ -295,7 +295,11 @@ export class Catalog {
       const phrase = exact || (contiguous ? e.phrase : '');
       found.push({ fragrance: e.fr, score, name: e.name, matched: phrase.length, phrase });
     }
-    const kept = found.filter((m) => !subsumed(hay, m.phrase, found.map((o) => o.phrase)));
+    const kept = found.filter((m) => !subsumed(hay, m.phrase, found.map((o) => o.phrase)))
+      // A perfume named after its house ("Paris Hilton" by Paris Hilton) is only the brand being named when
+      // another of that house's perfumes is in the text too ("Paris Hilton Heiress").
+      .filter((m, _i, all) => !(m.name === normalize(stripPossessive(m.fragrance.brand))
+        && all.some((o) => o !== m && o.fragrance.brand === m.fragrance.brand)));
     // The longest matched name is the most specific ("Aventus for Her" beats "Aventus");
     // then the name closest to what was typed ("For Her" before "For Her Eau de Parfum");
     // then the better-known perfume, never catalog order.

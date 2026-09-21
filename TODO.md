@@ -87,6 +87,9 @@ still only makes typed choices; every sentence is a fixed template or a catalog 
 
 ### Still open (not code-only)
 
+- [ ] Grow the seed catalog further. 297 perfumes were added on 2026-09-21 (186 -> 483). A second batch of about
+      180 was written but not fact-checked, so it was left out; re-run the author-then-check process to add more.
+
 - [ ] `data/catalog` vote numbers are **estimates**. Replacing them needs a licensed FragDB CSV export
       (`CATALOG_SOURCE=csv`): a purchase for the owner to decide.
 - [ ] `CATALOG_SOURCE=api` is **not usable**. A fixed loader was written and **reverted at the owner's
@@ -101,7 +104,7 @@ still only makes typed choices; every sentence is a fixed template or a catalog 
 - `npm test`: 564 tests, no API key needed (`tests/backlog.test.ts` covers this list, `tests/web-ui.test.ts`
   the browser client).
 - `npm run smoke`: the 5 example questions on live Jev, about $0.01.
-- Re-run the appendix questions on live Jev (about $0.002 per turn) and compare with the "actual" replies below.
+- Re-run the appendix questions on live Jev (about $0.004 per turn with the 483-perfume catalog) and compare with the "actual" replies below.
 
 ---
 

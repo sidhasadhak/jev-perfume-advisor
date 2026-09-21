@@ -329,7 +329,7 @@ export class PerfumeBot {
       return { body: renderNoMatch(facets), recs: [], shortlist: [], candidates, screening: undefined, applied: undefined };
     }
 
-    const screenPool = pool.slice(0, this.opts.screenLimit ?? 400);
+    const screenPool = pool.slice(0, this.opts.screenLimit ?? 1000);
     const refs = facets.referencePids.map((p) => this.catalog.get(p)).filter((x): x is Fragrance => !!x);
     // A refine ("something cheaper?") is read against what the user said before, not the latest words alone.
     const earlier = u.intent === 'refine'
