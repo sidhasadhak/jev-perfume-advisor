@@ -22,6 +22,7 @@ import { FOLLOW_UPS } from './followups.js';
 import { NoteLexicon } from './lexicon.js';
 import { rank } from './rank.js';
 import { TurnRecorder } from './recorder.js';
+import type { AppliedShape } from './render.js';
 import { CANNED, renderCompare, renderExplain, renderNoMatch, renderRecommendations } from './render.js';
 import { retrieve } from './retrieve.js';
 import { screen } from './screen.js';
@@ -111,6 +112,7 @@ export class PerfumeBot {
     let shortlist: Array<{ name: string; screen?: number; retrieval: number; final?: number }> = [];
     let candidates = 0;
     let screening: { screened: number; of: number; batches: number; failedBatches: number } | undefined;
+    let applied: AppliedShape | undefined;
 
     const route = u.unresolved ? 'unresolved' as const : u.intent;
     switch (route) {
@@ -194,7 +196,11 @@ export class PerfumeBot {
         shortlist = shortlisted.slice(0, judge).map((c) => ({
           name: `${c.fragrance.name} (${c.fragrance.brand})`, screen: c.screen, retrieval: c.retrieval, final: finals.get(c.fragrance.pid),
         }));
-        body = renderRecommendations({ message, facets: u.facets, recs, composition: compositionS.value, refs, gift: u.gift, measured: this.measured });
+        const { applied: shape, ...rendered } = renderRecommendations({
+          message, facets: u.facets, recs, composition: compositionS.value, refs, gift: u.gift, measured: this.measured,
+        });
+        applied = shape;
+        body = rendered;
       }
     }
 
@@ -216,7 +222,7 @@ export class PerfumeBot {
             summary: describeFacets(u.facets),
           },
           telemetry: rec.summary(),
-          trace: buildTrace(rec.log, u, this.catalog),
+          trace: buildTrace(rec.log, u, this.catalog, applied),
           jevCalls: rec.calls.map(({ attempts: _a, ...c }) => c),
           wallMs: Math.round(performance.now() - started),
           candidates,

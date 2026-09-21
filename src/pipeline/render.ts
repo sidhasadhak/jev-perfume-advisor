@@ -429,14 +429,21 @@ export function toCards(recs: Recommendation[], f: Facets, voice: VoiceOptions =
   }));
 }
 
+/** What the reply actually contains, as opposed to what Jev suggested - the trace panel labels against this. */
+export interface AppliedShape {
+  lead: Lead;
+  clarify: ClarifyTopic | null;
+  tip: boolean;
+}
+
 export function renderRecommendations(args: {
   message: string; facets: Facets; recs: Recommendation[]; composition: Composition; refs: Fragrance[]; gift: boolean;
   measured?: boolean;
-}): Pick<ChatReply, 'text' | 'recommendations' | 'followUps'> {
+}): Pick<ChatReply, 'text' | 'recommendations' | 'followUps'> & { applied: AppliedShape } {
   const { facets: f, recs, composition: c } = args;
   const voice: VoiceOptions = { measured: args.measured ?? false };
   const seed = seedFrom(args.message);
-  if (recs.length === 0) return renderNoMatch(f);
+  if (recs.length === 0) return { ...renderNoMatch(f), applied: { lead: c.lead, clarify: null, tip: false } };
 
   const cards = toCards(recs, f, voice);
   const lines = [opening(f, c, recs, args.refs, seed, args.gift, voice), ''];
@@ -444,13 +451,18 @@ export function renderRecommendations(args: {
     lines.push(`**${i + 1}. ${card.name}** by ${card.brand} — ${card.headline.charAt(0).toLowerCase()}${card.headline.slice(1)}.`);
   });
   const closing: string[] = [];
+  let tipShown = false;
   if (c.clarify) closing.push(pick(CLARIFY_Q[c.clarify], seed, 5));
   else if (c.tip) {
     const tip = TIPS.find(([when]) => when(f));
+    tipShown = !!tip;
     if (tip) closing.push(tip[1]);
   }
   if (closing.length) lines.push('', ...closing);
-  return { text: lines.join('\n'), recommendations: cards, followUps: c.followUps };
+  return {
+    text: lines.join('\n'), recommendations: cards, followUps: c.followUps,
+    applied: { lead: c.lead, clarify: c.clarify, tip: tipShown },
+  };
 }
 
 export function renderNoMatch(f: Facets): Pick<ChatReply, 'text' | 'recommendations' | 'followUps'> {

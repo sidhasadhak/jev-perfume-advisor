@@ -9,6 +9,8 @@ import type { Answer, ChoiceAnswer, NoulAnswer, Question, ScoreAnswer } from '..
 import type { Facets, Family } from '../types.js';
 import { EMPTY_FACETS, FAMILIES } from '../types.js';
 import type { DecisionLog } from './recorder.js';
+import { ASK_THRESHOLD, TIP_THRESHOLD, TOPIC_CERTAINTY } from './compose.js';
+import type { AppliedShape } from './render.js';
 import type { UnderstandResult } from './understand.js';
 import { AVOID_THRESHOLD, LIKE_THRESHOLD, LONGEVITY_LEVEL, MIN_CONFIDENCE, PROJECTION_LEVEL } from './understand.js';
 
@@ -135,7 +137,31 @@ function facetStatus(key: string, a: ChoiceAnswer, facets: Facets): TraceStatus 
   return a.confidence < MIN_CONFIDENCE ? 'low confidence' : 'overridden';
 }
 
-export function buildTrace(log: DecisionLog[], u: UnderstandResult, catalog: Catalog): Trace {
+/**
+ * Reply-shape answers are Jev's suggestions; the app then applies its own gates (a question needs a
+ * confident topic, a tip needs one that fits, a lead needs data behind it). Label against what was shown.
+ */
+function replyShapeStatus(key: string, a: Answer, applied: AppliedShape | undefined): { status: TraceStatus; answer?: string } | undefined {
+  if (!applied) return undefined;
+  if (key === 'lead' && a.type === 'choice') return { status: a.choice === applied.lead ? 'used' : 'overridden' };
+  if (key === 'ask' && a.type === 'noul') {
+    const wanted = a.noul >= ASK_THRESHOLD;
+    return { answer: wanted ? 'yes' : 'no', status: !wanted || applied.clarify ? 'used' : 'not used' };
+  }
+  if (key === 'clarify_topic' && a.type === 'choice') {
+    if (applied.clarify === a.choice) return { status: 'used' };
+    const lowCertainty = a.choice !== 'none' && a.confidence < TOPIC_CERTAINTY;
+    return { status: lowCertainty ? 'low confidence' : 'not used' };
+  }
+  if (key === 'tip' && a.type === 'noul') {
+    const wanted = a.noul >= TIP_THRESHOLD;
+    // A wanted tip is only shown when one fits the request (weather, office, date) and no question took its place.
+    return { answer: wanted ? 'yes' : 'no', status: !wanted || applied.tip ? 'used' : 'not used' };
+  }
+  return undefined;
+}
+
+export function buildTrace(log: DecisionLog[], u: UnderstandResult, catalog: Catalog, applied?: AppliedShape): Trace {
   const items = new Map<string, TraceItem[]>(GROUPS.map(([g]) => [g, []]));
   const push = (key: string, item: TraceItem) => {
     const group = GROUPS.find(([, match]) => match(key))?.[0];
@@ -160,7 +186,8 @@ export function buildTrace(log: DecisionLog[], u: UnderstandResult, catalog: Cat
         } else if (key === 'next') {
           push(key, choiceItem(key, label!, q, a as ChoiceAnswer, 'used', 2));
         } else {
-          const status = call.label === 'understand' ? facetStatus(key, a as ChoiceAnswer, u.facets) : 'used';
+          const shaped = call.label === 'compose' ? replyShapeStatus(key, a, applied) : undefined;
+          const status = shaped?.status ?? (call.label === 'understand' ? facetStatus(key, a as ChoiceAnswer, u.facets) : 'used');
           push(key, choiceItem(key, label ?? human(key), q, a as ChoiceAnswer, status));
         }
       } else if (a.type === 'noul') {
@@ -176,12 +203,15 @@ export function buildTrace(log: DecisionLog[], u: UnderstandResult, catalog: Cat
             kept ? 'used' : (a as NoulAnswer).noul >= threshold ? 'overridden' : 'not used'));
         } else {
           const yes = (a as NoulAnswer).noul >= 0.5;
+          const shaped = call.label === 'compose' ? replyShapeStatus(key, a, applied) : undefined;
           // Reply-shape decisions take effect either way ("no tip" is applied); a "no" elsewhere changes nothing.
-          const status: TraceStatus = REPLY_SHAPE.has(key) ? 'used'
+          const status: TraceStatus = shaped?.status ?? (REPLY_SHAPE.has(key) ? 'used'
             : key === 'persona' ? (u.facets.persona ? 'used' : yes ? 'not used' : 'not mentioned')
             : key === 'unknown_perfume' ? (u.unresolved?.kind === 'perfume' ? 'used' : yes ? 'not used' : 'not mentioned')
-            : yes ? 'used' : 'not mentioned';
-          push(key, noulItem(key, label ?? human(key), a as NoulAnswer, status));
+            : yes ? 'used' : 'not mentioned');
+          const item = noulItem(key, label ?? human(key), a as NoulAnswer, status);
+          if (shaped?.answer) item.answer = shaped.answer;
+          push(key, item);
         }
       } else {
         const sa = a as ScoreAnswer;
