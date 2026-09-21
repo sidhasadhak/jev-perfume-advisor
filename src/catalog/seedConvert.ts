@@ -48,7 +48,15 @@ export interface SeedRecord {
   cons: string[];
   price_tier: PriceTier;
   tags: string[];
+  /**
+   * Curated "widely seen as an alternative to" links, by brand and name. Only links that
+   * fragrance communities cite constantly (a budget clone of a niche original) belong here.
+   */
+  reminds_of?: Array<{ brand: string; name: string }>;
 }
+
+/** Vote counts written for a curated reminds_of link: the seed has no real votes, so a fixed strong majority. */
+const CURATED_LINK_VOTES = { yes: 1000, no: 100 };
 
 export interface SeedReport {
   recordsIn: number;
@@ -153,9 +161,11 @@ export function convertSeed(records: readonly unknown[], opts: ConvertOptions = 
     const keepNew = noteCount(check.record) > noteCount(prev.record);
     const kept = keepNew ? { record: check.record, origin: origin(i) } : prev;
     const tags = [...new Set([...prev.record.tags, ...check.record.tags])];
+    const links = [...(prev.record.reminds_of ?? []), ...(check.record.reminds_of ?? [])]
+      .filter((l, j, xs) => xs.findIndex((x) => normalize(x.brand) === normalize(l.brand) && normalize(x.name) === normalize(l.name)) === j);
     // Prefer the official product name over a brand-prefixed variant.
     const name = [prev.record.name, check.record.name].sort((a, b) => brandPrefixed(a, kept.record.brand) - brandPrefixed(b, kept.record.brand) || a.length - b.length)[0]!;
-    byKey.set(key, { origin: kept.origin, record: { ...kept.record, name, tags } });
+    byKey.set(key, { origin: kept.origin, record: { ...kept.record, name, tags, ...(links.length ? { reminds_of: links } : {}) } });
     const how = key === exactKey ? 'duplicate' : 'naming variant';
     log(`${how} "${check.record.brand} - ${check.record.name}" in ${origin(i)} and "${prev.record.name}" in ${prev.origin}: `
       + `kept ${kept.origin} (${noteCount(kept.record)} notes) as "${name}", tags unioned`);
@@ -200,6 +210,7 @@ function encodeCatalog(records: SeedRecord[]): { files: Record<string, string>; 
   const perfumers = new IdPool<string>('p');
   const fragranceRows: string[] = [];
   const extensionRows: string[] = [];
+  const pidOf = new Map(records.map((r, i) => [`${normalize(r.brand)}|${normalize(r.name)}`, String(SEED_PID_START + i)]));
 
   records.forEach((r, i) => {
     const pid = String(SEED_PID_START + i);
@@ -229,6 +240,11 @@ function encodeCatalog(records: SeedRecord[]): { files: Record<string, string>; 
       rating: `${round(r.rating, 2)};${r.rating_votes}`,
       reviews_count: String(Math.round(r.rating_votes * 0.07)),
       pros_cons: encodeProsCons(rankVotes(r.pros, votesBase), rankVotes(r.cons, Math.round(votesBase / 2))),
+      reminds_of: (r.reminds_of ?? []).flatMap((l) => {
+        const target = pidOf.get(`${normalize(l.brand)}|${normalize(l.name)}`);
+        if (!target) throw new Error(`${r.brand} ${r.name}: reminds_of "${l.brand} ${l.name}" is not in the seed catalog`);
+        return [`${target}:${CURATED_LINK_VOTES.yes}:${CURATED_LINK_VOTES.no}`];
+      }).join(';'),
     };
     for (const v of VOTE_FIELDS) row[v.column] = encodeDist(v.prefix, v.keys, r[v.field], v.pct);
 
@@ -374,6 +390,17 @@ export function validateSeedRecord(raw: unknown): SeedCheck {
   const pros = texts('pros');
   const cons = texts('cons');
   const tags = dedupe(texts('tags').map((t) => t.replace(/;/g, ',')), (t) => t);
+  const remindsOf: Array<{ brand: string; name: string }> = [];
+  if (raw.reminds_of !== undefined) {
+    if (!Array.isArray(raw.reminds_of)) errors.push('reminds_of must be a list of { brand, name }');
+    else {
+      for (const l of raw.reminds_of as unknown[]) {
+        if (isObj(l) && typeof l.brand === 'string' && clean(l.brand) && typeof l.name === 'string' && clean(l.name)) {
+          remindsOf.push({ brand: clean(l.brand), name: clean(l.name) });
+        } else errors.push(`reminds_of entry ${show(l)} needs a brand and a name`);
+      }
+    }
+  }
 
   const accords: SeedRecord['accords'] = [];
   if (!Array.isArray(raw.accords)) errors.push('accords must be an array of {name, strength}');
@@ -423,6 +450,7 @@ export function validateSeedRecord(raw: unknown): SeedCheck {
       price_value_votes: votes.price_value_votes as Dist<PriceValue>,
       appreciation_votes: votes.appreciation_votes as Dist<Appreciation>,
       pros, cons, price_tier: priceTier as PriceTier, tags,
+      ...(remindsOf.length ? { reminds_of: remindsOf } : {}),
     },
   };
 }

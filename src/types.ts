@@ -74,6 +74,12 @@ export interface Fragrance {
   priceTier: PriceTier;
   /** Free-form tags from the extensions sidecar (e.g. "signature-scent", "office-safe"). */
   tags: string[];
+  /**
+   * FragDB "reminds_of": perfumes voters say this one smells like, with the yes/no
+   * votes behind each link. In the seed catalog these are a short curated list of
+   * widely cited alternatives (e.g. a budget clone of a niche original).
+   */
+  remindsOf?: Array<{ pid: string; yes: number; no: number }>;
 }
 
 // ---------------------------------------------------------------------------
@@ -86,6 +92,7 @@ export const INTENTS = [
   'more_like',      // "something like X"
   'explain',        // "why that one?" / "tell me more about #2"
   'compare',        // "which is better for me, A or B?"
+  'knowledge',      // a general perfume question: "how do I make it last?", "EDP vs EDT?"
   'greeting',
   'thanks',
   'out_of_scope',
@@ -180,6 +187,13 @@ export interface Facets {
   /** Free text of the persona, kept verbatim so Jev can judge fit against it. */
   persona: string;
   favouriteColour: FavouriteColour;
+  /** Catalog brands the user asked perfumes FROM ("the best Chanel perfume"); empty = any house. */
+  brands: string[];
+  /**
+   * Families in `likes` that a refinement added ("something warmer"), not the user's
+   * stated taste - replies must not say "since you're drawn to" them.
+   */
+  refinedLikes: Family[];
 }
 
 export const EMPTY_FACETS: Facets = Object.freeze({
@@ -202,6 +216,8 @@ export const EMPTY_FACETS: Facets = Object.freeze({
   referencePids: [],
   persona: '',
   favouriteColour: 'none',
+  brands: [],
+  refinedLikes: [],
 }) as Facets;
 
 // ---------------------------------------------------------------------------
@@ -273,6 +289,10 @@ export interface Session {
   seen: string[];
   /** The bullets shown for each of `lastShown`, so "why that one?" can answer consistently. */
   lastBullets: Record<string, string[]>;
+  /** The perfume the previous reply described in full, so the same card is never repeated word for word. */
+  lastExplained?: string;
+  /** One-off notices already given in this conversation (e.g. "I reply in English"). */
+  notices?: string[];
   updatedAt: number;
 }
 

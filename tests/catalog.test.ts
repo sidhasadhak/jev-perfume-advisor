@@ -216,9 +216,12 @@ describe('Catalog.mentionedIn', () => {
       assert.deepEqual(names(c.mentionedIn('why not a fresh scent, y know')), []);
     });
 
-  test('prefers the longer, more specific name', () => {
-    assert.deepEqual(names(catalog.mentionedIn('something like aventus for her')), ['Aventus for Her', 'Aventus']);
-    assert.deepEqual(names(catalog.mentionedIn('Creed Aventus for Her')), ['Aventus for Her', 'Aventus']);
+  test('a name inside a longer matched name is not a second mention', () => {
+    // "Aventus" in "Aventus for Her" is part of that name, not Aventus itself.
+    assert.deepEqual(names(catalog.mentionedIn('something like aventus for her')), ['Aventus for Her']);
+    assert.deepEqual(names(catalog.mentionedIn('Creed Aventus for Her')), ['Aventus for Her']);
+    // Named separately as well, both count.
+    assert.deepEqual(new Set(names(catalog.mentionedIn('Aventus or Aventus for Her?'))), new Set(['Aventus for Her', 'Aventus']));
   });
 
   test('finds several mentioned fragrances', () => {

@@ -127,11 +127,16 @@ the way TypeSafe recommends: code owns the control flow and Jev supplies the sem
 ```
 user message
   │
-  ├─ 1. UNDERSTAND   one Jev call, ~30-50 typed questions fanned out in parallel
+  ├─ 1. UNDERSTAND   one Jev call, ~40-60 typed questions fanned out in parallel
   │                  intent · occasion · climate · season · day/night · gender · age/style
   │                  budget · vibe · projection · longevity · 17× "likes this family?"
-  │                  (+ 17× "avoids?" only when the message contains a negation cue)
+  │                  (+ 17× "avoids?" when the message may express a dislike, in any language)
   │                  + polarity of every perfume / note the deterministic pre-pass found
+  │                  + the routes: general question? health & safety? a requirement we
+  │                    can't check? a brand or perfume we don't carry? compare on what?
+  │
+  ├─ ANSWER, NOT PICKS  when a route applies, fixed vetted text answers and the turn stops
+  │                  here (see "Questions it answers instead of recommending" below)
   │
   ├─ 2. SCREEN       Jev judges EVERY perfume in the catalog: one yes/no question each
   │                  ("would this be a strong pick for this request?"), ~40 per request,
@@ -168,6 +173,26 @@ Two design rules follow from Jev's strengths and limits:
 - **Every perfume fact comes from the catalog.** The renderer can only verbalize structured
   `Reason`s built from the record, so it cannot invent a note, a year or a rating. A test
   (`tests/pipeline.test.ts` → *never mentions a note or accord that is not in the record*) enforces this.
+
+### Questions it answers instead of recommending
+
+Recommending four perfumes is the wrong answer to many perfume questions. The understand call
+also asks Jev which kind of message this is, and each kind has its own fixed, vetted reply. Jev
+chooses the reply; it never writes one.
+
+| The user asks | The bot does |
+|---|---|
+| Health and safety: pregnancy, breastfeeding, a baby or child, a pet, "is X bad for asthma?" | Says it has no ingredient or safety data and points to a doctor, pharmacist or vet. No products, and never "you're in good hands" |
+| A sensitivity with a request: "perfume gives me migraines, what can I wear?" | Lighter picks, after a caveat that it can't promise anything |
+| Something the catalog can't check: alcohol-free or halal, vegan or cruelty-free, all-natural, hypoallergenic, a body mist | Says so plainly. Alcohol-free gets no sprays, but offers to show some "in that style". The others get picks with the caveat first |
+| A general question: EDP vs EDT, making a scent last, storage and expiry, nose fatigue, top/heart/base notes, what a note smells like, layering, spotting fakes, prices, new releases, skin type, celebrities | A vetted answer, using the perfume's own record where one is named (perfumer and launch year, genuine notes, price tier, known dupes). Perfume chips only in the follow-ups |
+| A brand or perfume it doesn't carry ("the best Kayali perfume", "Coco Noir", "Angel Nova") | Names it in the user's own words ("I don't carry Kayali yet"), never describes a different perfume in its place, and labels any picks as the closest matches |
+| A comparison on one attribute: "which lasts longest?", "which is cheaper?", "rank these for summer", "is X a dupe of Y?" | Answers from the catalog data, over every perfume shown or named (up to five), and admits where it has no store prices |
+| Two people at once, or a brief that contradicts itself | Asks who to start with; flags the conflict and offers "lighter" or "stronger" |
+
+A stated budget is a limit: "under $60" never returns a luxury pick. A comparison or a question
+about a perfume doesn't change what the bot knows about the user, and "actually, any season is
+fine" does remove the constraint. The panel shows which route each turn took.
 
 Measured on live Jev (via OpenRouter) with the 186-perfume seed catalog: a recommendation turn
 is 21 Jev calls (1 understand + 5 screening + 14 detailed + 1 compose), ~265-280 typed questions
@@ -223,6 +248,9 @@ drive sensible recommendations, and are exactly what `CATALOG_SOURCE=csv` or `ap
 real data. Because they are estimates, the bot **never quotes them as statistics**: on the seed
 catalog it says *"Mostly worn in the evening"* or *"Highly regarded"*; on real FragDB data the same
 reason renders as *"74% of wearers reach for it in the evening"* or *"Rated 4.3/5 by 13,500 people"*.
+The seed also carries a short curated list of widely cited alternatives in FragDB's
+`reminds_of` column (e.g. Armaf Club de Nuit Intense Man → Creed Aventus), which the bot uses
+for "is X a dupe of Y?"; a real FragDB export brings the community's own links.
 See [`data/catalog/README.md`](data/catalog/README.md).
 
 The FragDB parser (`src/catalog/fragdb.ts`) is verified against FragDB's real published sample
@@ -247,6 +275,7 @@ Sessions live in memory (2 h idle expiry), one per browser tab. For multiple ser
 `SessionStore` for a shared store.
 
 HTTP API: `POST /api/chat {sessionId?, message}` · `POST /api/reset {sessionId}` ·
+`POST /api/fork {sessionId}` (a duplicated browser tab gets its own copy of the conversation) ·
 `GET /api/health` · `GET /api/fragrance/:pid` · `GET /api/search?q=`
 
 ## Project layout
@@ -264,6 +293,7 @@ src/
     rank.ts         stage 3 - per-perfume Jev judgement, blend, diversity, reasons
     compose.ts      stage 4 - Jev decides the reply's shape
     render.ts       stage 5 - template text from typed decisions + catalog facts
+    knowledge.ts    fixed, vetted answers: general questions, safety, requirements, not carried
     describe.ts     catalog records -> the text Jev reads
     trace.ts        the "How Jev decided" panel data
     orchestrator.ts one chat turn end to end;  session.ts, recorder.ts

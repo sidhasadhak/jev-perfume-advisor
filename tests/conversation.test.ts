@@ -216,10 +216,13 @@ describe('references in follow-ups', () => {
   });
 
   it('a name Jev calls incidental never fills a compare, explain or more-like', async () => {
+    // "these" is every perfume shown, never Paris.
     const cmp = await ask('Which of these is better for a trip to Paris?', { intent: 'compare', ref_0: 'incidental' });
-    assert.deepEqual(cmp.focusPids, ['C', 'G']);
+    assert.deepEqual(cmp.focusPids, ['C', 'G', 'E']);
+    // "it", with Jev pointing at none of the three: ask which one, never Paris and never a guess at #1.
     const exp = await ask('Would it work for a trip to Paris?', { intent: 'explain', ref_0: 'incidental' });
-    assert.deepEqual(exp.focusPids, ['C']);
+    assert.deepEqual(exp.focusPids, []);
+    assert.deepEqual(exp.unresolved, { kind: 'position', position: 0, shown: 3 });
     const more = await ask('something like that for a trip to Paris', { intent: 'more_like', ref_0: 'incidental' });
     assert.deepEqual(more.facets.referencePids, []);
   });
@@ -254,7 +257,7 @@ describe('unresolvable references', () => {
 
   it('a perfume that is not in the catalog is named as such', async () => {
     const { r1, r } = await afterFour({ intent: 'explain', unknown_perfume: 0.9 }, 'Tell me about Creed Silver Mountain Wolf 2025');
-    assert.match(r.reply.text, /couldn't find that perfume in my catalog/);
+    assert.match(r.reply.text, /I don't have that perfume in my catalog/);
     assert.doesNotMatch(r.reply.text, new RegExp(`\\*\\*${r1.reply.recommendations[0]!.name}\\*\\*`));
   });
 
@@ -267,7 +270,7 @@ describe('unresolvable references', () => {
 
   it('a perfume name that looks like a position is reported as a perfume', async () => {
     const { r } = await afterFour({ intent: 'explain', unknown_perfume: 0.9 }, 'Tell me about Chanel No 5');
-    assert.match(r.reply.text, /couldn't find that perfume in my catalog/);
+    assert.match(r.reply.text, /I don't have that perfume in my catalog/);
   });
 
   it('a reference that does resolve is answered as before', async () => {

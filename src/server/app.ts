@@ -118,6 +118,14 @@ export async function buildApp(
     return { ok: true };
   });
 
+  // A duplicated browser tab inherits its session id; it asks for its own copy, so "Why is #1
+  // the top pick?" in one tab never explains the other tab's list.
+  app.post<{ Body: { sessionId?: unknown } }>('/api/fork', async (req, reply) => {
+    const id = req.body?.sessionId;
+    if (typeof id !== 'string') return reply.code(400).send({ error: 'sessionId must be a string' });
+    return { sessionId: bot.sessions.fork(id)?.id ?? null };
+  });
+
   app.get<{ Params: { pid: string } }>('/api/fragrance/:pid', async (req, reply) => {
     const fr = bot.catalog.get(req.params.pid);
     return fr ?? reply.code(404).send({ error: 'not found' });

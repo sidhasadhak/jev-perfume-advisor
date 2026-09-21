@@ -1,97 +1,102 @@
 # TODO
 
-Backlog for Scent Sommelier, as of 2026-09-21. The priorities come from a live red-team run: 4 agents, 80 turns on
-live Jev, 44 failures confirmed with real replies (full list in the appendix; several were found by more than one agent). They also come from the
-code-review findings that were deliberately left open.
+Backlog for Scent Sommelier. The priorities came from a live red-team run on 2026-09-21: 4 agents, 80 turns
+on live Jev, 44 failures confirmed with real replies (full list in the appendix). The rest are code-review
+findings that were deliberately left open at the time.
 
-**Common thread:** the app has one move, recommending 4 perfumes. It has no way to answer a general perfume
-question, admit a gap, decline, or compare on a specific attribute. Nothing is invented: across all 80 turns
-there were no made-up prices, years or perfumers. The failures are answering the wrong question.
+**Status (2026-09-21, branch `feat/backlog-fixes`):** every P0, P1 and P2 item is fixed, as are the open
+code-review items that were code changes. All 44 appendix questions were re-run on live Jev afterwards, and
+each now gets a direct answer (about 80 live turns including two smoke runs, ~$0.11 in total). `npm run smoke` still passes 5/5. Four
+items stay open, each for a reason outside the code (see "Still open" below).
+
+**Common thread (before):** the app had one move, recommending 4 perfumes. It now has more routes: a fixed
+answer, an honest "I don't carry that", a safety answer, and a comparison on the attribute asked about. Jev
+still only makes typed choices; every sentence is a fixed template or a catalog fact.
 
 ## P0 - misleading or potentially harmful
 
-- [ ] **Health and safety route.** "Is it safe to wear perfume while pregnant?", "…while breastfeeding", "a gentle
-      perfume for my 6-month-old baby", "for my 8-year-old", "a perfume I can spray on my dog". The app currently says
-      *"You're in good hands"* and gives 4 alcohol-based perfumes. Fix: a Jev classifier for health/safety/age/pet in
-      `understand.ts`, then a fixed reply with **no picks** that says the app has no ingredient-safety data and to
-      ask a doctor, pharmacist or vet, and to patch-test. The AGE vocabulary also needs infant/child. Never use the "reassuring" tone here.
-- [ ] **Constraints the catalog cannot meet must be admitted, not dropped.** "alcohol-free / halal perfume for
-      Friday prayers", "alcohol-free attar / oud oil", "vegan / cruelty-free / all-natural", "body mist". The constraint
-      currently disappears. Friday prayers became a black-tie `formal_event`, and *"Are any of these
-      alcohol-free?"* silently swapped the list, implying compliance. Fix: a hard-constraint check in `understand.ts`
-      (format: attar/oil/roll-on/body mist; alcohol-free; vegan/cruelty-free/natural). If the catalog has no such attribute, say so
-      plainly and, where useful, still suggest scent directions while labelling them as ordinary sprays. Longer term:
-      add format/alcohol fields to the catalog schema.
-- [ ] **Wrong perfume swapped in (name matching).**
-      - "Dior Sauvage EDT vs EDP", or any "Sauvage vs X", pulls in **Eau Sauvage** (1966). `STOP` in
-        `src/catalog/catalog.ts` drops "eau", so both names reduce to `sauvage`. Keep a leading "eau", or prefer
-        the exact full-name match.
-      - "Tell me about **Chanel Coco Noir**" describes the 1984 **Coco**. `mentionedIn` accepts a catalog name
-        even when the typed product name continues ("Noir"), and should reject that. Same for other flankers:
-        Nova, Intense, Elixir, Le Parfum, Flame.
-      - Concentration awareness: when a user asks about EDT vs EDP of one perfume, say *"I only have Sauvage
-        (2015 EDT) in my catalog"* instead of comparing two different perfumes.
+- [x] **Health and safety route.** A Jev `safety` choice (pregnancy / child / pet / medical), plus a `child`
+      option in AGE, routes to a fixed reply with no picks and no reassuring tone. It points to a doctor,
+      pharmacist or vet and offers "Show me light, subtle scents" as a separate choice. "Perfume gives me
+      migraines, what can I wear?" is a fifth option (`sensitive`): light picks with a caveat, not a refusal.
+- [x] **Constraints the catalog cannot meet are admitted.** A Jev `requirement` choice (alcohol-free/halal,
+      format, vegan/cruelty-free, natural, hypoallergenic). Alcohol-free gets no sprays, but a chip offers them
+      "in that style". The other requirements get picks with the caveat first and no upbeat opener. "Are any of
+      these alcohol-free?" is answered rather than met with a new list. Jev may only block every spray as
+      "alcohol-free" when the user said it: an alcohol-free inferred from a migraine is not enough. (Longer
+      term, format/alcohol fields in the schema would let it answer yes.)
+- [x] **Wrong perfume swapped in.** A leading "Eau" is part of a name, so "Sauvage" is no longer "Eau Sauvage".
+      A name found only inside a longer match is dropped ("Aventus" in "Aventus for Her"). A name the text
+      carries on past ("Coco Noir", "Angel Nova", "Sauvage EDP") is flagged, and Jev decides whether it is a
+      different perfume. If it is, the app says it only has the original and never describes one as the other.
+      Two concentrations of one perfume ("Sauvage EDT vs EDP") get the concentration answer: "I only carry
+      one version of Sauvage".
 
-## P1 - ignores the question (very common)
+## P1 - ignores the question
 
-- [ ] **General perfume questions route.** "How can I make my perfume last longer?" (the most-searched perfume
-      question), "EDP vs EDT", "how to store it / does it expire", "why can't I smell my own perfume",
-      "top/middle/base notes", "what does oud smell like", "how to spot a fake", "what can I layer with X", "was
-      No 5 reformulated", "who made Aventus", "what does Taylor Swift wear". Every one of these becomes 4 perfumes today.
-      Fix: a `knowledge` intent plus a typed topic choice, and a vetted fixed answer per topic in `render.ts` (seed
-      the longevity answer from the existing `TIPS`), with an honest *"I can't answer that, but I can recommend…"*
-      for anything else. Perfume chips go only in the follow-ups.
-- [ ] **Explain fallback loops.** After a list, "Where should I spray it so it lasts all night?" and "What's the
-      difference between EDP and EDT anyway?" both repeat the **#1 perfume's card word for word**. In `understand.ts`,
-      `pointed[0] ?? lastShown[0]` should apply only when Jev is confident the user means a shown perfume.
-      Otherwise route to the knowledge intent. Never repeat a card that was just shown, unchanged.
-- [ ] **Compare on the attribute that was asked about.** "Which of these lasts the longest?" compares only #1 and
-      #2 of 4 and says *"it comes down to taste"*, although the app's own vote data says #4 (Terre d'Hermès)
-      lasts longest. The chips then steer to the shortest-lasting pick, and the question writes "strong projection"
-      into an office brief. "Which is cheaper, Sauvage or Bleu de Chanel?" and "Rank these five for summer" fail the same way.
-      Fix: a Jev choice for the comparison axis (longevity / projection / price tier / season / time of day /
-      overall fit). Answer longevity, projection and season deterministically from catalog votes, and price with the
-      tier (saying there are no real prices). "these" and "all four" should mean every shown perfume. Up to 5 in a
-      compare. A compare turn must not change the facets.
-- [ ] **Brands and perfumes not in the catalog.** "What's the best Kayali perfume?" gets 4 other brands at 11-14%
-      match and never says Kayali isn't carried. The same applies to Initio, Roja, Glossier, Sol de Janeiro and
-      Bath & Body Works, to "Do you have Kayali Vanilla 28?", and to "I love Mugler Angel Nova". Fix: brand detection
-      (`catalog.brandsIn()` exists but is unused) plus a Jev yes/no for "names a brand or perfume" with no catalog
-      match. Then say it plainly: *"I don't carry Kayali yet - here are perfumes in a similar style"*.
-- [ ] **Data the catalog lacks.** Newest releases, where to buy or the best price, dupe/clone relationships ("What is
-      Club de Nuit Intense Man a clone of?", "Is Khamrah a dupe of Angels' Share?"). Say what the app does not
-      know. Consider a curated `dupe_of` field in the seed data.
+- [x] **General perfume questions.** A `knowledge` intent plus a typed `topic` (17 topics). Each topic has a
+      vetted fixed answer in `src/pipeline/knowledge.ts` that uses the named perfume's record where there is
+      one (perfumer and year, genuine notes, price tier, known dupes, layering overlap). Anything else gets
+      "I'm not able to answer that one reliably".
+- [x] **Explain fallback loops.** With no named perfume and no confident focus, the app asks "Which one do you
+      mean?" (with a chip per shown perfume) or answers the general question. The same card is never printed
+      twice in a row.
+- [x] **Compare on the attribute asked about.** A Jev `compare_on` choice. Longevity, projection, season, day or
+      night, price tier and similarity (including curated dupe links) are answered from catalog data, over
+      every perfume shown or named (up to 5). Price answers say there are no store prices. An overall compare
+      of 3 or more is ranked by Jev's probabilities. A compare or explain turn no longer changes the facets.
+- [x] **Brands and perfumes not in the catalog.** `other_brand` / `wants_brand` checks plus `brandsIn()`: "the
+      best Chanel perfume" shows only Chanel, and "the best Kayali perfume" says Kayali isn't carried.
+      The name comes from the user's own words: a small Jev call points at one of the word runs the pre-pass
+      offers. "Do you have X?" says X isn't in the catalog.
+- [x] **Data the catalog lacks.** Fixed answers for new releases, prices / where to buy, reformulation and
+      celebrities. Six curated `reminds_of` links in the seed (e.g. CDNIM → Aventus, Khamrah → Angels' Share).
+      Picks that are all weak matches (< 25%) are labelled as a starting point.
 
 ## P2 - awkward or partial
 
-- [ ] **Two wearers in one message.** "a floral one for me and something woody for my husband" loses her floral
-      preference and returns one mixed list. Detect two wearers, then either render two short lists or ask which one to start with.
-- [ ] **French follow-up and contradictory briefs.** A French follow-up in a French conversation (see appendix), and
-      "fresh and light for the gym but a beast-mode gourmand", which should surface the conflict.
-- [ ] **"Can you make it stronger?"** after a jasmine / not-sweet / under-$60 brief. See the appendix for the exact failure.
-- [ ] **"Actually, one I can wear all year round"** after a summer request. The season should reset to "any".
+- [x] **Two wearers in one message.** A `two_wearers` check asks who to start with, with chips in the
+      user's own words ("Start with a floral one for me").
+- [x] **French follow-up and contradictory briefs.** The dislike questions are asked for any language (the
+      gate knows foreign negations and non-ASCII text), note names have common FR/ES/IT/DE/PT aliases, and a
+      refine sends the earlier requests to screening and ranking. A one-off note says replies are in English.
+      A `conflicting` check flags the contradiction and offers lighter / stronger first. Occasion openers
+      ("fresh and light is the way") are only used when the picks bear them out.
+- [x] **"Can you make it stronger?"** A stated budget is now a limit: `budget` allows only budget-tier picks,
+      and `mid` allows budget and mid. If too few fit, the reply says so.
+- [x] **"Actually, one I can wear all year round".** `drop_*` checks clear a constraint the user takes back.
+      Families a refinement added ("warmer") are kept apart from the user's own tastes, so the reply no
+      longer says "since you're drawn to" them. Sarcasm about the picks gets a "Fair point" opener.
 
-## Known issues left open (from the code review)
+## Known issues from the code review
 
-- [ ] `data/catalog` vote numbers are **estimates**. Replace them with a licensed FragDB CSV export (`CATALOG_SOURCE=csv`).
-- [ ] `CATALOG_SOURCE=api` is **not usable**. The loader reads only `/v1/index`, which has no record data. A fixed
-      version, with batch fetching, a spend cap and on-disk caching, was written and then reverted at the owner's request.
-      That code only exists in a temporary session folder, so treat it as a rewrite if this is revisited.
-- [ ] CLI: piped input answers only the first line and exits with code 13 at EOF. Ctrl+C doesn't cancel lines typed
-      ahead. The fix (iterate readline's async iterator) was reverted at the owner's request.
-- [ ] Web UI: a duplicated browser tab shares the server session (sessionStorage is copied). A fix would need
-      follow-up requests to carry which list is displayed.
-- [ ] The web UI fixes (length limit, draft restore, IME Enter, per-tab session) have no automated browser tests.
-- [ ] Follow-up chips: a tie in Jev's `next` probabilities is broken by Jev's (shuffled) key order. Add a fixed tie-break.
-- [ ] Catalog: distinctive names like "Black Orchid" or "Oud Wood" rank as everyday words (score 0.5) without the brand.
-      `/api/search?q=19` no longer finds N°19 (a side effect of number folding).
-- [ ] Jev client: a `Retry-After` over 30 s gives up instead of waiting. `MockJev` ignores tiny `budgetMs`, so tests can't catch a
-      stage budget set too small.
-- [ ] GitHub: auto-merge is off in the repo settings. The Claude app's PR tool lacks permission to enable it.
+- [x] Web UI: a duplicated browser tab shared the server session. On load, a tab asks the other tabs whether
+      its session is already in use (BroadcastChannel). If so, it forks it (`POST /api/fork`): same history,
+      separate from then on.
+- [x] The web UI fixes (length limit, draft restore, IME Enter, per-tab session, tab fork) now have
+      automated browser tests (`tests/web-ui.test.ts`, jsdom, dev dependency only).
+- [x] Follow-up chips: ties in Jev's `next` probabilities keep the pool's order.
+- [x] Catalog: "Black Orchid" and "Oud Wood" rank as distinctive names (0.8), not everyday words.
+      `/api/search?q=19` finds N°19 again.
+- [x] Jev client: a call with a budget waits out any `Retry-After` its budget covers. An unbudgeted call still
+      stops at 30 s and says how long Jev asked for. `MockJev` now honours `budgetMs`, so a stage budget set
+      too small fails in tests.
+
+### Still open (not code-only)
+
+- [ ] `data/catalog` vote numbers are **estimates**. Replacing them needs a licensed FragDB CSV export
+      (`CATALOG_SOURCE=csv`): a purchase for the owner to decide.
+- [ ] `CATALOG_SOURCE=api` is **not usable**. A fixed loader was written and **reverted at the owner's
+      request**, so it was not re-added.
+- [ ] CLI: piped input answers only the first line. The fix was **reverted at the owner's request**, so it was
+      not re-added.
+- [ ] GitHub: auto-merge is off in the repo settings. Turning it on is a repository setting for the owner
+      (`gh api -X PATCH repos/sidhasadhak/jev-perfume-advisor -f allow_auto_merge=true`).
 
 ## How to verify fixes
 
-- `npm test`: 443 tests, no API key needed.
+- `npm test`: 524 tests, no API key needed (`tests/backlog.test.ts` covers this list, `tests/web-ui.test.ts`
+  the browser client).
 - `npm run smoke`: the 5 example questions on live Jev, about $0.01.
 - Re-run the appendix questions on live Jev (about $0.002 per turn) and compare with the "actual" replies below.
 
@@ -99,7 +104,7 @@ there were no made-up prices, years or perfumers. The failures are answering the
 
 ## Appendix - every confirmed red-team failure (live Jev, 2026-09-21)
 
-"Actual" is what the app replied.
+"Actual" is what the app replied **before** the fixes above; each question was re-run on live Jev after them.
 
 
 ### General perfume questions

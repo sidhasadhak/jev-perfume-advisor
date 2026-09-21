@@ -158,6 +158,20 @@ export function parseDist<K extends string>(s: string | undefined, keys: readonl
   return d;
 }
 
+/**
+ * "728:4600:1000;44034:1100:111" -> perfumes this one reminds voters of, with the
+ * yes/no votes behind each link, strongest agreement first. Malformed parts are skipped.
+ */
+export function parseRemindsOf(s: string | undefined): Array<{ pid: string; yes: number; no: number }> {
+  if (!s) return [];
+  return s.split(';').flatMap((part) => {
+    const [pid, yes, no] = part.split(':').map((x) => x.trim());
+    const y = Number(yes);
+    const n = Number(no ?? 0);
+    return pid && /^[A-Za-z0-9_-]+$/.test(pid) && Number.isFinite(y) && y > 0 ? [{ pid, yes: y, no: Number.isFinite(n) ? n : 0 }] : [];
+  }).sort((a, b) => b.yes - b.no - (a.yes - a.no));
+}
+
 /** "pros(text,up,down;..)cons(..)" -> { pros, cons } ordered by net votes. */
 export function parseProsCons(s: string | undefined): { pros: string[]; cons: string[] } {
   if (!s) return { pros: [], cons: [] };
@@ -235,6 +249,7 @@ export function rowToFragrance(row: RawRow, refs: RefTables, ext?: Extension, st
   });
 
   const { pros, cons } = parseProsCons(row.pros_cons);
+  const remindsOf = parseRemindsOf(row.reminds_of);
   const year = Number(row.year);
   const reviews = row.reviews_count?.trim() ? Number(row.reviews_count) : NaN;
 
@@ -263,6 +278,7 @@ export function rowToFragrance(row: RawRow, refs: RefTables, ext?: Extension, st
     cons,
     priceTier: ext?.priceTier ?? inferPriceTier(brand),
     tags: ext?.tags ?? [],
+    ...(remindsOf.length ? { remindsOf } : {}),
   };
 }
 

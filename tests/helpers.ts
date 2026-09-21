@@ -39,6 +39,7 @@ export function makeFragrance(p: Partial<Fragrance> & {
     cons: p.cons ?? [],
     priceTier: p.priceTier ?? 'mid',
     tags: p.tags ?? [],
+    ...(p.remindsOf ? { remindsOf: p.remindsOf } : {}),
   };
 }
 

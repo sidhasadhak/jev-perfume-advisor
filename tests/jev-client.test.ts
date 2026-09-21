@@ -403,11 +403,20 @@ describe('Retry-After', () => {
     assert.ok(gap >= 580, `retried after ${Math.round(gap)}ms`);
   });
 
-  it('gives up instead of retrying early when Retry-After is beyond the maximum', { timeout: 5_000 }, async () => {
+  it('without a budget, gives up instead of retrying early when Retry-After is beyond the maximum, and says why', { timeout: 5_000 }, async () => {
     const seconds = MAX_RETRY_AFTER_MS / 1_000 + 90;
     const { c, calls } = client([{ status: 429, body: 'come back later', headers: { 'retry-after': String(seconds) } }, ok()]);
-    await assert.rejects(c.decide('x', QS), (e: unknown) => e instanceof JevError && e.status === 429);
+    await assert.rejects(c.decide('x', QS), (e: unknown) => e instanceof JevError && e.status === 429
+      && (e as Error).message.includes(`retry after ${seconds}s`));
     assert.equal(calls.length, 1);
+  });
+
+  it('with a budget, waits out a Retry-After longer than the unbudgeted cap when the budget covers it', { timeout: 5_000 }, async () => {
+    const f = fakeFetch([{ status: 429, body: 'busy', headers: { 'retry-after': '1' } }, ok()]);
+    const c = new JevClient({ apiKey: 'k', fetchImpl: f.impl, maxRetryAfterMs: 500 });
+    const d = await c.decide('x', QS, { budgetMs: 4_000 });
+    assert.ok(d.answers);
+    assert.equal(f.calls.length, 2);
   });
 });
 

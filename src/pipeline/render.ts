@@ -8,12 +8,15 @@
  */
 import { sum } from '../catalog/dist.js';
 import { FAMILY_DEFS, dominantFamilies, familyPhrase } from '../catalog/families.js';
-import type { ChatReply, Facets, Family, FavouriteColour, Fragrance, Reason, Recommendation } from '../types.js';
+import { meanLevel } from '../catalog/dist.js';
+import type { ChatReply, Facets, Family, FavouriteColour, Fragrance, Reason, Recommendation, Season } from '../types.js';
+import { LONGEVITY, SILLAGE } from '../types.js';
+import type { CompareAxis } from './understand.js';
 import type { ClarifyTopic, Composition, Lead, Tone } from './compose.js';
 import { compareFollowUps, explainFollowUps } from './followups.js';
-import { features } from './retrieve.js';
+import { features, similarity } from './retrieve.js';
 import {
-  dayNight, genderPerception, performancePhrase, seasonRanking, tierWord, valueWord,
+  dayNight, genderPerception, longevityWord, performancePhrase, seasonRanking, sillageWord, tierWord, valueWord,
 } from './describe.js';
 
 // ---------------------------------------------------------------------------
@@ -71,6 +74,7 @@ const TONE_PREFIX: Record<Tone, readonly string[]> = {
   enthusiastic: ['Great brief! ', 'Ooh, fun one. ', 'Love this. '],
   reassuring: ['No problem at all. ', 'Happy to help you narrow it down. ', 'You\'re in good hands. '],
   crisp: [''],
+  apologetic: ['Fair point \u2014 let\'s try a different direction. ', 'Understood \u2014 here\'s a fresh take. '],
 };
 
 const OCCASION_OPEN: Record<Facets['occasion'], readonly string[]> = {
@@ -148,19 +152,22 @@ function personaOpening(f: Facets, liked: Family[]): string {
   return `With ${who} in mind, here's where I'd start.`;
 }
 
-function opening(f: Facets, c: Composition, recs: Recommendation[], refs: Fragrance[], seed: number, gift: boolean, voice: VoiceOptions): string {
+function opening(f: Facets, c: Composition, recs: Recommendation[], refs: Fragrance[], seed: number, gift: boolean, voice: VoiceOptions, intro?: string): string {
   const liked = (Object.entries(f.likes) as [Family, number][]).sort((a, b) => b[1] - a[1]).map(([k]) => k);
+  // "Since you're drawn to..." only for tastes the user stated - never ones "something warmer" added.
+  const stated = liked.filter((k) => !f.refinedLikes.includes(k));
   const prefix = pick(TONE_PREFIX[c.tone], seed);
   let body = '';
   const byLead: Record<Lead, () => string> = {
-    occasion: () => pick(OCCASION_OPEN[f.occasion], seed, 1),
+    // Occasion openers describe the picks too ("fresh and light is the way"): only when the picks are that.
+    occasion: () => (occasionFitsPicks(f.occasion, recs) ? pick(OCCASION_OPEN[f.occasion], seed, 1) : ''),
     climate: () => pick(CLIMATE_OPEN[f.climate], seed, 2)
       || (f.season !== 'any'
         ? `For ${seasonWord(f.season)}, here are scents ${voice.measured ? 'the community rates highly for the season' : 'that shine in the season'}.`
         : ''),
     persona: () => personaOpening(f, liked),
     taste: () => {
-      const fams = liked.slice(0, 2).map((k) => `${FAMILY_DEFS[k].phrase} scents`);
+      const fams = stated.slice(0, 2).map((k) => `${FAMILY_DEFS[k].phrase} scents`);
       const notes = f.likedNotes.slice(0, 2);
       const what = [...fams, ...notes];
       return what.length ? `Since you're drawn to ${list(what)}, these deliver that in different ways.` : '';
@@ -169,10 +176,12 @@ function opening(f: Facets, c: Composition, recs: Recommendation[], refs: Fragra
       ? `If you love ${refs[0]!.name}, these share a lot of its character${recs.length ? ' while each bringing something of its own' : ''}.`
       : '',
     value: () => 'Great scents don\'t have to cost a fortune — these punch well above their price.',
-    general: () => pick(['Here are a few I think you\'ll love.', 'Here\'s where I\'d start.', 'A few strong picks to begin with.'], seed, 3),
+    // After a caveat, the picks are introduced for what they are - never "a few I think you'll love".
+    general: () => intro ?? pick(['Here are a few I think you\'ll love.', 'Here\'s where I\'d start.', 'A few strong picks to begin with.'], seed, 3),
   };
   body = byLead[c.lead]() || byLead.general();
   if (c.lead === 'climate' && !climateFitsPicks(f.climate, recs)) body = byLead.general();
+  if (c.lead === 'occasion' && !occasionFitsPicks(f.occasion, recs)) body = byLead.general();
 
   // A second sentence adds context the first did not cover - never a restatement of it.
   let second = '';
@@ -196,6 +205,22 @@ function climateFitsPicks(climate: Facets['climate'], recs: Recommendation[]): b
   if (climate === 'cold') return heavy >= 0.35;
   if (climate === 'hot_dry' || climate === 'hot_humid') return heavy < 0.45;
   return true;
+}
+
+/**
+ * Occasion openers make claims about the picks too - "fresh and light is the way",
+ * "presence and staying power", "never a cloud in the meeting room" - so they are
+ * used only when the picks bear them out, like climateFitsPicks.
+ */
+function occasionFitsPicks(occasion: Facets['occasion'], recs: Recommendation[]): boolean {
+  if (!recs.length) return false;
+  const mean = (x: (r: Recommendation) => number) => recs.reduce((s, r) => s + x(r), 0) / recs.length;
+  switch (occasion) {
+    case 'outdoor_active': return mean((r) => features(r.fragrance).heaviness) < 0.45 && mean((r) => features(r.fragrance).sillage) < 0.75;
+    case 'evening_party': return mean((r) => features(r.fragrance).sillage) >= 0.4;
+    case 'office': return mean((r) => features(r.fragrance).sillage) <= 0.7;
+    default: return true;
+  }
 }
 
 const OCCASION_WORD: Record<Facets['occasion'], string> = {
@@ -436,17 +461,35 @@ export interface AppliedShape {
   tip: boolean;
 }
 
+/** Below this, every pick is a weak match: the reply says so instead of presenting them as the answer. */
+export const WEAK_MATCH = 0.25;
+
 export function renderRecommendations(args: {
   message: string; facets: Facets; recs: Recommendation[]; composition: Composition; refs: Fragrance[]; gift: boolean;
   measured?: boolean;
+  /**
+   * Honest caveats that go before the picks - a requirement we cannot check, a brand or
+   * perfume we do not carry, a budget we could not fully meet. With any, the reply drops
+   * its upbeat tone prefix: "No problem at all" must never sit on top of an unmet request.
+   */
+  preface?: string[];
+  /** Replaces the generic opener after a caveat ("Here are the closest matches I found..."). */
+  intro?: string;
 }): Pick<ChatReply, 'text' | 'recommendations' | 'followUps'> & { applied: AppliedShape } {
-  const { facets: f, recs, composition: c } = args;
+  const { facets: f, recs } = args;
+  const preface = (args.preface ?? []).filter(Boolean);
+  const weak = recs.length > 0 && recs.every((r) => r.final < WEAK_MATCH);
+  const cautious = preface.length > 0 || weak;
+  // A caveat changes what the opening may say: no cheerful prefix, and no reference lead for a reference we set aside.
+  const c: Composition = cautious ? { ...args.composition, tone: 'crisp' } : args.composition;
   const voice: VoiceOptions = { measured: args.measured ?? false };
   const seed = seedFrom(args.message);
   if (recs.length === 0) return { ...renderNoMatch(f), applied: { lead: c.lead, clarify: null, tip: false } };
 
   const cards = toCards(recs, f, voice);
-  const lines = [opening(f, c, recs, args.refs, seed, args.gift, voice), ''];
+  const intro = args.intro ?? (cautious ? 'Here are the closest matches I found.' : undefined);
+  const hedge = weak ? ' None of them is a strong match for what you asked, so treat them as a starting point rather than an answer.' : '';
+  const lines = [...(preface.length ? [preface.join(' '), ''] : []), `${opening(f, c, recs, args.refs, seed, args.gift, voice, intro)}${hedge}`, ''];
   cards.forEach((card, i) => {
     lines.push(`**${i + 1}. ${card.name}** by ${card.brand} — ${card.headline.charAt(0).toLowerCase()}${card.headline.slice(1)}.`);
   });
@@ -517,19 +560,52 @@ export function renderExplain(fr: Fragrance, whyBullets: string[] | undefined, {
   };
 }
 
+/** Options for a comparison beyond Jev's overall verdict. */
+export interface CompareOptions {
+  /** What the user compares on; everything but `any` is answered from catalog data. */
+  axis?: CompareAxis;
+  /** The season a `season` comparison is about. */
+  season?: Season | null;
+  /** Jev's probabilities per pid for `any`, used to rank three or more. */
+  ranking?: Record<string, number>;
+  /** A perfume the user named is not in the catalog: say it was left out. */
+  missing?: string | true;
+  measured?: boolean;
+}
+
+const TIER_ORDER: Record<Fragrance['priceTier'], number> = { budget: 0, mid: 1, luxury: 2, niche: 3 };
+/** Mean vote levels (0-1) closer than this are reported as level: the data cannot tell them apart. */
+const PERFORMANCE_TIE = 0.03;
+
 /**
  * `needs` is describeNeeds() of the request ("an evening party in cold
  * weather"), or '' when nothing specific was asked.
  */
 export function renderCompare(
-  frs: Fragrance[], winnerPid: string | null, confidence: number, needs: string,
+  frs: Fragrance[], winnerPid: string | null, confidence: number, needs: string, opts: CompareOptions = {},
 ): Pick<ChatReply, 'text' | 'recommendations' | 'followUps'> {
-  const winner = frs.find((f) => f.pid === winnerPid);
+  const axis = opts.axis === 'season' && !opts.season ? 'any' : opts.axis ?? 'any';
+  const byAxis = axis === 'any' ? null : compareOn(axis, frs, opts);
+  let winner = frs.find((f) => f.pid === winnerPid) ?? null;
   const lines: string[] = [];
-  if (winner && confidence >= 0.55) {
+  if (byAxis) {
+    lines.push(...byAxis.lines);
+    winner = byAxis.top;
+  } else if (winner && confidence >= 0.55) {
     lines.push(needs ? `For ${needs}, I'd lean towards **${winner.name}**.` : `Overall, I'd lean towards **${winner.name}**.`);
+    // Three or more: Jev's probabilities give the rest of the order too.
+    const ranked = opts.ranking && frs.length >= 3
+      ? [...frs].sort((a, b) => (opts.ranking![b.pid] ?? 0) - (opts.ranking![a.pid] ?? 0)).filter((f) => f.pid !== winner!.pid)
+      : [];
+    if (ranked.length) lines.push(`After it: ${list(ranked.map((f) => f.name))}, in that order.`);
   } else {
-    lines.push('Honestly, they\'re close for what you\'ve described — it comes down to taste. Here\'s how they differ:');
+    winner = null;
+    lines.push('Honestly, they\'re close for what you\'ve described \u2014 it comes down to taste. Here\'s how they differ:');
+  }
+  if (opts.missing) {
+    lines.push(typeof opts.missing === 'string'
+      ? `I don't have ${opts.missing} in my catalog, so I've left it out.`
+      : 'One of the perfumes you named isn\'t in my catalog, so I\'ve left it out.');
   }
   lines.push('');
   for (const fr of frs) {
@@ -541,8 +617,126 @@ export function renderCompare(
   return {
     text: lines.join('\n'),
     recommendations: [],
-    followUps: compareFollowUps(winner ?? null),
+    followUps: compareFollowUps(winner, frs),
   };
+}
+
+/**
+ * A comparison on one attribute, answered from the catalog record - never Jev's
+ * taste verdict: "which lasts longest" has an answer in the vote data. `top` is
+ * the perfume the answer favours, or null when it is a tie or there is no data.
+ */
+function compareOn(axis: Exclude<CompareAxis, 'any'>, frs: Fragrance[], opts: CompareOptions): { lines: string[]; top: Fragrance | null } {
+  const source = opts.measured ? 'By community votes' : 'Going by my catalog\'s performance data';
+  const two = frs.length === 2;
+  const names = (xs: Fragrance[]) => list(xs.map((f) => `**${f.name}**`));
+  switch (axis) {
+    case 'longevity':
+    case 'projection': {
+      const dist = (f: Fragrance) => (axis === 'longevity' ? meanLevel(f.longevity, LONGEVITY) : meanLevel(f.sillage, SILLAGE));
+      const word = (f: Fragrance) => (axis === 'longevity' ? longevityWord(f) : sillageWord(f) && `${sillageWord(f)} projection`);
+      const rated = frs.filter((f) => Number.isFinite(dist(f)) && word(f));
+      if (rated.length < 2) return { lines: [`I don't have enough ${axis} data on these to compare them.`], top: null };
+      const order = [...rated].sort((a, b) => dist(b) - dist(a));
+      const top = order[0]!;
+      // Close scores are a tie, whatever their order: the vote data cannot split them.
+      const tied = order.filter((f) => dist(top) - dist(f) < PERFORMANCE_TIE);
+      const sameWord = new Set(order.map(word)).size === 1;
+      const topic = axis === 'longevity' ? 'longevity' : 'projection';
+      const lines: string[] = [];
+      if (tied.length > 1) {
+        lines.push(`${source}, ${names(tied)} are about level on ${topic} (${tied.length === 2 ? 'both' : 'all'} ${word(top)})${tied.length === order.length ? '.' : `, ahead of ${list(order.filter((f) => !tied.includes(f)).map((f) => f.name))}.`}`);
+      } else {
+        const verb = axis === 'longevity' ? (two ? 'lasts longer' : 'lasts longest') : (two ? 'projects more' : 'projects the most');
+        lines.push(`${source}, **${top.name}** ${verb}${sameWord ? ` - though ${two ? 'both are' : 'all of them are'} ${word(top)}` : ` (${word(top)})`}.`);
+      }
+      if (!two && tied.length < order.length) {
+        const label = axis === 'longevity' ? 'longest- to shortest-lasting' : 'strongest to softest';
+        lines.push(`From ${label}: ${order.map((f) => (sameWord ? f.name : `${f.name} (${word(f)})`)).join(', ')}.`);
+      }
+      return { lines, top: tied.length > 1 ? null : top };
+    }
+    case 'price': {
+      const order = [...frs].sort((a, b) => TIER_ORDER[a.priceTier] - TIER_ORDER[b.priceTier]);
+      const cheapest = order.filter((f) => f.priceTier === order[0]!.priceTier);
+      const note = 'I go by price tier, not store prices, which vary by size and retailer.';
+      if (cheapest.length === frs.length) {
+        return { lines: [`${two ? 'Both are' : 'They\'re all'} ${tierWord(order[0]!)}, and I don't have store prices, so I can't say which costs less.`], top: null };
+      }
+      const lead = cheapest.length === 1
+        ? `**${cheapest[0]!.name}** is the ${two ? 'cheaper one' : 'most affordable'} \u2014 it's ${tierWord(cheapest[0]!)}${two ? `, while ${order[1]!.name} is ${tierWord(order[1]!)}` : ''}.`
+        : `${names(cheapest)} are the most affordable (${tierWord(cheapest[0]!)}).`;
+      const rest = two ? [] : [`By price tier, from cheapest: ${order.map((f) => `${f.name} (${tierWord(f)})`).join(', ')}.`];
+      return { lines: [lead, ...rest, note], top: cheapest.length === 1 ? cheapest[0]! : null };
+    }
+    case 'season': {
+      const season = opts.season!;
+      const word = seasonWord(season);
+      const voted = frs.filter((f) => sum(f.season) > 0);
+      if (voted.length < 2) return { lines: [`I don't have enough season data on these to rank them for ${word}.`], top: null };
+      const order = [...voted].sort((a, b) => features(b).season[season] - features(a).season[season]);
+      const top = order[0]!;
+      // The best of poor fits is not "the best fit": say none of them is really a winter scent.
+      const suits = seasonRanking(top).slice(0, 2).some(([x, share]) => x === season && share > 0);
+      const lines = [suits
+        ? `For ${word}, **${top.name}** is the best fit (${bestSeasons(top) || 'versatile'}).`
+        : `${two ? 'Neither' : 'None of these'} is really a ${word} scent; **${top.name}** comes closest (${bestSeasons(top) || 'versatile'}).`];
+      if (!two) lines.push(`My order for ${word}: ${order.map((f) => f.name).join(', ')}.`);
+      const last = order[order.length - 1]!;
+      const lastTop = seasonRanking(last)[0]?.[0];
+      if (lastTop && lastTop !== season && last !== top) lines.push(`${last.name} is really more of ${lastTop === 'fall' ? 'an autumn' : `a ${seasonWord(lastTop)}`} scent.`);
+      return { lines, top };
+    }
+    case 'daytime':
+    case 'evening': {
+      const voted = frs.filter((f) => sum(f.timeOfDay) > 0);
+      if (voted.length < 2) return { lines: ['I don\'t have enough day-or-night data on these to compare them.'], top: null };
+      const night = (f: Fragrance) => dayNight(f).night;
+      const order = [...voted].sort((a, b) => (axis === 'evening' ? night(b) - night(a) : night(a) - night(b)));
+      const top = order[0]!;
+      const lean = (f: Fragrance) => dayNightWord(f, { night: 'mostly worn in the evening', day: 'mostly worn in the day', both: 'works day or night' });
+      const lines = [`For ${axis === 'evening' ? 'evenings' : 'daytime'}, **${top.name}** is the best fit (${lean(top)}).`];
+      if (!two) lines.push(`From most to least ${axis === 'evening' ? 'evening' : 'daytime'}-leaning: ${order.map((f) => f.name).join(', ')}.`);
+      return { lines, top };
+    }
+    case 'similarity': {
+      const [a, b] = frs as [Fragrance, Fragrance];
+      if (!two) {
+        const others = frs.slice(1).map((f) => ({ f, sim: similarity(a, f) })).sort((x, y) => y.sim - x.sim);
+        return { lines: [`Closest to **${a.name}** in style: ${others.map((o) => `${o.f.name} (${likeness(o.sim)})`).join(', ')}.`], top: others[0]!.f };
+      }
+      const link = knownAlternative(a, b) ?? knownAlternative(b, a);
+      const shared = a.accords.slice(0, 5).map((x) => x.name).filter((n) => b.accords.slice(0, 5).some((y) => y.name === n)).slice(0, 3);
+      const both = shared.length ? `both are ${accordList(shared)}` : '';
+      const sim = similarity(a, b);
+      const lines: string[] = [];
+      if (link) {
+        lines.push(`Yes \u2014 **${link.alt.name}** is widely seen as an alternative to **${link.original.name}**${both ? `: ${both}` : ''}.`);
+      } else if (sim >= 0.75) {
+        lines.push(`They're very close in style${both ? `: ${both}` : ''}.`);
+      } else if (sim >= 0.55) {
+        lines.push(`They're fairly similar${both ? ` \u2014 ${both}` : ''} \u2014 but not interchangeable.`);
+      } else {
+        lines.push(`Not really: ${a.name} is ${accordList(a.accords.slice(0, 2).map((x) => x.name))}, while ${b.name} is ${accordList(b.accords.slice(0, 2).map((x) => x.name))}.`);
+      }
+      if (!link) lines.push('I judged that from their accords \u2014 they aren\'t a known dupe pair in my catalog.');
+      if (a.priceTier !== b.priceTier) lines.push(`${a.name} is ${tierWord(a)}; ${b.name} is ${tierWord(b)}.`);
+      return { lines, top: null };
+    }
+  }
+}
+
+function likeness(sim: number): string {
+  return sim >= 0.75 ? 'very close' : sim >= 0.55 ? 'fairly similar' : 'quite different';
+}
+
+/**
+ * `alt` is a well-known alternative to `original` when its reminds_of link has a
+ * clear majority of votes (in the seed catalog, the curated links).
+ */
+export function knownAlternative(alt: Fragrance, original: Fragrance): { alt: Fragrance; original: Fragrance } | undefined {
+  const link = alt.remindsOf?.find((l) => l.pid === original.pid);
+  return link && link.yes >= 3 * Math.max(1, link.no) ? { alt, original } : undefined;
 }
 
 export const CANNED = {

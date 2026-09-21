@@ -98,6 +98,7 @@ export function genderPerception(fr: Fragrance): string {
 }
 
 export function valueWord(fr: Fragrance): string | undefined {
+  if (!fr.priceValue) return undefined;
   const t = sum(fr.priceValue);
   if (t === 0) return undefined;
   const good = share(fr.priceValue, 'good_value') + share(fr.priceValue, 'great_value');
@@ -170,6 +171,7 @@ export function describeFacets(f: Facets, audience: 'jev' | 'user' = 'jev'): str
   if (f.gender !== 'any') parts.push(`style: ${f.gender}`);
   if (f.ageStyle !== 'any') parts.push(AGE_PHRASE[f.ageStyle]);
   if (f.budget !== 'any') parts.push(`budget: ${f.budget}`);
+  if (f.brands.length) parts.push(`only from: ${f.brands.join(', ')}`);
   if (f.projection) parts.push(`projection: ${LEVEL_WORDS[f.projection]}`);
   if (f.longevity) parts.push(`longevity: ${LONGEVITY_WORDS[f.longevity]}`);
   const likes = topKeys(f.likes);

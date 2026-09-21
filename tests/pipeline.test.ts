@@ -172,13 +172,13 @@ describe('understand', () => {
     assert.deepEqual(u.focusPids, ['B']);
   });
 
-  it('compare falls back to the first two shown', async () => {
+  it('compare with nothing named compares every perfume shown', async () => {
     const s = session();
     s.lastShown = ['C', 'G', 'E'];
     s.turns.push({ role: 'assistant', text: 'x' });
     const u = await understand({ message: 'which is better?', session: s, catalog, lexicon, decider: scriptedJev({ intent: 'compare' }) });
     assert.equal(u.intent, 'compare');
-    assert.deepEqual(u.focusPids, ['C', 'G']);
+    assert.deepEqual(u.focusPids, ['C', 'G', 'E']);
   });
 });
 

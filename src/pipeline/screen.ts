@@ -55,6 +55,11 @@ export interface ScreenInput {
   decider: Decider;
   batchSize?: number;
   signal?: AbortSignal;
+  /**
+   * The user's earlier messages, for a refine ("something cheaper?"): the latest message
+   * alone has lost what they said before, and not every detail becomes a facet.
+   */
+  earlier?: string[];
 }
 
 export interface ScreenResult {
@@ -73,6 +78,7 @@ export async function screen(inp: ScreenInput): Promise<ScreenResult> {
   const state = {
     context: 'You are screening every perfume in a catalog for a perfume recommendation assistant. Judge each perfume only on how well it fits this user\'s request.',
     user_request: inp.message,
+    ...(inp.earlier?.length ? { earlier_requests_in_this_conversation: inp.earlier } : {}),
     what_we_know: describeFacets(inp.facets),
     ...(inp.refs.length ? { reference_perfumes_the_user_likes: inp.refs.map((r) => `${r.name} by ${r.brand}`) } : {}),
   };

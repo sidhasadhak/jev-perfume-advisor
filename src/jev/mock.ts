@@ -8,7 +8,7 @@
 import type {
   Answer, ChoiceQuestion, DecideOptions, Decider, Decision, NoulQuestion, Question, QuestionSet, ScoreQuestion,
 } from './types.js';
-import { Telemetry, validateAnswers, validateQuestions } from './client.js';
+import { JevBudgetError, Telemetry, validateAnswers, validateQuestions } from './client.js';
 
 export interface MockJevOptions {
   /** Script exact answers per question (tests, demos). Return undefined to fall back to the heuristic. */
@@ -18,8 +18,9 @@ export interface MockJevOptions {
 }
 
 /**
- * `budgetMs` is accepted and ignored: the mock never queues or retries, so there is
- * nothing to cut short. A caller's abort is honoured, before or during `latencyMs`.
+ * `budgetMs` is honoured like the live client: a call whose `latencyMs` does not fit
+ * its budget fails with JevBudgetError when the budget runs out, so a test can catch a
+ * stage budget set too small. A caller's abort is honoured, before or during `latencyMs`.
  */
 export class MockJev implements Decider {
   readonly mode = 'mock' as const;
@@ -41,7 +42,12 @@ export class MockJev implements Decider {
     };
 
     try {
-      if (this.opts.latencyMs) await sleep(this.opts.latencyMs, opts.signal);
+      const latency = this.opts.latencyMs ?? 0;
+      if (opts.budgetMs !== undefined && latency > opts.budgetMs) {
+        await sleep(opts.budgetMs, opts.signal);
+        throw new JevBudgetError(`Jev call could not finish within its ${opts.budgetMs}ms budget (mock latency ${latency}ms)`);
+      }
+      if (latency) await sleep(latency, opts.signal);
       opts.signal?.throwIfAborted();
       const stateTokens = new Set(tokenize(flatten(state)));
       const answers: Record<string, Answer> = {};

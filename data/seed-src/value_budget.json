@@ -885,6 +885,12 @@
         "versatile",
         "party",
         "modern"
+      ],
+      "reminds_of": [
+        {
+          "brand": "Creed",
+          "name": "Aventus"
+        }
       ]
     },
     {
@@ -1135,6 +1141,12 @@
         "compliment-getter",
         "date-night",
         "youthful"
+      ],
+      "reminds_of": [
+        {
+          "brand": "Jean Paul Gaultier",
+          "name": "Ultra Male"
+        }
       ]
     },
     {
@@ -1261,6 +1273,12 @@
         "date-night",
         "cosy",
         "statement"
+      ],
+      "reminds_of": [
+        {
+          "brand": "Dior",
+          "name": "Sauvage Elixir"
+        }
       ]
     },
     {
@@ -1387,6 +1405,12 @@
         "compliment-getter",
         "party",
         "sensual"
+      ],
+      "reminds_of": [
+        {
+          "brand": "Kilian Paris",
+          "name": "Angels' Share"
+        }
       ]
     },
     {
@@ -2136,6 +2160,12 @@
         "versatile",
         "date-night",
         "blind-buy-safe"
+      ],
+      "reminds_of": [
+        {
+          "brand": "Maison Francis Kurkdjian",
+          "name": "Baccarat Rouge 540"
+        }
       ]
     },
     {
@@ -2263,6 +2293,12 @@
         "casual",
         "blind-buy-safe",
         "compliment-getter"
+      ],
+      "reminds_of": [
+        {
+          "brand": "Maison Francis Kurkdjian",
+          "name": "Baccarat Rouge 540"
+        }
       ]
     },
     {

@@ -51,6 +51,18 @@ describe('HTTP API', () => {
     assert.equal(r2.sessionId, r1.sessionId);
   });
 
+  it('POST /api/fork gives a duplicated tab its own copy of the conversation', async () => {
+    const r1 = await (await post('/api/chat', { message: 'party perfume' })).json() as { sessionId: string };
+    const fork = await (await post('/api/fork', { sessionId: r1.sessionId })).json() as { sessionId: string | null };
+    assert.ok(fork.sessionId);
+    assert.notEqual(fork.sessionId, r1.sessionId);
+    // The copy continues the same conversation: "cheaper" refines the list both tabs saw.
+    const r2 = await (await post('/api/chat', { sessionId: fork.sessionId, message: 'something cheaper' })).json() as { sessionId: string };
+    assert.equal(r2.sessionId, fork.sessionId);
+    assert.deepEqual(await (await post('/api/fork', { sessionId: 'unknown-session-id' })).json(), { sessionId: null });
+    assert.equal((await post('/api/fork', {})).status, 400);
+  });
+
   it('validates input', async () => {
     assert.equal((await post('/api/chat', {})).status, 400);
     assert.equal((await post('/api/chat', { message: '   ' })).status, 400);

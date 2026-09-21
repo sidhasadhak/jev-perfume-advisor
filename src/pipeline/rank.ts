@@ -36,6 +36,8 @@ export interface RankInput {
   /** How many recommendations to return. */
   take?: number;
   signal?: AbortSignal;
+  /** The user's earlier messages, for a refine - see ScreenInput.earlier. */
+  earlier?: string[];
 }
 
 export interface RankResult {
@@ -50,6 +52,7 @@ export async function rank(inp: RankInput): Promise<RankResult> {
   const refs = facets.referencePids.map(inp.catalogLookup).filter((x): x is Fragrance => !!x);
   const request = {
     user_request: inp.message,
+    ...(inp.earlier?.length ? { earlier_requests_in_this_conversation: inp.earlier } : {}),
     what_we_know: describeFacets(facets),
     ...(refs.length ? { reference_perfumes_the_user_likes: refs.map((r) => `${r.name} by ${r.brand}`) } : {}),
   };
