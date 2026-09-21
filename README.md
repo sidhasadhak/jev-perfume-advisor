@@ -20,6 +20,11 @@ Ask it things like:
 *"now something for my son"*. Every reply has a **"How Jev decided"** panel showing each typed
 decision Jev made, with its probability.
 
+<p align="center">
+  <img src="docs/screenshots/recommendations.png" alt="Scent Sommelier recommending Chloé, Trésor, Stella and YSL Paris for a 65-year-old lady who loves the colour pink" width="820">
+  <br><em>A live reply: Jev read "loves the colour pink" as a taste for rosy and powdery scents.</em>
+</p>
+
 ## Quick start
 
 ### Option A - Node.js (macOS, Linux, Windows)
@@ -81,6 +86,37 @@ npm run smoke                                       # the five example questions
 | Port 8787 is already in use (`npm start`) | In `.env`, change the line `PORT=8787` to e.g. `PORT=8788` (or run `PORT=8788 npm start`), then open http://localhost:8788. |
 | Port 8787 is already in use (Docker) | Add `HOST_PORT=8788` to `.env` (or run `HOST_PORT=8788 docker compose up`), then open http://localhost:8788. Docker may report this as *port is already allocated*. |
 | Reach it from your phone on the same network | `npm start`: add `HOST=0.0.0.0` to `.env`. Docker: add `HOST_BIND=0.0.0.0`. Restart, then open `http://<your-computer's-IP>:8787`. |
+
+## Screenshots
+
+All taken on live Jev with the bundled seed catalog.
+
+**How Jev decided.** Every reply shows each typed decision Jev made, grouped by the lever it pulls,
+with its probability, the runner-up options, and whether the app actually used it - here Jev wanted to
+ask a follow-up question, but was only 28% certain about the topic, so the app did not ask one:
+
+<p align="center"><img src="docs/screenshots/how-jev-decided.png" alt="The How Jev decided panel: decisions grouped into Conversation, Occasion, Location and climate, Season and time, Wearer, Preferences, Budget and Reply shape" width="720"></p>
+
+**Detailed judging.** Jev screens every perfume with a yes/no question, then scores its top picks
+against the request:
+
+<p align="center"><img src="docs/screenshots/detailed-judging.png" alt="Table of Jev's fit score and wearer, taste and conflict checks for its 14 top-screened perfumes" width="620"></p>
+
+**Follow-ups keep the context.** After the lady who loves pink, *"Now something for my 30 year old son"*
+switches the wearer cleanly - no roses, no pink:
+
+<p align="center"><img src="docs/screenshots/follow-up.png" alt="Follow-up reply recommending Sauvage, Bleu de Chanel, Valentino Born in Roma and YSL Y for a 30-year-old son" width="720"></p>
+
+<table align="center">
+  <tr>
+    <td><img src="docs/screenshots/dark-theme.png" alt="Dark theme: recommendations for Nordic winters" width="560"></td>
+    <td><img src="docs/screenshots/mobile.png" alt="Phone layout: recommendations for a summer in Turkey" width="230"></td>
+  </tr>
+  <tr>
+    <td align="center"><em>Dark theme - "Something for Nordic winters"</em></td>
+    <td align="center"><em>Phone - a summer in Turkey</em></td>
+  </tr>
+</table>
 
 ## How Jev is used (and why the replies aren't generated text)
 
@@ -239,6 +275,7 @@ scripts/            setup.mjs (npm run setup), smoke.ts (npm run smoke), test.mj
 data/catalog/       seed catalog in FragDB format (generated)
 data/seed-src/      its source JSON (npm run seed rebuilds data/catalog)
 tests/              node:test suites; fixtures/fragdb-sample is third-party (CC BY-NC 4.0)
+docs/screenshots/   images used in this README
 ```
 
 ## License

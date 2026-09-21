@@ -4,7 +4,8 @@ import { PerfumeBot } from '../src/pipeline/orchestrator.js';
 import { retrieve } from '../src/pipeline/retrieve.js';
 import type { Trace, TraceItem } from '../src/pipeline/trace.js';
 import { EMPTY_FACETS, type Facets } from '../src/types.js';
-import { fixtureCatalog, scriptedJev, type Script } from './helpers.js';
+import { MockJev } from '../src/jev/mock.js';
+import { defaultSpec, fixtureCatalog, scriptedJev, toAnswer, type Script } from './helpers.js';
 
 const catalog = fixtureCatalog();
 const facets = (p: Partial<Facets>): Facets => ({ ...structuredClone(EMPTY_FACETS), ...p });
@@ -129,5 +130,55 @@ describe('trace probabilities', () => {
     assert.equal(lead.probability, 0.38);
     assert.equal(lead.certainty, 0.27);
     assert.ok(lead.alternatives!.every((a) => a.p <= lead.probability), 'no runner-up may look larger than the chosen answer');
+  });
+});
+
+describe('reply-shape labels match what the reply actually shows', () => {
+  /** Like scriptedJev, but with a per-key certainty for choices. */
+  function jev(script: Record<string, string | number>, certainty: Record<string, number> = {}) {
+    return new MockJev({ resolver: (_s, key, q) => toAnswer(q, script[key] ?? defaultSpec(key, q), certainty[key] ?? 0.9) });
+  }
+  async function shape(script: Record<string, string | number>, certainty: Record<string, number> = {}, message = 'a perfume') {
+    const r = await new PerfumeBot(catalog, jev(script, certainty)).chat(undefined, message);
+    const items = (r.reply.debug as { trace: Trace }).trace.levers.flatMap((g) => g.items);
+    const get = (k: string) => items.find((i) => i.key === k)!;
+    return { text: r.reply.text, get };
+  }
+  const QUESTION = /\?\s*$/;
+
+  it('live case: Jev wants a question but is unsure of the topic -> no question, labelled not used / low confidence', async () => {
+    // Screenshot 3: ask 62%, topic "occasion" at 33% certainty was labelled "used", yet no question was asked.
+    const t = await shape({ ask: 0.62, clarify_topic: 'occasion' }, { clarify_topic: 0.33 });
+    assert.doesNotMatch(t.text, QUESTION);
+    assert.deepEqual([t.get('ask').answer, t.get('ask').status], ['yes', 'not used']);
+    assert.equal(t.get('clarify_topic').status, 'low confidence');
+  });
+
+  it('a confident question is asked and labelled used', async () => {
+    const t = await shape({ ask: 0.9, clarify_topic: 'budget' });
+    assert.match(t.text, /budget/i);
+    assert.equal(t.get('ask').status, 'used');
+    assert.equal(t.get('clarify_topic').status, 'used');
+  });
+
+  it('"no question" is an applied decision; yes/no uses the app\'s 60% bar, not 50%', async () => {
+    const t = await shape({ ask: 0.55 });
+    assert.deepEqual([t.get('ask').answer, t.get('ask').status], ['no', 'used']);
+    assert.equal(t.get('clarify_topic').status, 'not used');
+  });
+
+  it('a wanted tip that fits nothing in the request is not shown and labelled not used', async () => {
+    const none = await shape({ tip: 0.9 });
+    assert.equal(none.get('tip').status, 'not used');
+    const cold = await shape({ tip: 0.9, climate: 'cold' }, {}, 'a perfume for freezing weather');
+    assert.match(cold.text, /Tip:/);
+    assert.equal(cold.get('tip').status, 'used');
+  });
+
+  it('a lead the app cannot back with data is labelled overridden', async () => {
+    const t = await shape({ lead: 'climate' }); // no climate or season given -> falls back
+    assert.equal(t.get('lead').status, 'overridden');
+    const ok = await shape({ lead: 'climate', climate: 'cold' }, {}, 'something for the cold');
+    assert.equal(ok.get('lead').status, 'used');
   });
 });

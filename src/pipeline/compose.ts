@@ -59,6 +59,13 @@ export interface ComposeInput {
   signal?: AbortSignal;
 }
 
+/** Jev must say "ask a question" with at least this probability... */
+export const ASK_THRESHOLD = 0.6;
+/** ...and be at least this certain about the topic, or no question is asked. */
+export const TOPIC_CERTAINTY = 0.4;
+/** Probability at which a wearing tip is wanted (one is shown only if a tip fits the request). */
+export const TIP_THRESHOLD = 0.6;
+
 export async function compose(inp: ComposeInput): Promise<Composition> {
   const { facets: f, recs } = inp;
   const pool = followUpPool(f, recs);
@@ -97,7 +104,7 @@ export async function compose(inp: ComposeInput): Promise<Composition> {
 
   const lead = (a.lead as ChoiceAnswer<Lead>).choice;
   const topic = a.clarify_topic as ChoiceAnswer<ClarifyTopic> | undefined;
-  const ask = (a.ask as NoulAnswer).noul >= 0.6 && topic && topic.choice !== 'none' && topic.confidence >= 0.4;
+  const ask = (a.ask as NoulAnswer).noul >= ASK_THRESHOLD && topic && topic.choice !== 'none' && topic.confidence >= TOPIC_CERTAINTY;
   const next = a.next as ChoiceAnswer | undefined;
   const ranked = next
     ? Object.entries(next.probabilities).sort((x, y) => y[1] - x[1]).map(([k]) => pool[Number(k.slice(1))]!)
@@ -107,7 +114,7 @@ export async function compose(inp: ComposeInput): Promise<Composition> {
     lead: validLead(lead, f),
     tone: (a.tone as ChoiceAnswer<Tone>).choice,
     clarify: ask ? topic!.choice : null,
-    tip: (a.tip as NoulAnswer).noul >= 0.6,
+    tip: (a.tip as NoulAnswer).noul >= TIP_THRESHOLD,
     followUps: ranked.filter(Boolean).slice(0, 3),
   };
 }
