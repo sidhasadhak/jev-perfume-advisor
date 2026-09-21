@@ -61,7 +61,7 @@ run `docker compose up --build` again. Your key is read at start-up and never bu
 ### Getting a Jev API key
 
 - **[OpenRouter](https://openrouter.ai/keys)** (easiest) - Jev is served as `typesafe/jev-latest` at
-  $0.042 per million input tokens, output free. A chat reply costs about **$0.002**.
+  $0.042 per million input tokens, output free. A chat reply costs about **$0.004**.
 - **[TypeSafe](https://console.typesafe.ai)** directly - put it in `TYPESAFE_API_KEY` instead.
 - **No key?** The app runs in clearly labelled **mock mode**: a keyword heuristic stands in for Jev so
   you can try the interface, but the recommendations are much weaker. The page shows an amber
@@ -161,9 +161,9 @@ Why yes/no per perfume rather than one big "which is best?" question: a Jev *cho
 probability mass on the winner and leaves the rest at ~0, so it cannot rank positions 2-14.
 Independent yes/no judgements give every perfume its own calibrated, comparable score.
 
-For catalogs larger than `JEV_SCREEN_LIMIT` (default 400; e.g. the full 140k-record FragDB),
+For catalogs larger than `JEV_SCREEN_LIMIT` (default 1000; e.g. the full 140k-record FragDB),
 the community-vote scores pick which perfumes Jev screens each turn, and the "How Jev decided"
-panel shows the cap (e.g. *"Screened by Jev: 400 of 140,230"*).
+panel shows the cap (e.g. *"Screened by Jev: 1,000 of 140,230"*).
 
 Two design rules follow from Jev's strengths and limits:
 
@@ -194,9 +194,9 @@ A stated budget is a limit: "under $60" never returns a luxury pick. A compariso
 about a perfume doesn't change what the bot knows about the user, and "actually, any season is
 fine" does remove the constraint. The panel shows which route each turn took.
 
-Measured on live Jev (via OpenRouter) with the 186-perfume seed catalog: a recommendation turn
-is 21 Jev calls (1 understand + 5 screening + 14 detailed + 1 compose), ~265-280 typed questions
-and ~46k input tokens, i.e. about **$0.002 per turn** at $0.042 per million input tokens (output
+Measured on live Jev (via OpenRouter) with the 483-perfume seed catalog: a recommendation turn
+is 29 Jev calls (1 understand + 13 screening + 14 detailed + 1 compose), ~570-590 typed questions
+and ~96k input tokens, i.e. about **$0.004 per turn** at $0.042 per million input tokens (output
 is free), in **~2-2.7 s** wall time (the very first call after startup can be slower).
 
 Each Jev call has a time budget (understanding 22 s, screening 12 s, judging and composing 10 s),
@@ -219,7 +219,7 @@ All settings live in `.env` (created by `npm run setup` from [`.env.example`](.e
 | `TYPESAFE_MODEL` | `jev-latest` | Pin a version, e.g. `jev-1.13` (OpenRouter maps bare ids to `typesafe/…`) |
 | `JEV_MODE` | `auto` | `auto` (live if a key is set), `live` (fail without a key), `mock`. Any other value stops startup, so a typo can never silently run live and bill |
 | `JEV_CONCURRENCY` | `8` | Max in-flight Jev requests |
-| `JEV_SCREEN_LIMIT` | `400` | Jev screens every perfume when the catalog is at most this size |
+| `JEV_SCREEN_LIMIT` | `1000` | Jev screens every perfume when the catalog is at most this size |
 | `CATALOG_SOURCE` | `seed` | `seed`, `csv` or `api` (see below) |
 | `PORT` / `HOST` | `8787` / `localhost` | For `npm start`. Set `HOST=0.0.0.0` to reach it from other devices |
 | `RATE_LIMIT_PER_MIN` | `30` | Chat messages per minute per IP, to protect your key (whole number, at least 1) |
@@ -236,7 +236,7 @@ free. So the bot ships with a **seed catalog** and can switch to the real thing 
 
 | `CATALOG_SOURCE` | What it loads |
 |---|---|
-| `seed` (default) | `data/catalog/`: a curated catalog of well-known perfumes, **in FragDB's exact pipe-delimited export format**, so the same loader and parsers serve both |
+| `seed` (default) | `data/catalog/`: a curated catalog of 483 well-known perfumes from 95 houses (sprays only), **in FragDB's exact pipe-delimited export format**, so the same loader and parsers serve both |
 | `csv` | A licensed FragDB CSV export in `FRAGDB_CSV_DIR` (`fragrances.csv`, `notes.csv`, `accords.csv`, `brands.csv`) |
 | `api` | **Not usable yet.** The loader reads FragDB's `/v1/index`, which lists only ids and names (no accords, notes or votes); full records must be bought separately via the batch endpoint ($0.01 each), which this loader does not do. Use `seed` or `csv` |
 

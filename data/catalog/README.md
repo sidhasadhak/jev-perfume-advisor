@@ -1,6 +1,6 @@
 # Seed catalog
 
-These files are a curated starter catalog in **FragDB's exact export format** (pipe-delimited,
+These files are a curated starter catalog of 483 perfumes from 95 houses in **FragDB's exact export format** (pipe-delimited,
 release v5.x field encodings), so the app's FragDB loader reads them exactly as it would read a
 licensed FragDB export:
 
@@ -19,7 +19,11 @@ regenerate; do not hand-edit the CSVs.
 
 - **Identity and composition** (name, brand, launch year, perfumers, gender target, note pyramid,
   accords, price tier) were authored per market segment and then checked by an independent
-  fact-checking pass that corrected errors and removed anything it could not confirm.
+  fact-checking pass that corrected errors and removed anything it could not confirm. The
+  `expansion_*.json` sources (297 perfumes, added later) went through the same author-then-check
+  process; where a perfumer could not be confirmed, `perfumers` is left empty.
+- Only perfume **sprays** are included (cologne, EDT, EDP, parfum, extrait, elixir): no body mists,
+  oils or attars, because the app tells users that is all it carries.
 - **Descriptions, pros and cons** are original wording, not copied from Fragrantica, brands or
   retailers.
 - **Community-vote distributions** (season, day/night, gender perception, longevity, sillage,

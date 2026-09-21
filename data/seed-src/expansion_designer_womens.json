@@ -1,0 +1,6565 @@
+{
+  "segment": "expansion_designer_womens",
+  "fragrances": [
+    {
+      "name": "Coco Noir",
+      "brand": "Chanel",
+      "brand_country": "France",
+      "year": 2012,
+      "gender": "women",
+      "perfumers": [
+        "Jacques Polge",
+        "Christopher Sheldrake"
+      ],
+      "accords": [
+        {
+          "name": "warm spicy",
+          "strength": 100
+        },
+        {
+          "name": "woody",
+          "strength": 90
+        },
+        {
+          "name": "citrus",
+          "strength": 85
+        },
+        {
+          "name": "amber",
+          "strength": 80
+        },
+        {
+          "name": "patchouli",
+          "strength": 75
+        },
+        {
+          "name": "vanilla",
+          "strength": 70
+        },
+        {
+          "name": "rose",
+          "strength": 70
+        },
+        {
+          "name": "balsamic",
+          "strength": 60
+        }
+      ],
+      "notes": {
+        "top": [
+          "Grapefruit",
+          "Bergamot",
+          "Orange"
+        ],
+        "middle": [
+          "Rose",
+          "Geranium",
+          "Jasmine",
+          "Narcissus",
+          "Peach"
+        ],
+        "base": [
+          "Patchouli",
+          "Sandalwood",
+          "Frankincense",
+          "Tonka Bean",
+          "Vanilla",
+          "White Musk",
+          "Clove",
+          "Benzoin"
+        ]
+      },
+      "description": "A dark, polished patchouli-rose: grapefruit, bergamot and orange open brightly before rose, jasmine, geranium and a hint of peach, and the base settles into patchouli, incense, sandalwood, tonka and vanilla with a warm clove edge. Dressy and composed, it reads best in the evening and in cooler months.",
+      "rating": 4.1,
+      "rating_votes": 12067,
+      "season_votes": {
+        "winter": 3700,
+        "spring": 1600,
+        "summer": 880,
+        "fall": 3900
+      },
+      "time_votes": {
+        "day": 2300,
+        "night": 4000
+      },
+      "gender_votes": {
+        "female": 6582,
+        "more_female": 2852,
+        "unisex": 1316,
+        "more_male": 110,
+        "male": 66
+      },
+      "longevity_votes": {
+        "very_weak": 219,
+        "weak": 548,
+        "moderate": 2852,
+        "long_lasting": 4936,
+        "eternal": 1865
+      },
+      "sillage_votes": {
+        "intimate": 439,
+        "moderate": 3510,
+        "strong": 4388,
+        "enormous": 1536
+      },
+      "price_value_votes": {
+        "way_overpriced": 987,
+        "overpriced": 2194,
+        "ok": 3510,
+        "good_value": 1426,
+        "great_value": 439
+      },
+      "appreciation_votes": {
+        "love": 5300,
+        "like": 4700,
+        "ok": 597,
+        "dislike": 1400,
+        "hate": 119
+      },
+      "pros": [
+        "Refined patchouli-rose character",
+        "Long-lasting with good projection",
+        "Suits formal evenings"
+      ],
+      "cons": [
+        "Can feel mature or stern",
+        "Too dense for hot weather",
+        "Chanel pricing"
+      ],
+      "price_tier": "luxury",
+      "tags": [
+        "evening",
+        "mature-elegant",
+        "cold-weather",
+        "formal",
+        "date-night"
+      ]
+    },
+    {
+      "name": "Angel Nova",
+      "brand": "Mugler",
+      "brand_country": "France",
+      "year": 2020,
+      "gender": "women",
+      "perfumers": [
+        "Quentin Bisch",
+        "Louise Turner",
+        "Sonia Constant"
+      ],
+      "accords": [
+        {
+          "name": "fruity",
+          "strength": 100
+        },
+        {
+          "name": "rose",
+          "strength": 85
+        },
+        {
+          "name": "sweet",
+          "strength": 70
+        },
+        {
+          "name": "tropical",
+          "strength": 50
+        },
+        {
+          "name": "woody",
+          "strength": 50
+        },
+        {
+          "name": "warm spicy",
+          "strength": 40
+        },
+        {
+          "name": "balsamic",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Raspberry",
+          "Lychee"
+        ],
+        "middle": [
+          "Damask Rose"
+        ],
+        "base": [
+          "Akigalawood",
+          "Benzoin"
+        ]
+      },
+      "description": "Juicy raspberry and lychee lead into a bright, jammy rose that dries down over peppery Akigalawood and a soft benzoin warmth. Far fruitier and lighter than the original Angel, with none of its patchouli-caramel weight.",
+      "rating": 3.9,
+      "rating_votes": 8168,
+      "season_votes": {
+        "winter": 1300,
+        "spring": 3100,
+        "summer": 3000,
+        "fall": 1600
+      },
+      "time_votes": {
+        "day": 3200,
+        "night": 1600
+      },
+      "gender_votes": {
+        "female": 5346,
+        "more_female": 1337,
+        "unisex": 371,
+        "more_male": 45,
+        "male": 45
+      },
+      "longevity_votes": {
+        "very_weak": 297,
+        "weak": 743,
+        "moderate": 2673,
+        "long_lasting": 2376,
+        "eternal": 743
+      },
+      "sillage_votes": {
+        "intimate": 446,
+        "moderate": 2673,
+        "strong": 2376,
+        "enormous": 743
+      },
+      "price_value_votes": {
+        "way_overpriced": 446,
+        "overpriced": 1188,
+        "ok": 2376,
+        "good_value": 1337,
+        "great_value": 446
+      },
+      "appreciation_votes": {
+        "love": 3300,
+        "like": 2500,
+        "ok": 1000,
+        "dislike": 931,
+        "hate": 350
+      },
+      "pros": [
+        "Bright raspberry-rose opening",
+        "Easy to wear in daytime",
+        "Refillable bottle"
+      ],
+      "cons": [
+        "Little in common with Angel",
+        "Fruit can smell synthetic",
+        "Fairly linear"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "youthful",
+        "pink-coded",
+        "modern",
+        "casual"
+      ]
+    },
+    {
+      "name": "Libre Intense",
+      "brand": "Yves Saint Laurent",
+      "brand_country": "France",
+      "year": 2020,
+      "gender": "women",
+      "perfumers": [
+        "Anne Flipo",
+        "Carlos Benaïm"
+      ],
+      "accords": [
+        {
+          "name": "vanilla",
+          "strength": 100
+        },
+        {
+          "name": "white floral",
+          "strength": 80
+        },
+        {
+          "name": "citrus",
+          "strength": 75
+        },
+        {
+          "name": "lavender",
+          "strength": 70
+        },
+        {
+          "name": "sweet",
+          "strength": 70
+        },
+        {
+          "name": "aromatic",
+          "strength": 65
+        },
+        {
+          "name": "amber",
+          "strength": 60
+        },
+        {
+          "name": "powdery",
+          "strength": 50
+        }
+      ],
+      "notes": {
+        "top": [
+          "Lavender",
+          "Mandarin Orange",
+          "Bergamot"
+        ],
+        "middle": [
+          "Orange Blossom",
+          "Jasmine Sambac",
+          "Orchid",
+          "Lavender"
+        ],
+        "base": [
+          "Vanilla",
+          "Tonka Bean",
+          "Ambergris",
+          "Vetiver"
+        ]
+      },
+      "description": "Libre's lavender and orange blossom pairing pushed into warmer territory: mandarin and bergamot brighten the lavender, jasmine and orchid fill out the heart, and a creamy vanilla-tonka base with ambergris and vetiver takes over. Richer and sweeter than the original, it suits cooler days and evenings.",
+      "rating": 4.3,
+      "rating_votes": 11566,
+      "season_votes": {
+        "winter": 5200,
+        "spring": 2000,
+        "summer": 1200,
+        "fall": 5200
+      },
+      "time_votes": {
+        "day": 2800,
+        "night": 5100
+      },
+      "gender_votes": {
+        "female": 6554,
+        "more_female": 1928,
+        "unisex": 867,
+        "more_male": 96,
+        "male": 67
+      },
+      "longevity_votes": {
+        "very_weak": 145,
+        "weak": 337,
+        "moderate": 2120,
+        "long_lasting": 4819,
+        "eternal": 2506
+      },
+      "sillage_votes": {
+        "intimate": 289,
+        "moderate": 2313,
+        "strong": 4819,
+        "enormous": 2217
+      },
+      "price_value_votes": {
+        "way_overpriced": 482,
+        "overpriced": 1253,
+        "ok": 3084,
+        "good_value": 2120,
+        "great_value": 771
+      },
+      "appreciation_votes": {
+        "love": 6500,
+        "like": 3000,
+        "ok": 979,
+        "dislike": 769,
+        "hate": 289
+      },
+      "pros": [
+        "Very long-lasting",
+        "Warm lavender-vanilla twist",
+        "Strong projection"
+      ],
+      "cons": [
+        "Sweet enough to cloy in heat",
+        "Close to other vanilla florals",
+        "Loud if overapplied"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "cold-weather",
+        "compliment-getter",
+        "evening",
+        "signature",
+        "cosy"
+      ]
+    },
+    {
+      "name": "Miss Dior Eau de Parfum",
+      "brand": "Dior",
+      "brand_country": "France",
+      "year": 2021,
+      "gender": "women",
+      "perfumers": [
+        "François Demachy"
+      ],
+      "accords": [
+        {
+          "name": "powdery",
+          "strength": 100
+        },
+        {
+          "name": "vanilla",
+          "strength": 95
+        },
+        {
+          "name": "rose",
+          "strength": 85
+        },
+        {
+          "name": "floral",
+          "strength": 75
+        },
+        {
+          "name": "fruity",
+          "strength": 65
+        },
+        {
+          "name": "sweet",
+          "strength": 65
+        },
+        {
+          "name": "fresh",
+          "strength": 60
+        },
+        {
+          "name": "iris",
+          "strength": 60
+        },
+        {
+          "name": "musky",
+          "strength": 55
+        },
+        {
+          "name": "amber",
+          "strength": 50
+        }
+      ],
+      "notes": {
+        "top": [
+          "Iris",
+          "Peony",
+          "Lily-of-the-Valley"
+        ],
+        "middle": [
+          "Rose",
+          "Apricot",
+          "Peach"
+        ],
+        "base": [
+          "Vanilla",
+          "Musk",
+          "Tonka Bean",
+          "Sandalwood",
+          "Benzoin"
+        ]
+      },
+      "description": "A soft, powdery rose: iris, peony and lily-of-the-valley lead into rose with a touch of apricot and peach, then settle on a smooth base of vanilla, tonka, musk and sandalwood. Romantic and polished, it is easy to wear by day.",
+      "rating": 3.9,
+      "rating_votes": 7349,
+      "season_votes": {
+        "winter": 1300,
+        "spring": 2900,
+        "summer": 1700,
+        "fall": 1700
+      },
+      "time_votes": {
+        "day": 2800,
+        "night": 1100
+      },
+      "gender_votes": {
+        "female": 4724,
+        "more_female": 1155,
+        "unisex": 262,
+        "more_male": 26,
+        "male": 26
+      },
+      "longevity_votes": {
+        "very_weak": 420,
+        "weak": 945,
+        "moderate": 2520,
+        "long_lasting": 1575,
+        "eternal": 420
+      },
+      "sillage_votes": {
+        "intimate": 630,
+        "moderate": 2730,
+        "strong": 1575,
+        "enormous": 420
+      },
+      "price_value_votes": {
+        "way_overpriced": 840,
+        "overpriced": 1575,
+        "ok": 1890,
+        "good_value": 735,
+        "great_value": 262
+      },
+      "appreciation_votes": {
+        "love": 2600,
+        "like": 2500,
+        "ok": 1200,
+        "dislike": 783,
+        "hate": 226
+      },
+      "pros": [
+        "Soft, pretty rose-peony bouquet",
+        "Office- and daytime-friendly",
+        "Bottle dressed with a couture bow"
+      ],
+      "cons": [
+        "Sweeter and softer than the chypre-style Miss Dior of old",
+        "Moderate staying power",
+        "Priced high for its strength"
+      ],
+      "price_tier": "luxury",
+      "tags": [
+        "romantic",
+        "office-safe",
+        "pink-coded",
+        "wedding",
+        "versatile"
+      ]
+    },
+    {
+      "name": "Flora Gorgeous Gardenia Eau de Parfum",
+      "brand": "Gucci",
+      "brand_country": "Italy",
+      "year": 2021,
+      "gender": "women",
+      "perfumers": [
+        "Honorine Blanc"
+      ],
+      "accords": [
+        {
+          "name": "white floral",
+          "strength": 100
+        },
+        {
+          "name": "floral",
+          "strength": 80
+        },
+        {
+          "name": "sweet",
+          "strength": 75
+        },
+        {
+          "name": "fruity",
+          "strength": 70
+        },
+        {
+          "name": "lactonic",
+          "strength": 55
+        },
+        {
+          "name": "patchouli",
+          "strength": 50
+        },
+        {
+          "name": "citrus",
+          "strength": 50
+        },
+        {
+          "name": "fresh",
+          "strength": 50
+        }
+      ],
+      "notes": {
+        "top": [
+          "Pear Blossom",
+          "Red Berries",
+          "Mandarin Orange"
+        ],
+        "middle": [
+          "Gardenia",
+          "Jasmine",
+          "Frangipani"
+        ],
+        "base": [
+          "Brown Sugar",
+          "Patchouli"
+        ]
+      },
+      "description": "A sugary white floral: creamy gardenia, jasmine and frangipani sweetened by red berries, pear blossom and a touch of mandarin, over a brown-sugar and light patchouli drydown. Cheerful and girlish rather than heady; the gardenia here is soft and candied.",
+      "rating": 3.9,
+      "rating_votes": 7708,
+      "season_votes": {
+        "winter": 539,
+        "spring": 3400,
+        "summer": 2600,
+        "fall": 952
+      },
+      "time_votes": {
+        "day": 3100,
+        "night": 648
+      },
+      "gender_votes": {
+        "female": 5299,
+        "more_female": 1060,
+        "unisex": 193,
+        "more_male": 19,
+        "male": 19
+      },
+      "longevity_votes": {
+        "very_weak": 385,
+        "weak": 964,
+        "moderate": 2698,
+        "long_lasting": 1927,
+        "eternal": 578
+      },
+      "sillage_votes": {
+        "intimate": 482,
+        "moderate": 2698,
+        "strong": 2120,
+        "enormous": 674
+      },
+      "price_value_votes": {
+        "way_overpriced": 289,
+        "overpriced": 771,
+        "ok": 2120,
+        "good_value": 1734,
+        "great_value": 674
+      },
+      "appreciation_votes": {
+        "love": 2700,
+        "like": 2900,
+        "ok": 1300,
+        "dislike": 658,
+        "hate": 162
+      },
+      "pros": [
+        "Sweet, approachable gardenia",
+        "Easy daytime wear",
+        "Eye-catching floral bottle"
+      ],
+      "cons": [
+        "Sugary for some tastes",
+        "Not a realistic gardenia",
+        "Middling longevity"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "youthful",
+        "casual",
+        "crowd-pleaser",
+        "pink-coded",
+        "hot-weather"
+      ]
+    },
+    {
+      "name": "Very Good Girl",
+      "brand": "Carolina Herrera",
+      "brand_country": "United States",
+      "year": 2021,
+      "gender": "women",
+      "perfumers": [
+        "Louise Turner",
+        "Quentin Bisch",
+        "Shyamala Maisondieu"
+      ],
+      "accords": [
+        {
+          "name": "fruity",
+          "strength": 100
+        },
+        {
+          "name": "rose",
+          "strength": 70
+        },
+        {
+          "name": "fresh",
+          "strength": 65
+        },
+        {
+          "name": "vanilla",
+          "strength": 60
+        },
+        {
+          "name": "tropical",
+          "strength": 60
+        },
+        {
+          "name": "soft spicy",
+          "strength": 55
+        },
+        {
+          "name": "sweet",
+          "strength": 50
+        }
+      ],
+      "notes": {
+        "top": [
+          "Red Currant",
+          "Lychee"
+        ],
+        "middle": [
+          "Rose"
+        ],
+        "base": [
+          "Vanilla",
+          "Vetiver"
+        ]
+      },
+      "description": "A red-fruit take on Good Girl: tart red currant and lychee over a sweet rose, settling into vanilla with a dry vetiver edge. Brighter and fruitier than the original, without its tuberose and cocoa depth.",
+      "rating": 4.0,
+      "rating_votes": 7772,
+      "season_votes": {
+        "winter": 1500,
+        "spring": 2700,
+        "summer": 2100,
+        "fall": 2100
+      },
+      "time_votes": {
+        "day": 2500,
+        "night": 2300
+      },
+      "gender_votes": {
+        "female": 5141,
+        "more_female": 1196,
+        "unisex": 239,
+        "more_male": 24,
+        "male": 24
+      },
+      "longevity_votes": {
+        "very_weak": 239,
+        "weak": 598,
+        "moderate": 2391,
+        "long_lasting": 2631,
+        "eternal": 957
+      },
+      "sillage_votes": {
+        "intimate": 359,
+        "moderate": 2272,
+        "strong": 2870,
+        "enormous": 1076
+      },
+      "price_value_votes": {
+        "way_overpriced": 478,
+        "overpriced": 1196,
+        "ok": 2631,
+        "good_value": 1794,
+        "great_value": 598
+      },
+      "appreciation_votes": {
+        "love": 3100,
+        "like": 2600,
+        "ok": 1100,
+        "dislike": 723,
+        "hate": 202
+      },
+      "pros": [
+        "Juicy red-fruit and rose opening",
+        "Good longevity",
+        "Striking red bottle"
+      ],
+      "cons": [
+        "Very sweet",
+        "Less distinctive than Good Girl",
+        "Can read young"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "youthful",
+        "party",
+        "date-night",
+        "compliment-getter"
+      ]
+    },
+    {
+      "name": "La Vie Est Belle L'Élixir",
+      "brand": "Lancôme",
+      "brand_country": "France",
+      "year": 2024,
+      "gender": "women",
+      "perfumers": [
+        "Antoine Maisondieu",
+        "Christophe Raynaud"
+      ],
+      "accords": [
+        {
+          "name": "fruity",
+          "strength": 100
+        },
+        {
+          "name": "sweet",
+          "strength": 80
+        },
+        {
+          "name": "rose",
+          "strength": 70
+        },
+        {
+          "name": "leather",
+          "strength": 60
+        },
+        {
+          "name": "green",
+          "strength": 50
+        },
+        {
+          "name": "citrus",
+          "strength": 45
+        },
+        {
+          "name": "animalic",
+          "strength": 45
+        },
+        {
+          "name": "cacao",
+          "strength": 40
+        },
+        {
+          "name": "woody",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Raspberry",
+          "Liquor",
+          "Bergamot"
+        ],
+        "middle": [
+          "Violet Leaf",
+          "Rose"
+        ],
+        "base": [
+          "Leather",
+          "Cocoa Butter",
+          "Cedar"
+        ]
+      },
+      "description": "A fruitier, darker La Vie Est Belle: raspberry, a boozy liqueur accord and bergamot open onto green violet leaf and rose, then sink into cocoa butter with a leather and cedar backbone. Sweet and dense, it leans toward cooler weather and evenings.",
+      "rating": 4.0,
+      "rating_votes": 3627,
+      "season_votes": {
+        "winter": 1200,
+        "spring": 1100,
+        "summer": 577,
+        "fall": 1300
+      },
+      "time_votes": {
+        "day": 1200,
+        "night": 1200
+      },
+      "gender_votes": {
+        "female": 2321,
+        "more_female": 580,
+        "unisex": 174,
+        "more_male": 22,
+        "male": 15
+      },
+      "longevity_votes": {
+        "very_weak": 73,
+        "weak": 174,
+        "moderate": 725,
+        "long_lasting": 1378,
+        "eternal": 653
+      },
+      "sillage_votes": {
+        "intimate": 87,
+        "moderate": 653,
+        "strong": 1306,
+        "enormous": 653
+      },
+      "price_value_votes": {
+        "way_overpriced": 218,
+        "overpriced": 508,
+        "ok": 1088,
+        "good_value": 725,
+        "great_value": 290
+      },
+      "appreciation_votes": {
+        "love": 1600,
+        "like": 963,
+        "ok": 443,
+        "dislike": 435,
+        "hate": 140
+      },
+      "pros": [
+        "Rich raspberry-cocoa sweetness",
+        "Boozy, leathery depth",
+        "Clearly different from the original"
+      ],
+      "cons": [
+        "Very sweet and heavy",
+        "Not for warm weather",
+        "Violet-leather twist may not suit fans of the original"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "cosy",
+        "cold-weather",
+        "evening",
+        "date-night"
+      ]
+    },
+    {
+      "name": "Gabrielle Chanel",
+      "brand": "Chanel",
+      "brand_country": "France",
+      "year": 2017,
+      "gender": "women",
+      "perfumers": [
+        "Olivier Polge"
+      ],
+      "accords": [
+        {
+          "name": "white floral",
+          "strength": 100
+        },
+        {
+          "name": "citrus",
+          "strength": 90
+        },
+        {
+          "name": "woody",
+          "strength": 60
+        },
+        {
+          "name": "sweet",
+          "strength": 55
+        },
+        {
+          "name": "fruity",
+          "strength": 55
+        },
+        {
+          "name": "musky",
+          "strength": 50
+        },
+        {
+          "name": "yellow floral",
+          "strength": 50
+        },
+        {
+          "name": "powdery",
+          "strength": 50
+        },
+        {
+          "name": "tuberose",
+          "strength": 45
+        }
+      ],
+      "notes": {
+        "top": [
+          "Grapefruit",
+          "Mandarin Orange",
+          "Black Currant"
+        ],
+        "middle": [
+          "Orange Blossom",
+          "Jasmine",
+          "Ylang-Ylang",
+          "Tuberose",
+          "Lily-of-the-Valley",
+          "Pear",
+          "Pink Pepper"
+        ],
+        "base": [
+          "Musk",
+          "Sandalwood",
+          "Cashmeran",
+          "Orris Root"
+        ]
+      },
+      "description": "A bright, sheer white-floral bouquet of jasmine, tuberose, orange blossom and ylang-ylang, lifted by grapefruit, mandarin and blackcurrant and resting on soft musk, sandalwood and orris. Radiant and abstract rather than heady, with a clean, luminous feel.",
+      "rating": 3.7,
+      "rating_votes": 7957,
+      "season_votes": {
+        "winter": 909,
+        "spring": 2400,
+        "summer": 1600,
+        "fall": 1700
+      },
+      "time_votes": {
+        "day": 2600,
+        "night": 861
+      },
+      "gender_votes": {
+        "female": 5517,
+        "more_female": 1273,
+        "unisex": 265,
+        "more_male": 27,
+        "male": 21
+      },
+      "longevity_votes": {
+        "very_weak": 318,
+        "weak": 849,
+        "moderate": 2758,
+        "long_lasting": 2334,
+        "eternal": 637
+      },
+      "sillage_votes": {
+        "intimate": 424,
+        "moderate": 2758,
+        "strong": 2652,
+        "enormous": 743
+      },
+      "price_value_votes": {
+        "way_overpriced": 955,
+        "overpriced": 1804,
+        "ok": 1910,
+        "good_value": 637,
+        "great_value": 212
+      },
+      "appreciation_votes": {
+        "love": 2000,
+        "like": 3400,
+        "ok": 745,
+        "dislike": 1700,
+        "hate": 88
+      },
+      "pros": [
+        "Luminous, polished white florals",
+        "Versatile daytime scent",
+        "Good projection"
+      ],
+      "cons": [
+        "Can feel abstract or generic",
+        "Expensive",
+        "Some find it sharp"
+      ],
+      "price_tier": "luxury",
+      "tags": [
+        "office-safe",
+        "wedding",
+        "clean",
+        "versatile"
+      ]
+    },
+    {
+      "name": "Alien Goddess",
+      "brand": "Mugler",
+      "brand_country": "France",
+      "year": 2021,
+      "gender": "women",
+      "perfumers": [
+        "Marie Salamagne",
+        "Nathalie Lorson"
+      ],
+      "accords": [
+        {
+          "name": "vanilla",
+          "strength": 100
+        },
+        {
+          "name": "powdery",
+          "strength": 70
+        },
+        {
+          "name": "white floral",
+          "strength": 65
+        },
+        {
+          "name": "woody",
+          "strength": 55
+        },
+        {
+          "name": "citrus",
+          "strength": 50
+        },
+        {
+          "name": "musky",
+          "strength": 45
+        },
+        {
+          "name": "floral",
+          "strength": 40
+        }
+      ],
+      "notes": {
+        "top": [
+          "Coconut Water",
+          "Bergamot"
+        ],
+        "middle": [
+          "Jasmine",
+          "Heliotrope"
+        ],
+        "base": [
+          "Bourbon Vanilla",
+          "Cashmeran"
+        ]
+      },
+      "description": "A creamy jasmine-vanilla scent: bergamot and a coconut-water accord open onto jasmine and powdery heliotrope, over a warm Bourbon vanilla and cashmeran base. Softer and sunnier than Alien, it trades that perfume's dense amber for a smooth, coconut-tinged vanilla.",
+      "rating": 3.9,
+      "rating_votes": 8966,
+      "season_votes": {
+        "winter": 1100,
+        "spring": 2400,
+        "summer": 3700,
+        "fall": 1700
+      },
+      "time_votes": {
+        "day": 3500,
+        "night": 1600
+      },
+      "gender_votes": {
+        "female": 5892,
+        "more_female": 1537,
+        "unisex": 320,
+        "more_male": 32,
+        "male": 26
+      },
+      "longevity_votes": {
+        "very_weak": 256,
+        "weak": 640,
+        "moderate": 2690,
+        "long_lasting": 3330,
+        "eternal": 1153
+      },
+      "sillage_votes": {
+        "intimate": 320,
+        "moderate": 2562,
+        "strong": 3586,
+        "enormous": 1281
+      },
+      "price_value_votes": {
+        "way_overpriced": 448,
+        "overpriced": 1153,
+        "ok": 2946,
+        "good_value": 2049,
+        "great_value": 704
+      },
+      "appreciation_votes": {
+        "love": 3300,
+        "like": 3100,
+        "ok": 1400,
+        "dislike": 890,
+        "hate": 274
+      },
+      "pros": [
+        "Smooth jasmine-vanilla blend",
+        "Good longevity",
+        "Refillable bottle"
+      ],
+      "cons": [
+        "Similar to many vanilla florals",
+        "Sweet for some",
+        "Little of Alien's character"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "compliment-getter",
+        "versatile",
+        "modern",
+        "hot-weather"
+      ]
+    },
+    {
+      "name": "My Way",
+      "brand": "Giorgio Armani",
+      "brand_country": "Italy",
+      "year": 2020,
+      "gender": "women",
+      "perfumers": [
+        "Carlos Benaïm",
+        "Bruno Jovanovic"
+      ],
+      "accords": [
+        {
+          "name": "white floral",
+          "strength": 100
+        },
+        {
+          "name": "tuberose",
+          "strength": 60
+        },
+        {
+          "name": "citrus",
+          "strength": 60
+        },
+        {
+          "name": "animalic",
+          "strength": 45
+        },
+        {
+          "name": "vanilla",
+          "strength": 45
+        },
+        {
+          "name": "musky",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Orange Blossom"
+        ],
+        "middle": [
+          "Tuberose",
+          "Jasmine"
+        ],
+        "base": [
+          "Vanilla",
+          "White Musk",
+          "Cedar"
+        ]
+      },
+      "description": "A clean, sunny white floral: bergamot and orange blossom up top, a creamy tuberose-jasmine heart and a soft vanilla-musk base. Bright and easygoing, it sits between fresh and creamy.",
+      "rating": 3.8,
+      "rating_votes": 13817,
+      "season_votes": {
+        "winter": 1900,
+        "spring": 5400,
+        "summer": 3900,
+        "fall": 2700
+      },
+      "time_votes": {
+        "day": 5300,
+        "night": 2000
+      },
+      "gender_votes": {
+        "female": 9428,
+        "more_female": 2113,
+        "unisex": 488,
+        "more_male": 49,
+        "male": 41
+      },
+      "longevity_votes": {
+        "very_weak": 650,
+        "weak": 1626,
+        "moderate": 4877,
+        "long_lasting": 3901,
+        "eternal": 1138
+      },
+      "sillage_votes": {
+        "intimate": 813,
+        "moderate": 4877,
+        "strong": 4226,
+        "enormous": 1300
+      },
+      "price_value_votes": {
+        "way_overpriced": 650,
+        "overpriced": 1788,
+        "ok": 4226,
+        "good_value": 2926,
+        "great_value": 975
+      },
+      "appreciation_votes": {
+        "love": 4600,
+        "like": 4600,
+        "ok": 2100,
+        "dislike": 1800,
+        "hate": 656
+      },
+      "pros": [
+        "Clean, bright white florals",
+        "Office-friendly",
+        "Refillable bottle"
+      ],
+      "cons": [
+        "Fairly generic profile",
+        "Tuberose can turn sharp",
+        "Moderate longevity"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "office-safe",
+        "clean",
+        "blind-buy-safe",
+        "versatile"
+      ]
+    },
+    {
+      "name": "Mon Paris Intensément",
+      "brand": "Yves Saint Laurent",
+      "brand_country": "France",
+      "year": 2020,
+      "gender": "women",
+      "perfumers": [
+        "Olivier Cresp",
+        "Harry Frémont",
+        "Dora Baghriche"
+      ],
+      "accords": [
+        {
+          "name": "fruity",
+          "strength": 100
+        },
+        {
+          "name": "rose",
+          "strength": 80
+        },
+        {
+          "name": "floral",
+          "strength": 75
+        },
+        {
+          "name": "sweet",
+          "strength": 65
+        },
+        {
+          "name": "vanilla",
+          "strength": 55
+        },
+        {
+          "name": "woody",
+          "strength": 50
+        },
+        {
+          "name": "fresh",
+          "strength": 50
+        },
+        {
+          "name": "musky",
+          "strength": 50
+        },
+        {
+          "name": "powdery",
+          "strength": 45
+        },
+        {
+          "name": "citrus",
+          "strength": 45
+        }
+      ],
+      "notes": {
+        "top": [
+          "Raspberry",
+          "Black Currant",
+          "Pear",
+          "Orange",
+          "Bergamot"
+        ],
+        "middle": [
+          "Rose",
+          "Peony",
+          "Datura",
+          "Freesia"
+        ],
+        "base": [
+          "Vanilla",
+          "Patchouli",
+          "White Musk",
+          "Benzoin",
+          "Cashmeran"
+        ]
+      },
+      "description": "A rosier, deeper Mon Paris: raspberry, blackcurrant and pear over a heart of rose, peony and datura, settling on vanilla, patchouli, benzoin and cashmeran softened by white musk. A sweet fruity chypre that works day or night.",
+      "rating": 4.0,
+      "rating_votes": 1404,
+      "season_votes": {
+        "winter": 340,
+        "spring": 435,
+        "summer": 278,
+        "fall": 406
+      },
+      "time_votes": {
+        "day": 439,
+        "night": 391
+      },
+      "gender_votes": {
+        "female": 923,
+        "more_female": 221,
+        "unisex": 48,
+        "more_male": 6,
+        "male": 4
+      },
+      "longevity_votes": {
+        "very_weak": 32,
+        "weak": 80,
+        "moderate": 361,
+        "long_lasting": 562,
+        "eternal": 221
+      },
+      "sillage_votes": {
+        "intimate": 48,
+        "moderate": 321,
+        "strong": 562,
+        "enormous": 241
+      },
+      "price_value_votes": {
+        "way_overpriced": 60,
+        "overpriced": 160,
+        "ok": 441,
+        "good_value": 361,
+        "great_value": 120
+      },
+      "appreciation_votes": {
+        "love": 503,
+        "like": 541,
+        "ok": 206,
+        "dislike": 126,
+        "hate": 28
+      },
+      "pros": [
+        "Rich berry-rose depth",
+        "Long-lasting",
+        "Works day or night"
+      ],
+      "cons": [
+        "Very sweet",
+        "Close to the original Mon Paris",
+        "Can feel heavy in hot weather"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "romantic",
+        "date-night",
+        "sensual",
+        "versatile"
+      ]
+    },
+    {
+      "name": "Chance Eau de Parfum",
+      "brand": "Chanel",
+      "brand_country": "France",
+      "year": 2005,
+      "gender": "women",
+      "perfumers": [
+        "Jacques Polge"
+      ],
+      "accords": [
+        {
+          "name": "musky",
+          "strength": 100
+        },
+        {
+          "name": "patchouli",
+          "strength": 95
+        },
+        {
+          "name": "powdery",
+          "strength": 85
+        },
+        {
+          "name": "white floral",
+          "strength": 80
+        },
+        {
+          "name": "woody",
+          "strength": 75
+        },
+        {
+          "name": "soft spicy",
+          "strength": 70
+        },
+        {
+          "name": "earthy",
+          "strength": 70
+        },
+        {
+          "name": "vanilla",
+          "strength": 65
+        },
+        {
+          "name": "warm spicy",
+          "strength": 60
+        },
+        {
+          "name": "iris",
+          "strength": 60
+        }
+      ],
+      "notes": {
+        "top": [
+          "Pink Pepper"
+        ],
+        "middle": [
+          "Jasmine",
+          "Iris"
+        ],
+        "base": [
+          "Patchouli",
+          "White Musk",
+          "Vanilla"
+        ]
+      },
+      "description": "A peppery floral chypre: pink pepper opens onto jasmine and powdery iris, drying down to earthy patchouli, white musk and a soft vanilla warmth. Cheerful yet polished, and warmer than the Eau Fraîche and Eau Tendre versions.",
+      "rating": 4.1,
+      "rating_votes": 6457,
+      "season_votes": {
+        "winter": 1400,
+        "spring": 1700,
+        "summer": 1100,
+        "fall": 1800
+      },
+      "time_votes": {
+        "day": 2000,
+        "night": 1400
+      },
+      "gender_votes": {
+        "female": 4109,
+        "more_female": 998,
+        "unisex": 235,
+        "more_male": 23,
+        "male": 18
+      },
+      "longevity_votes": {
+        "very_weak": 117,
+        "weak": 294,
+        "moderate": 1644,
+        "long_lasting": 2642,
+        "eternal": 998
+      },
+      "sillage_votes": {
+        "intimate": 176,
+        "moderate": 1644,
+        "strong": 2465,
+        "enormous": 880
+      },
+      "price_value_votes": {
+        "way_overpriced": 528,
+        "overpriced": 1174,
+        "ok": 2054,
+        "good_value": 880,
+        "great_value": 294
+      },
+      "appreciation_votes": {
+        "love": 2700,
+        "like": 2400,
+        "ok": 515,
+        "dislike": 748,
+        "hate": 105
+      },
+      "pros": [
+        "Balanced floral-patchouli signature",
+        "Excellent longevity",
+        "Works across seasons"
+      ],
+      "cons": [
+        "Very widely worn",
+        "Musk can feel sharp",
+        "Expensive"
+      ],
+      "price_tier": "luxury",
+      "tags": [
+        "signature",
+        "versatile",
+        "office-safe",
+        "classic",
+        "crowd-pleaser"
+      ]
+    },
+    {
+      "name": "Goddess",
+      "brand": "Burberry",
+      "brand_country": "United Kingdom",
+      "year": 2023,
+      "gender": "women",
+      "perfumers": [
+        "Amandine Clerc-Marie"
+      ],
+      "accords": [
+        {
+          "name": "vanilla",
+          "strength": 100
+        },
+        {
+          "name": "lavender",
+          "strength": 60
+        },
+        {
+          "name": "fresh spicy",
+          "strength": 50
+        },
+        {
+          "name": "cacao",
+          "strength": 45
+        },
+        {
+          "name": "sweet",
+          "strength": 45
+        },
+        {
+          "name": "aromatic",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Lavender",
+          "Ginger",
+          "Cacao",
+          "Vanilla"
+        ],
+        "middle": [
+          "Vanilla Caviar"
+        ],
+        "base": [
+          "Vanilla Absolute"
+        ]
+      },
+      "description": "A lavender-vanilla gourmand: aromatic lavender, ginger and a touch of cocoa open onto layered vanillas that carry the whole wear. Soft, warm and approachable.",
+      "rating": 4.2,
+      "rating_votes": 14572,
+      "season_votes": {
+        "winter": 5600,
+        "spring": 3700,
+        "summer": 2400,
+        "fall": 6100
+      },
+      "time_votes": {
+        "day": 5300,
+        "night": 4600
+      },
+      "gender_votes": {
+        "female": 8897,
+        "more_female": 2454,
+        "unisex": 767,
+        "more_male": 61,
+        "male": 46
+      },
+      "longevity_votes": {
+        "very_weak": 307,
+        "weak": 767,
+        "moderate": 3681,
+        "long_lasting": 5369,
+        "eternal": 1994
+      },
+      "sillage_votes": {
+        "intimate": 383,
+        "moderate": 3681,
+        "strong": 5215,
+        "enormous": 1994
+      },
+      "price_value_votes": {
+        "way_overpriced": 614,
+        "overpriced": 1534,
+        "ok": 3988,
+        "good_value": 3068,
+        "great_value": 1074
+      },
+      "appreciation_votes": {
+        "love": 7200,
+        "like": 4200,
+        "ok": 1700,
+        "dislike": 1100,
+        "hate": 315
+      },
+      "pros": [
+        "Comforting lavender-vanilla blend",
+        "Strong longevity",
+        "Refillable bottle"
+      ],
+      "cons": [
+        "Very vanilla-dominant",
+        "Heavy in hot weather",
+        "Similar to other lavender-vanilla launches"
+      ],
+      "price_tier": "budget",
+      "tags": [
+        "cosy",
+        "cold-weather",
+        "compliment-getter",
+        "crowd-pleaser",
+        "date-night"
+      ]
+    },
+    {
+      "name": "Good Girl Blush",
+      "brand": "Carolina Herrera",
+      "brand_country": "United States",
+      "year": 2023,
+      "gender": "women",
+      "perfumers": [
+        "Quentin Bisch",
+        "Shyamala Maisondieu",
+        "Christophe Raynaud"
+      ],
+      "accords": [
+        {
+          "name": "floral",
+          "strength": 100
+        },
+        {
+          "name": "vanilla",
+          "strength": 90
+        },
+        {
+          "name": "fresh",
+          "strength": 75
+        },
+        {
+          "name": "citrus",
+          "strength": 70
+        },
+        {
+          "name": "sweet",
+          "strength": 70
+        },
+        {
+          "name": "yellow floral",
+          "strength": 60
+        },
+        {
+          "name": "rose",
+          "strength": 55
+        },
+        {
+          "name": "almond",
+          "strength": 55
+        },
+        {
+          "name": "woody",
+          "strength": 55
+        },
+        {
+          "name": "aromatic",
+          "strength": 50
+        }
+      ],
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Bitter Almond"
+        ],
+        "middle": [
+          "Peony",
+          "Ylang-Ylang"
+        ],
+        "base": [
+          "Vanilla",
+          "Coumarin"
+        ]
+      },
+      "description": "A soft floral take on Good Girl: bergamot and a hint of bitter almond lead into peony and ylang-ylang, settling on a smooth vanilla-coumarin base. Lighter and fresher than the original, without its dark cocoa and coffee.",
+      "rating": 4.1,
+      "rating_votes": 7349,
+      "season_votes": {
+        "winter": 1100,
+        "spring": 3000,
+        "summer": 2100,
+        "fall": 1400
+      },
+      "time_votes": {
+        "day": 2900,
+        "night": 1300
+      },
+      "gender_votes": {
+        "female": 5039,
+        "more_female": 1050,
+        "unisex": 210,
+        "more_male": 21,
+        "male": 21
+      },
+      "longevity_votes": {
+        "very_weak": 210,
+        "weak": 630,
+        "moderate": 2520,
+        "long_lasting": 2520,
+        "eternal": 840
+      },
+      "sillage_votes": {
+        "intimate": 315,
+        "moderate": 2310,
+        "strong": 2520,
+        "enormous": 840
+      },
+      "price_value_votes": {
+        "way_overpriced": 420,
+        "overpriced": 1050,
+        "ok": 2520,
+        "good_value": 1680,
+        "great_value": 630
+      },
+      "appreciation_votes": {
+        "love": 3200,
+        "like": 2300,
+        "ok": 1000,
+        "dislike": 620,
+        "hate": 183
+      },
+      "pros": [
+        "Soft floral-vanilla blend",
+        "Easy daytime wear",
+        "Pretty pink bottle"
+      ],
+      "cons": [
+        "Sweet vanilla may feel generic",
+        "Much milder than Good Girl",
+        "Longevity varies"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "pink-coded",
+        "romantic",
+        "youthful",
+        "versatile"
+      ]
+    },
+    {
+      "name": "Paradoxe Intense",
+      "brand": "Prada",
+      "brand_country": "Italy",
+      "year": 2023,
+      "gender": "women",
+      "perfumers": [
+        "Nadège Le Garlantezec",
+        "Shyamala Maisondieu",
+        "Antoine Maisondieu"
+      ],
+      "accords": [
+        {
+          "name": "white floral",
+          "strength": 100
+        },
+        {
+          "name": "vanilla",
+          "strength": 80
+        },
+        {
+          "name": "citrus",
+          "strength": 80
+        },
+        {
+          "name": "mossy",
+          "strength": 70
+        },
+        {
+          "name": "amber",
+          "strength": 65
+        },
+        {
+          "name": "fruity",
+          "strength": 60
+        },
+        {
+          "name": "sweet",
+          "strength": 60
+        },
+        {
+          "name": "fresh",
+          "strength": 60
+        },
+        {
+          "name": "earthy",
+          "strength": 60
+        },
+        {
+          "name": "powdery",
+          "strength": 55
+        }
+      ],
+      "notes": {
+        "top": [
+          "Neroli",
+          "Pear",
+          "Bergamot"
+        ],
+        "middle": [
+          "Jasmine",
+          "Moss"
+        ],
+        "base": [
+          "Bourbon Vanilla",
+          "Amber",
+          "Ambrofix",
+          "Serenolide"
+        ]
+      },
+      "description": "A warmer, more ambery Paradoxe: neroli and bergamot over a dense jasmine heart, with a moss accord and a musky amber-vanilla base giving it more depth than the original. Smooth and modern, leaning toward evening wear.",
+      "rating": 4.1,
+      "rating_votes": 4471,
+      "season_votes": {
+        "winter": 1500,
+        "spring": 1300,
+        "summer": 815,
+        "fall": 1600
+      },
+      "time_votes": {
+        "day": 1400,
+        "night": 1600
+      },
+      "gender_votes": {
+        "female": 2810,
+        "more_female": 766,
+        "unisex": 192,
+        "more_male": 19,
+        "male": 13
+      },
+      "longevity_votes": {
+        "very_weak": 102,
+        "weak": 255,
+        "moderate": 1150,
+        "long_lasting": 1788,
+        "eternal": 639
+      },
+      "sillage_votes": {
+        "intimate": 128,
+        "moderate": 1022,
+        "strong": 1661,
+        "enormous": 639
+      },
+      "price_value_votes": {
+        "way_overpriced": 319,
+        "overpriced": 766,
+        "ok": 1405,
+        "good_value": 639,
+        "great_value": 192
+      },
+      "appreciation_votes": {
+        "love": 2300,
+        "like": 1100,
+        "ok": 499,
+        "dislike": 405,
+        "hate": 153
+      },
+      "pros": [
+        "Richer than the original",
+        "Long-lasting",
+        "Refillable bottle"
+      ],
+      "cons": [
+        "Amber-musk base feels familiar",
+        "Pricey",
+        "Can be heavy up close"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "modern",
+        "evening",
+        "signature",
+        "cold-weather"
+      ]
+    },
+    {
+      "name": "Donna Born in Roma Intense",
+      "brand": "Valentino",
+      "brand_country": "Italy",
+      "year": 2023,
+      "gender": "women",
+      "perfumers": [
+        "Amandine Clerc-Marie",
+        "Honorine Blanc"
+      ],
+      "accords": [
+        {
+          "name": "amber",
+          "strength": 100
+        },
+        {
+          "name": "vanilla",
+          "strength": 95
+        },
+        {
+          "name": "white floral",
+          "strength": 80
+        },
+        {
+          "name": "powdery",
+          "strength": 50
+        },
+        {
+          "name": "warm spicy",
+          "strength": 45
+        },
+        {
+          "name": "balsamic",
+          "strength": 45
+        }
+      ],
+      "notes": {
+        "top": [
+          "Bourbon Vanilla",
+          "Amber"
+        ],
+        "middle": [
+          "Jasmine"
+        ],
+        "base": [
+          "Benzoin"
+        ]
+      },
+      "description": "A thicker, vanilla-forward Donna Born in Roma: Bourbon vanilla and amber lead from the start, jasmine sits in the heart, and a balsamic benzoin base carries the wear. Warm and sweet, made for cooler weather and nights out.",
+      "rating": 4.2,
+      "rating_votes": 3861,
+      "season_votes": {
+        "winter": 1500,
+        "spring": 757,
+        "summer": 490,
+        "fall": 1400
+      },
+      "time_votes": {
+        "day": 759,
+        "night": 1600
+      },
+      "gender_votes": {
+        "female": 2471,
+        "more_female": 618,
+        "unisex": 154,
+        "more_male": 15,
+        "male": 12
+      },
+      "longevity_votes": {
+        "very_weak": 62,
+        "weak": 154,
+        "moderate": 772,
+        "long_lasting": 1699,
+        "eternal": 849
+      },
+      "sillage_votes": {
+        "intimate": 77,
+        "moderate": 695,
+        "strong": 1544,
+        "enormous": 772
+      },
+      "price_value_votes": {
+        "way_overpriced": 193,
+        "overpriced": 463,
+        "ok": 1158,
+        "good_value": 849,
+        "great_value": 270
+      },
+      "appreciation_votes": {
+        "love": 2000,
+        "like": 1000,
+        "ok": 442,
+        "dislike": 323,
+        "hate": 101
+      },
+      "pros": [
+        "Rich, long-lasting vanilla",
+        "Cosy cold-weather wear",
+        "Strong sillage"
+      ],
+      "cons": [
+        "Very sweet",
+        "Less floral than the original",
+        "Too heavy for heat"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "cold-weather",
+        "cosy",
+        "evening",
+        "compliment-getter",
+        "date-night"
+      ]
+    },
+    {
+      "name": "Devotion",
+      "brand": "Dolce&Gabbana",
+      "brand_country": "Italy",
+      "year": 2023,
+      "gender": "women",
+      "perfumers": [
+        "Olivier Cresp"
+      ],
+      "accords": [
+        {
+          "name": "vanilla",
+          "strength": 100
+        },
+        {
+          "name": "sweet",
+          "strength": 90
+        },
+        {
+          "name": "white floral",
+          "strength": 65
+        },
+        {
+          "name": "lactonic",
+          "strength": 50
+        },
+        {
+          "name": "rum",
+          "strength": 50
+        },
+        {
+          "name": "powdery",
+          "strength": 50
+        },
+        {
+          "name": "citrus",
+          "strength": 50
+        }
+      ],
+      "notes": {
+        "top": [
+          "Candied Lemon"
+        ],
+        "middle": [
+          "Panna Cotta",
+          "Orange Blossom",
+          "Rum"
+        ],
+        "base": [
+          "Vanilla"
+        ]
+      },
+      "description": "A gourmand orange-blossom scent: candied lemon on top, orange blossom with a creamy panna-cotta accord and a hint of rum in the heart, and a soft vanilla base. Brighter than many dessert-style gourmands.",
+      "rating": 4.0,
+      "rating_votes": 12549,
+      "season_votes": {
+        "winter": 4500,
+        "spring": 3200,
+        "summer": 2300,
+        "fall": 4800
+      },
+      "time_votes": {
+        "day": 4500,
+        "night": 3000
+      },
+      "gender_votes": {
+        "female": 7843,
+        "more_female": 1882,
+        "unisex": 471,
+        "more_male": 47,
+        "male": 47
+      },
+      "longevity_votes": {
+        "very_weak": 376,
+        "weak": 941,
+        "moderate": 4078,
+        "long_lasting": 4078,
+        "eternal": 1255
+      },
+      "sillage_votes": {
+        "intimate": 471,
+        "moderate": 3765,
+        "strong": 4392,
+        "enormous": 1412
+      },
+      "price_value_votes": {
+        "way_overpriced": 784,
+        "overpriced": 1882,
+        "ok": 4078,
+        "good_value": 2510,
+        "great_value": 784
+      },
+      "appreciation_votes": {
+        "love": 5500,
+        "like": 3600,
+        "ok": 1600,
+        "dislike": 1400,
+        "hate": 487
+      },
+      "pros": [
+        "Bright citrus-vanilla gourmand",
+        "Citrus keeps the sweetness lifted",
+        "Smooth and well blended"
+      ],
+      "cons": [
+        "Sweet for some",
+        "Simple structure",
+        "Similar to other orange-blossom vanillas"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "cosy",
+        "cold-weather",
+        "compliment-getter",
+        "modern"
+      ]
+    },
+    {
+      "name": "Black Opium Le Parfum",
+      "brand": "Yves Saint Laurent",
+      "brand_country": "France",
+      "year": 2022,
+      "gender": "women",
+      "perfumers": [
+        "Nathalie Lorson",
+        "Marie Salamagne",
+        "Olivier Cresp",
+        "Honorine Blanc"
+      ],
+      "accords": [
+        {
+          "name": "vanilla",
+          "strength": 100
+        },
+        {
+          "name": "warm spicy",
+          "strength": 70
+        },
+        {
+          "name": "coffee",
+          "strength": 65
+        },
+        {
+          "name": "sweet",
+          "strength": 65
+        },
+        {
+          "name": "white floral",
+          "strength": 60
+        },
+        {
+          "name": "powdery",
+          "strength": 55
+        },
+        {
+          "name": "cinnamon",
+          "strength": 45
+        },
+        {
+          "name": "citrus",
+          "strength": 45
+        },
+        {
+          "name": "balsamic",
+          "strength": 45
+        },
+        {
+          "name": "fruity",
+          "strength": 45
+        }
+      ],
+      "notes": {
+        "top": [
+          "Pear",
+          "Cinnamon",
+          "Green Mandarin"
+        ],
+        "middle": [
+          "Jasmine Sambac",
+          "Orange Blossom"
+        ],
+        "base": [
+          "Vanilla",
+          "Coffee",
+          "Vanilla Orchid",
+          "Patchouli"
+        ]
+      },
+      "description": "A deeper, vanilla-heavy Black Opium: pear, cinnamon and green mandarin open onto jasmine and orange blossom, then layered vanillas meet coffee and a touch of patchouli. Denser and warmer than the original, aimed at cold-weather evenings.",
+      "rating": 4.4,
+      "rating_votes": 3856,
+      "season_votes": {
+        "winter": 1900,
+        "spring": 566,
+        "summer": 289,
+        "fall": 1700
+      },
+      "time_votes": {
+        "day": 848,
+        "night": 1700
+      },
+      "gender_votes": {
+        "female": 2399,
+        "more_female": 643,
+        "unisex": 171,
+        "more_male": 17,
+        "male": 13
+      },
+      "longevity_votes": {
+        "very_weak": 51,
+        "weak": 129,
+        "moderate": 686,
+        "long_lasting": 1714,
+        "eternal": 943
+      },
+      "sillage_votes": {
+        "intimate": 69,
+        "moderate": 600,
+        "strong": 1542,
+        "enormous": 857
+      },
+      "price_value_votes": {
+        "way_overpriced": 214,
+        "overpriced": 514,
+        "ok": 1114,
+        "good_value": 771,
+        "great_value": 257
+      },
+      "appreciation_votes": {
+        "love": 2300,
+        "like": 973,
+        "ok": 364,
+        "dislike": 144,
+        "hate": 59
+      },
+      "pros": [
+        "Rich coffee-vanilla depth",
+        "Very long-lasting",
+        "Smoother than the original"
+      ],
+      "cons": [
+        "Heavy and sweet",
+        "Only for cool weather",
+        "Close to other Black Opium flankers"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "evening",
+        "cold-weather",
+        "beast-mode",
+        "date-night",
+        "sensual"
+      ]
+    },
+    {
+      "name": "Angel Elixir",
+      "brand": "Mugler",
+      "brand_country": "France",
+      "year": 2023,
+      "gender": "women",
+      "perfumers": [
+        "Anne Flipo",
+        "Domitille Michalon-Bertier"
+      ],
+      "accords": [
+        {
+          "name": "white floral",
+          "strength": 100
+        },
+        {
+          "name": "woody",
+          "strength": 85
+        },
+        {
+          "name": "vanilla",
+          "strength": 80
+        },
+        {
+          "name": "sweet",
+          "strength": 75
+        },
+        {
+          "name": "yellow floral",
+          "strength": 65
+        },
+        {
+          "name": "powdery",
+          "strength": 55
+        },
+        {
+          "name": "amber",
+          "strength": 50
+        },
+        {
+          "name": "balsamic",
+          "strength": 45
+        },
+        {
+          "name": "soft spicy",
+          "strength": 40
+        },
+        {
+          "name": "warm spicy",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Pink Pepper"
+        ],
+        "middle": [
+          "Jasmine",
+          "Ylang-Ylang",
+          "Sandalwood",
+          "Orange Blossom"
+        ],
+        "base": [
+          "Bourbon Vanilla",
+          "Amber Xtreme"
+        ]
+      },
+      "description": "A creamy white-floral gourmand: pink pepper opens onto orange blossom, ylang-ylang, jasmine and sandalwood over Bourbon vanilla and a dry woody amber. It shares Angel's sweetness but skips the patchouli, so it wears creamier and more floral.",
+      "rating": 3.6,
+      "rating_votes": 2891,
+      "season_votes": {
+        "winter": 1000,
+        "spring": 623,
+        "summer": 344,
+        "fall": 953
+      },
+      "time_votes": {
+        "day": 722,
+        "night": 928
+      },
+      "gender_votes": {
+        "female": 1817,
+        "more_female": 496,
+        "unisex": 149,
+        "more_male": 17,
+        "male": 12
+      },
+      "longevity_votes": {
+        "very_weak": 50,
+        "weak": 124,
+        "moderate": 578,
+        "long_lasting": 1239,
+        "eternal": 661
+      },
+      "sillage_votes": {
+        "intimate": 58,
+        "moderate": 496,
+        "strong": 1156,
+        "enormous": 661
+      },
+      "price_value_votes": {
+        "way_overpriced": 165,
+        "overpriced": 413,
+        "ok": 909,
+        "good_value": 578,
+        "great_value": 206
+      },
+      "appreciation_votes": {
+        "love": 847,
+        "like": 899,
+        "ok": 541,
+        "dislike": 369,
+        "hate": 235
+      },
+      "pros": [
+        "Creamy floral-vanilla blend",
+        "Long-lasting",
+        "Refillable bottle"
+      ],
+      "cons": [
+        "Woody amber can feel sharp",
+        "Very sweet",
+        "Not much like Angel"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "evening",
+        "cold-weather",
+        "sensual",
+        "statement"
+      ]
+    },
+    {
+      "name": "Bloom Ambrosia di Fiori",
+      "brand": "Gucci",
+      "brand_country": "Italy",
+      "year": 2019,
+      "gender": "women",
+      "perfumers": [
+        "Alberto Morillas"
+      ],
+      "accords": [
+        {
+          "name": "white floral",
+          "strength": 100
+        },
+        {
+          "name": "tuberose",
+          "strength": 65
+        },
+        {
+          "name": "rose",
+          "strength": 45
+        },
+        {
+          "name": "iris",
+          "strength": 45
+        },
+        {
+          "name": "animalic",
+          "strength": 45
+        }
+      ],
+      "notes": {
+        "top": [
+          "Jasmine",
+          "Honeysuckle"
+        ],
+        "middle": [
+          "Tuberose"
+        ],
+        "base": [
+          "Damask Rose",
+          "Orris"
+        ]
+      },
+      "description": "A richer rose-and-orris take on Gucci Bloom: jasmine and honeysuckle open onto a dense tuberose heart, deepened by Damask rose and a velvety orris base. Lush and heady, with more weight than the original.",
+      "rating": 3.9,
+      "rating_votes": 1812,
+      "season_votes": {
+        "winter": 287,
+        "spring": 539,
+        "summer": 332,
+        "fall": 409
+      },
+      "time_votes": {
+        "day": 510,
+        "night": 335
+      },
+      "gender_votes": {
+        "female": 1208,
+        "more_female": 262,
+        "unisex": 60,
+        "more_male": 6,
+        "male": 4
+      },
+      "longevity_votes": {
+        "very_weak": 28,
+        "weak": 72,
+        "moderate": 362,
+        "long_lasting": 725,
+        "eternal": 322
+      },
+      "sillage_votes": {
+        "intimate": 40,
+        "moderate": 322,
+        "strong": 685,
+        "enormous": 322
+      },
+      "price_value_votes": {
+        "way_overpriced": 101,
+        "overpriced": 242,
+        "ok": 523,
+        "good_value": 322,
+        "great_value": 101
+      },
+      "appreciation_votes": {
+        "love": 668,
+        "like": 685,
+        "ok": 183,
+        "dislike": 235,
+        "hate": 41
+      },
+      "pros": [
+        "Lush, dense white florals",
+        "Rose and orris add polish",
+        "Fuller-bodied than the original Bloom"
+      ],
+      "cons": [
+        "Heady in small spaces",
+        "Very floral-heavy",
+        "Indolic edge may not suit everyone"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "statement",
+        "romantic",
+        "mature-elegant",
+        "wedding",
+        "formal"
+      ]
+    },
+    {
+      "name": "Sì Passione",
+      "brand": "Giorgio Armani",
+      "brand_country": "Italy",
+      "year": 2017,
+      "gender": "women",
+      "perfumers": [
+        "Christine Nagel",
+        "Julie Massé"
+      ],
+      "accords": [
+        {
+          "name": "fruity",
+          "strength": 100
+        },
+        {
+          "name": "sweet",
+          "strength": 88
+        },
+        {
+          "name": "woody",
+          "strength": 64
+        },
+        {
+          "name": "vanilla",
+          "strength": 60
+        },
+        {
+          "name": "rose",
+          "strength": 52
+        },
+        {
+          "name": "soft spicy",
+          "strength": 42
+        }
+      ],
+      "notes": {
+        "top": [
+          "Pear",
+          "Black Currant",
+          "Pink Pepper",
+          "Grapefruit"
+        ],
+        "middle": [
+          "Pineapple",
+          "Rose",
+          "Jasmine",
+          "Heliotrope"
+        ],
+        "base": [
+          "Vanilla",
+          "Cedar",
+          "Patchouli",
+          "Amberwood"
+        ]
+      },
+      "description": "Juicy blackcurrant and pear sharpened with pink pepper and grapefruit, moving into rose, jasmine and a touch of pineapple over a warm vanilla, cedar and patchouli base. More fruit-forward and playful than the original Sì, with an openly sweet character.",
+      "rating": 3.9,
+      "rating_votes": 8500,
+      "season_votes": {
+        "winter": 4000,
+        "spring": 6000,
+        "summer": 2500,
+        "fall": 5500
+      },
+      "time_votes": {
+        "day": 5500,
+        "night": 5500
+      },
+      "gender_votes": {
+        "female": 4500,
+        "more_female": 1200,
+        "unisex": 300,
+        "more_male": 40,
+        "male": 40
+      },
+      "longevity_votes": {
+        "very_weak": 250,
+        "weak": 600,
+        "moderate": 2200,
+        "long_lasting": 2300,
+        "eternal": 700
+      },
+      "sillage_votes": {
+        "intimate": 400,
+        "moderate": 2400,
+        "strong": 2200,
+        "enormous": 700
+      },
+      "price_value_votes": {
+        "way_overpriced": 200,
+        "overpriced": 600,
+        "ok": 1800,
+        "good_value": 1000,
+        "great_value": 400
+      },
+      "appreciation_votes": {
+        "love": 3800,
+        "like": 2600,
+        "ok": 1200,
+        "dislike": 400,
+        "hate": 250
+      },
+      "pros": [
+        "Cheerful fruity sweetness that is easy to like",
+        "Holds well for an eau de parfum",
+        "Works for day and evening"
+      ],
+      "cons": [
+        "Sweetness can turn cloying in heat",
+        "Less nuanced than the original Sì"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "youthful",
+        "compliment-getter",
+        "date-night",
+        "party"
+      ]
+    },
+    {
+      "name": "L'Interdit Eau de Parfum Rouge",
+      "brand": "Givenchy",
+      "brand_country": "France",
+      "year": 2021,
+      "gender": "women",
+      "perfumers": [
+        "Anne Flipo",
+        "Dominique Ropion",
+        "Fanny Bal"
+      ],
+      "accords": [
+        {
+          "name": "white floral",
+          "strength": 100
+        },
+        {
+          "name": "woody",
+          "strength": 70
+        },
+        {
+          "name": "tuberose",
+          "strength": 62
+        },
+        {
+          "name": "citrus",
+          "strength": 55
+        },
+        {
+          "name": "warm spicy",
+          "strength": 50
+        },
+        {
+          "name": "fresh spicy",
+          "strength": 45
+        },
+        {
+          "name": "patchouli",
+          "strength": 38
+        }
+      ],
+      "notes": {
+        "top": [
+          "Ginger",
+          "Blood Orange"
+        ],
+        "middle": [
+          "Tuberose",
+          "Jasmine",
+          "Pimento Leaf"
+        ],
+        "base": [
+          "Sandalwood",
+          "Patchouli",
+          "Vetiver"
+        ]
+      },
+      "description": "Givenchy's white-flower L'Interdit given a hotter edge: blood orange and ginger open onto tuberose and jasmine warmed by pimento leaf, before a sandalwood, patchouli and vetiver drydown. Spicier and more vivid than the standard EDP while keeping its darker undertone.",
+      "rating": 4.0,
+      "rating_votes": 3500,
+      "season_votes": {
+        "winter": 1300,
+        "spring": 2000,
+        "summer": 1100,
+        "fall": 2200
+      },
+      "time_votes": {
+        "day": 1800,
+        "night": 2300
+      },
+      "gender_votes": {
+        "female": 1800,
+        "more_female": 500,
+        "unisex": 150,
+        "more_male": 20,
+        "male": 20
+      },
+      "longevity_votes": {
+        "very_weak": 80,
+        "weak": 200,
+        "moderate": 900,
+        "long_lasting": 1000,
+        "eternal": 300
+      },
+      "sillage_votes": {
+        "intimate": 150,
+        "moderate": 1000,
+        "strong": 900,
+        "enormous": 300
+      },
+      "price_value_votes": {
+        "way_overpriced": 100,
+        "overpriced": 350,
+        "ok": 900,
+        "good_value": 450,
+        "great_value": 150
+      },
+      "appreciation_votes": {
+        "love": 1500,
+        "like": 1200,
+        "ok": 500,
+        "dislike": 150,
+        "hate": 80
+      },
+      "pros": [
+        "Spicy citrus twist keeps the white flowers lively",
+        "Stands apart from typical tuberose scents",
+        "Solid lasting power"
+      ],
+      "cons": [
+        "Ginger opening can feel sharp",
+        "Shares much of its structure with L'Interdit EDP"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "evening",
+        "date-night",
+        "statement",
+        "modern"
+      ]
+    },
+    {
+      "name": "Fame",
+      "brand": "Paco Rabanne",
+      "brand_country": "France",
+      "year": 2022,
+      "gender": "women",
+      "perfumers": [
+        "Alberto Morillas",
+        "Dora Baghriche",
+        "Fabrice Pellegrin",
+        "Marie Salamagne"
+      ],
+      "accords": [
+        {
+          "name": "tropical",
+          "strength": 100
+        },
+        {
+          "name": "fruity",
+          "strength": 90
+        },
+        {
+          "name": "vanilla",
+          "strength": 70
+        },
+        {
+          "name": "sweet",
+          "strength": 65
+        },
+        {
+          "name": "woody",
+          "strength": 50
+        },
+        {
+          "name": "white floral",
+          "strength": 45
+        },
+        {
+          "name": "smoky",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Mango",
+          "Bergamot"
+        ],
+        "middle": [
+          "Jasmine",
+          "Incense"
+        ],
+        "base": [
+          "Sandalwood",
+          "Vanilla"
+        ]
+      },
+      "description": "A creamy mango opening lifted by bergamot moves into a soft jasmine heart threaded with incense, drying down to sandalwood and vanilla. Sweet and fruity up front, but the incense keeps it from reading as pure candy.",
+      "rating": 3.8,
+      "rating_votes": 6000,
+      "season_votes": {
+        "winter": 1600,
+        "spring": 3200,
+        "summer": 2600,
+        "fall": 2400
+      },
+      "time_votes": {
+        "day": 3600,
+        "night": 2600
+      },
+      "gender_votes": {
+        "female": 3000,
+        "more_female": 800,
+        "unisex": 250,
+        "more_male": 30,
+        "male": 30
+      },
+      "longevity_votes": {
+        "very_weak": 250,
+        "weak": 600,
+        "moderate": 1800,
+        "long_lasting": 1300,
+        "eternal": 300
+      },
+      "sillage_votes": {
+        "intimate": 350,
+        "moderate": 1900,
+        "strong": 1300,
+        "enormous": 300
+      },
+      "price_value_votes": {
+        "way_overpriced": 250,
+        "overpriced": 700,
+        "ok": 1500,
+        "good_value": 600,
+        "great_value": 200
+      },
+      "appreciation_votes": {
+        "love": 2000,
+        "like": 1900,
+        "ok": 1100,
+        "dislike": 450,
+        "hate": 250
+      },
+      "pros": [
+        "Unusual mango-and-incense pairing",
+        "Easy, cheerful sweetness for daytime",
+        "Smooth sandalwood-vanilla drydown"
+      ],
+      "cons": [
+        "Mango can turn syrupy on some skin",
+        "Average longevity"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "youthful",
+        "casual",
+        "modern",
+        "crowd-pleaser"
+      ]
+    },
+    {
+      "name": "Perfect",
+      "brand": "Marc Jacobs",
+      "brand_country": "United States",
+      "year": 2020,
+      "gender": "women",
+      "perfumers": [
+        "Domitille Michalon Bertier"
+      ],
+      "accords": [
+        {
+          "name": "almond",
+          "strength": 100
+        },
+        {
+          "name": "green",
+          "strength": 80
+        },
+        {
+          "name": "fruity",
+          "strength": 72
+        },
+        {
+          "name": "sweet",
+          "strength": 65
+        },
+        {
+          "name": "woody",
+          "strength": 55
+        },
+        {
+          "name": "yellow floral",
+          "strength": 50
+        },
+        {
+          "name": "lactonic",
+          "strength": 40
+        },
+        {
+          "name": "musky",
+          "strength": 32
+        }
+      ],
+      "notes": {
+        "top": [
+          "Rhubarb",
+          "Daffodil"
+        ],
+        "middle": [
+          "Almond Milk"
+        ],
+        "base": [
+          "Cashmeran",
+          "Cedar"
+        ]
+      },
+      "description": "Tart rhubarb and a green daffodil note open onto a milky almond heart that settles into the soft, slightly musky woods of cashmeran and cedar. Creamy and comforting, with a gentle nutty sweetness and a tart green edge.",
+      "rating": 3.7,
+      "rating_votes": 5000,
+      "season_votes": {
+        "winter": 1900,
+        "spring": 2300,
+        "summer": 900,
+        "fall": 2400
+      },
+      "time_votes": {
+        "day": 3000,
+        "night": 1500
+      },
+      "gender_votes": {
+        "female": 2400,
+        "more_female": 800,
+        "unisex": 400,
+        "more_male": 30,
+        "male": 30
+      },
+      "longevity_votes": {
+        "very_weak": 200,
+        "weak": 500,
+        "moderate": 1600,
+        "long_lasting": 1000,
+        "eternal": 250
+      },
+      "sillage_votes": {
+        "intimate": 350,
+        "moderate": 1700,
+        "strong": 900,
+        "enormous": 200
+      },
+      "price_value_votes": {
+        "way_overpriced": 200,
+        "overpriced": 500,
+        "ok": 1300,
+        "good_value": 650,
+        "great_value": 250
+      },
+      "appreciation_votes": {
+        "love": 1600,
+        "like": 1500,
+        "ok": 1000,
+        "dislike": 400,
+        "hate": 250
+      },
+      "pros": [
+        "Creamy almond-milk warmth",
+        "Rhubarb adds a tart lift",
+        "Easygoing and comforting"
+      ],
+      "cons": [
+        "Can read as generic sweet on skin",
+        "Moderate longevity"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "cosy",
+        "casual",
+        "youthful"
+      ]
+    },
+    {
+      "name": "Coco Mademoiselle Intense",
+      "brand": "Chanel",
+      "brand_country": "France",
+      "year": 2018,
+      "gender": "women",
+      "perfumers": [
+        "Olivier Polge"
+      ],
+      "accords": [
+        {
+          "name": "patchouli",
+          "strength": 100
+        },
+        {
+          "name": "vanilla",
+          "strength": 80
+        },
+        {
+          "name": "citrus",
+          "strength": 65
+        },
+        {
+          "name": "amber",
+          "strength": 60
+        },
+        {
+          "name": "sweet",
+          "strength": 55
+        },
+        {
+          "name": "woody",
+          "strength": 48
+        },
+        {
+          "name": "rose",
+          "strength": 40
+        },
+        {
+          "name": "balsamic",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Orange",
+          "Bergamot",
+          "Lemon"
+        ],
+        "middle": [
+          "Rose",
+          "Jasmine",
+          "Fruity Notes"
+        ],
+        "base": [
+          "Patchouli",
+          "Vanilla",
+          "Tonka Bean",
+          "White Musk",
+          "Labdanum"
+        ]
+      },
+      "description": "A deeper, more ambery Coco Mademoiselle: orange, bergamot and lemon over rose and jasmine, with the patchouli pushed forward and warmed by tonka, vanilla, labdanum and white musk. Polished and dense, and more evening-leaning than the original.",
+      "rating": 4.1,
+      "rating_votes": 12000,
+      "season_votes": {
+        "winter": 6500,
+        "spring": 4500,
+        "summer": 1800,
+        "fall": 7000
+      },
+      "time_votes": {
+        "day": 5500,
+        "night": 7500
+      },
+      "gender_votes": {
+        "female": 6000,
+        "more_female": 1600,
+        "unisex": 400,
+        "more_male": 40,
+        "male": 40
+      },
+      "longevity_votes": {
+        "very_weak": 150,
+        "weak": 350,
+        "moderate": 2000,
+        "long_lasting": 4000,
+        "eternal": 1800
+      },
+      "sillage_votes": {
+        "intimate": 250,
+        "moderate": 2300,
+        "strong": 4000,
+        "enormous": 1500
+      },
+      "price_value_votes": {
+        "way_overpriced": 500,
+        "overpriced": 1400,
+        "ok": 3500,
+        "good_value": 1500,
+        "great_value": 500
+      },
+      "appreciation_votes": {
+        "love": 5500,
+        "like": 3200,
+        "ok": 1100,
+        "dislike": 400,
+        "hate": 250
+      },
+      "pros": [
+        "Richer, warmer take on a modern classic",
+        "Excellent longevity and projection",
+        "Elegant in cool weather"
+      ],
+      "cons": [
+        "Heavy in hot weather",
+        "Patchouli can feel dense"
+      ],
+      "price_tier": "luxury",
+      "tags": [
+        "mature-elegant",
+        "evening",
+        "cold-weather",
+        "compliment-getter",
+        "formal"
+      ]
+    },
+    {
+      "name": "N°5 L'Eau",
+      "brand": "Chanel",
+      "brand_country": "France",
+      "year": 2016,
+      "gender": "women",
+      "perfumers": [
+        "Olivier Polge"
+      ],
+      "accords": [
+        {
+          "name": "citrus",
+          "strength": 100
+        },
+        {
+          "name": "aldehydic",
+          "strength": 85
+        },
+        {
+          "name": "fresh",
+          "strength": 65
+        },
+        {
+          "name": "woody",
+          "strength": 50
+        },
+        {
+          "name": "powdery",
+          "strength": 45
+        },
+        {
+          "name": "yellow floral",
+          "strength": 40
+        },
+        {
+          "name": "musky",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Aldehydes",
+          "Lemon",
+          "Mandarin Orange",
+          "Orange",
+          "Bergamot",
+          "Neroli"
+        ],
+        "middle": [
+          "Ylang-Ylang",
+          "Jasmine",
+          "Rose"
+        ],
+        "base": [
+          "White Musk",
+          "Orris Root",
+          "Cedar",
+          "Vanilla"
+        ]
+      },
+      "description": "A lighter, citrus-led reading of N°5: lemon, mandarin, orange and bergamot brighten the aldehydes, with ylang-ylang, jasmine and rose in the heart and a clean base of white musk, orris and cedar. Airy and modern while keeping the recognisable soapy-floral signature.",
+      "rating": 3.9,
+      "rating_votes": 9000,
+      "season_votes": {
+        "winter": 1200,
+        "spring": 5500,
+        "summer": 4500,
+        "fall": 2000
+      },
+      "time_votes": {
+        "day": 6500,
+        "night": 1500
+      },
+      "gender_votes": {
+        "female": 4500,
+        "more_female": 1200,
+        "unisex": 600,
+        "more_male": 40,
+        "male": 40
+      },
+      "longevity_votes": {
+        "very_weak": 300,
+        "weak": 1000,
+        "moderate": 2800,
+        "long_lasting": 1500,
+        "eternal": 400
+      },
+      "sillage_votes": {
+        "intimate": 500,
+        "moderate": 3000,
+        "strong": 1600,
+        "enormous": 350
+      },
+      "price_value_votes": {
+        "way_overpriced": 500,
+        "overpriced": 1200,
+        "ok": 2600,
+        "good_value": 900,
+        "great_value": 300
+      },
+      "appreciation_votes": {
+        "love": 3200,
+        "like": 2800,
+        "ok": 1400,
+        "dislike": 500,
+        "hate": 300
+      },
+      "pros": [
+        "N°5 character in an easier, fresher form",
+        "Very office-friendly",
+        "Clean aldehydic sparkle"
+      ],
+      "cons": [
+        "Fades faster than the EDP",
+        "Aldehydes can read soapy or old-fashioned to some"
+      ],
+      "price_tier": "luxury",
+      "tags": [
+        "office-safe",
+        "clean",
+        "versatile",
+        "hot-weather"
+      ]
+    },
+    {
+      "name": "J'adore Parfum d'Eau",
+      "brand": "Dior",
+      "brand_country": "France",
+      "year": 2022,
+      "gender": "women",
+      "perfumers": [
+        "François Demachy"
+      ],
+      "accords": [
+        {
+          "name": "white floral",
+          "strength": 100
+        },
+        {
+          "name": "floral",
+          "strength": 78
+        },
+        {
+          "name": "green",
+          "strength": 50
+        },
+        {
+          "name": "citrus",
+          "strength": 45
+        },
+        {
+          "name": "fruity",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [],
+        "middle": [
+          "Jasmine Sambac",
+          "Neroli",
+          "Magnolia",
+          "Honeysuckle",
+          "Rose",
+          "Green Notes"
+        ],
+        "base": []
+      },
+      "description": "An alcohol-free, water-based take on J'adore built around jasmine sambac, neroli, magnolia and honeysuckle with a green edge. Softer and more transparent than the classic EDP, it wears as a sheer white-floral veil close to the skin.",
+      "rating": 3.9,
+      "rating_votes": 2500,
+      "season_votes": {
+        "winter": 400,
+        "spring": 1800,
+        "summer": 1400,
+        "fall": 600
+      },
+      "time_votes": {
+        "day": 2000,
+        "night": 400
+      },
+      "gender_votes": {
+        "female": 1400,
+        "more_female": 300,
+        "unisex": 100,
+        "more_male": 10,
+        "male": 10
+      },
+      "longevity_votes": {
+        "very_weak": 150,
+        "weak": 350,
+        "moderate": 700,
+        "long_lasting": 350,
+        "eternal": 80
+      },
+      "sillage_votes": {
+        "intimate": 300,
+        "moderate": 800,
+        "strong": 350,
+        "enormous": 70
+      },
+      "price_value_votes": {
+        "way_overpriced": 200,
+        "overpriced": 400,
+        "ok": 600,
+        "good_value": 200,
+        "great_value": 70
+      },
+      "appreciation_votes": {
+        "love": 800,
+        "like": 700,
+        "ok": 400,
+        "dislike": 150,
+        "hate": 80
+      },
+      "pros": [
+        "Alcohol-free, water-based formula",
+        "Soft, clean white florals",
+        "Easy for daytime and the office"
+      ],
+      "cons": [
+        "Quieter projection than J'adore EDP",
+        "Pricey for its intensity"
+      ],
+      "price_tier": "luxury",
+      "tags": [
+        "office-safe",
+        "clean",
+        "understated",
+        "hot-weather"
+      ]
+    },
+    {
+      "name": "Idôle L'Intense",
+      "brand": "Lancôme",
+      "brand_country": "France",
+      "year": 2020,
+      "gender": "women",
+      "perfumers": [
+        "Adriana Medina-Baez",
+        "Nadège Le Garlantezec",
+        "Shyamala Maisondieu"
+      ],
+      "accords": [
+        {
+          "name": "rose",
+          "strength": 100
+        },
+        {
+          "name": "woody",
+          "strength": 75
+        },
+        {
+          "name": "musky",
+          "strength": 60
+        },
+        {
+          "name": "vanilla",
+          "strength": 50
+        },
+        {
+          "name": "white floral",
+          "strength": 45
+        },
+        {
+          "name": "patchouli",
+          "strength": 42
+        },
+        {
+          "name": "powdery",
+          "strength": 38
+        },
+        {
+          "name": "citrus",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Bitter Orange",
+          "Mandarin Orange"
+        ],
+        "middle": [
+          "Rose",
+          "Jasmine",
+          "Jasmine Sambac",
+          "Musk"
+        ],
+        "base": [
+          "Patchouli",
+          "Vanilla",
+          "Sandalwood",
+          "Cedar",
+          "Cashmere Wood"
+        ]
+      },
+      "description": "A richer, warmer variation on Idôle: bitter orange and mandarin open onto rose and jasmine, then a denser base of patchouli, vanilla and soft woods. Still clean-edged, but rounder and better suited to evenings than the airy original.",
+      "rating": 3.9,
+      "rating_votes": 2500,
+      "season_votes": {
+        "winter": 1100,
+        "spring": 1300,
+        "summer": 500,
+        "fall": 1300
+      },
+      "time_votes": {
+        "day": 1100,
+        "night": 1300
+      },
+      "gender_votes": {
+        "female": 1400,
+        "more_female": 300,
+        "unisex": 70,
+        "more_male": 10,
+        "male": 10
+      },
+      "longevity_votes": {
+        "very_weak": 60,
+        "weak": 160,
+        "moderate": 650,
+        "long_lasting": 650,
+        "eternal": 180
+      },
+      "sillage_votes": {
+        "intimate": 120,
+        "moderate": 700,
+        "strong": 550,
+        "enormous": 130
+      },
+      "price_value_votes": {
+        "way_overpriced": 70,
+        "overpriced": 250,
+        "ok": 700,
+        "good_value": 350,
+        "great_value": 110
+      },
+      "appreciation_votes": {
+        "love": 900,
+        "like": 850,
+        "ok": 400,
+        "dislike": 120,
+        "hate": 60
+      },
+      "pros": [
+        "Warmer and longer-lasting than Idôle",
+        "Rose sits well over the patchouli-woods base"
+      ],
+      "cons": [
+        "Base can feel dense next to the airy original",
+        "Less distinctive than the original's clean profile"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "romantic",
+        "date-night",
+        "cold-weather"
+      ]
+    },
+    {
+      "name": "212 VIP Rosé",
+      "brand": "Carolina Herrera",
+      "brand_country": "United States",
+      "year": 2014,
+      "gender": "women",
+      "perfumers": [
+        "Lucas Sieuzac"
+      ],
+      "accords": [
+        {
+          "name": "floral",
+          "strength": 100
+        },
+        {
+          "name": "musky",
+          "strength": 85
+        },
+        {
+          "name": "fruity",
+          "strength": 80
+        },
+        {
+          "name": "woody",
+          "strength": 60
+        },
+        {
+          "name": "sweet",
+          "strength": 50
+        },
+        {
+          "name": "rose",
+          "strength": 45
+        },
+        {
+          "name": "fresh spicy",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Champagne",
+          "Pink Pepper"
+        ],
+        "middle": [
+          "Peach Blossom",
+          "Rose"
+        ],
+        "base": [
+          "White Musk",
+          "Woody Notes"
+        ]
+      },
+      "description": "A fizzy scent built on a rosé-champagne accord and pink pepper, softened by peach blossom and rose over a clean base of woods and white musk. Light-hearted and sweet, with an unmistakable party mood.",
+      "rating": 3.9,
+      "rating_votes": 10000,
+      "season_votes": {
+        "winter": 1500,
+        "spring": 5000,
+        "summer": 5000,
+        "fall": 2000
+      },
+      "time_votes": {
+        "day": 4800,
+        "night": 4200
+      },
+      "gender_votes": {
+        "female": 5500,
+        "more_female": 1400,
+        "unisex": 300,
+        "more_male": 40,
+        "male": 40
+      },
+      "longevity_votes": {
+        "very_weak": 400,
+        "weak": 1200,
+        "moderate": 3200,
+        "long_lasting": 1600,
+        "eternal": 400
+      },
+      "sillage_votes": {
+        "intimate": 500,
+        "moderate": 3300,
+        "strong": 2000,
+        "enormous": 500
+      },
+      "price_value_votes": {
+        "way_overpriced": 250,
+        "overpriced": 700,
+        "ok": 2600,
+        "good_value": 1800,
+        "great_value": 800
+      },
+      "appreciation_votes": {
+        "love": 3800,
+        "like": 3400,
+        "ok": 1800,
+        "dislike": 600,
+        "hate": 350
+      },
+      "pros": [
+        "Fun, fizzy fruity opening",
+        "Crowd-friendly sweetness",
+        "Wears easily in warm weather"
+      ],
+      "cons": [
+        "Generic to seasoned noses",
+        "Fades to a faint musk"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "party",
+        "youthful",
+        "pink-coded",
+        "casual"
+      ]
+    },
+    {
+      "name": "Light Blue Eau Intense",
+      "brand": "Dolce&Gabbana",
+      "brand_country": "Italy",
+      "year": 2017,
+      "gender": "women",
+      "perfumers": [
+        "Olivier Cresp"
+      ],
+      "accords": [
+        {
+          "name": "citrus",
+          "strength": 100
+        },
+        {
+          "name": "fresh",
+          "strength": 75
+        },
+        {
+          "name": "fruity",
+          "strength": 58
+        },
+        {
+          "name": "woody",
+          "strength": 55
+        },
+        {
+          "name": "amber",
+          "strength": 50
+        },
+        {
+          "name": "musky",
+          "strength": 45
+        },
+        {
+          "name": "floral",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Lemon",
+          "Green Apple"
+        ],
+        "middle": [
+          "Marigold",
+          "Jasmine"
+        ],
+        "base": [
+          "Amberwood",
+          "Musk"
+        ]
+      },
+      "description": "Light Blue's lemon and crisp green apple, deepened with marigold and jasmine and anchored by a warmer amberwood-and-musk base. It keeps the sunny Mediterranean feel of the original but lasts noticeably longer.",
+      "rating": 4.0,
+      "rating_votes": 12000,
+      "season_votes": {
+        "winter": 900,
+        "spring": 7000,
+        "summer": 9500,
+        "fall": 2000
+      },
+      "time_votes": {
+        "day": 9500,
+        "night": 2000
+      },
+      "gender_votes": {
+        "female": 4000,
+        "more_female": 2500,
+        "unisex": 1600,
+        "more_male": 100,
+        "male": 60
+      },
+      "longevity_votes": {
+        "very_weak": 250,
+        "weak": 800,
+        "moderate": 3500,
+        "long_lasting": 3000,
+        "eternal": 800
+      },
+      "sillage_votes": {
+        "intimate": 300,
+        "moderate": 3500,
+        "strong": 3200,
+        "enormous": 800
+      },
+      "price_value_votes": {
+        "way_overpriced": 250,
+        "overpriced": 800,
+        "ok": 3200,
+        "good_value": 2500,
+        "great_value": 900
+      },
+      "appreciation_votes": {
+        "love": 5000,
+        "like": 4000,
+        "ok": 1500,
+        "dislike": 400,
+        "hate": 200
+      },
+      "pros": [
+        "Much better longevity than the original Light Blue",
+        "Bright and clean for hot days",
+        "Easy to like"
+      ],
+      "cons": [
+        "Very common scent",
+        "Amberwood base can feel sharp"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "hot-weather",
+        "humid-safe",
+        "crowd-pleaser",
+        "blind-buy-safe",
+        "casual"
+      ]
+    },
+    {
+      "name": "Velvet Orchid",
+      "brand": "Tom Ford",
+      "brand_country": "United States",
+      "year": 2014,
+      "gender": "women",
+      "perfumers": [
+        "Antoine Maisondieu",
+        "Calice Becker",
+        "Shyamala Maisondieu",
+        "Yann Vasnier"
+      ],
+      "accords": [
+        {
+          "name": "floral",
+          "strength": 100
+        },
+        {
+          "name": "sweet",
+          "strength": 90
+        },
+        {
+          "name": "powdery",
+          "strength": 65
+        },
+        {
+          "name": "amber",
+          "strength": 62
+        },
+        {
+          "name": "vanilla",
+          "strength": 55
+        },
+        {
+          "name": "balsamic",
+          "strength": 50
+        },
+        {
+          "name": "honey",
+          "strength": 48
+        },
+        {
+          "name": "rum",
+          "strength": 42
+        }
+      ],
+      "notes": {
+        "top": [
+          "Rum",
+          "Honey",
+          "Mandarin Orange",
+          "Bergamot"
+        ],
+        "middle": [
+          "Black Orchid",
+          "Jasmine",
+          "Heliotrope",
+          "Rose",
+          "Narcissus",
+          "Magnolia",
+          "Orange Blossom"
+        ],
+        "base": [
+          "Vanilla",
+          "Myrrh",
+          "Suede",
+          "Sandalwood",
+          "Peru Balsam",
+          "Labdanum"
+        ]
+      },
+      "description": "A honeyed, boozy floral: rum and honey over citrus lead into orchid, rose and jasmine, then a plush base of suede, myrrh, labdanum, vanilla and sandalwood. Sweeter and softer than Black Orchid, with a velvety, resinous finish.",
+      "rating": 4.0,
+      "rating_votes": 5500,
+      "season_votes": {
+        "winter": 3500,
+        "spring": 1300,
+        "summer": 400,
+        "fall": 3200
+      },
+      "time_votes": {
+        "day": 1400,
+        "night": 3800
+      },
+      "gender_votes": {
+        "female": 2800,
+        "more_female": 800,
+        "unisex": 400,
+        "more_male": 40,
+        "male": 30
+      },
+      "longevity_votes": {
+        "very_weak": 100,
+        "weak": 250,
+        "moderate": 1100,
+        "long_lasting": 1600,
+        "eternal": 600
+      },
+      "sillage_votes": {
+        "intimate": 180,
+        "moderate": 1200,
+        "strong": 1500,
+        "enormous": 500
+      },
+      "price_value_votes": {
+        "way_overpriced": 400,
+        "overpriced": 900,
+        "ok": 1300,
+        "good_value": 400,
+        "great_value": 120
+      },
+      "appreciation_votes": {
+        "love": 2400,
+        "like": 1700,
+        "ok": 800,
+        "dislike": 300,
+        "hate": 180
+      },
+      "pros": [
+        "Rich, rum-soaked honey floral",
+        "Long-lasting with strong presence",
+        "Easier to wear than Black Orchid"
+      ],
+      "cons": [
+        "Too heavy for warm days",
+        "Luxury pricing"
+      ],
+      "price_tier": "luxury",
+      "tags": [
+        "evening",
+        "cold-weather",
+        "sensual",
+        "date-night",
+        "statement"
+      ]
+    },
+    {
+      "name": "Yellow Diamond",
+      "brand": "Versace",
+      "brand_country": "Italy",
+      "year": 2011,
+      "gender": "women",
+      "perfumers": [],
+      "accords": [
+        {
+          "name": "citrus",
+          "strength": 100
+        },
+        {
+          "name": "floral",
+          "strength": 80
+        },
+        {
+          "name": "powdery",
+          "strength": 60
+        },
+        {
+          "name": "yellow floral",
+          "strength": 55
+        },
+        {
+          "name": "fresh",
+          "strength": 50
+        },
+        {
+          "name": "fruity",
+          "strength": 40
+        },
+        {
+          "name": "musky",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Lemon",
+          "Pear",
+          "Bergamot",
+          "Neroli"
+        ],
+        "middle": [
+          "Mimosa",
+          "Freesia",
+          "Water Lily",
+          "Orange Blossom"
+        ],
+        "base": [
+          "Musk",
+          "Guaiac Wood",
+          "Amber"
+        ]
+      },
+      "description": "A sparkling citrus-floral of lemon, bergamot, pear and neroli that softens into mimosa, orange blossom, water lily and freesia over guaiac wood, amber and musk. Bright, light and uncomplicated.",
+      "rating": 3.8,
+      "rating_votes": 9000,
+      "season_votes": {
+        "winter": 700,
+        "spring": 5500,
+        "summer": 6200,
+        "fall": 1300
+      },
+      "time_votes": {
+        "day": 7000,
+        "night": 1100
+      },
+      "gender_votes": {
+        "female": 4200,
+        "more_female": 1600,
+        "unisex": 500,
+        "more_male": 30,
+        "male": 30
+      },
+      "longevity_votes": {
+        "very_weak": 700,
+        "weak": 1800,
+        "moderate": 2800,
+        "long_lasting": 900,
+        "eternal": 200
+      },
+      "sillage_votes": {
+        "intimate": 800,
+        "moderate": 3000,
+        "strong": 1200,
+        "enormous": 250
+      },
+      "price_value_votes": {
+        "way_overpriced": 150,
+        "overpriced": 400,
+        "ok": 1800,
+        "good_value": 1800,
+        "great_value": 1200
+      },
+      "appreciation_votes": {
+        "love": 2500,
+        "like": 3000,
+        "ok": 1800,
+        "dislike": 500,
+        "hate": 250
+      },
+      "pros": [
+        "Cheerful and fresh for warm days",
+        "Office-friendly and inoffensive",
+        "Uncomplicated and easy to wear"
+      ],
+      "cons": [
+        "Short-lived",
+        "Fairly generic citrus-floral"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "hot-weather",
+        "office-safe",
+        "clean",
+        "casual",
+        "youthful"
+      ]
+    },
+    {
+      "name": "Euphoria",
+      "brand": "Calvin Klein",
+      "brand_country": "United States",
+      "year": 2005,
+      "gender": "women",
+      "perfumers": [
+        "Carlos Benaïm",
+        "Dominique Ropion",
+        "Loc Dong"
+      ],
+      "accords": [
+        {
+          "name": "woody",
+          "strength": 100
+        },
+        {
+          "name": "floral",
+          "strength": 85
+        },
+        {
+          "name": "sweet",
+          "strength": 78
+        },
+        {
+          "name": "powdery",
+          "strength": 62
+        },
+        {
+          "name": "amber",
+          "strength": 58
+        },
+        {
+          "name": "fruity",
+          "strength": 55
+        },
+        {
+          "name": "violet",
+          "strength": 40
+        }
+      ],
+      "notes": {
+        "top": [
+          "Pomegranate",
+          "Persimmon",
+          "Green Notes"
+        ],
+        "middle": [
+          "Black Orchid",
+          "Lotus",
+          "Champaca"
+        ],
+        "base": [
+          "Mahogany",
+          "Amber",
+          "Black Violet",
+          "Whipped Cream"
+        ]
+      },
+      "description": "A dark, sultry fruity amber: tart pomegranate and persimmon lead into black orchid, lotus and champaca, then a creamy base of mahogany, amber, black violet and a whipped-cream accord. Dense, sweet and clearly evening-oriented.",
+      "rating": 3.9,
+      "rating_votes": 22000,
+      "season_votes": {
+        "winter": 9000,
+        "spring": 4500,
+        "summer": 1500,
+        "fall": 10000
+      },
+      "time_votes": {
+        "day": 5000,
+        "night": 13000
+      },
+      "gender_votes": {
+        "female": 9000,
+        "more_female": 3000,
+        "unisex": 800,
+        "more_male": 80,
+        "male": 70
+      },
+      "longevity_votes": {
+        "very_weak": 400,
+        "weak": 900,
+        "moderate": 4500,
+        "long_lasting": 7000,
+        "eternal": 3000
+      },
+      "sillage_votes": {
+        "intimate": 500,
+        "moderate": 4500,
+        "strong": 7000,
+        "enormous": 2500
+      },
+      "price_value_votes": {
+        "way_overpriced": 300,
+        "overpriced": 700,
+        "ok": 3500,
+        "good_value": 4500,
+        "great_value": 3500
+      },
+      "appreciation_votes": {
+        "love": 8500,
+        "like": 6000,
+        "ok": 3000,
+        "dislike": 1500,
+        "hate": 1000
+      },
+      "pros": [
+        "Distinctive dark fruity-amber character",
+        "Long-lasting and projecting",
+        "Inexpensive for its performance"
+      ],
+      "cons": [
+        "Can be cloying and heavy",
+        "Polarizing sweetness"
+      ],
+      "price_tier": "budget",
+      "tags": [
+        "evening",
+        "sensual",
+        "cold-weather",
+        "date-night",
+        "statement"
+      ]
+    },
+    {
+      "name": "Nomade Absolu de Parfum",
+      "brand": "Chloé",
+      "brand_country": "France",
+      "year": 2020,
+      "gender": "women",
+      "perfumers": [
+        "Quentin Bisch"
+      ],
+      "accords": [
+        {
+          "name": "fruity",
+          "strength": 100
+        },
+        {
+          "name": "mossy",
+          "strength": 78
+        },
+        {
+          "name": "woody",
+          "strength": 60
+        },
+        {
+          "name": "earthy",
+          "strength": 50
+        },
+        {
+          "name": "sweet",
+          "strength": 45
+        },
+        {
+          "name": "musky",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Mirabelle Plum"
+        ],
+        "middle": [
+          "Oakmoss",
+          "Davana"
+        ],
+        "base": [
+          "Sandalwood",
+          "Musk"
+        ]
+      },
+      "description": "A denser, darker version of Nomade that sets its ripe mirabelle plum against oakmoss and fruity davana, drying down to sandalwood and musk. The fruity-chypre structure is familiar, but warmer and more concentrated.",
+      "rating": 3.9,
+      "rating_votes": 2500,
+      "season_votes": {
+        "winter": 1000,
+        "spring": 1100,
+        "summer": 400,
+        "fall": 1400
+      },
+      "time_votes": {
+        "day": 1100,
+        "night": 1100
+      },
+      "gender_votes": {
+        "female": 1300,
+        "more_female": 400,
+        "unisex": 150,
+        "more_male": 15,
+        "male": 10
+      },
+      "longevity_votes": {
+        "very_weak": 50,
+        "weak": 130,
+        "moderate": 600,
+        "long_lasting": 650,
+        "eternal": 200
+      },
+      "sillage_votes": {
+        "intimate": 100,
+        "moderate": 650,
+        "strong": 600,
+        "enormous": 150
+      },
+      "price_value_votes": {
+        "way_overpriced": 80,
+        "overpriced": 250,
+        "ok": 650,
+        "good_value": 300,
+        "great_value": 100
+      },
+      "appreciation_votes": {
+        "love": 900,
+        "like": 800,
+        "ok": 400,
+        "dislike": 130,
+        "hate": 70
+      },
+      "pros": [
+        "Richer and longer-lasting than Nomade EDP",
+        "Modern fruity-chypre character"
+      ],
+      "cons": [
+        "Oakmoss can feel dry and austere",
+        "Plum sweetness is heavier than in the original"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "mature-elegant",
+        "cold-weather",
+        "modern"
+      ]
+    },
+    {
+      "name": "La Vie Est Belle Intensément",
+      "brand": "Lancôme",
+      "brand_country": "France",
+      "year": 2020,
+      "gender": "women",
+      "perfumers": [
+        "Anne Flipo",
+        "Nicolas Beaulieu"
+      ],
+      "accords": [
+        {
+          "name": "vanilla",
+          "strength": 100
+        },
+        {
+          "name": "sweet",
+          "strength": 88
+        },
+        {
+          "name": "fruity",
+          "strength": 75
+        },
+        {
+          "name": "powdery",
+          "strength": 60
+        },
+        {
+          "name": "iris",
+          "strength": 45
+        },
+        {
+          "name": "white floral",
+          "strength": 42
+        },
+        {
+          "name": "woody",
+          "strength": 40
+        },
+        {
+          "name": "patchouli",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Raspberry",
+          "Pink Pepper",
+          "Bergamot"
+        ],
+        "middle": [
+          "Heliotrope",
+          "Jasmine Sambac",
+          "Orange Blossom"
+        ],
+        "base": [
+          "Vanilla",
+          "Iris",
+          "Benzoin",
+          "Patchouli",
+          "Sandalwood"
+        ]
+      },
+      "description": "La Vie Est Belle turned redder and richer: raspberry and pink pepper open onto heliotrope, jasmine sambac and orange blossom before settling into vanilla, iris, benzoin and patchouli. Sweet and gourmand like the original, with a jammier fruit accent.",
+      "rating": 3.9,
+      "rating_votes": 4000,
+      "season_votes": {
+        "winter": 2000,
+        "spring": 1500,
+        "summer": 500,
+        "fall": 2100
+      },
+      "time_votes": {
+        "day": 1500,
+        "night": 2300
+      },
+      "gender_votes": {
+        "female": 2600,
+        "more_female": 500,
+        "unisex": 100,
+        "more_male": 15,
+        "male": 15
+      },
+      "longevity_votes": {
+        "very_weak": 80,
+        "weak": 200,
+        "moderate": 900,
+        "long_lasting": 1200,
+        "eternal": 500
+      },
+      "sillage_votes": {
+        "intimate": 120,
+        "moderate": 900,
+        "strong": 1200,
+        "enormous": 450
+      },
+      "price_value_votes": {
+        "way_overpriced": 100,
+        "overpriced": 350,
+        "ok": 1100,
+        "good_value": 600,
+        "great_value": 250
+      },
+      "appreciation_votes": {
+        "love": 1700,
+        "like": 1300,
+        "ok": 600,
+        "dislike": 250,
+        "hate": 150
+      },
+      "pros": [
+        "Juicy raspberry twist on a well-loved gourmand",
+        "Strong longevity"
+      ],
+      "cons": [
+        "Very sweet",
+        "Too heavy for hot weather"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "date-night",
+        "cold-weather",
+        "compliment-getter",
+        "pink-coded"
+      ]
+    },
+    {
+      "name": "Libre Le Parfum",
+      "brand": "Yves Saint Laurent",
+      "brand_country": "France",
+      "year": 2022,
+      "gender": "women",
+      "perfumers": [
+        "Anne Flipo",
+        "Carlos Benaïm"
+      ],
+      "accords": [
+        {
+          "name": "vanilla",
+          "strength": 100
+        },
+        {
+          "name": "sweet",
+          "strength": 85
+        },
+        {
+          "name": "honey",
+          "strength": 70
+        },
+        {
+          "name": "white floral",
+          "strength": 62
+        },
+        {
+          "name": "lavender",
+          "strength": 58
+        },
+        {
+          "name": "citrus",
+          "strength": 50
+        },
+        {
+          "name": "warm spicy",
+          "strength": 40
+        },
+        {
+          "name": "aromatic",
+          "strength": 38
+        }
+      ],
+      "notes": {
+        "top": [
+          "Ginger",
+          "Saffron",
+          "Mandarin Orange",
+          "Bergamot"
+        ],
+        "middle": [
+          "Orange Blossom",
+          "Lavender"
+        ],
+        "base": [
+          "Vanilla",
+          "Honey",
+          "Tonka Bean",
+          "Vetiver"
+        ]
+      },
+      "description": "A warmer, honeyed take on Libre: ginger, saffron and mandarin open onto the familiar lavender and orange blossom, which sit on a sweeter base of vanilla, honey and tonka. Still a floral twist on fougère, but denser and more enveloping than the EDP.",
+      "rating": 4.1,
+      "rating_votes": 4000,
+      "season_votes": {
+        "winter": 2300,
+        "spring": 1400,
+        "summer": 400,
+        "fall": 2400
+      },
+      "time_votes": {
+        "day": 1600,
+        "night": 2300
+      },
+      "gender_votes": {
+        "female": 2200,
+        "more_female": 800,
+        "unisex": 300,
+        "more_male": 30,
+        "male": 20
+      },
+      "longevity_votes": {
+        "very_weak": 50,
+        "weak": 150,
+        "moderate": 800,
+        "long_lasting": 1300,
+        "eternal": 500
+      },
+      "sillage_votes": {
+        "intimate": 80,
+        "moderate": 800,
+        "strong": 1300,
+        "enormous": 450
+      },
+      "price_value_votes": {
+        "way_overpriced": 150,
+        "overpriced": 450,
+        "ok": 1100,
+        "good_value": 550,
+        "great_value": 200
+      },
+      "appreciation_votes": {
+        "love": 1900,
+        "like": 1200,
+        "ok": 450,
+        "dislike": 150,
+        "hate": 90
+      },
+      "pros": [
+        "Richer and warmer than Libre EDP",
+        "Excellent longevity",
+        "Honey-vanilla base softens the lavender"
+      ],
+      "cons": [
+        "Heavy for summer",
+        "Lavender may read masculine to some"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "cold-weather",
+        "evening",
+        "modern",
+        "compliment-getter",
+        "statement"
+      ]
+    },
+    {
+      "name": "Joy by Dior",
+      "brand": "Dior",
+      "brand_country": "France",
+      "year": 2018,
+      "gender": "women",
+      "perfumers": [
+        "François Demachy"
+      ],
+      "accords": [
+        {
+          "name": "citrus",
+          "strength": 100
+        },
+        {
+          "name": "woody",
+          "strength": 80
+        },
+        {
+          "name": "powdery",
+          "strength": 65
+        },
+        {
+          "name": "white floral",
+          "strength": 60
+        },
+        {
+          "name": "musky",
+          "strength": 55
+        },
+        {
+          "name": "rose",
+          "strength": 50
+        },
+        {
+          "name": "floral",
+          "strength": 45
+        }
+      ],
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Mandarin Orange"
+        ],
+        "middle": [
+          "Jasmine",
+          "Rose",
+          "Peach",
+          "Black Currant"
+        ],
+        "base": [
+          "White Musk",
+          "Sandalwood",
+          "Cedar",
+          "Patchouli",
+          "Benzoin"
+        ]
+      },
+      "description": "A bright, clean floral where bergamot and mandarin lift a rose-and-jasmine heart touched with peach, settling onto sandalwood, cedar and white musk. Polished rather than sweet, it stays airy and unfussy.",
+      "rating": 3.8,
+      "rating_votes": 5000,
+      "season_votes": {
+        "winter": 700,
+        "spring": 3000,
+        "summer": 2000,
+        "fall": 1200
+      },
+      "time_votes": {
+        "day": 3200,
+        "night": 900
+      },
+      "gender_votes": {
+        "female": 2600,
+        "more_female": 600,
+        "unisex": 250,
+        "more_male": 20,
+        "male": 20
+      },
+      "longevity_votes": {
+        "very_weak": 200,
+        "weak": 500,
+        "moderate": 1500,
+        "long_lasting": 800,
+        "eternal": 180
+      },
+      "sillage_votes": {
+        "intimate": 300,
+        "moderate": 1500,
+        "strong": 800,
+        "enormous": 150
+      },
+      "price_value_votes": {
+        "way_overpriced": 250,
+        "overpriced": 600,
+        "ok": 1300,
+        "good_value": 500,
+        "great_value": 150
+      },
+      "appreciation_votes": {
+        "love": 1600,
+        "like": 1500,
+        "ok": 900,
+        "dislike": 350,
+        "hate": 200
+      },
+      "pros": [
+        "Clean, bright floral that suits daytime",
+        "Office-appropriate",
+        "Soft musky drydown"
+      ],
+      "cons": [
+        "Can feel generic next to other Dior florals",
+        "Moderate projection"
+      ],
+      "price_tier": "luxury",
+      "tags": [
+        "office-safe",
+        "clean",
+        "understated",
+        "versatile"
+      ]
+    },
+    {
+      "name": "Poison Girl",
+      "brand": "Dior",
+      "brand_country": "France",
+      "year": 2016,
+      "gender": "women",
+      "perfumers": [
+        "François Demachy"
+      ],
+      "accords": [
+        {
+          "name": "vanilla",
+          "strength": 100
+        },
+        {
+          "name": "sweet",
+          "strength": 88
+        },
+        {
+          "name": "almond",
+          "strength": 70
+        },
+        {
+          "name": "powdery",
+          "strength": 58
+        },
+        {
+          "name": "citrus",
+          "strength": 50
+        },
+        {
+          "name": "amber",
+          "strength": 42
+        },
+        {
+          "name": "rose",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Bitter Orange",
+          "Lemon"
+        ],
+        "middle": [
+          "Damask Rose",
+          "Rose",
+          "Orange Blossom"
+        ],
+        "base": [
+          "Vanilla",
+          "Almond",
+          "Tonka Bean",
+          "Tolu Balsam",
+          "Sandalwood",
+          "Heliotrope"
+        ]
+      },
+      "description": "A bitter-orange and lemon opening gives way to a sweet rose heart and a thick base of vanilla, almond, tonka and tolu balsam. Youthful and gourmand, with a brief tart edge before the sweetness takes over.",
+      "rating": 3.8,
+      "rating_votes": 7500,
+      "season_votes": {
+        "winter": 3000,
+        "spring": 2200,
+        "summer": 700,
+        "fall": 3200
+      },
+      "time_votes": {
+        "day": 2200,
+        "night": 3600
+      },
+      "gender_votes": {
+        "female": 3800,
+        "more_female": 900,
+        "unisex": 200,
+        "more_male": 25,
+        "male": 25
+      },
+      "longevity_votes": {
+        "very_weak": 150,
+        "weak": 450,
+        "moderate": 1700,
+        "long_lasting": 1800,
+        "eternal": 600
+      },
+      "sillage_votes": {
+        "intimate": 200,
+        "moderate": 1700,
+        "strong": 1800,
+        "enormous": 500
+      },
+      "price_value_votes": {
+        "way_overpriced": 250,
+        "overpriced": 600,
+        "ok": 1600,
+        "good_value": 700,
+        "great_value": 250
+      },
+      "appreciation_votes": {
+        "love": 2300,
+        "like": 2000,
+        "ok": 1100,
+        "dislike": 500,
+        "hate": 350
+      },
+      "pros": [
+        "Sweet almond-vanilla gourmand with good lasting power",
+        "Orange opening adds a tart contrast"
+      ],
+      "cons": [
+        "Very sweet for daytime or heat",
+        "Some find the drydown synthetic"
+      ],
+      "price_tier": "luxury",
+      "tags": [
+        "youthful",
+        "date-night",
+        "cold-weather",
+        "party"
+      ]
+    },
+    {
+      "name": "Daisy Dream",
+      "brand": "Marc Jacobs",
+      "brand_country": "United States",
+      "year": 2014,
+      "gender": "women",
+      "perfumers": [
+        "Alberto Morillas"
+      ],
+      "accords": [
+        {
+          "name": "fruity",
+          "strength": 100
+        },
+        {
+          "name": "floral",
+          "strength": 80
+        },
+        {
+          "name": "fresh",
+          "strength": 70
+        },
+        {
+          "name": "sweet",
+          "strength": 60
+        },
+        {
+          "name": "white floral",
+          "strength": 55
+        },
+        {
+          "name": "musky",
+          "strength": 45
+        },
+        {
+          "name": "citrus",
+          "strength": 40
+        },
+        {
+          "name": "aquatic",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Blackberry",
+          "Grapefruit",
+          "Pear"
+        ],
+        "middle": [
+          "Blue Wisteria",
+          "Jasmine",
+          "Lychee"
+        ],
+        "base": [
+          "Coconut Water",
+          "White Woods",
+          "Musk"
+        ]
+      },
+      "description": "A breezy, watery fruity-floral where blackberry, pear and grapefruit lead into soft wisteria, lychee and jasmine, drying down to a faint coconut-water, musk and pale-wood base. Lighter and airier than the original Daisy, with a sheer, hazy feel.",
+      "rating": 3.86,
+      "rating_votes": 4300,
+      "season_votes": {
+        "winter": 391,
+        "spring": 3323,
+        "summer": 3127,
+        "fall": 704
+      },
+      "time_votes": {
+        "day": 3714,
+        "night": 704
+      },
+      "gender_votes": {
+        "female": 3049,
+        "more_female": 352,
+        "unisex": 98,
+        "more_male": 8,
+        "male": 12
+      },
+      "longevity_votes": {
+        "very_weak": 469,
+        "weak": 1016,
+        "moderate": 1485,
+        "long_lasting": 704,
+        "eternal": 137
+      },
+      "sillage_votes": {
+        "intimate": 704,
+        "moderate": 1642,
+        "strong": 586,
+        "enormous": 117
+      },
+      "price_value_votes": {
+        "way_overpriced": 156,
+        "overpriced": 391,
+        "ok": 1251,
+        "good_value": 860,
+        "great_value": 352
+      },
+      "appreciation_votes": {
+        "love": 1642,
+        "like": 1564,
+        "ok": 782,
+        "dislike": 235,
+        "hate": 117
+      },
+      "pros": [
+        "Airy and easy to like",
+        "Juicy blackberry and pear opening",
+        "Suits warm daytime wear"
+      ],
+      "cons": [
+        "Fades within a few hours",
+        "Can read as a generic fruity-floral",
+        "Soft projection"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "youthful",
+        "casual",
+        "hot-weather",
+        "blind-buy-safe",
+        "office-safe"
+      ]
+    },
+    {
+      "name": "Angel Muse",
+      "brand": "Mugler",
+      "brand_country": "France",
+      "year": 2016,
+      "gender": "women",
+      "perfumers": [
+        "Quentin Bisch"
+      ],
+      "accords": [
+        {
+          "name": "patchouli",
+          "strength": 100
+        },
+        {
+          "name": "woody",
+          "strength": 85
+        },
+        {
+          "name": "sweet",
+          "strength": 80
+        },
+        {
+          "name": "earthy",
+          "strength": 70
+        },
+        {
+          "name": "nutty",
+          "strength": 65
+        },
+        {
+          "name": "warm spicy",
+          "strength": 50
+        },
+        {
+          "name": "chocolate",
+          "strength": 35
+        },
+        {
+          "name": "citrus",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Pink Pepper",
+          "Grapefruit"
+        ],
+        "middle": [
+          "Hazelnut Cream",
+          "Cacao"
+        ],
+        "base": [
+          "Patchouli",
+          "Vetiver"
+        ]
+      },
+      "description": "A gourmand built on a creamy hazelnut and cocoa accord, cut with grapefruit and pink pepper and grounded by earthy patchouli and dry vetiver. Sweet but less sugary than Angel, with a nutty, textured character.",
+      "rating": 4.11,
+      "rating_votes": 8500,
+      "season_votes": {
+        "winter": 6000,
+        "spring": 1800,
+        "summer": 500,
+        "fall": 5800
+      },
+      "time_votes": {
+        "day": 3200,
+        "night": 5200
+      },
+      "gender_votes": {
+        "female": 5200,
+        "more_female": 1300,
+        "unisex": 700,
+        "more_male": 80,
+        "male": 70
+      },
+      "longevity_votes": {
+        "very_weak": 250,
+        "weak": 450,
+        "moderate": 1900,
+        "long_lasting": 3600,
+        "eternal": 1600
+      },
+      "sillage_votes": {
+        "intimate": 350,
+        "moderate": 2000,
+        "strong": 3300,
+        "enormous": 1600
+      },
+      "price_value_votes": {
+        "way_overpriced": 250,
+        "overpriced": 600,
+        "ok": 2200,
+        "good_value": 1800,
+        "great_value": 900
+      },
+      "appreciation_votes": {
+        "love": 3800,
+        "like": 2800,
+        "ok": 1400,
+        "dislike": 700,
+        "hate": 500
+      },
+      "pros": [
+        "Distinctive hazelnut gourmand",
+        "Long lasting with strong projection",
+        "Vetiver keeps the sweetness in check"
+      ],
+      "cons": [
+        "Heavy for warm weather",
+        "The nutty-earthy mix is not for everyone"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "cold-weather",
+        "cosy",
+        "evening",
+        "polarizing"
+      ]
+    },
+    {
+      "name": "Aura Mugler",
+      "brand": "Mugler",
+      "brand_country": "France",
+      "year": 2017,
+      "gender": "women",
+      "perfumers": [
+        "Daphné Bugey",
+        "Amandine Clerc-Marie",
+        "Christophe Raynaud",
+        "Marie Salamagne",
+        "Olivier Cresp"
+      ],
+      "accords": [
+        {
+          "name": "green",
+          "strength": 100
+        },
+        {
+          "name": "woody",
+          "strength": 80
+        },
+        {
+          "name": "vanilla",
+          "strength": 70
+        },
+        {
+          "name": "sweet",
+          "strength": 65
+        },
+        {
+          "name": "fruity",
+          "strength": 50
+        },
+        {
+          "name": "aromatic",
+          "strength": 45
+        },
+        {
+          "name": "white floral",
+          "strength": 40
+        },
+        {
+          "name": "citrus",
+          "strength": 35
+        },
+        {
+          "name": "powdery",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Rhubarb Leaf",
+          "Bergamot"
+        ],
+        "middle": [
+          "Green Notes",
+          "Orange Blossom",
+          "Ylang-Ylang",
+          "Pear"
+        ],
+        "base": [
+          "Bourbon Vanilla",
+          "Woody Notes",
+          "Amberwood",
+          "Sandalwood",
+          "Coumarin",
+          "Wolfwood"
+        ]
+      },
+      "description": "A green-sweet scent: sharp, leafy rhubarb and bergamot over orange blossom, ylang-ylang and pear, settling into a vanilla, coumarin and wood base. The sappy green edge sets it apart from most sweet mainstream releases.",
+      "rating": 3.73,
+      "rating_votes": 10700,
+      "season_votes": {
+        "winter": 1900,
+        "spring": 3000,
+        "summer": 1900,
+        "fall": 2500
+      },
+      "time_votes": {
+        "day": 2900,
+        "night": 2300
+      },
+      "gender_votes": {
+        "female": 6114,
+        "more_female": 1834,
+        "unisex": 1529,
+        "more_male": 183,
+        "male": 122
+      },
+      "longevity_votes": {
+        "very_weak": 367,
+        "weak": 764,
+        "moderate": 2751,
+        "long_lasting": 3974,
+        "eternal": 1376
+      },
+      "sillage_votes": {
+        "intimate": 611,
+        "moderate": 3057,
+        "strong": 3669,
+        "enormous": 1376
+      },
+      "price_value_votes": {
+        "way_overpriced": 459,
+        "overpriced": 1070,
+        "ok": 2751,
+        "good_value": 2140,
+        "great_value": 1070
+      },
+      "appreciation_votes": {
+        "love": 3800,
+        "like": 3300,
+        "ok": 760,
+        "dislike": 2400,
+        "hate": 410
+      },
+      "pros": [
+        "Unusual green-vanilla combination",
+        "Good staying power",
+        "Stands apart from typical sweet florals"
+      ],
+      "cons": [
+        "Rhubarb opening can feel sharp",
+        "Green-sweet contrast is polarizing"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "polarizing",
+        "modern",
+        "statement",
+        "versatile"
+      ]
+    },
+    {
+      "name": "Manifesto",
+      "brand": "Yves Saint Laurent",
+      "brand_country": "France",
+      "year": 2012,
+      "gender": "women",
+      "perfumers": [
+        "Anne Flipo",
+        "Loc Dong"
+      ],
+      "accords": [
+        {
+          "name": "vanilla",
+          "strength": 100
+        },
+        {
+          "name": "woody",
+          "strength": 85
+        },
+        {
+          "name": "fruity",
+          "strength": 70
+        },
+        {
+          "name": "powdery",
+          "strength": 65
+        },
+        {
+          "name": "white floral",
+          "strength": 60
+        },
+        {
+          "name": "green",
+          "strength": 50
+        },
+        {
+          "name": "sweet",
+          "strength": 45
+        },
+        {
+          "name": "amber",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Black Currant",
+          "Bergamot",
+          "Green Notes"
+        ],
+        "middle": [
+          "Jasmine Sambac",
+          "Lily of the Valley"
+        ],
+        "base": [
+          "Vanilla",
+          "Tonka Bean",
+          "Sandalwood",
+          "Cedar"
+        ]
+      },
+      "description": "A floral-oriental that opens with tart blackcurrant and green bergamot before a jasmine and lily-of-the-valley heart melts into a creamy vanilla and tonka base. Sweet and enveloping, with a polished evening feel.",
+      "rating": 3.89,
+      "rating_votes": 7600,
+      "season_votes": {
+        "winter": 4200,
+        "spring": 2200,
+        "summer": 600,
+        "fall": 4400
+      },
+      "time_votes": {
+        "day": 2600,
+        "night": 4600
+      },
+      "gender_votes": {
+        "female": 5200,
+        "more_female": 700,
+        "unisex": 200,
+        "more_male": 20,
+        "male": 30
+      },
+      "longevity_votes": {
+        "very_weak": 200,
+        "weak": 450,
+        "moderate": 1900,
+        "long_lasting": 2900,
+        "eternal": 900
+      },
+      "sillage_votes": {
+        "intimate": 300,
+        "moderate": 2100,
+        "strong": 2600,
+        "enormous": 800
+      },
+      "price_value_votes": {
+        "way_overpriced": 200,
+        "overpriced": 500,
+        "ok": 1900,
+        "good_value": 1600,
+        "great_value": 700
+      },
+      "appreciation_votes": {
+        "love": 3500,
+        "like": 2600,
+        "ok": 1200,
+        "dislike": 400,
+        "hate": 250
+      },
+      "pros": [
+        "Rich vanilla-jasmine drydown",
+        "Strong longevity",
+        "Elegant evening character"
+      ],
+      "cons": [
+        "Heavy in hot weather",
+        "Can feel dense and sweet"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "evening",
+        "date-night",
+        "cold-weather",
+        "sensual"
+      ]
+    },
+    {
+      "name": "Pure Poison",
+      "brand": "Dior",
+      "brand_country": "France",
+      "year": 2004,
+      "gender": "women",
+      "perfumers": [
+        "Carlos Benaïm",
+        "Dominique Ropion",
+        "Olivier Polge"
+      ],
+      "accords": [
+        {
+          "name": "white floral",
+          "strength": 100
+        },
+        {
+          "name": "citrus",
+          "strength": 70
+        },
+        {
+          "name": "woody",
+          "strength": 55
+        },
+        {
+          "name": "powdery",
+          "strength": 50
+        },
+        {
+          "name": "musky",
+          "strength": 45
+        },
+        {
+          "name": "amber",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Jasmine",
+          "Orange",
+          "Sicilian Mandarin",
+          "Bergamot"
+        ],
+        "middle": [
+          "Gardenia",
+          "Orange Blossom"
+        ],
+        "base": [
+          "Sandalwood",
+          "White Amber",
+          "White Musk",
+          "Cedar"
+        ]
+      },
+      "description": "A luminous white floral where gardenia and orange blossom sit on a bright citrus opening, drying down to clean white musk, amber and soft woods. Radiant and polished rather than heavy, and quite distinct from the darker Poison line.",
+      "rating": 4.04,
+      "rating_votes": 17700,
+      "season_votes": {
+        "winter": 3688,
+        "spring": 12538,
+        "summer": 8113,
+        "fall": 5605
+      },
+      "time_votes": {
+        "day": 11800,
+        "night": 7670
+      },
+      "gender_votes": {
+        "female": 12538,
+        "more_female": 1622,
+        "unisex": 516,
+        "more_male": 44,
+        "male": 59
+      },
+      "longevity_votes": {
+        "very_weak": 516,
+        "weak": 1328,
+        "moderate": 5015,
+        "long_lasting": 6638,
+        "eternal": 2360
+      },
+      "sillage_votes": {
+        "intimate": 1032,
+        "moderate": 5605,
+        "strong": 6195,
+        "enormous": 2212
+      },
+      "price_value_votes": {
+        "way_overpriced": 664,
+        "overpriced": 1918,
+        "ok": 6048,
+        "good_value": 3835,
+        "great_value": 1328
+      },
+      "appreciation_votes": {
+        "love": 8555,
+        "like": 5458,
+        "ok": 2212,
+        "dislike": 738,
+        "hate": 516
+      },
+      "pros": [
+        "Radiant, clean white florals",
+        "Long lasting",
+        "Elegant enough for formal events"
+      ],
+      "cons": [
+        "Gardenia can feel loud up close",
+        "Pricier than many designer florals"
+      ],
+      "price_tier": "luxury",
+      "tags": [
+        "classic",
+        "mature-elegant",
+        "wedding",
+        "formal",
+        "compliment-getter"
+      ]
+    },
+    {
+      "name": "Miss Dior Absolutely Blooming",
+      "brand": "Dior",
+      "brand_country": "France",
+      "year": 2016,
+      "gender": "women",
+      "perfumers": [
+        "François Demachy"
+      ],
+      "accords": [
+        {
+          "name": "fruity",
+          "strength": 100
+        },
+        {
+          "name": "rose",
+          "strength": 90
+        },
+        {
+          "name": "floral",
+          "strength": 75
+        },
+        {
+          "name": "sweet",
+          "strength": 60
+        },
+        {
+          "name": "woody",
+          "strength": 45
+        },
+        {
+          "name": "musky",
+          "strength": 40
+        },
+        {
+          "name": "soft spicy",
+          "strength": 35
+        },
+        {
+          "name": "fresh",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Raspberry",
+          "Black Currant",
+          "Pomegranate",
+          "Pink Pepper"
+        ],
+        "middle": [
+          "Rose de Mai",
+          "Peony"
+        ],
+        "base": [
+          "White Musk"
+        ]
+      },
+      "description": "A juicy fruity-floral of raspberry, blackcurrant and pomegranate with a pinch of pink pepper, folded into rose and peony and finished with a light white musk. Bright and rosy, it is sweeter and fruitier than Miss Dior Blooming Bouquet.",
+      "rating": 4.05,
+      "rating_votes": 5000,
+      "season_votes": {
+        "winter": 706,
+        "spring": 4235,
+        "summer": 2471,
+        "fall": 1059
+      },
+      "time_votes": {
+        "day": 4000,
+        "night": 1176
+      },
+      "gender_votes": {
+        "female": 3824,
+        "more_female": 412,
+        "unisex": 88,
+        "more_male": 9,
+        "male": 12
+      },
+      "longevity_votes": {
+        "very_weak": 176,
+        "weak": 471,
+        "moderate": 1647,
+        "long_lasting": 1529,
+        "eternal": 412
+      },
+      "sillage_votes": {
+        "intimate": 294,
+        "moderate": 1647,
+        "strong": 1471,
+        "enormous": 412
+      },
+      "price_value_votes": {
+        "way_overpriced": 265,
+        "overpriced": 588,
+        "ok": 1529,
+        "good_value": 882,
+        "great_value": 324
+      },
+      "appreciation_votes": {
+        "love": 2176,
+        "like": 1765,
+        "ok": 765,
+        "dislike": 265,
+        "hate": 147
+      },
+      "pros": [
+        "Juicy berry-rose opening",
+        "Cheerful spring character",
+        "Easy to wear by day"
+      ],
+      "cons": [
+        "Quite sweet for some",
+        "Close to many other fruity-rose florals"
+      ],
+      "price_tier": "luxury",
+      "tags": [
+        "pink-coded",
+        "youthful",
+        "romantic",
+        "blind-buy-safe"
+      ]
+    },
+    {
+      "name": "Gabrielle Chanel Essence",
+      "brand": "Chanel",
+      "brand_country": "France",
+      "year": 2019,
+      "gender": "women",
+      "perfumers": [
+        "Olivier Polge"
+      ],
+      "accords": [
+        {
+          "name": "white floral",
+          "strength": 100
+        },
+        {
+          "name": "citrus",
+          "strength": 70
+        },
+        {
+          "name": "fruity",
+          "strength": 60
+        },
+        {
+          "name": "sweet",
+          "strength": 55
+        },
+        {
+          "name": "woody",
+          "strength": 45
+        },
+        {
+          "name": "tuberose",
+          "strength": 45
+        },
+        {
+          "name": "yellow floral",
+          "strength": 40
+        },
+        {
+          "name": "powdery",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Citruses",
+          "Peach",
+          "Red Berries",
+          "Black Currant",
+          "Petitgrain"
+        ],
+        "middle": [
+          "White Flowers",
+          "Tuberose",
+          "Ylang-Ylang",
+          "Jasmine",
+          "Orange Blossom",
+          "Coconut"
+        ],
+        "base": [
+          "Musk",
+          "Sandalwood",
+          "Vanilla"
+        ]
+      },
+      "description": "A white-floral bouquet of tuberose, jasmine, ylang-ylang and orange blossom, opened by citrus, peach and red fruit and resting on musk, sandalwood and vanilla. Richer and more rounded than the original Gabrielle, with a creamy floral warmth.",
+      "rating": 4.06,
+      "rating_votes": 4100,
+      "season_votes": {
+        "winter": 1500,
+        "spring": 3200,
+        "summer": 2200,
+        "fall": 1900
+      },
+      "time_votes": {
+        "day": 3200,
+        "night": 2400
+      },
+      "gender_votes": {
+        "female": 3400,
+        "more_female": 400,
+        "unisex": 120,
+        "more_male": 10,
+        "male": 10
+      },
+      "longevity_votes": {
+        "very_weak": 120,
+        "weak": 350,
+        "moderate": 1300,
+        "long_lasting": 1800,
+        "eternal": 600
+      },
+      "sillage_votes": {
+        "intimate": 200,
+        "moderate": 1300,
+        "strong": 1600,
+        "enormous": 500
+      },
+      "price_value_votes": {
+        "way_overpriced": 450,
+        "overpriced": 900,
+        "ok": 1300,
+        "good_value": 700,
+        "great_value": 250
+      },
+      "appreciation_votes": {
+        "love": 2100,
+        "like": 1500,
+        "ok": 700,
+        "dislike": 250,
+        "hate": 150
+      },
+      "pros": [
+        "Rich, well-blended white florals",
+        "Fuller and more intense than the original Gabrielle",
+        "Polished and elegant"
+      ],
+      "cons": [
+        "Expensive",
+        "Heavy white florals can overwhelm"
+      ],
+      "price_tier": "luxury",
+      "tags": [
+        "mature-elegant",
+        "formal",
+        "wedding",
+        "signature"
+      ]
+    },
+    {
+      "name": "Allure",
+      "brand": "Chanel",
+      "brand_country": "France",
+      "year": 1996,
+      "gender": "women",
+      "perfumers": [
+        "Jacques Polge"
+      ],
+      "accords": [
+        {
+          "name": "citrus",
+          "strength": 100
+        },
+        {
+          "name": "floral",
+          "strength": 90
+        },
+        {
+          "name": "white floral",
+          "strength": 75
+        },
+        {
+          "name": "fruity",
+          "strength": 65
+        },
+        {
+          "name": "vanilla",
+          "strength": 55
+        },
+        {
+          "name": "fresh",
+          "strength": 45
+        },
+        {
+          "name": "woody",
+          "strength": 40
+        },
+        {
+          "name": "powdery",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Lemon",
+          "Mandarin Orange",
+          "Peach",
+          "Passion Fruit",
+          "Bergamot"
+        ],
+        "middle": [
+          "Honeysuckle",
+          "Jasmine",
+          "Magnolia",
+          "Freesia",
+          "Water Lily",
+          "Orange Blossom",
+          "Peony",
+          "Rose de Mai"
+        ],
+        "base": [
+          "Vanilla",
+          "Sandalwood",
+          "Amber",
+          "Vetiver",
+          "Patchouli"
+        ]
+      },
+      "description": "A softly blended floral where citrus and peach flow into magnolia, honeysuckle and jasmine over a smooth vanilla, vetiver and sandalwood base. Seamless and understated, it wears as one unified impression rather than distinct notes.",
+      "rating": 4.07,
+      "rating_votes": 6100,
+      "season_votes": {
+        "winter": 1866,
+        "spring": 3947,
+        "summer": 2153,
+        "fall": 2799
+      },
+      "time_votes": {
+        "day": 4665,
+        "night": 2296
+      },
+      "gender_votes": {
+        "female": 4162,
+        "more_female": 718,
+        "unisex": 323,
+        "more_male": 29,
+        "male": 22
+      },
+      "longevity_votes": {
+        "very_weak": 179,
+        "weak": 502,
+        "moderate": 1794,
+        "long_lasting": 2225,
+        "eternal": 646
+      },
+      "sillage_votes": {
+        "intimate": 323,
+        "moderate": 2153,
+        "strong": 1938,
+        "enormous": 502
+      },
+      "price_value_votes": {
+        "way_overpriced": 323,
+        "overpriced": 789,
+        "ok": 2009,
+        "good_value": 1148,
+        "great_value": 431
+      },
+      "appreciation_votes": {
+        "love": 2584,
+        "like": 2153,
+        "ok": 1005,
+        "dislike": 395,
+        "hate": 251
+      },
+      "pros": [
+        "Smooth, seamless blend",
+        "Office-appropriate elegance",
+        "Good longevity"
+      ],
+      "cons": [
+        "Can feel old-fashioned to some",
+        "Lacks a standout note"
+      ],
+      "price_tier": "luxury",
+      "tags": [
+        "classic",
+        "mature-elegant",
+        "office-safe",
+        "versatile"
+      ]
+    },
+    {
+      "name": "Ange ou Démon",
+      "brand": "Givenchy",
+      "brand_country": "France",
+      "year": 2006,
+      "gender": "women",
+      "perfumers": [
+        "Olivier Cresp",
+        "Jean-Pierre Bethouart"
+      ],
+      "accords": [
+        {
+          "name": "vanilla",
+          "strength": 100
+        },
+        {
+          "name": "sweet",
+          "strength": 85
+        },
+        {
+          "name": "warm spicy",
+          "strength": 75
+        },
+        {
+          "name": "white floral",
+          "strength": 65
+        },
+        {
+          "name": "aromatic",
+          "strength": 55
+        },
+        {
+          "name": "woody",
+          "strength": 50
+        },
+        {
+          "name": "yellow floral",
+          "strength": 40
+        },
+        {
+          "name": "balsamic",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Saffron",
+          "Thyme",
+          "Mandarin Orange"
+        ],
+        "middle": [
+          "Lily",
+          "Ylang-Ylang",
+          "Orchid"
+        ],
+        "base": [
+          "Vanilla",
+          "Tonka Bean",
+          "Brazilian Rosewood",
+          "Oakmoss"
+        ]
+      },
+      "description": "A spicy floral-oriental that opens with saffron, mandarin and a herbal thyme accent, then moves into lily, ylang-ylang and orchid over a warm vanilla, tonka, rosewood and oakmoss base. Dark and brooding in feel, with a sweet but not sugary finish.",
+      "rating": 3.84,
+      "rating_votes": 13400,
+      "season_votes": {
+        "winter": 8375,
+        "spring": 2848,
+        "summer": 838,
+        "fall": 7705
+      },
+      "time_votes": {
+        "day": 4020,
+        "night": 9045
+      },
+      "gender_votes": {
+        "female": 8040,
+        "more_female": 1675,
+        "unisex": 754,
+        "more_male": 67,
+        "male": 50
+      },
+      "longevity_votes": {
+        "very_weak": 251,
+        "weak": 586,
+        "moderate": 2512,
+        "long_lasting": 5360,
+        "eternal": 2848
+      },
+      "sillage_votes": {
+        "intimate": 335,
+        "moderate": 2512,
+        "strong": 5025,
+        "enormous": 2512
+      },
+      "price_value_votes": {
+        "way_overpriced": 251,
+        "overpriced": 670,
+        "ok": 3015,
+        "good_value": 3015,
+        "great_value": 1508
+      },
+      "appreciation_votes": {
+        "love": 6365,
+        "like": 3852,
+        "ok": 1675,
+        "dislike": 754,
+        "hate": 586
+      },
+      "pros": [
+        "Distinctive spicy-floral character",
+        "Long lasting with strong projection",
+        "Well suited to evenings"
+      ],
+      "cons": [
+        "Heavy in daytime heat",
+        "Herbal-spicy opening can be sharp"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "evening",
+        "cold-weather",
+        "sensual",
+        "date-night"
+      ]
+    },
+    {
+      "name": "Very Irrésistible",
+      "brand": "Givenchy",
+      "brand_country": "France",
+      "year": 2003,
+      "gender": "women",
+      "perfumers": [
+        "Dominique Ropion",
+        "Sophie Labbé",
+        "Carlos Benaïm"
+      ],
+      "accords": [
+        {
+          "name": "rose",
+          "strength": 100
+        },
+        {
+          "name": "floral",
+          "strength": 75
+        },
+        {
+          "name": "fresh",
+          "strength": 60
+        },
+        {
+          "name": "citrus",
+          "strength": 50
+        },
+        {
+          "name": "aromatic",
+          "strength": 45
+        },
+        {
+          "name": "anis",
+          "strength": 25
+        }
+      ],
+      "notes": {
+        "top": [
+          "Cassia",
+          "Lemon Verbena",
+          "Star Anise"
+        ],
+        "middle": [
+          "Rose",
+          "Peony",
+          "Magnolia"
+        ],
+        "base": [
+          "Taif Rose",
+          "Musk",
+          "Vanilla",
+          "Patchouli"
+        ]
+      },
+      "description": "A bright rose scent with a crisp, faintly licorice-like star anise and lemony verbena opening, followed by peony and magnolia over a soft musk, vanilla and patchouli base. Fresh and clean, it keeps the rose airy rather than jammy.",
+      "rating": 3.9,
+      "rating_votes": 6500,
+      "season_votes": {
+        "winter": 1000,
+        "spring": 5200,
+        "summer": 2800,
+        "fall": 1500
+      },
+      "time_votes": {
+        "day": 5000,
+        "night": 1500
+      },
+      "gender_votes": {
+        "female": 4800,
+        "more_female": 500,
+        "unisex": 150,
+        "more_male": 10,
+        "male": 15
+      },
+      "longevity_votes": {
+        "very_weak": 250,
+        "weak": 650,
+        "moderate": 2100,
+        "long_lasting": 1800,
+        "eternal": 500
+      },
+      "sillage_votes": {
+        "intimate": 400,
+        "moderate": 2300,
+        "strong": 1700,
+        "enormous": 450
+      },
+      "price_value_votes": {
+        "way_overpriced": 150,
+        "overpriced": 400,
+        "ok": 1600,
+        "good_value": 1400,
+        "great_value": 650
+      },
+      "appreciation_votes": {
+        "love": 2700,
+        "like": 2300,
+        "ok": 1000,
+        "dislike": 350,
+        "hate": 200
+      },
+      "pros": [
+        "Fresh, clean rose",
+        "Easy daytime wear",
+        "Distinctive anise twist"
+      ],
+      "cons": [
+        "The anise note is not for everyone",
+        "Moderate staying power"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "romantic",
+        "office-safe",
+        "pink-coded",
+        "casual"
+      ]
+    },
+    {
+      "name": "Valentina",
+      "brand": "Valentino",
+      "brand_country": "Italy",
+      "year": 2011,
+      "gender": "women",
+      "perfumers": [
+        "Alberto Morillas",
+        "Olivier Cresp"
+      ],
+      "accords": [
+        {
+          "name": "white floral",
+          "strength": 100
+        },
+        {
+          "name": "earthy",
+          "strength": 75
+        },
+        {
+          "name": "sweet",
+          "strength": 70
+        },
+        {
+          "name": "fruity",
+          "strength": 65
+        },
+        {
+          "name": "vanilla",
+          "strength": 55
+        },
+        {
+          "name": "tuberose",
+          "strength": 45
+        },
+        {
+          "name": "citrus",
+          "strength": 35
+        },
+        {
+          "name": "amber",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "White Truffle",
+          "Bergamot"
+        ],
+        "middle": [
+          "Strawberry",
+          "Jasmine",
+          "Tuberose",
+          "Orange Blossom"
+        ],
+        "base": [
+          "Vanilla",
+          "Amber",
+          "Virginia Cedar"
+        ]
+      },
+      "description": "A fruity white floral where wild strawberry and bergamot, with an earthy hint of white truffle, lead into jasmine, tuberose and orange blossom over a warm cedar, amber and vanilla base. Sweet and playful, with the truffle adding a faint savory depth.",
+      "rating": 3.94,
+      "rating_votes": 5900,
+      "season_votes": {
+        "winter": 1686,
+        "spring": 4046,
+        "summer": 1517,
+        "fall": 2360
+      },
+      "time_votes": {
+        "day": 3709,
+        "night": 2529
+      },
+      "gender_votes": {
+        "female": 4214,
+        "more_female": 421,
+        "unisex": 126,
+        "more_male": 13,
+        "male": 17
+      },
+      "longevity_votes": {
+        "very_weak": 169,
+        "weak": 506,
+        "moderate": 1854,
+        "long_lasting": 2023,
+        "eternal": 590
+      },
+      "sillage_votes": {
+        "intimate": 295,
+        "moderate": 1854,
+        "strong": 2023,
+        "enormous": 548
+      },
+      "price_value_votes": {
+        "way_overpriced": 211,
+        "overpriced": 506,
+        "ok": 1686,
+        "good_value": 1264,
+        "great_value": 506
+      },
+      "appreciation_votes": {
+        "love": 2360,
+        "like": 2191,
+        "ok": 1011,
+        "dislike": 337,
+        "hate": 211
+      },
+      "pros": [
+        "Juicy strawberry-floral opening",
+        "Unusual truffle accent",
+        "Good longevity"
+      ],
+      "cons": [
+        "Sweetness can feel cloying",
+        "Tuberose may be too loud for some"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "youthful",
+        "romantic",
+        "date-night",
+        "pink-coded"
+      ]
+    },
+    {
+      "name": "Candy Kiss",
+      "brand": "Prada",
+      "brand_country": "Italy",
+      "year": 2016,
+      "gender": "women",
+      "perfumers": [
+        "Daniela Andrier"
+      ],
+      "accords": [
+        {
+          "name": "musky",
+          "strength": 100
+        },
+        {
+          "name": "white floral",
+          "strength": 80
+        },
+        {
+          "name": "vanilla",
+          "strength": 70
+        },
+        {
+          "name": "powdery",
+          "strength": 60
+        },
+        {
+          "name": "sweet",
+          "strength": 50
+        },
+        {
+          "name": "soapy",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Musk"
+        ],
+        "middle": [
+          "Orange Blossom"
+        ],
+        "base": [
+          "Vanilla"
+        ]
+      },
+      "description": "A soft, cuddly musk scent sweetened with vanilla and lifted by a touch of orange blossom. Lighter and cleaner than Prada Candy, it reads more as a cosy skin scent than a dessert.",
+      "rating": 4.07,
+      "rating_votes": 2500,
+      "season_votes": {
+        "winter": 1182,
+        "spring": 1364,
+        "summer": 409,
+        "fall": 1273
+      },
+      "time_votes": {
+        "day": 1727,
+        "night": 909
+      },
+      "gender_votes": {
+        "female": 1773,
+        "more_female": 227,
+        "unisex": 82,
+        "more_male": 5,
+        "male": 5
+      },
+      "longevity_votes": {
+        "very_weak": 114,
+        "weak": 295,
+        "moderate": 818,
+        "long_lasting": 591,
+        "eternal": 159
+      },
+      "sillage_votes": {
+        "intimate": 318,
+        "moderate": 955,
+        "strong": 500,
+        "enormous": 114
+      },
+      "price_value_votes": {
+        "way_overpriced": 114,
+        "overpriced": 295,
+        "ok": 727,
+        "good_value": 409,
+        "great_value": 159
+      },
+      "appreciation_votes": {
+        "love": 909,
+        "like": 909,
+        "ok": 455,
+        "dislike": 159,
+        "hate": 91
+      },
+      "pros": [
+        "Soft, comforting musk-vanilla",
+        "Suits close quarters",
+        "Less sugary than Candy"
+      ],
+      "cons": [
+        "Modest projection",
+        "Can feel too simple"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "skin-scent",
+        "cosy",
+        "understated",
+        "office-safe"
+      ]
+    },
+    {
+      "name": "Pure XS for Her",
+      "brand": "Paco Rabanne",
+      "brand_country": "France",
+      "year": 2018,
+      "gender": "women",
+      "perfumers": [
+        "Quentin Bisch"
+      ],
+      "accords": [
+        {
+          "name": "vanilla",
+          "strength": 100
+        },
+        {
+          "name": "sweet",
+          "strength": 90
+        },
+        {
+          "name": "woody",
+          "strength": 65
+        },
+        {
+          "name": "powdery",
+          "strength": 60
+        },
+        {
+          "name": "yellow floral",
+          "strength": 55
+        },
+        {
+          "name": "coconut",
+          "strength": 50
+        },
+        {
+          "name": "lactonic",
+          "strength": 45
+        },
+        {
+          "name": "musky",
+          "strength": 40
+        }
+      ],
+      "notes": {
+        "top": [],
+        "middle": [
+          "Popcorn",
+          "Vanilla",
+          "Ylang-Ylang",
+          "Coconut",
+          "Peach",
+          "Orange Blossom",
+          "White Musk",
+          "Sandalwood",
+          "Amberwood",
+          "Ambrette"
+        ],
+        "base": []
+      },
+      "description": "A gourmand floral that pairs buttery ylang-ylang with a popcorn accord, warm vanilla and a touch of coconut and peach over soft woods and musk. Sweet and playful, it leans toward evenings and cooler weather.",
+      "rating": 4.04,
+      "rating_votes": 5900,
+      "season_votes": {
+        "winter": 3776,
+        "spring": 1534,
+        "summer": 472,
+        "fall": 3540
+      },
+      "time_votes": {
+        "day": 2006,
+        "night": 3894
+      },
+      "gender_votes": {
+        "female": 4130,
+        "more_female": 590,
+        "unisex": 236,
+        "more_male": 18,
+        "male": 18
+      },
+      "longevity_votes": {
+        "very_weak": 177,
+        "weak": 413,
+        "moderate": 1534,
+        "long_lasting": 2124,
+        "eternal": 826
+      },
+      "sillage_votes": {
+        "intimate": 236,
+        "moderate": 1298,
+        "strong": 2124,
+        "enormous": 885
+      },
+      "price_value_votes": {
+        "way_overpriced": 177,
+        "overpriced": 472,
+        "ok": 1652,
+        "good_value": 1416,
+        "great_value": 649
+      },
+      "appreciation_votes": {
+        "love": 2242,
+        "like": 1770,
+        "ok": 944,
+        "dislike": 472,
+        "hate": 413
+      },
+      "pros": [
+        "Fun, unusual popcorn note",
+        "Strong projection",
+        "Good performance for the price"
+      ],
+      "cons": [
+        "Very sweet",
+        "The popcorn accord is polarizing"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "party",
+        "evening",
+        "polarizing",
+        "cold-weather"
+      ]
+    },
+    {
+      "name": "Jimmy Choo",
+      "brand": "Jimmy Choo",
+      "brand_country": "United Kingdom",
+      "year": 2011,
+      "gender": "women",
+      "perfumers": [
+        "Olivier Polge"
+      ],
+      "accords": [
+        {
+          "name": "sweet",
+          "strength": 100
+        },
+        {
+          "name": "patchouli",
+          "strength": 85
+        },
+        {
+          "name": "fruity",
+          "strength": 80
+        },
+        {
+          "name": "woody",
+          "strength": 60
+        },
+        {
+          "name": "warm spicy",
+          "strength": 50
+        },
+        {
+          "name": "caramel",
+          "strength": 45
+        },
+        {
+          "name": "earthy",
+          "strength": 40
+        },
+        {
+          "name": "green",
+          "strength": 35
+        }
+      ],
+      "notes": {
+        "top": [
+          "Pear",
+          "Mandarin Orange",
+          "Green Notes"
+        ],
+        "middle": [
+          "Orchid"
+        ],
+        "base": [
+          "Toffee",
+          "Patchouli"
+        ]
+      },
+      "description": "A fruity chypre-style scent where juicy pear and mandarin lead into orchid and a sweet toffee and patchouli base. Sweet with an earthy undertone, it moves easily from day to night.",
+      "rating": 3.78,
+      "rating_votes": 9700,
+      "season_votes": {
+        "winter": 3086,
+        "spring": 5291,
+        "summer": 2293,
+        "fall": 4409
+      },
+      "time_votes": {
+        "day": 6173,
+        "night": 3704
+      },
+      "gender_votes": {
+        "female": 6878,
+        "more_female": 794,
+        "unisex": 265,
+        "more_male": 26,
+        "male": 35
+      },
+      "longevity_votes": {
+        "very_weak": 353,
+        "weak": 970,
+        "moderate": 3175,
+        "long_lasting": 3351,
+        "eternal": 882
+      },
+      "sillage_votes": {
+        "intimate": 617,
+        "moderate": 3351,
+        "strong": 3086,
+        "enormous": 882
+      },
+      "price_value_votes": {
+        "way_overpriced": 265,
+        "overpriced": 617,
+        "ok": 2822,
+        "good_value": 2645,
+        "great_value": 1323
+      },
+      "appreciation_votes": {
+        "love": 3527,
+        "like": 3704,
+        "ok": 1764,
+        "dislike": 617,
+        "hate": 353
+      },
+      "pros": [
+        "Juicy pear and toffee blend",
+        "Works from day to night",
+        "Often found discounted"
+      ],
+      "cons": [
+        "Patchouli-toffee base can feel generic",
+        "Sweetness may be cloying"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "versatile",
+        "crowd-pleaser",
+        "youthful",
+        "blind-buy-safe"
+      ]
+    },
+    {
+      "name": "I Want Choo",
+      "brand": "Jimmy Choo",
+      "brand_country": "United Kingdom",
+      "year": 2020,
+      "gender": "women",
+      "perfumers": [
+        "Sonia Constant"
+      ],
+      "accords": [
+        {
+          "name": "white floral",
+          "strength": 100
+        },
+        {
+          "name": "vanilla",
+          "strength": 90
+        },
+        {
+          "name": "fruity",
+          "strength": 70
+        },
+        {
+          "name": "sweet",
+          "strength": 65
+        },
+        {
+          "name": "powdery",
+          "strength": 45
+        },
+        {
+          "name": "citrus",
+          "strength": 40
+        },
+        {
+          "name": "soft spicy",
+          "strength": 30
+        }
+      ],
+      "notes": {
+        "top": [
+          "Peach",
+          "Mandarin Orange"
+        ],
+        "middle": [
+          "Jasmine",
+          "Red Spider Lily"
+        ],
+        "base": [
+          "Vanilla"
+        ]
+      },
+      "description": "A sweet, glossy fruity-floral where peach and mandarin open onto jasmine and red spider lily before settling into a warm vanilla base. Party-ready and cosy, with a gourmand-leaning drydown.",
+      "rating": 4.02,
+      "rating_votes": 4700,
+      "season_votes": {
+        "winter": 2686,
+        "spring": 1880,
+        "summer": 671,
+        "fall": 2820
+      },
+      "time_votes": {
+        "day": 1880,
+        "night": 3223
+      },
+      "gender_votes": {
+        "female": 3491,
+        "more_female": 470,
+        "unisex": 134,
+        "more_male": 13,
+        "male": 13
+      },
+      "longevity_votes": {
+        "very_weak": 134,
+        "weak": 336,
+        "moderate": 1209,
+        "long_lasting": 1746,
+        "eternal": 604
+      },
+      "sillage_votes": {
+        "intimate": 201,
+        "moderate": 1209,
+        "strong": 1746,
+        "enormous": 604
+      },
+      "price_value_votes": {
+        "way_overpriced": 134,
+        "overpriced": 336,
+        "ok": 1209,
+        "good_value": 1209,
+        "great_value": 604
+      },
+      "appreciation_votes": {
+        "love": 2014,
+        "like": 1611,
+        "ok": 671,
+        "dislike": 269,
+        "hate": 161
+      },
+      "pros": [
+        "Warm vanilla drydown",
+        "Good longevity",
+        "Fun, party-friendly character"
+      ],
+      "cons": [
+        "Very sweet",
+        "Resembles many vanilla fruity-florals"
+      ],
+      "price_tier": "mid",
+      "tags": [
+        "party",
+        "date-night",
+        "cold-weather",
+        "sensual"
+      ]
+    }
+  ]
+}
