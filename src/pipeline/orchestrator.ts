@@ -31,7 +31,7 @@ import { rank } from './rank.js';
 import { TurnRecorder } from './recorder.js';
 import type { AppliedShape } from './render.js';
 import { CANNED, renderCompare, renderExplain, renderNoMatch, renderRecommendations } from './render.js';
-import { retrieve } from './retrieve.js';
+import { features, retrieve } from './retrieve.js';
 import { screen } from './screen.js';
 import { SessionStore } from './session.js';
 import { buildTrace } from './trace.js';
@@ -56,6 +56,9 @@ const BUDGET_TIERS: Partial<Record<string, ReadonlyArray<Fragrance['priceTier']>
 
 /** The user's own words for a brand or perfume we do not carry, when Jev could point at them. */
 type Names = { brand?: string; perfume?: string };
+
+/** Mean sillage (0-1 vote level) below which picks may be called lighter and softer. */
+const LIGHT_SILLAGE = 0.5;
 
 /** Intents whose understanding is kept for the next turn. A question about a perfume changes nothing. */
 const REQUEST_INTENTS: ReadonlySet<Intent> = new Set(['recommend', 'refine', 'more_like']);
@@ -135,6 +138,8 @@ export class PerfumeBot {
     let applied: AppliedShape | undefined;
     let explained: string | undefined;
     let route: string;
+    /** The brief is kept for a follow-up ("Show me regular sprays in that style") even on a non-request intent. */
+    let keepBrief = false;
     const focus = u.focusPids.map((p) => this.catalog.get(p)).filter((x): x is Fragrance => !!x);
     const asksAboutPerfume = u.intent === 'explain' || u.intent === 'compare' || u.intent === 'knowledge';
     // Only when a reply will name something we do not carry: Jev points at the words the user used.
@@ -155,9 +160,11 @@ export class PerfumeBot {
       // Never a product list, and never "You're in good hands", for a pregnancy, a baby or a pet.
       route = `safety:${u.safety}`;
       body = renderSafety(u.safety, focus[0]);
-    } else if (u.requirement && (asksAboutPerfume || requirementBlocksPicks(u.requirement))) {
+    } else if (u.requirement && ((asksAboutPerfume && focus[0]) || requirementBlocksPicks(u.requirement))) {
+      // A question about one perfume ("is N°5 vegan?"), or alcohol-free: answered without picks.
       route = `requirement:${u.requirement}`;
-      body = renderRequirement(u.requirement, asksAboutPerfume ? focus[0] : undefined, hasTaste(u));
+      body = renderRequirement(u.requirement, asksAboutPerfume ? focus[0] : undefined, hasTaste(u), this.catalog.source === 'seed');
+      keepBrief = !(asksAboutPerfume && focus[0]);
     } else if (u.twoWearers) {
       route = 'two_wearers';
       body = renderTwoWearers(u.twoWearers);
@@ -170,6 +177,10 @@ export class PerfumeBot {
         unknownPerfume: u.unknownPerfume, unknownName: u.unknownPerfume ? (await names()).perfume : undefined,
         concentrations: concentrationTerms(message),
       });
+      // "Which hypoallergenic perfume suits my skin type?": the general answer, and the requirement's caveat first.
+      if (u.requirement && !requirementBlocksPicks(u.requirement)) {
+        body = { ...body, text: `${requirementLine(u.requirement, undefined, this.catalog.source === 'seed')}\n\n${body.text}` };
+      }
     } else if (u.unresolved) {
       route = `unresolved:${u.unresolved.kind}`;
       body = unresolvedReply(u.unresolved, u.intent, session.lastShown.map((p) => this.catalog.get(p)).filter((x): x is Fragrance => !!x), this.catalog, (await names()).perfume);
@@ -204,7 +215,7 @@ export class PerfumeBot {
       }
     }
 
-    this.remember(session, message, u, body, recs, route, explained);
+    this.remember(session, message, u, body, recs, route, explained, keepBrief);
 
     return {
       sessionId: session.id,
@@ -259,11 +270,9 @@ export class PerfumeBot {
     const preface: string[] = [];
     const late: Array<() => string> = [];
     let intro: string | undefined;
-    if (u.nonEnglish && !session.notices?.includes('english')) preface.push(ENGLISH_ONLY);
-    if (u.requirement) {
-      preface.push(requirementLine(u.requirement));
-      intro = requirementBridge(u.requirement);
-    }
+    // A language notice is not a caveat about the picks: it never makes them "the closest matches".
+    const notice = u.nonEnglish && !session.notices?.includes('english') ? ENGLISH_ONLY : undefined;
+    if (u.requirement) preface.push(requirementLine(u.requirement, undefined, this.catalog.source === 'seed'));
     const variant = u.variants[0];
     const variantBase = variant ? this.catalog.get(variant.pid) : undefined;
     if (variant && variantBase) {
@@ -280,30 +289,45 @@ export class PerfumeBot {
 
     let pool: Candidate[] = all;
     // "The best Chanel perfume" means Chanel's perfumes, not a Chanel-flavoured list.
+    const house = facets.brands.join(' and ');
     if (facets.brands.length) {
       const own = pool.filter((c) => facets.brands.includes(c.fragrance.brand));
       if (own.length) {
         pool = own;
-        if (own.length < take) preface.push(`I only carry ${own.length} perfume${own.length === 1 ? '' : 's'} from ${facets.brands.join(' and ')}.`);
+        if (own.length < take) preface.push(`I only carry ${own.length} perfume${own.length === 1 ? '' : 's'} from ${house}.`);
       }
     }
     // A stated budget is a limit, not a preference: "under $60" never returns a luxury pick called good value.
+    // When too few fit, the line is written once the picks are known, so it counts what is actually shown.
     const tiers = BUDGET_TIERS[facets.budget];
+    let overBudget: ((recs: Recommendation[]) => string) | undefined;
     if (tiers) {
       const fits = pool.filter((c) => tiers.includes(c.fragrance.priceTier));
       if (fits.length >= take) pool = fits;
       else {
         const nextUp: Fragrance['priceTier'] = facets.budget === 'budget' ? 'mid' : 'luxury';
-        pool = [...fits, ...pool.filter((c) => c.fragrance.priceTier === nextUp)];
-        preface.push(fits.length
-          ? `Only ${fits.length} perfume${fits.length === 1 ? '' : 's'} I know fit${fits.length === 1 ? 's' : ''} that budget, so the rest are a step up in price.`
-          : 'Nothing I know fits that budget, so these are the closest a step up in price.');
+        const stepUp = pool.filter((c) => c.fragrance.priceTier === nextUp || (nextUp === 'luxury' && c.fragrance.priceTier === 'niche'));
+        // A house with nothing near the budget ("a Chanel under $60") still shows its closest options, and says so.
+        pool = fits.length || stepUp.length ? [...fits, ...stepUp] : pool;
+        overBudget = (shown) => {
+          const n = shown.filter((r) => tiers.includes(r.fragrance.priceTier)).length;
+          const whose = facets.brands.length ? `${house} perfume` : 'perfume';
+          if (n === 0 && fits.length === 0) return `None of the ${whose}s I carry fit that budget, so these are the closest options a step up in price.`;
+          // Some do fit, but not the rest of the request as well: say that, not that none exist.
+          if (n === 0) return `These are a step up in price: the ${fits.length === 1 ? `one ${whose}` : `${fits.length} ${whose}s`} I carry within that budget suit${fits.length === 1 ? 's' : ''} the rest of your request less well.`;
+          if (n === shown.length) return '';
+          return `Only ${n} of these ${n === 1 ? 'is' : 'are'} within that budget; the rest are a step up in price.`;
+        };
       }
     }
     if (u.conflicting) preface.push(conflictLine(facets));
 
     const candidates = pool.length;
-    if (pool.length === 0) return { body: renderNoMatch(facets), recs: [], shortlist: [], candidates, screening: undefined, applied: undefined };
+    if (pool.length === 0) {
+      // Settle the naming call first: left unawaited, a rejection would go unhandled.
+      await namesP;
+      return { body: renderNoMatch(facets), recs: [], shortlist: [], candidates, screening: undefined, applied: undefined };
+    }
 
     const screenPool = pool.slice(0, this.opts.screenLimit ?? 400);
     const refs = facets.referencePids.map((p) => this.catalog.get(p)).filter((x): x is Fragrance => !!x);
@@ -351,7 +375,11 @@ export class PerfumeBot {
     const { r: ranked, shortlisted } = rankedS.value;
     const names = namesS.value;
 
-    const recs = ranked.recommendations;
+    let recs = ranked.recommendations;
+    // Above the stated budget, "good value for money" would read as meeting it: that reason goes.
+    if (overBudget && tiers) {
+      recs = recs.map((r) => (tiers.includes(r.fragrance.priceTier) ? r : { ...r, reasons: r.reasons.filter((x) => x.kind !== 'value') }));
+    }
     const finals = new Map(recs.map((x) => [x.fragrance.pid, x.final]));
     const shortlist = shortlisted.slice(0, judge).map((c) => ({
       name: `${c.fragrance.name} (${c.fragrance.brand})`, screen: c.screen, retrieval: c.retrieval, final: finals.get(c.fragrance.pid),
@@ -364,9 +392,18 @@ export class PerfumeBot {
     }
     // The perfume the user carried on past ("Angel Nova") is not a reference: no "If you love Angel" lead.
     if (variant && composition.lead === 'reference' && !refs.length) composition = { ...composition, lead: 'general' };
+    const budgetLine = overBudget?.(recs) ?? '';
+    if (budgetLine && composition.lead === 'value') composition = { ...composition, lead: 'general' };
+    // Nothing cheaper exists in that house: offering "more affordable" again would loop. Offer other houses instead.
+    if (budgetLine && facets.brands.length) {
+      const cheaper: string[] = [FOLLOW_UPS.cheaper.text];
+      composition = { ...composition, followUps: [FOLLOW_UPS.other_brands.text, ...composition.followUps.filter((x) => !cheaper.includes(x))].slice(0, 3) };
+    }
+    // For a sensitivity, "lighter, softer" only when the picks are; otherwise say what they are for.
+    if (u.requirement) intro ??= requirementBridge(u.requirement, recs.length > 0 && recs.every((r) => features(r.fragrance).sillage < LIGHT_SILLAGE));
     const { applied, ...body } = renderRecommendations({
       message, facets, recs, composition, refs, gift: u.gift, measured: this.measured,
-      preface: [...late.map((f) => f()), ...preface], intro,
+      preface: [...late.map((f) => f()), ...preface, budgetLine], intro, notice,
     });
     return { body, recs, shortlist, candidates, screening, applied };
   }
@@ -377,8 +414,12 @@ export class PerfumeBot {
    */
   private async compare(message: string, u: UnderstandResult, rec: Decider, signal: AbortSignal, names: () => Promise<Names>) {
     const frs = u.focusPids.slice(0, MAX_COMPARE).map((p) => this.catalog.get(p)).filter((x): x is Fragrance => !!x);
+    const f = u.facets;
+    const season = f.season !== 'any' ? f.season : f.climate === 'cold' ? 'winter' : f.climate === 'hot_dry' || f.climate === 'hot_humid' ? 'summer' : null;
+    // "Better for this time of year?" with no season known: Jev judges it, rather than a verdict made of nothing.
+    const axis = u.compareOn === 'season' && !season ? 'any' : u.compareOn;
     let winner: ChoiceAnswer | undefined;
-    if (u.compareOn === 'any') {
+    if (axis === 'any') {
       const opts = Object.fromEntries(frs.map((f) => [`p_${f.pid}`, `${f.name} by ${f.brand}`]));
       try {
         const { answers } = await rec.decide(
@@ -393,18 +434,16 @@ export class PerfumeBot {
         if (signal.aborted || !(e instanceof JevError) || e.status === 401) throw e;
       }
     }
-    const f = u.facets;
-    const season = f.season !== 'any' ? f.season : f.climate === 'cold' ? 'winter' : f.climate === 'hot_dry' || f.climate === 'hot_humid' ? 'summer' : null;
     const ranking = winner ? Object.fromEntries(Object.entries(winner.probabilities ?? {}).map(([k, p]) => [k.slice(2), p])) : undefined;
     const missingName = u.compareMissing ? (u.variants[0]?.name ?? (await names()).perfume ?? true) : undefined;
     return renderCompare(frs, winner ? winner.choice.slice(2) : null, winner?.confidence ?? 0, describeFacets(u.facets, 'user'), {
-      axis: u.compareOn, season, ranking, missing: missingName, measured: this.measured,
+      axis, season, ranking, missing: missingName, measured: this.measured,
     });
   }
 
   private remember(
     s: Session, message: string, u: UnderstandResult, body: Pick<ChatReply, 'text' | 'recommendations'>, recs: Recommendation[],
-    route: string, explained: string | undefined,
+    route: string, explained: string | undefined, keepBrief = false,
   ) {
     s.turns.push({ role: 'user', text: message });
     s.turns.push({ role: 'assistant', text: body.text.slice(0, 600), shown: recs.map((r) => r.fragrance.pid) });
@@ -413,7 +452,7 @@ export class PerfumeBot {
     // answer or a comparison ("which lasts longest?") must not write "strong projection" into
     // an office brief. A requirement we could not meet is still a request ("show me sprays anyway").
     const answered = route.startsWith('safety') || route.startsWith('knowledge') || route === 'two_wearers' || route.startsWith('unresolved');
-    if (REQUEST_INTENTS.has(u.intent) && !answered) s.facets = u.facets;
+    if ((REQUEST_INTENTS.has(u.intent) && !answered) || keepBrief) s.facets = u.facets;
     if (recs.length) {
       s.lastShown = recs.map((r) => r.fragrance.pid);
       s.seen = [...new Set([...s.seen, ...s.lastShown])].slice(-60);

@@ -12,7 +12,7 @@ import type { DecisionLog } from './recorder.js';
 import { ASK_THRESHOLD, TIP_THRESHOLD, TOPIC_CERTAINTY } from './compose.js';
 import type { AppliedShape } from './render.js';
 import type { UnderstandResult } from './understand.js';
-import { AVOID_THRESHOLD, LIKE_THRESHOLD, LONGEVITY_LEVEL, MIN_CONFIDENCE, PROJECTION_LEVEL } from './understand.js';
+import { AVOID_THRESHOLD, CHECK_SURE, LIKE_THRESHOLD, LONGEVITY_LEVEL, MIN_CONFIDENCE, PROJECTION_LEVEL } from './understand.js';
 
 export type TraceStatus = 'used' | 'not mentioned' | 'low confidence' | 'from earlier' | 'overridden' | 'not used';
 
@@ -253,6 +253,8 @@ export function buildTrace(log: DecisionLog[], u: UnderstandResult, catalog: Cat
             : key === 'persona' ? (u.facets.persona ? 'used' : yes ? 'not used' : 'not mentioned')
             : key === 'unknown_perfume' ? (u.unresolved?.kind === 'perfume' || u.perfumeNotCarried || u.compareMissing ? 'used' : yes ? 'not used' : 'not mentioned')
             : NOUL_ROUTE[key] ? NOUL_ROUTE[key]!(a as NoulAnswer, u)
+            // A dropped constraint is cleared only at CHECK_SURE: between 50% and that it is a "yes" that changed nothing.
+            : /^drop_/.test(key) ? ((a as NoulAnswer).noul >= CHECK_SURE ? 'used' : yes ? 'not used' : 'not mentioned')
             : yes ? 'used' : 'not mentioned');
           const item = noulItem(key, label ?? human(key), a as NoulAnswer, status);
           if (shaped?.answer) item.answer = shaped.answer;

@@ -155,7 +155,7 @@ export function hasNegationCue(text: string): boolean {
  * Negation and dislike words in other common languages (accents stripped). An
  * English-only gate silently dropped "il déteste la vanille".
  */
-const FOREIGN_NEGATION = /\b(pas|sans|deteste|detestent|n ?aime|jamais|eviter|trop|moins|sin|odia|odio|nada|evitar|demasiado|nunca|nicht|kein|keine|ohne|hasse|hasst|non|senza|troppo|mai|nao|sem|odeia|odeio|niet|zonder|geen|haat)\b/;
+const FOREIGN_NEGATION = /\b(pas|sans|deteste|detestent|n ?aime|jamais|eviter|trop|moins|sin|odia|odio|nada|evitar|demasiado|nunca|nicht|kein|keine|ohne|hasse|hasst|non|senza|troppo|mai|nao|sem|odeia|odeio|niet|zonder|geen|haat|nie|bez|inte|utan|ikke|uden|uten|ej|nem|ne)\b/;
 
 /**
  * Whether to ask Jev the "avoid X?" questions: an English negation cue, a foreign
@@ -164,8 +164,11 @@ const FOREIGN_NEGATION = /\b(pas|sans|deteste|detestent|n ?aime|jamais|eviter|tr
  */
 export function mayExpressDislike(text: string): boolean {
   if (hasNegationCue(text)) return true;
+  // Any letter outside plain ASCII in the ORIGINAL text (an accent, another script) means a language the
+  // word list may not cover - ask. Folding first would turn "lubię" into ASCII and skip it.
+  if (/[^\x00-\x7F]/.test(text)) return true;
   const folded = text.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/['’]/g, ' ');
-  return FOREIGN_NEGATION.test(folded) || /[^\x00-\x7F]/.test(folded);
+  return FOREIGN_NEGATION.test(folded);
 }
 
 /** Concentration words in the text ("EDT vs EDP"), one key each, in the order written: edp, edt, edc, parfum, elixir, intense. */

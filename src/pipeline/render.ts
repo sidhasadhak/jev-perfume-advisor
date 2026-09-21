@@ -16,7 +16,7 @@ import type { ClarifyTopic, Composition, Lead, Tone } from './compose.js';
 import { compareFollowUps, explainFollowUps } from './followups.js';
 import { features, similarity } from './retrieve.js';
 import {
-  dayNight, genderPerception, longevityWord, performancePhrase, seasonRanking, sillageWord, tierWord, valueWord,
+  dayNight, genderPerception, longevityWord, performancePhrase, seasonRanking, sillageWord, tierPhrase, tierWord, valueWord,
 } from './describe.js';
 
 // ---------------------------------------------------------------------------
@@ -475,6 +475,8 @@ export function renderRecommendations(args: {
   preface?: string[];
   /** Replaces the generic opener after a caveat ("Here are the closest matches I found..."). */
   intro?: string;
+  /** A one-off line that is not about the picks ("I can only reply in English"): shown first, hedges nothing. */
+  notice?: string;
 }): Pick<ChatReply, 'text' | 'recommendations' | 'followUps'> & { applied: AppliedShape } {
   const { facets: f, recs } = args;
   const preface = (args.preface ?? []).filter(Boolean);
@@ -489,7 +491,8 @@ export function renderRecommendations(args: {
   const cards = toCards(recs, f, voice);
   const intro = args.intro ?? (cautious ? 'Here are the closest matches I found.' : undefined);
   const hedge = weak ? ' None of them is a strong match for what you asked, so treat them as a starting point rather than an answer.' : '';
-  const lines = [...(preface.length ? [preface.join(' '), ''] : []), `${opening(f, c, recs, args.refs, seed, args.gift, voice, intro)}${hedge}`, ''];
+  const lines = [...(args.notice ? [args.notice, ''] : []), ...(preface.length ? [preface.join(' '), ''] : []),
+    `${opening(f, c, recs, args.refs, seed, args.gift, voice, intro)}${hedge}`, ''];
   cards.forEach((card, i) => {
     lines.push(`**${i + 1}. ${card.name}** by ${card.brand} — ${card.headline.charAt(0).toLowerCase()}${card.headline.slice(1)}.`);
   });
@@ -573,7 +576,16 @@ export interface CompareOptions {
   measured?: boolean;
 }
 
-const TIER_ORDER: Record<Fragrance['priceTier'], number> = { budget: 0, mid: 1, luxury: 2, niche: 3 };
+/**
+ * Price bands a tier can be ordered by. Luxury and niche overlap in price (a Tom Ford Private
+ * Blend costs more than many niche houses), so they are one "high-end" band for "which is cheaper".
+ */
+const TIER_ORDER: Record<Fragrance['priceTier'], number> = { budget: 0, mid: 1, luxury: 2, niche: 2 };
+/** A tier as the complement of "Both are ..." / "They're all ...". */
+const TIER_PLURAL: Record<Fragrance['priceTier'], string> = {
+  budget: 'budget-friendly', mid: 'mid-priced designer scents', luxury: 'luxury / prestige scents', niche: 'niche, premium-priced scents',
+};
+
 /** Mean vote levels (0-1) closer than this are reported as level: the data cannot tell them apart. */
 const PERFORMANCE_TIE = 0.03;
 
@@ -635,6 +647,8 @@ function compareOn(axis: Exclude<CompareAxis, 'any'>, frs: Fragrance[], opts: Co
     case 'projection': {
       const dist = (f: Fragrance) => (axis === 'longevity' ? meanLevel(f.longevity, LONGEVITY) : meanLevel(f.sillage, SILLAGE));
       const word = (f: Fragrance) => (axis === 'longevity' ? longevityWord(f) : sillageWord(f) && `${sillageWord(f)} projection`);
+      // "both are long-lasting" but "both have strong projection".
+      const verbFor = (plural: boolean) => (axis === 'longevity' ? (plural ? 'are' : 'is') : (plural ? 'have' : 'has'));
       const rated = frs.filter((f) => Number.isFinite(dist(f)) && word(f));
       if (rated.length < 2) return { lines: [`I don't have enough ${axis} data on these to compare them.`], top: null };
       const order = [...rated].sort((a, b) => dist(b) - dist(a));
@@ -645,10 +659,13 @@ function compareOn(axis: Exclude<CompareAxis, 'any'>, frs: Fragrance[], opts: Co
       const topic = axis === 'longevity' ? 'longevity' : 'projection';
       const lines: string[] = [];
       if (tied.length > 1) {
-        lines.push(`${source}, ${names(tied)} are about level on ${topic} (${tied.length === 2 ? 'both' : 'all'} ${word(top)})${tied.length === order.length ? '.' : `, ahead of ${list(order.filter((f) => !tied.includes(f)).map((f) => f.name))}.`}`);
+        // Tied scores can still straddle a word boundary: then give each word, never "both X" over a line that says Y.
+        const tiedWords = [...new Set(tied.map((f) => word(f)!))];
+        const how = tiedWords.length === 1 ? `${tied.length === 2 ? 'both' : 'all'} ${word(top)}` : list(tiedWords);
+        lines.push(`${source}, ${names(tied)} are about level on ${topic} (${how})${tied.length === order.length ? '.' : `, ahead of ${list(order.filter((f) => !tied.includes(f)).map((f) => f.name))}.`}`);
       } else {
         const verb = axis === 'longevity' ? (two ? 'lasts longer' : 'lasts longest') : (two ? 'projects more' : 'projects the most');
-        lines.push(`${source}, **${top.name}** ${verb}${sameWord ? ` - though ${two ? 'both are' : 'all of them are'} ${word(top)}` : ` (${word(top)})`}.`);
+        lines.push(`${source}, **${top.name}** ${verb}${sameWord ? ` - though ${two ? 'both' : 'all of them'} ${verbFor(true)} ${word(top)}` : ` (${word(top)})`}.`);
       }
       if (!two && tied.length < order.length) {
         const label = axis === 'longevity' ? 'longest- to shortest-lasting' : 'strongest to softest';
@@ -658,13 +675,17 @@ function compareOn(axis: Exclude<CompareAxis, 'any'>, frs: Fragrance[], opts: Co
     }
     case 'price': {
       const order = [...frs].sort((a, b) => TIER_ORDER[a.priceTier] - TIER_ORDER[b.priceTier]);
-      const cheapest = order.filter((f) => f.priceTier === order[0]!.priceTier);
+      const band = (f: Fragrance) => TIER_ORDER[f.priceTier];
+      const cheapest = order.filter((f) => band(f) === band(order[0]!));
       const note = 'I go by price tier, not store prices, which vary by size and retailer.';
       if (cheapest.length === frs.length) {
-        return { lines: [`${two ? 'Both are' : 'They\'re all'} ${tierWord(order[0]!)}, and I don't have store prices, so I can't say which costs less.`], top: null };
+        const mixed = new Set(frs.map((f) => f.priceTier)).size > 1;
+        return { lines: [mixed
+          ? `${two ? 'Both are high-end - one luxury, one niche -' : 'They\'re all high-end (luxury and niche houses),'} and I don't have store prices, so I can't say which costs less.`
+          : `${two ? 'Both are' : 'They\'re all'} ${TIER_PLURAL[order[0]!.priceTier]}, and I don't have store prices, so I can't say which costs less.`], top: null };
       }
       const lead = cheapest.length === 1
-        ? `**${cheapest[0]!.name}** is the ${two ? 'cheaper one' : 'most affordable'} \u2014 it's ${tierWord(cheapest[0]!)}${two ? `, while ${order[1]!.name} is ${tierWord(order[1]!)}` : ''}.`
+        ? `**${cheapest[0]!.name}** is the ${two ? 'cheaper one' : 'most affordable'} \u2014 it's ${tierPhrase(cheapest[0]!)}${two ? `, while ${order[1]!.name} is ${tierPhrase(order[1]!)}` : ''}.`
         : `${names(cheapest)} are the most affordable (${tierWord(cheapest[0]!)}).`;
       const rest = two ? [] : [`By price tier, from cheapest: ${order.map((f) => `${f.name} (${tierWord(f)})`).join(', ')}.`];
       return { lines: [lead, ...rest, note], top: cheapest.length === 1 ? cheapest[0]! : null };
@@ -695,12 +716,21 @@ function compareOn(axis: Exclude<CompareAxis, 'any'>, frs: Fragrance[], opts: Co
       const order = [...voted].sort((a, b) => (axis === 'evening' ? night(b) - night(a) : night(a) - night(b)));
       const top = order[0]!;
       const lean = (f: Fragrance) => dayNightWord(f, { night: 'mostly worn in the evening', day: 'mostly worn in the day', both: 'works day or night' });
-      const lines = [`For ${axis === 'evening' ? 'evenings' : 'daytime'}, **${top.name}** is the best fit (${lean(top)}).`];
+      const leanOf = (f: Fragrance) => dayNightWord(f, { night: 'is mostly worn in the evening', day: 'is mostly worn in the day', both: 'works day or night' });
+      const when = axis === 'evening' ? 'evenings' : 'daytime';
+      const wrongWay = dayNight(top).lean === (axis === 'evening' ? 'day' : 'night');
+      const level = Math.abs(night(top) - night(order[1]!)) < 0.05;
+      const lines = [wrongWay
+        ? `${two ? 'Neither' : 'None of these'} is really ${axis === 'evening' ? 'an evening' : 'a daytime'} scent; **${top.name}** comes closest (${lean(top)}).`
+        : level ? `For ${when}, **${top.name}** and **${order[1]!.name}** are about level (${lean(top) === lean(order[1]!)
+          ? `both ${lean(top)}` : `${top.name} ${leanOf(top)}, ${order[1]!.name} ${leanOf(order[1]!)}`}).`
+        : `For ${when}, **${top.name}** is the best fit (${lean(top)}).`];
       if (!two) lines.push(`From most to least ${axis === 'evening' ? 'evening' : 'daytime'}-leaning: ${order.map((f) => f.name).join(', ')}.`);
-      return { lines, top };
+      return { lines, top: level ? null : top };
     }
     case 'similarity': {
       const [a, b] = frs as [Fragrance, Fragrance];
+      if (frs.some((f) => !f.accords.length)) return { lines: ['I don\'t have enough accord data on these to say how alike they are.'], top: null };
       if (!two) {
         const others = frs.slice(1).map((f) => ({ f, sim: similarity(a, f) })).sort((x, y) => y.sim - x.sim);
         return { lines: [`Closest to **${a.name}** in style: ${others.map((o) => `${o.f.name} (${likeness(o.sim)})`).join(', ')}.`], top: others[0]!.f };
@@ -711,7 +741,8 @@ function compareOn(axis: Exclude<CompareAxis, 'any'>, frs: Fragrance[], opts: Co
       const sim = similarity(a, b);
       const lines: string[] = [];
       if (link) {
-        lines.push(`Yes \u2014 **${link.alt.name}** is widely seen as an alternative to **${link.original.name}**${both ? `: ${both}` : ''}.`);
+        const says = opts.measured ? 'reminds many voters of' : 'is widely seen as an alternative to';
+        lines.push(`Yes \u2014 **${link.alt.name}** ${says} **${link.original.name}**${both ? `: ${both}` : ''}.`);
       } else if (sim >= 0.75) {
         lines.push(`They're very close in style${both ? `: ${both}` : ''}.`);
       } else if (sim >= 0.55) {
@@ -720,7 +751,7 @@ function compareOn(axis: Exclude<CompareAxis, 'any'>, frs: Fragrance[], opts: Co
         lines.push(`Not really: ${a.name} is ${accordList(a.accords.slice(0, 2).map((x) => x.name))}, while ${b.name} is ${accordList(b.accords.slice(0, 2).map((x) => x.name))}.`);
       }
       if (!link) lines.push('I judged that from their accords \u2014 they aren\'t a known dupe pair in my catalog.');
-      if (a.priceTier !== b.priceTier) lines.push(`${a.name} is ${tierWord(a)}; ${b.name} is ${tierWord(b)}.`);
+      if (a.priceTier !== b.priceTier) lines.push(`${a.name} is ${tierPhrase(a)}; ${b.name} is ${tierPhrase(b)}.`);
       return { lines, top: null };
     }
   }
@@ -731,13 +762,17 @@ function likeness(sim: number): string {
 }
 
 /**
- * `alt` is a well-known alternative to `original` when its reminds_of link has a
- * clear majority of votes (in the seed catalog, the curated links).
+ * `alt` counts as an alternative to `original` when its reminds_of link has a clear
+ * majority AND real weight of votes - a handful of "reminds me of" votes in a FragDB
+ * export is no consensus. The seed's curated links carry 1000:100.
  */
 export function knownAlternative(alt: Fragrance, original: Fragrance): { alt: Fragrance; original: Fragrance } | undefined {
   const link = alt.remindsOf?.find((l) => l.pid === original.pid);
-  return link && link.yes >= 3 * Math.max(1, link.no) ? { alt, original } : undefined;
+  return link && link.yes >= MIN_LINK_VOTES && link.yes >= 3 * Math.max(1, link.no) ? { alt, original } : undefined;
 }
+
+/** Fewest "reminds me of" votes behind a link before it is presented as an alternative. */
+const MIN_LINK_VOTES = 200;
 
 export const CANNED = {
   greeting: {

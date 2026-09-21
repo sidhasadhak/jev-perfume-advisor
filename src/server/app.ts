@@ -123,6 +123,9 @@ export async function buildApp(
   app.post<{ Body: { sessionId?: unknown } }>('/api/fork', async (req, reply) => {
     const id = req.body?.sessionId;
     if (typeof id !== 'string') return reply.code(400).send({ error: 'sessionId must be a string' });
+    // Every fork creates a session, and the store evicts the oldest past its cap: without the chat
+    // limit, one client could push everyone else's conversations out. A real tab forks once per load.
+    if (!limiter.take(req.ip)) return reply.code(429).send({ error: 'Too many requests - please wait a moment.' });
     return { sessionId: bot.sessions.fork(id)?.id ?? null };
   });
 

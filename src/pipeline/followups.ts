@@ -13,7 +13,7 @@ export interface FollowUpDef {
   intent: Intent;
   refine?: RefineDirection;
   /** Facet values the follow-up fixes outright. */
-  set?: Partial<Pick<Facets, 'gender' | 'timeOfDay' | 'projection'>>;
+  set?: Partial<Pick<Facets, 'gender' | 'timeOfDay' | 'projection'>> & { brands?: readonly string[] };
   /** Keep everything understood so far, even with no list on screen (a refine of the request itself). */
   keep?: boolean;
 }
@@ -35,6 +35,7 @@ export const FOLLOW_UPS = {
   different: { text: 'Show me different options', intent: 'refine', refine: 'different_options' },
   sprays_anyway: { text: 'Show me regular sprays in that style', intent: 'refine', keep: true },
   lighter_scents: { text: 'Show me light, subtle scents', intent: 'recommend', set: { projection: 1 } },
+  other_brands: { text: 'Show me other brands in that budget', intent: 'refine', set: { brands: [] } },
 } as const satisfies Record<string, FollowUpDef>;
 
 /**
@@ -122,7 +123,8 @@ const DAY_ONLY: ReadonlySet<Facets['occasion']> = new Set(['office', 'outdoor_ac
 
 export function applyFollowUpFacets(f: Facets, known: KnownFollowUp): Facets {
   if (!known.set) return f;
-  const out = { ...f, ...known.set };
+  const { brands, ...rest } = known.set;
+  const out: Facets = { ...f, ...rest, ...(brands ? { brands: [...brands] } : {}) };
   if (known.set.timeOfDay === 'day' && NIGHT_ONLY.has(out.occasion)) out.occasion = 'any';
   if (known.set.timeOfDay === 'night' && DAY_ONLY.has(out.occasion)) out.occasion = 'any';
   return out;

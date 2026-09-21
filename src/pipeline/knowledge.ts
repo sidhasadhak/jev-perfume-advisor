@@ -12,7 +12,7 @@ import type { Catalog } from '../catalog/catalog.js';
 import { normalize } from '../catalog/catalog.js';
 import { FAMILY_DEFS } from '../catalog/families.js';
 import type { ChatReply, Facets, Family, Fragrance } from '../types.js';
-import { performancePhrase, sillageWord, tierWord, valueWord } from './describe.js';
+import { performancePredicate, sillageWord, tierPhrase, tierWord, valueWord } from './describe.js';
 import { FOLLOW_UPS, cheaperAlternatives, moreLike, tellMeMore } from './followups.js';
 import { knownAlternative } from './render.js';
 import { features, similarity } from './retrieve.js';
@@ -128,9 +128,11 @@ export function renderKnowledge(k: KnowledgeInput): Body {
   switch (k.topic) {
     case 'concentration': {
       const versions = (k.concentrations ?? []).map((c) => CONCENTRATION_NAME[c] ?? c);
-      const lead = fr && versions.length >= 2
-        ? `I only carry one version of ${about}, so I can't compare its ${list(versions)} side by side. In general:\n\n`
-        : 'Concentration is how much perfume oil is in the bottle:\n\n';
+      // Other records of the same line we do carry ("Le Male" beside "Le Male Le Parfum"): name them, never "only one".
+      const kin = fr ? k.catalog.versionsOf(fr.pid) : [];
+      const lead = !fr || versions.length < 2 ? 'Concentration is how much perfume oil is in the bottle:\n\n'
+        : kin.length ? `I carry ${list([fr, ...kin].map((x) => `**${x.name}**`))} by ${fr.brand}, but I can't match them to the ${list(versions)} you asked about, so I can't compare those side by side. In general:\n\n`
+        : `I only carry one version of ${about}, so I can't compare its ${list(versions)} side by side. In general:\n\n`;
       return reply(`${lead}${bullets([
         '**Parfum / extrait**: roughly 20-30% - the richest; it usually wears closest to the skin and lasts longest.',
         '**Eau de parfum (EDP)**: roughly 15-20% - the most common strength.',
@@ -141,7 +143,7 @@ export function renderKnowledge(k: KnowledgeInput): Body {
     }
     case 'longevity_tips':
       return reply(`A few things make a real difference:\n\n${bullets([TIP_LINES.moisturise, TIP_LINES.pulse, TIP_LINES.clothes, TIP_LINES.storage, TIP_LINES.stronger])}`
-        + (fr ? `\n\n${about} is ${performancePhrase(fr) ?? 'not rated for performance in my data'}.` : ''),
+        + (fr ? `\n\n${about} ${performancePredicate(fr) || 'has no performance rating in my data'}.` : ''),
       [ASK.longLasting, ASK.concentration]);
     case 'application': {
       const lines = [
@@ -153,7 +155,7 @@ export function renderKnowledge(k: KnowledgeInput): Body {
       let extra = '';
       if (fr) {
         const s = sillageWord(fr);
-        extra = `\n\n${about} is ${performancePhrase(fr) ?? 'not rated for performance in my data'}`
+        extra = `\n\n${about} ${performancePredicate(fr) || 'has no performance rating in my data'}`
           + (s === 'strong' || s === 'enormous' ? ', so two or three sprays will carry you a long way.'
             : s === 'intimate' ? ', so be a little more generous and add a spray to your clothes.' : '.');
       }
@@ -278,16 +280,20 @@ function renderLayering(frs: Fragrance[]): Body {
 
 function renderDupe(fr: Fragrance, catalog: Catalog): Body {
   const about = `**${fr.name}** by ${fr.brand}`;
+  // The seed's links are a curated list of widely cited alternatives; real FragDB links are voters' "reminds me of".
+  const curated = catalog.source === 'seed';
   const originals = (fr.remindsOf ?? []).map((l) => catalog.get(l.pid)).filter((o): o is Fragrance => !!o && !!knownAlternative(fr, o));
-  const alternatives = catalog.fragrances.filter((o) => o.pid !== fr.pid && knownAlternative(o, fr));
+  const alternatives = catalog.fragrances.filter((o) => o.pid !== fr.pid && knownAlternative(o, fr)).slice(0, MAX_ALTERNATIVES);
   const lines: string[] = [];
   if (originals.length) {
     const o = originals[0]!;
     const shared = fr.accords.slice(0, 5).map((x) => x.name).filter((n) => o.accords.slice(0, 5).some((y) => y.name === n)).slice(0, 3);
-    lines.push(`${about} is widely seen as an alternative to **${o.name}** by ${o.brand}${shared.length ? `: both are ${list(shared.map((s) => s.toLowerCase()))}` : ''}. ${fr.name} is ${tierWord(fr)}; ${o.name} is ${tierWord(o)}.`);
+    const link = curated ? 'is widely seen as an alternative to' : 'reminds many voters of';
+    lines.push(`${about} ${link} **${o.name}** by ${o.brand}${shared.length ? `: both are ${list(shared.map((s) => s.toLowerCase()))}` : ''}. ${fr.name} is ${tierPhrase(fr)}; ${o.name} is ${tierPhrase(o)}.`);
   }
   if (alternatives.length) {
-    lines.push(`Well-known alternatives to ${originals.length ? fr.name : about}: ${list(alternatives.map((x) => `${x.name} by ${x.brand} (${tierWord(x)})`))}.`);
+    const head = curated ? 'Well-known alternatives to' : 'Perfumes voters say remind them of';
+    lines.push(`${head} ${originals.length ? fr.name : about}: ${list(alternatives.map((x) => `${x.name} by ${x.brand} (${tierWord(x)})`))}.`);
   }
   if (lines.length) {
     const other = originals[0] ?? alternatives[0]!;
@@ -301,13 +307,16 @@ function renderDupe(fr: Fragrance, catalog: Catalog): Body {
   close.length ? [`Compare ${fr.name} and ${close[0]!.o.name}`, moreLike(fr.name, fr.brand)] : [moreLike(fr.name, fr.brand)]);
 }
 
+/** Most alternatives listed for one perfume. */
+const MAX_ALTERNATIVES = 3;
+
 // ---------------------------------------------------------------------------
 // Health and safety - never a product list, never reassurance
 // ---------------------------------------------------------------------------
 
 export function renderSafety(kind: SafetyKind, fr?: Fragrance): Body {
   const lighter = FOLLOW_UPS.lighter_scents.text;
-  const named = fr ? `, including ${fr.name},` : '';
+  const named = fr ? `, including ${fr.name},` : ',';
   switch (kind) {
     case 'pregnancy':
       return reply(`I can't advise on perfume during pregnancy or breastfeeding: I don't have ingredient or safety data for any perfume${named} so I can't say which are safe. Please ask your doctor, midwife or pharmacist - they can go through a product's ingredient list with you.\n\nIf you'd like, I can suggest light, subtle scents - just not as a safety recommendation.`, [lighter]);
@@ -325,14 +334,20 @@ export function renderSafety(kind: SafetyKind, fr?: Fragrance): Body {
 // Requirements the catalog cannot check
 // ---------------------------------------------------------------------------
 
-/** The honest line for a requirement we have no data on. `fr`: a question about one perfume. */
-export function requirementLine(kind: RequirementKind, fr?: Fragrance): string {
+/**
+ * The honest line for a requirement we have no data on. `fr`: a question about one perfume.
+ * `seed`: the catalog is our own seed list, so we can say what it holds; a FragDB export may
+ * list attars or body mists, so there we only say we have no data.
+ */
+export function requirementLine(kind: RequirementKind, fr?: Fragrance, seed = true): string {
   const it = fr ? `**${fr.name}**` : 'any perfume';
   switch (kind) {
     case 'alcohol_free':
-      return `I don't have data on alcohol content, and everything in my catalog is a standard alcohol-based spray (eau de parfum or eau de toilette), so I can't point you to ${fr ? `an alcohol-free version of ${it}` : 'an alcohol-free or halal-certified perfume'}. For that, look for attars or perfume oils labelled alcohol-free, and check with the seller.`;
+      return `I don't have data on alcohol content${seed ? ', and everything in my catalog is an alcohol-based spray (colognes, eaux de toilette, eaux de parfum and parfums)' : ''}, so I can't point you to ${fr ? `an alcohol-free version of ${it}` : 'an alcohol-free or halal-certified perfume'}. For that, look for attars or perfume oils labelled alcohol-free, and check with the seller.`;
     case 'format':
-      return 'I only carry perfumes - eau de parfum and eau de toilette sprays - not body mists, roll-ons, solid perfumes or other formats.';
+      return seed
+        ? 'I only carry perfumes - sprays such as colognes, eaux de toilette, eaux de parfum and parfums - not body mists, roll-ons, solid perfumes or other formats.'
+        : 'I don\'t have product-format data, so I can\'t pick out body mists, roll-ons or solid perfumes.';
     case 'vegan_cruelty_free':
       return `I don't have vegan or cruelty-free certification data for ${it}, so please check the brand's own policy, or a certification such as Leaping Bunny, before buying.`;
     case 'natural':
@@ -350,22 +365,26 @@ export function requirementBlocksPicks(kind: RequirementKind): boolean {
   return kind === 'alcohol_free';
 }
 
-/** How picks shown despite an unmet requirement are introduced, in place of a generic opener. */
-export function requirementBridge(kind: RequirementKind): string {
+/**
+ * How picks shown despite an unmet requirement are introduced, in place of a generic opener.
+ * `light`: the picks really are light (the caller checks their projection) - only then say so.
+ */
+export function requirementBridge(kind: RequirementKind, light = true): string {
   switch (kind) {
     case 'format': return 'If a perfume works for you, these are close to the rest of your request.';
     case 'hypoallergenic':
-    case 'sensitivity': return 'These are lighter, softer options - not a guarantee.';
+    case 'sensitivity': return light ? 'These are lighter, softer options - not a guarantee.' : 'These fit the rest of your request - not a guarantee of anything.';
     default: return 'If that\'s not a must, these fit the rest of your request.';
   }
 }
 
 /** A requirement answered without picks: a question about one perfume, or alcohol-free. */
-export function renderRequirement(kind: RequirementKind, fr: Fragrance | undefined, hasTaste: boolean): Body {
-  const chips = fr ? [tellMeMore(fr.name, fr.brand), moreLike(fr.name, fr.brand)]
-    : hasTaste ? [FOLLOW_UPS.sprays_anyway.text] : [];
-  const offer = !fr && hasTaste ? '\n\nIf a spray is fine for other occasions, I can show you ones in the style you described.' : '';
-  return reply(`${requirementLine(kind, fr)}${offer}`, chips);
+export function renderRequirement(kind: RequirementKind, fr: Fragrance | undefined, hasTaste: boolean, seed = true): Body {
+  // Only alcohol-free withholds picks; the offer to show sprays anyway is about that alone.
+  const offerSprays = !fr && hasTaste && kind === 'alcohol_free';
+  const chips = fr ? [tellMeMore(fr.name, fr.brand), moreLike(fr.name, fr.brand)] : offerSprays ? [FOLLOW_UPS.sprays_anyway.text] : [];
+  const offer = offerSprays ? '\n\nIf a spray is fine for other occasions, I can show you ones in the style you described.' : '';
+  return reply(`${requirementLine(kind, fr, seed)}${offer}`, chips);
 }
 
 // ---------------------------------------------------------------------------
@@ -413,4 +432,4 @@ export function conflictLine(f: Facets): string {
   return `Heads-up: some of what you asked for pulls in opposite directions${example}, so I've aimed for a balance. Tell me which matters more and I'll lean that way.`;
 }
 
-export const ENGLISH_ONLY = 'I can only reply in English for now, but I understood your request.';
+export const ENGLISH_ONLY = 'I can only reply in English for now.';

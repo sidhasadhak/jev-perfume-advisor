@@ -14,15 +14,22 @@ const SESSION_KEY = 'scent-sommelier.sessionId';
 
 type Handler = (path: string, body: Record<string, unknown> | undefined) => { status?: number; json: unknown } | Promise<{ status?: number; json: unknown }>;
 
-/** Every channel a page opened, closed after the suite so the test process can exit. */
+/**
+ * Every channel and window a page opened, closed after the suite. An open jsdom window keeps its
+ * timers (app.js's 10 s health-check abort) alive, which would hold the test process open.
+ */
 const channels: BroadcastChannel[] = [];
+const windows: Array<{ close(): void }> = [];
 class TestChannel extends BroadcastChannel {
   constructor(name: string) {
     super(name);
     channels.push(this);
   }
 }
-after(() => { for (const c of channels) c.close(); });
+after(() => {
+  for (const c of channels) c.close();
+  for (const w of windows) w.close();
+});
 
 const reply = (sessionId: string, text = 'Here are some ideas.') => ({
   json: { sessionId, mode: 'mock', reply: { text, recommendations: [], followUps: [] } },
@@ -32,6 +39,7 @@ const reply = (sessionId: string, text = 'Here are some ideas.') => ({
 function openPage(handler: Handler, sessionId?: string) {
   const dom = new JSDOM(HTML, { runScripts: 'outside-only', url: 'http://localhost/', pretendToBeVisual: true });
   const w = dom.window as unknown as Window & typeof globalThis & { eval(src: string): unknown };
+  windows.push(dom.window);
   const calls: Array<{ path: string; body?: Record<string, unknown> }> = [];
   Object.assign(w, {
     matchMedia: () => ({ matches: true, addEventListener() {}, removeEventListener() {} }),

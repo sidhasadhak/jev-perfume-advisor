@@ -460,7 +460,8 @@ export async function understand(inp: UnderstandInput): Promise<UnderstandResult
       false: 'The requirements fit together',
     });
     qs.non_english = noul('Is the LATEST message written mainly in a language other than English?');
-    if (lastShown.length || refs.length) qs.compare_on = choice('If the user is comparing or ranking perfumes, what are they comparing them on?', COMPARE_ON);
+    // Asked every turn: short names ("Eros or Coco - which lasts longer?") are only found after the call.
+    qs.compare_on = choice('If the user is comparing or ranking perfumes, what are they comparing them on?', COMPARE_ON);
   }
 
   if (lastShown.length) {
@@ -615,17 +616,24 @@ export async function understand(inp: UnderstandInput): Promise<UnderstandResult
 
   // "Tell me about Eros": short common-word names are too risky for the pre-pass without their brand,
   // so they were never proposed. Once Jev says the user names a perfume we have not listed, an exact
-  // catalog name in the message is safe to use - rather than wrongly saying we do not carry it. The
-  // first such name counts even if it is an everyday word; for a list ("rank Sauvage, Aventus and
-  // Eros") every further distinctive one does too.
+  // catalog name in the message is safe to use - rather than wrongly saying we do not carry it - with
+  // three exceptions: a name inside a longer one ("Coco" in "Coco Mademoiselle") is part of that name;
+  // a name the text carries on past with a flanker word ("Coco Noir", "Eros Flame") is another perfume
+  // we lack; and an everyday name written as ordinary words ("for her birthday") is not For Her.
+  // Only a comparison, where the user lists perfumes, takes more than one.
   const namedExact: Fragrance[] = [];
   if (p('unknown_perfume') >= UNKNOWN_PERFUME_SURE) {
     const listed = new Set([...lastShown, ...refs].map((f) => f.pid));
-    const extra = catalog.namedExactly(message).filter((x) => !listed.has(x.fragrance.pid));
-    // More than one only for a comparison, where the user is listing perfumes: elsewhere a name that
-    // is also a word ("Joy", "Beautiful") is far likelier to be just a word.
     const listing = (a.intent as ChoiceAnswer | undefined)?.choice === 'compare';
-    extra.forEach((x, i) => { if (i === 0 || (listing && !x.everyday)) namedExact.push(x.fragrance); });
+    for (const x of catalog.namedExactly(message)) {
+      if (listed.has(x.fragrance.pid)) continue;
+      if (x.continuation && !x.continuation.concentration) {
+        if (!variants.some((v) => v.pid === x.fragrance.pid)) variants.push({ pid: x.fragrance.pid, name: x.continuation.display });
+        continue;
+      }
+      if (x.everyday && !x.capitalised) continue;
+      if (namedExact.length === 0 || (listing && !x.everyday)) namedExact.push(x.fragrance);
+    }
     namedExact.slice(0, MAX_COMPARE).reverse().forEach((f) => { asked.unshift(f.pid); pointed.unshift(f.pid); });
   }
 
@@ -666,28 +674,61 @@ export async function understand(inp: UnderstandInput): Promise<UnderstandResult
   if (intent === 'recommend' && fresh.referencePids.length) intent = 'more_like';
 
   // --- Routes that answer instead of recommending ----------------------------
-  const safetyAnswer = gated<SafetyKind | 'sensitive'>(a.safety, SAFETY_SURE);
+  // A child, a pet or a pregnancy outranks "a sensitivity": "my 6-year-old has eczema" is a child first.
+  // (Not "medical": an adult asking what they can wear despite migraines still wants picks.)
+  const safetyAnswer = gated<SafetyKind | 'sensitive'>(a.safety, SAFETY_SURE, ['child', 'pet', 'pregnancy']);
   // "Perfume gives me migraines - is there anything I can wear?" asks for picks, with care: light ones, with a caveat.
-  const safety = safetyAnswer === 'sensitive' ? undefined : safetyAnswer ?? (ageAnswer === 'child' ? 'child' : undefined);
+  const safety: SafetyKind | undefined = ageAnswer === 'child' ? 'child' : safetyAnswer === 'sensitive' ? undefined : safetyAnswer;
   let requirement = gated<RequirementKind>(a.requirement, REQUIREMENT_SURE);
-  // Jev can infer "alcohol-free" from a sensitivity ("alcohol triggers migraines"); only the user's own words
-  // may block every spray.
-  if (requirement === 'alcohol_free' && !ALCOHOL_WORDS.test(message)) requirement = undefined;
-  if (safetyAnswer === 'sensitive' && (!requirement || requirement === 'alcohol_free' && !ALCOHOL_WORDS.test(message))) requirement = 'sensitivity';
+  // Jev can infer "alcohol-free" from a sensitivity ("alcohol triggers migraines"): then, unless the user
+  // said so themselves, it is a sensitivity, not a reason to refuse every spray.
+  if (safetyAnswer === 'sensitive' && (!requirement || (requirement === 'alcohol_free' && !ALCOHOL_WORDS.test(message)))) requirement = 'sensitivity';
   const topicAns = a.topic as ChoiceAnswer | undefined;
   const topicP = topicAns && topicAns.choice !== 'none' ? (topicAns.probabilities?.[topicAns.choice] ?? topicAns.confidence) : 0;
   let topic: Topic | undefined = topicP >= (intent === 'knowledge' ? TOPIC_SURE_WITH_INTENT : TOPIC_SURE) ? topicAns!.choice as Topic : undefined;
-  // "Sauvage EDT vs EDP": two concentrations of one perfume line is a concentration question, whatever
-  // else it looks like - comparing Sauvage with Eau Sauvage instead is how the old reply misled.
-  const lines = new Set([...focusPids, ...variants.map((v) => v.pid)].map((pid) => catalog.get(pid)?.name.split(' ')[0]?.toLowerCase()));
-  if (concentrations.length >= 2 && lines.size <= 1 && (intent === 'compare' || intent === 'explain' || intent === 'knowledge')) topic = 'concentration';
-  // "How many hours does Sauvage Elixir last?": no specific topic, but a perfume we have - its card answers that.
-  // "Do you have Kayali Vanilla 28?": no specific topic, and a perfume we lack - say so (an unresolved explain).
-  const named = unique([...focusPids, ...pointed]).length > 0;
+  const namedPids = unique([...focusPids, ...pointed]);
+  // "Sauvage EDT vs EDP": two concentrations of ONE catalog perfume is a concentration question, whatever
+  // else it looks like - comparing Sauvage with Eau Sauvage instead is how the old reply misled. Two
+  // records ("Sauvage EDT or Sauvage Elixir") are a comparison the catalog can answer.
+  const distinct = new Set([...focusPids, ...variants.map((v) => v.pid)]);
+  if (concentrations.length >= 2 && distinct.size <= 1 && (intent === 'compare' || intent === 'explain' || intent === 'knowledge')) topic = 'concentration';
+  // "Le Male EDT vs Le Male Le Parfum", "Is Sauvage Elixir stronger than the EDT?": one version named, and we
+  // carry the other one asked about - compare the two records rather than explain concentrations.
+  if (topic === 'concentration' && distinct.size === 1) {
+    const kin = otherVersions(catalog, [...distinct][0]!, concentrations);
+    if (kin.length) {
+      for (const k of kin) { if (!focusPids.includes(k)) focusPids.push(k); if (!namedPids.includes(k)) namedPids.push(k); }
+      topic = undefined;
+      intent = 'compare';
+    }
+  }
+  // Two named perfumes compared - or asked about on one attribute ("which lasts longer, X or Y?") - stay a
+  // comparison, whatever general topic Jev also saw (a concentration, a dupe, a price). Layering is not a comparison.
+  const onAttribute = (() => {
+    const c = a.compare_on as ChoiceAnswer<CompareAxis> | undefined;
+    return !!c && c.choice !== 'any' && c.confidence >= MIN_CONFIDENCE;
+  })();
+  if (namedPids.length >= 2 && topic !== 'layering' && (intent === 'compare' || (onAttribute && (intent === 'knowledge' || intent === 'explain')))) {
+    topic = undefined;
+    intent = 'compare';
+  }
+  // A compare with one perfume we lack is the compare route's to answer ("I don't have X"), not a refusal.
+  if (intent === 'compare' && topic === 'other_question') topic = undefined;
+  // "How many hours does Sauvage Elixir last?", "What does Oud Wood smell like?": no general topic but a
+  // perfume we have - its card answers that. "Do you have Kayali Vanilla 28?": a perfume we lack - say so.
   const unknownNamed = p('unknown_perfume') >= UNKNOWN_PERFUME_SURE && namedExact.length === 0;
-  if ((intent === 'knowledge' || topic === 'other_question') && (!topic || topic === 'other_question') && (named || unknownNamed || variants.length)) {
+  const aboutOnePerfume = namedPids.length > 0 || unknownNamed || variants.length > 0;
+  if (intent !== 'compare' && aboutOnePerfume && (
+    ((intent === 'knowledge' || topic === 'other_question') && (!topic || topic === 'other_question'))
+    || (topic === 'note_description' && namedPids.length > 0))) {
     topic = undefined;
     intent = 'explain';
+  }
+  // "Are there any vegan woody perfumes?": a requirement we can caveat, on a request for picks - not a question.
+  if (requirement && requirement !== 'alcohol_free' && namedPids.length === 0 && (intent === 'knowledge' || intent === 'explain')
+    && (!topic || topic === 'other_question')) {
+    topic = undefined;
+    intent = 'recommend';
   }
   if (intent === 'knowledge' && !topic) topic = 'other_question';
   const compareOn: CompareAxis = (() => {
@@ -697,10 +738,7 @@ export async function understand(inp: UnderstandInput): Promise<UnderstandResult
     if (topic === 'price_where') return 'price';
     return 'any';
   })();
-  // Two named perfumes and a dupe / price / who-made-it question is a comparison of those two.
-  const comparable = unique([...focusPids, ...pointed]).length >= 2;
-  if (intent === 'compare' && comparable && topic && COMPARE_TOPICS.has(topic)) topic = undefined;
-  const knowledge = topic ? { topic, pids: unique([...focusPids, ...pointed]), notes: notes.map((n) => n.note) } : undefined;
+  const knowledge = topic ? { topic, pids: namedPids, notes: notes.map((n) => n.note) } : undefined;
   if (knowledge) intent = 'knowledge';
 
   // Something the user pointed at that we cannot resolve: say so, never swap in another perfume.
@@ -785,8 +823,21 @@ export async function understand(inp: UnderstandInput): Promise<UnderstandResult
   };
 }
 
+/**
+ * Other catalog records of `pid`'s line that plausibly are another concentration the user asked about:
+ * a record whose name states one of those concentrations ("Le Male Le Parfum"), or a plain-named one
+ * ("Le Male", "Sauvage") when the named record itself states one of them. Never a version they did not ask about.
+ */
+function otherVersions(catalog: Catalog, pid: string, asked: string[]): string[] {
+  const own = concentrationTerms(catalog.get(pid)?.name ?? '');
+  return catalog.versionsOf(pid).filter((k) => {
+    const theirs = concentrationTerms(k.name);
+    return theirs.length ? theirs.some((c) => asked.includes(c) && !own.includes(c)) : own.some((c) => asked.includes(c));
+  }).map((k) => k.pid);
+}
+
 /** The user's own words for an alcohol-free need, in the languages people commonly ask in. */
-const ALCOHOL_WORDS = /alcoh|alcool|alkohol|halal|haram|attar|ittar|\boils?\b|oil-based|non-?alcoholic|sin alcohol|sans alcool|ohne alkohol/i;
+const ALCOHOL_WORDS = /alcoh|alcool|alkohol|alkol|ethanol|spirits?\b|halal|helal|haram|attar|ittar|\boils?\b|oil-based|non-?alcoholic|sin alcohol|sans alcool|ohne alkohol|كحول|حلال|الکل|الكحول|спирт|алкогол/i;
 
 /** How sure Jev must be about which words name the brand or perfume before a reply quotes them. */
 const NAME_SURE = 0.4;
@@ -822,15 +873,17 @@ export async function nameTheUnknown(
  * The strongest non-"none" option of a choice whose probability of "none" is below
  * 1 - `sure` - i.e. Jev leans at least `sure` towards SOME option other than none.
  */
-function gated<K extends string>(ans: Answer | undefined, sure: number): K | undefined {
+function gated<K extends string>(ans: Answer | undefined, sure: number, prefer: string[] = []): K | undefined {
   if (!ans || ans.type !== 'choice') return undefined;
   const probs = ans.probabilities ?? { [ans.choice]: ans.confidence };
   const pNone = probs.none ?? (ans.choice === 'none' ? ans.confidence : 0);
   if (1 - pNone <= sure) return undefined;
   // Mass spread thinly over every option is doubt, not a finding: one option must stand out.
-  const best = Object.entries(probs).filter(([k]) => k !== 'none').sort((x, y) => y[1] - x[1])[0];
-  if (!best || best[1] < GATED_OPTION_FLOOR) return undefined;
-  return best[0] as K;
+  const standing = Object.entries(probs).filter(([k, v]) => k !== 'none' && v >= GATED_OPTION_FLOOR).sort((x, y) => y[1] - x[1]);
+  if (!standing.length) return undefined;
+  // Among options that clear the floor, the more serious one wins (a child before a sensitivity).
+  const preferred = prefer.find((k) => standing.some(([o]) => o === k));
+  return (preferred ?? standing[0]![0]) as K;
 }
 
 /** The least probability the leading option of a gated choice needs on its own. */

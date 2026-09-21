@@ -7,7 +7,10 @@ findings that were deliberately left open at the time.
 **Status (2026-09-21, branch `feat/backlog-fixes`):** every P0, P1 and P2 item is fixed, as are the open
 code-review items that were code changes. All 44 appendix questions were re-run on live Jev afterwards, and
 each now gets a direct answer (about 80 live turns including two smoke runs, ~$0.11 in total). `npm run smoke` still passes 5/5. Four
-items stay open, each for a reason outside the code (see "Still open" below).
+items stay open, each for a reason outside the code (see "Still open" below). Before merging, a multi-agent
+review of the change found 35 defects in the first version of these fixes (e.g. a child with eczema routed to
+picks, "Chanel's" read as a brand we don't carry). All were reproduced, fixed and covered by tests in
+`tests/backlog.test.ts` ("review findings").
 
 **Common thread (before):** the app had one move, recommending 4 perfumes. It now has more routes: a fixed
 answer, an honest "I don't carry that", a safety answer, and a comparison on the attribute asked about. Jev
@@ -95,7 +98,7 @@ still only makes typed choices; every sentence is a fixed template or a catalog 
 
 ## How to verify fixes
 
-- `npm test`: 524 tests, no API key needed (`tests/backlog.test.ts` covers this list, `tests/web-ui.test.ts`
+- `npm test`: 564 tests, no API key needed (`tests/backlog.test.ts` covers this list, `tests/web-ui.test.ts`
   the browser client).
 - `npm run smoke`: the 5 example questions on live Jev, about $0.01.
 - Re-run the appendix questions on live Jev (about $0.002 per turn) and compare with the "actual" replies below.

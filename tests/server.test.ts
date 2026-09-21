@@ -63,6 +63,14 @@ describe('HTTP API', () => {
     assert.equal((await post('/api/fork', {})).status, 400);
   });
 
+  it('POST /api/fork shares the chat rate limit, so forks cannot evict other people\'s sessions', async () => {
+    const limited = await serve(partyBot(), 2);
+    const r1 = await (await post('/api/chat', { message: 'party perfume' }, limited)).json() as { sessionId: string };
+    const codes: number[] = [];
+    for (let i = 0; i < 3; i++) codes.push((await post('/api/fork', { sessionId: r1.sessionId }, limited)).status);
+    assert.deepEqual(codes, [200, 429, 429]);
+  });
+
   it('validates input', async () => {
     assert.equal((await post('/api/chat', {})).status, 400);
     assert.equal((await post('/api/chat', { message: '   ' })).status, 400);

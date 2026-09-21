@@ -56,6 +56,7 @@ const BRAND_ALIASES: ReadonlyMap<string, string> = new Map([
   ['ch', 'carolina herrera'],
   ['v and r', 'viktor and rolf'],
   ['bulgari', 'bvlgari'],
+  ['mont blanc', 'montblanc'],
 ]);
 
 /**
@@ -102,14 +103,23 @@ function foldNumbers(normalized: string): string {
   return normalized.replace(/(^| )(?:n|no|nr|num|number) ?(\d+)(?= |$)/g, '$1no$2');
 }
 
-/** The text as mentionedIn/brandsIn search it: normalized, numbers folded, padded for whole-word checks. */
+/**
+ * The text as mentionedIn/brandsIn search it: normalized, numbers folded, padded for
+ * whole-word checks. A possessive "'s" goes first, so "Chanel's best" names Chanel -
+ * normalize() alone would read it as "chanels".
+ */
 function haystack(text: string): string {
-  return ` ${foldNumbers(normalize(text))} `;
+  return ` ${foldNumbers(normalize(stripPossessive(text)))} `;
+}
+
+/** "Chanel's" -> "Chanel". Not "Penhaligon's" in a brand name, which brandForms() also accepts without the s. */
+function stripPossessive(text: string): string {
+  return text.replace(/(\p{L})['’]s\b/gu, '$1');
 }
 
 /** Distinctive words of a brand name - connector and generic words excluded. */
 function brandWords(brand: string): string[] {
-  return normalize(brand).split(' ').filter((t) => t.length > 2 && !STOP.has(t) && !GENERIC_BRAND_WORDS.has(t));
+  return normalize(stripPossessive(brand)).split(' ').filter((t) => t.length > 2 && !STOP.has(t) && !GENERIC_BRAND_WORDS.has(t));
 }
 
 /** Normalized brands named in the haystack through an alias ("YSL" -> Yves Saint Laurent). */
@@ -153,6 +163,19 @@ export interface Continuation {
   words: string;
   /** How to name the variant in a reply: the catalog name plus those words ("Coco Noir", "Sauvage EDP"). */
   display: string;
+  /** Only a concentration follows ("Le Male EDT"): the same line, maybe even this record - not a flanker. */
+  concentration: boolean;
+}
+
+/** A catalog name spelled out in the text (namedExactly). */
+export interface ExactName {
+  fragrance: Fragrance;
+  /** The name is only everyday words or a note: without its capitals it is probably just words. */
+  everyday: boolean;
+  /** The text writes the name with the catalog's capitals ("For Her"), as a name rather than a phrase. */
+  capitalised: boolean;
+  /** The text carries on past the name ("Coco Noir"): possibly another perfume. */
+  continuation?: Continuation;
 }
 
 interface IndexEntry {
@@ -166,8 +189,14 @@ interface IndexEntry {
   nameTokens: string[];
   brandTokens: string[];
   phrase: string;
-  /** Every name word is an everyday word, stop word or note, e.g. "First", "Green Tea". */
+  /** The name is only everyday words or a note ("First", "Green Tea", "Cloud"): it may not mean the perfume. */
   everyday: boolean;
+  /**
+   * Every name word is an everyday word, stop word or note ("Oud Wood", "Grey Vetiver",
+   * "Vetiver"). Such a name is never blanked out before note detection: "I love oud wood"
+   * may be about the notes, and Jev decides.
+   */
+  noteish: boolean;
 }
 
 /** How many same-name ties mentionedIn may return beyond its limit. */
@@ -185,7 +214,9 @@ export class Catalog {
     this.byPid = new Map(fragrances.map((f) => [f.pid, f]));
     const notes = noteVocabulary(fragrances);
     this.index = fragrances.map((fr) => {
-      const name = foldNumbers(normalize(fr.name));
+      // Names and brands are normalized like the text (haystack strips "'s"), so "Rose of No Man's Land"
+      // and "Penhaligon's" match however the user writes them.
+      const name = foldNumbers(normalize(stripPossessive(fr.name)));
       const words = name.split(' ').filter(Boolean);
       const sig = significant(words);
       // Names of single letters ("Y Eau de Parfum") keep the letter, never the stop
@@ -203,12 +234,13 @@ export class Catalog {
         fr,
         name,
         core: name.replace(CONCENTRATION_SUFFIX, ''),
-        brand: normalize(fr.brand),
-        full: foldNumbers(normalize(`${fr.brand} ${fr.name}`)),
+        brand: normalize(stripPossessive(fr.brand)),
+        full: foldNumbers(normalize(stripPossessive(`${fr.brand} ${fr.name}`))),
         nameTokens,
         brandTokens: brandWords(fr.brand),
         phrase,
         everyday,
+        noteish: nameTokens.every(isEveryday) || notes.has(phrase),
       };
     });
   }
@@ -276,7 +308,7 @@ export class Catalog {
     const stream = tokenStream(text);
     const phrases = kept.map((m) => m.phrase).filter(Boolean);
     return [...head, ...tied].map(({ fragrance, score, phrase }) => {
-      const continuation = phrase ? continuationOf(stream, phrase, fragrance.name, phrases) : undefined;
+      const continuation = phrase ? continuationOf(stream, phrase, fragrance, phrases) : undefined;
       return continuation ? { fragrance, score, continuation } : { fragrance, score };
     });
   }
@@ -286,15 +318,36 @@ export class Catalog {
    * ("Eros", "Coco"): longest name first, then the most voted. `everyday` marks
    * names that are also ordinary words ("Her", "Cloud"), which need more care.
    */
-  namedExactly(text: string): Array<{ fragrance: Fragrance; everyday: boolean }> {
-    const hay = ` ${normalize(text)} `;
-    return this.index
-      .filter((e) => {
-        const n = normalize(e.fr.name);
-        return n.length >= 2 && hay.includes(` ${n} `);
-      })
-      .sort((x, y) => normalize(y.fr.name).length - normalize(x.fr.name).length || (y.fr.rating?.votes ?? 0) - (x.fr.rating?.votes ?? 0))
-      .map((e) => ({ fragrance: e.fr, everyday: e.everyday }));
+  namedExactly(text: string): ExactName[] {
+    const hay = haystack(text);
+    const hits = this.index.filter((e) => e.name.length >= 2 && hay.includes(` ${e.name} `));
+    const phrases = hits.map((e) => e.name);
+    const stream = tokenStream(text);
+    return hits
+      // "Coco" inside "Coco Mademoiselle", "Sauvage" inside "Sauvage Elixir": part of the longer name.
+      .filter((e) => !subsumed(hay, e.name, phrases))
+      .sort((x, y) => y.name.length - x.name.length || (y.fr.rating?.votes ?? 0) - (x.fr.rating?.votes ?? 0))
+      .map((e) => {
+        const continuation = continuationOf(stream, e.name, e.fr, phrases);
+        return {
+          fragrance: e.fr,
+          everyday: e.everyday,
+          // Written with the catalog's own capitals ("Cloud", "For Her"), not as ordinary words ("for her birthday").
+          capitalised: new RegExp(`(^|[^\\p{L}\\p{N}])${escapeRegExp(e.fr.name)}(?![\\p{L}\\p{N}])`, 'u').test(text),
+          ...(continuation ? { continuation } : {}),
+        };
+      });
+  }
+
+  /**
+   * Other records of the same perfume line: the same house, where one name starts with the other
+   * ("Sauvage" / "Sauvage Elixir", "Le Male" / "Le Male Le Parfum"). Not "Eau Sauvage".
+   */
+  versionsOf(pid: string): Fragrance[] {
+    const me = this.index.find((e) => e.fr.pid === pid);
+    if (!me) return [];
+    return this.index.filter((e) => e.fr.pid !== pid && e.brand === me.brand
+      && (e.core.startsWith(`${me.core} `) || me.core.startsWith(`${e.core} `))).map((e) => e.fr);
   }
 
   /** Brands mentioned in free text, by full name or a common alias ("YSL", "D&G"). */
@@ -316,10 +369,13 @@ export class Catalog {
    */
   mayNameOtherBrand(text: string, except: string[] = []): boolean {
     const hay = haystack(text);
+    // Also without spaces, for brands people split or join: "Mont Blanc" / "Montblanc".
+    const joined = hay.replace(/ /g, '');
     const skip = new Set(except);
     const aliased = aliasedBrands(hay);
     return this.index.some((e) => !skip.has(e.fr.brand) && (aliased.has(e.brand)
-      || looseBrandWords(e.fr.brand).some((w) => hay.includes(` ${w} `))));
+      || (e.brand.replace(/ /g, '').length >= 6 && joined.includes(e.brand.replace(/ /g, '')))
+      || looseBrandWords(e.fr.brand).some((w) => hay.includes(` ${w} `) || (w.length > 4 && w.endsWith('s') && hay.includes(` ${w.slice(0, -1)} `)))));
   }
 
   /**
@@ -328,7 +384,8 @@ export class Catalog {
    */
   maskNames(text: string, pids: string[]): string {
     let hay = haystack(text);
-    const entries = this.index.filter((e) => pids.includes(e.fr.pid))
+    // A name made of note words ("Oud Wood", "Vetiver") stays: "I love oud wood" may be about the notes.
+    const entries = this.index.filter((e) => pids.includes(e.fr.pid) && !e.noteish)
       .flatMap((e) => [e.name, e.core, e.phrase])
       .filter((n, i, xs) => n && xs.indexOf(n) === i)
       .sort((a, b) => b.length - a.length);
@@ -379,7 +436,12 @@ const NAME_ENDERS = new Set([
   'but', 'if', 'so', 'please', 'thanks', 'too', 'also', 'instead', 'i', 'my', 'me', 'it', 'its', 'which', 'what',
 ]);
 
-interface Tok { t: string; cap: boolean }
+interface Tok {
+  t: string;
+  cap: boolean;
+  /** Punctuation (a comma, full stop, colon, bracket, dash...) comes between this token and the one before. */
+  boundary: boolean;
+}
 
 /**
  * The text as normalized tokens (numbers folded as in haystack), each remembering
@@ -389,15 +451,20 @@ function tokenStream(text: string): Tok[] {
   const out: Tok[] = [];
   const re = /[\p{L}\p{N}][\p{L}\p{N}'’&]*/gu;
   let prevEnd = 0;
-  for (let m = re.exec(text); m; m = re.exec(text)) {
-    const sentenceStart = out.length === 0 || /[.!?:;"(\n]/.test(text.slice(prevEnd, m.index));
+  const src = stripPossessive(text);
+  for (let m = re.exec(src); m; m = re.exec(src)) {
+    const gap = src.slice(prevEnd, m.index);
+    const sentenceStart = out.length === 0 || /[.!?:;"(\n]/.test(gap);
     const cap = !sentenceStart && /^\p{Lu}/u.test(m[0]);
-    for (const t of normalize(m[0]).split(' ').filter(Boolean)) out.push({ t, cap });
+    const boundary = out.length > 0 && /[,.!?:;"()\[\]\n/|]|\s[-–—]\s/.test(gap);
+    normalize(m[0]).split(' ').filter(Boolean).forEach((t, i) => out.push({ t, cap, boundary: i === 0 && boundary }));
     prevEnd = m.index + m[0].length;
   }
   // Fold "No 5" / "N 5" into "no5", as foldNumbers() does for the haystack.
   for (let i = 0; i + 1 < out.length; i++) {
-    if (/^(n|no|nr|num|number)$/.test(out[i]!.t) && /^\d+$/.test(out[i + 1]!.t)) out.splice(i, 2, { t: `no${out[i + 1]!.t}`, cap: out[i]!.cap });
+    if (/^(n|no|nr|num|number)$/.test(out[i]!.t) && /^\d+$/.test(out[i + 1]!.t)) {
+      out.splice(i, 2, { t: `no${out[i + 1]!.t}`, cap: out[i]!.cap, boundary: out[i]!.boundary });
+    }
   }
   return out;
 }
@@ -439,17 +506,22 @@ const DISPLAY_WORD: Record<string, string> = { edp: 'EDP', edt: 'EDT', edc: 'EDC
  * undefined. "coco noir" after matching Coco -> "noir"; "bleu de chanel edp"
  * after matching "Bleu de Chanel Eau de Parfum" -> nothing (the same concentration).
  */
-function continuationOf(stream: Tok[], phrase: string, catalogName: string, phrases: string[]): Continuation | undefined {
-  const own = statedConcentration(normalize(catalogName));
+function continuationOf(stream: Tok[], phrase: string, fr: Fragrance, phrases: string[]): Continuation | undefined {
+  const catalogName = fr.name;
+  const own = statedConcentration(normalize(stripPossessive(catalogName)));
+  // The perfume's own house after its name ("Aventus Creed", "Libre YSL") is not a flanker.
+  const brandKey = normalize(stripPossessive(fr.brand));
+  const house = new Set([...brandKey.split(' '), ...[...BRAND_ALIASES].filter(([, b]) => b === brandKey).flatMap(([a]) => a.split(' '))]);
   // Occurrences inside a longer matched name belong to that name ("sauvage" in "sauvage elixir").
   const longer = phrases.filter((p) => p.length > phrase.length).flatMap((p) => occurrences(stream, p));
   for (const [start, end] of occurrences(stream, phrase)) {
     if (longer.some(([s, e]) => s <= start && end <= e)) continue;
     let j = end;
     const words: string[] = [];
-    while (j < stream.length && FLANKER_CONNECTORS.has(stream[j]!.t) && words.length < 2) words.push(stream[j++]!.t);
+    // Punctuation ends the name: "Aventus, Kayali..." and "I love Sauvage. Summer is coming" carry nothing on.
+    while (j < stream.length && !stream[j]!.boundary && FLANKER_CONNECTORS.has(stream[j]!.t) && words.length < 2) words.push(stream[j++]!.t);
     const next = stream[j];
-    if (!next || NAME_ENDERS.has(next.t)) continue;
+    if (!next || next.boundary || NAME_ENDERS.has(next.t) || house.has(next.t)) continue;
     // The next words are another perfume we matched ("Sauvage Bleu de Chanel" typed without a comma).
     if (phrases.some((p) => p !== phrase && occurrences(stream, p).some(([s]) => s === j || s === end))) continue;
     const conc = CONCENTRATIONS[next.t] ?? (next.t === 'toilette' ? 'edt' : undefined);
@@ -459,11 +531,12 @@ function continuationOf(stream: Tok[], phrase: string, catalogName: string, phra
     if (conc && own && conc === own) continue;
     words.push(next.t);
     const after = stream[j + 1];
-    if (after && (FLANKER_WORDS.has(after.t) || CONCENTRATIONS[after.t] !== undefined) && !NAME_ENDERS.has(after.t)) words.push(after.t);
+    if (after && !after.boundary && (FLANKER_WORDS.has(after.t) || CONCENTRATIONS[after.t] !== undefined) && !NAME_ENDERS.has(after.t)) words.push(after.t);
     if (words.every((w) => FLANKER_CONNECTORS.has(w))) continue;
     const base = catalogName.replace(/\s+(?:eau de parfum|eau de toilette|eau de cologne|edp|edt)$/i, '');
     const shown = words.map((w) => DISPLAY_WORD[w] ?? w.charAt(0).toUpperCase() + w.slice(1)).join(' ').replace("L' ", "L'");
-    return { words: words.join(' '), display: `${base} ${shown}` };
+    const concentration = words.every((w) => FLANKER_CONNECTORS.has(w) || CONCENTRATIONS[w] !== undefined || w === 'toilette');
+    return { words: words.join(' '), display: `${base} ${shown}`, concentration };
   }
   return undefined;
 }
@@ -472,5 +545,9 @@ function continuationOf(stream: Tok[], phrase: string, catalogName: string, phra
 function looseBrandWords(brand: string): string[] {
   const filler = new Set(['parfums', 'parfum', 'perfumes', 'perfume', 'fragrances', 'maison', 'house', 'collection', 'cosmetics',
     'beauty', 'company', 'les', 'des', 'the', 'and', 'paris', 'london', 'new', 'york']);
-  return normalize(brand).split(' ').filter((t) => t.length > 2 && !STOP.has(t) && !filler.has(t));
+  return normalize(stripPossessive(brand)).split(' ').filter((t) => t.length > 2 && !STOP.has(t) && !filler.has(t));
+}
+
+function escapeRegExp(s: string): string {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }

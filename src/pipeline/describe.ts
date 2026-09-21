@@ -117,6 +117,26 @@ export function tierWord(fr: Fragrance): string {
   return TIER_WORDS[fr.priceTier];
 }
 
+/** The tier as a predicate: "X is budget-friendly", "X is a mid-priced designer scent". */
+const TIER_PHRASES: Record<Fragrance['priceTier'], string> = {
+  budget: 'budget-friendly',
+  mid: 'a mid-priced designer scent',
+  luxury: 'a luxury / prestige scent',
+  niche: 'a niche, premium-priced scent',
+};
+
+export function tierPhrase(fr: Fragrance): string {
+  return TIER_PHRASES[fr.priceTier];
+}
+
+/** "has strong projection and is long-lasting" - performance as a predicate; '' with no votes. */
+export function performancePredicate(fr: Fragrance): string {
+  const s = sillageWord(fr);
+  const l = longevityWord(fr);
+  const lasts = l === 'fleeting' ? 'fades quickly' : l === 'moderate' ? 'lasts a moderate time' : l ? `is ${l}` : '';
+  return [s ? `has ${s} projection` : '', lasts].filter(Boolean).join(' and ');
+}
+
 export function pct(x: number): string {
   return `${Math.round(x * 100)}%`;
 }
